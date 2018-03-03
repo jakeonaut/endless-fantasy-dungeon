@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://DogBody.gd" type="Script" id=2]
 [ext_resource path="res://assets/Image60000.png" type="Texture" id=3]
 [ext_resource path="res://DogSprite.gd" type="Script" id=4]
 [ext_resource path="res://MouseCamera.gd" type="Script" id=5]
-[ext_resource path="res://assets/Imag20000.png" type="Texture" id=6]
-[ext_resource path="res://NPCSprite.gd" type="Script" id=7]
+[ext_resource path="res://NPCBody.gd" type="Script" id=6]
+[ext_resource path="res://assets/Imag20000.png" type="Texture" id=7]
+[ext_resource path="res://NPCSprite.gd" type="Script" id=8]
+[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=9]
+[ext_resource path="res://TextBox.tscn" type="PackedScene" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -123,7 +126,7 @@ _sections_unfolded = [ "Parameters" ]
 
 [node name="Node" type="Node" index="0"]
 
-[node name="GridMap" type="GridMap" parent="." index="0"]
+[node name="Level Tiles" type="GridMap" parent="." index="0"]
 
 theme = ExtResource( 1 )
 cell_size = Vector3( 2, 2, 2 )
@@ -142,34 +145,7 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="1"]
-
-transform = Transform( 0.97942, -0.201817, -0.00250381, 0.0896381, 0.423831, 0.901295, -0.180836, -0.88297, 0.433199, -0.0224367, 11.0755, 10.2577 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.1
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
-directional_shadow_mode = 2
-directional_shadow_split_1 = 0.1
-directional_shadow_split_2 = 0.2
-directional_shadow_split_3 = 0.5
-directional_shadow_blend_splits = false
-directional_shadow_normal_bias = 0.8
-directional_shadow_bias_split_scale = 0.25
-directional_shadow_depth_range = 0
-directional_shadow_max_distance = 200.0
-
-[node name="Player" type="KinematicBody" parent="." index="2"]
+[node name="Player" type="KinematicBody" parent="." index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 0 )
 input_ray_pickable = true
@@ -228,7 +204,34 @@ _sections_unfolded = [ "Animation", "Flags", "Geometry", "Pause", "Region", "Tra
 transform = Transform( 0.750644, 0, 0.660706, 0, 1, 0, -0.660706, 0, 0.750644, 0, 0, 0 )
 script = ExtResource( 5 )
 
-[node name="Camera" type="Camera" parent="Player/CollisionShape/Sprite3D/Spatial" index="0"]
+[node name="The Sun" type="DirectionalLight" parent="Player/CollisionShape/Sprite3D/Spatial" index="0"]
+
+transform = Transform( 0.854676, 0.431891, -0.288097, 0.0896381, 0.423831, 0.901295, 0.511366, -0.796139, 0.323524, -6.79417, 7.79351, 7.68507 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+
+[node name="Camera" type="Camera" parent="Player/CollisionShape/Sprite3D/Spatial" index="1"]
 
 transform = Transform( 0.999998, -2.98023e-08, 0, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.265115, 9.09133, 10.1398 )
 keep_aspect = 1
@@ -244,7 +247,7 @@ size = 1.0
 near = 0.1
 far = 100.0
 
-[node name="NPC" type="KinematicBody" parent="." index="3"]
+[node name="NPC" type="KinematicBody" parent="." index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -258,6 +261,7 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
+script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="NPC" index="0"]
 
@@ -288,13 +292,23 @@ transparent = true
 shaded = false
 double_sided = true
 alpha_cut = 0
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 vframes = 2
 hframes = 2
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform" ]
+
+[node name="DialogSound" type="AudioStreamPlayer" parent="NPC" index="1"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="NPC TextBox" parent="NPC" index="2" instance=ExtResource( 10 )]
 
 

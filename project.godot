@@ -10,11 +10,15 @@ config_version=3
 
 [application]
 
-config/name="glitch dungeon crystal"
+config/name="crystal dungeon"
 run/main_scene="res://Scene.tscn"
 icon="res://icon.png"
 main_scene="res://Scene.tscn"
 name="3d3demo"
+
+[display]
+
+window/size/height=768
 
 [input]
 
