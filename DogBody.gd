@@ -5,7 +5,7 @@ var jump_force = 16
 var y_vel = 0
 var grav = 1
 var terminal_vel = 16
-onready var camera = get_node("CollisionShape/Sprite3D/Spatial") # the "camera"
+onready var camera = get_node("TheCamera") # the "camera"
 var on_ground = true
 
 func _ready():
