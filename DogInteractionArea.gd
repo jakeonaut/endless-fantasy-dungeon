@@ -9,4 +9,5 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_interact"):
 		for area in areas:
 			# TODO(jakeonaut): Only activate nearest area
-			area.InteractActivate()
+			if area.has_method("InteractActivate"):
+				area.InteractActivate()

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LA_Stairs.wav-098bdc6133fec8d51fbd347b82dfbeb5.sample"
+
+[deps]
+
+source_file="res://assets/sounds/LA_Stairs.wav"
+source_md5="a4708ea831b4d6238b8da3f711777b99"
+
+dest_files=[ "res://.import/LA_Stairs.wav-098bdc6133fec8d51fbd347b82dfbeb5.sample" ]
+dest_md5="cdd625b575de0ba729b688be53d79dd6"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

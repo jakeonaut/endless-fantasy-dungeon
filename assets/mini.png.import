@@ -11,7 +11,7 @@ source_file="res://assets/mini.png"
 source_md5="f6b9c73e28cec442311a7a842eb6c801"
 
 dest_files=[ "res://.import/mini.png-302734106e81977682a4b2aae39f349b.s3tc.stex", "res://.import/mini.png-302734106e81977682a4b2aae39f349b.etc2.stex" ]
-dest_md5="697435f72c94b18e67fc6ba69b0d58f9"
+dest_md5="05ad06b9129c05fe630470d6a7985027"
 
 [params]
 
@@ -20,8 +20,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=true
-flags/mipmaps=true
+flags/filter=false
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true
