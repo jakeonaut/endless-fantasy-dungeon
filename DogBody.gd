@@ -2,35 +2,34 @@ extends KinematicBody
 
 var walk_speed = 8
 var jump_force = 16
-var y_vel = 0
-var grav = 1
+var grav = 40
 var terminal_vel = 16
 onready var camera = get_node("TheCamera") # the "camera"
 var on_ground = true
+
+var linear_velocity = Vector3()
 
 func _ready():
 	set_physics_process(true)
 	
 func _physics_process(delta):
-	walkAround(delta)
-	jumpGravity(delta)
+	var lv = linear_velocity
+	var g = Vector3(0, -grav, 0)
 	
-func jumpGravity(delta):
-	on_ground = false
-	if move_and_collide(Vector3(0.0, y_vel * delta, 0.0)):
-		on_ground = true
-		y_vel = 0.0
+	lv += g * delta # Apply gravity
+	
+	var up = -g.normalized() # (up is against gravity)
+	var vv = up.dot(lv) # vertical velocity
+	var hv = lv - up * vv # horizontal velocity
+	
+	# apply terminal velocity to fall speed
+	if vv < -terminal_vel:
+		vv = -terminal_vel
 	
 	# jump
-	if Input.is_action_pressed("ui_jump") and on_ground:
-		on_ground = false
-		y_vel = jump_force
-	elif not on_ground:
-		y_vel -= grav
-		if y_vel < -terminal_vel:
-			y_vel = -terminal_vel
-		
-func walkAround(delta):
+	if is_on_floor() and Input.is_action_pressed("ui_jump"):
+		vv = jump_force
+	
 	# Forward as seen by the camera (OpenGL convention)
 	var view_forward = -camera.get_transform().basis.z
 	var view_right = -camera.get_transform().basis.x
@@ -47,6 +46,10 @@ func walkAround(delta):
 		dir += forward
 	elif Input.is_action_pressed("ui_down"):
 		dir -= forward
-		
+	
 	# update x and z
-	move_and_collide(dir.normalized() * (walk_speed * delta))
+	hv = dir.normalized() * walk_speed
+		
+	lv = hv + (up * vv)
+	
+	linear_velocity = move_and_slide(lv, -g.normalized())

@@ -2,6 +2,7 @@ extends Area
 
 onready var playerArea = get_tree().get_root().get_node("level/Player/InteractionArea")
 export var connectedScene = "GenericScene.tscn"
+var transitioning = false
 
 func _ready():
 	set_process(true)
@@ -9,7 +10,10 @@ func _ready():
 func _process(delta):
 	if touchingPlayer():
 		global.lastDoor = get_parent().name
-		get_tree().change_scene("res://" + connectedScene)
+		if not transitioning:
+			# global transition scene
+			transition.fade_to("res://" + connectedScene)
+			transitioning = true
 		
 func touchingPlayer():
 	var areas = get_overlapping_areas()

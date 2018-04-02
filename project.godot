@@ -19,6 +19,7 @@ name="3d3demo"
 [autoload]
 
 global="*res://global.gd"
+transition="*res://transition.tscn"
 
 [display]
 
