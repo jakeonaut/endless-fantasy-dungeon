@@ -10,7 +10,11 @@ source_file="res://assets/glasses.png"
 source_md5="c064a4054fddcbf3a92a5ea7a3eb20ef"
 
 dest_files=[ "res://.import/glasses.png-cfb48705d6f600ffb43ab04a162a58db.stex" ]
+<<<<<<< HEAD
 dest_md5="3108324171d69021442e0cd576065ff8"
+=======
+dest_md5="f148bda3bd132a3d8d245411ee359489"
+>>>>>>> 9d394b68ce1413ac8211274606937e32a8338c96
 
 [params]
 
@@ -19,7 +23,11 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
+<<<<<<< HEAD
 flags/filter=false
+=======
+flags/filter=true
+>>>>>>> 9d394b68ce1413ac8211274606937e32a8338c96
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
