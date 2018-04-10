@@ -13,8 +13,8 @@ config_version=3
 config/name="crystal dungeon"
 run/main_scene="res://Scene.tscn"
 icon="res://icon.png"
-main_scene="res://Scene.tscn"
-name="3d3demo"
+name="glitch dungeon 2: lovely sweet dreams crystal"
+main_scene="res://IntroScene.tscn"
 
 [autoload]
 

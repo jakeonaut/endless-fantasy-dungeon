@@ -55,7 +55,7 @@ func _physics_process(delta):
 		dir -= forward
 		
 	# rotate dir -45 deg about y axis
-	dir = dir.rotated(up, -0.79)
+	#dir = dir.rotated(up, -0.79)
 	
 	# update x and z
 	hv = dir.normalized() * walk_speed

@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://NPC.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Imag20000.png" type="Texture" id=5]
-[ext_resource path="res://assets/mini.png" type="Texture" id=6]
-[ext_resource path="res://portdoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://portdoor.tscn" type="PackedScene" id=5]
 
 [node name="level" type="Node"]
 
@@ -45,11 +43,7 @@ light_cull_mask = -1
 
 [node name="NPC" parent="." index="2" instance=ExtResource( 4 )]
 
-spriteTexture = ExtResource( 5 )
-portraitTexture = ExtResource( 6 )
-bbcodeText = "edit me"
-
-[node name="door1" parent="." index="3" instance=ExtResource( 7 )]
+[node name="door1" parent="." index="3" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4124, -8.49776 )
 connectedScene = "GoddessScene.tscn"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://MouseCamera.gd" type="Script" id=7]
 [ext_resource path="res://portdoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://NPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/mini.png" type="Texture" id=10]
+[ext_resource path="res://assets/witchgirlgoddess.png" type="Texture" id=11]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -234,6 +236,29 @@ connectedScene = "Scene.tscn"
 
 [node name="NPC" parent="." index="3" instance=ExtResource( 9 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.518575, 18.8473, -4.21639 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0853724, 21.6885, -4.21639 )
+
+[node name="InteractionArea" parent="NPC" index="2"]
+
+editor/display_folded = false
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="NPC TextBox" parent="NPC" index="3"]
+
+portraitTexture = ExtResource( 10 )
+bbcodeText = "in order to enter my mind
+i have to know that i can trust you"
+
+[node name="Text" parent="NPC/NPC TextBox" index="1"]
+
+text = "in order to enter my mind
+i have to know that i can trust you"
+
+[node name="Sprite3D" parent="NPC" index="4"]
+
+texture = ExtResource( 11 )
 
 
+[editable path="NPC"]
+[editable path="NPC/NPC TextBox"]
