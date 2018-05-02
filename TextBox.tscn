@@ -7,15 +7,14 @@
 
 [sub_resource type="Gradient" id=1]
 
-offsets = PoolRealArray( 0, 1 )
-colors = PoolColorArray( 0.0999756, 0.609375, 0.609375, 1, 0.614076, 0.247192, 0.703125, 1 )
-_sections_unfolded = [ "Resource" ]
+offsets = PoolRealArray( 0, 0.988166 )
+colors = PoolColorArray( 0, 0.976563, 1, 1, 1, 0, 0.867188, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 
 flags = 4
 gradient = SubResource( 1 )
-width = 2048
+width = 500
 
 [sub_resource type="DynamicFont" id=3]
 
@@ -28,14 +27,23 @@ extra_spacing_space = 2
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="TextBox" type="TextureRect"]
+[node name="TextContainer" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="TextBox" type="TextureRect" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 620.0
-margin_bottom = 215.0
+margin_right = 578.0
+margin_bottom = 207.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 1
 mouse_default_cursor_shape = 0
@@ -45,10 +53,10 @@ texture = SubResource( 2 )
 expand = true
 stretch_mode = 0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Margin", "Rect" ]
 nextTextboxPath = NodePath("")
 
-[node name="Portrait" type="TextureRect" parent="." index="0"]
+[node name="Portrait" type="TextureRect" parent="TextBox" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -68,7 +76,7 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="Text" type="RichTextLabel" parent="." index="1"]
+[node name="Text" type="RichTextLabel" parent="TextBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -102,10 +110,18 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Margin", "custom_fonts" ]
 
-[node name="DialogSound" type="AudioStreamPlayer" parent="." index="2"]
+[node name="DialogSound" type="AudioStreamPlayer" parent="TextBox" index="2"]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="AbortSound" type="AudioStreamPlayer" parent="TextBox" index="3"]
+
+stream = ExtResource( 4 )
+volume_db = -20.0
 autoplay = false
 mix_target = 0
 bus = "Master"

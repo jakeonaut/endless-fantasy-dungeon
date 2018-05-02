@@ -1,13 +1,95 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://NPC.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/npcs/glasses.png" type="Texture" id=5]
-[ext_resource path="res://TextBox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/npcs/greenglasses.png" type="Texture" id=7]
-[ext_resource path="res://assets/npcs/greenglaasses0000.png" type="Texture" id=8]
+[ext_resource path="res://assets/bricks.png" type="Texture" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/playerportrait.png" type="Texture" id=6]
+[ext_resource path="res://NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=8]
+[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=9]
+[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=10]
+[ext_resource path="res://portdoor.tscn" type="PackedScene" id=11]
+
+[sub_resource type="Environment" id=1]
+
+background_mode = 4
+background_sky_custom_fov = 0.0
+background_color = Color( 0, 0, 0, 1 )
+background_energy = 1.0
+background_canvas_max_layer = 0
+ambient_light_color = Color( 0, 0, 0, 1 )
+ambient_light_energy = 1.0
+ambient_light_sky_contribution = 1.0
+fog_enabled = false
+fog_color = Color( 0.5, 0.6, 0.7, 1 )
+fog_sun_color = Color( 1, 0.9, 0.7, 1 )
+fog_sun_amount = 0.0
+fog_depth_enabled = true
+fog_depth_begin = 10.0
+fog_depth_curve = 1.0
+fog_transmit_enabled = false
+fog_transmit_curve = 1.0
+fog_height_enabled = false
+fog_height_min = 0.0
+fog_height_max = 100.0
+fog_height_curve = 1.0
+tonemap_mode = 0
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+auto_exposure_enabled = false
+auto_exposure_scale = 0.4
+auto_exposure_min_luma = 0.05
+auto_exposure_max_luma = 8.0
+auto_exposure_speed = 0.5
+ss_reflections_enabled = false
+ss_reflections_max_steps = 64
+ss_reflections_fade_in = 0.15
+ss_reflections_fade_out = 2.0
+ss_reflections_depth_tolerance = 0.2
+ss_reflections_roughness = true
+ssao_enabled = false
+ssao_radius = 1.0
+ssao_intensity = 1.0
+ssao_radius2 = 0.0
+ssao_intensity2 = 1.0
+ssao_bias = 0.01
+ssao_light_affect = 0.0
+ssao_color = Color( 0, 0, 0, 1 )
+ssao_quality = 0
+ssao_blur = 3
+ssao_edge_sharpness = 4.0
+dof_blur_far_enabled = false
+dof_blur_far_distance = 10.0
+dof_blur_far_transition = 5.0
+dof_blur_far_amount = 0.1
+dof_blur_far_quality = 1
+dof_blur_near_enabled = false
+dof_blur_near_distance = 2.0
+dof_blur_near_transition = 1.0
+dof_blur_near_amount = 0.1
+dof_blur_near_quality = 1
+glow_enabled = false
+glow_levels/1 = false
+glow_levels/2 = false
+glow_levels/3 = true
+glow_levels/4 = false
+glow_levels/5 = true
+glow_levels/6 = false
+glow_levels/7 = false
+glow_intensity = 0.8
+glow_strength = 1.0
+glow_bloom = 0.0
+glow_blend_mode = 2
+glow_hdr_threshold = 1.0
+glow_hdr_scale = 2.0
+glow_bicubic_upscale = false
+adjustment_enabled = false
+adjustment_brightness = 1.0
+adjustment_contrast = 1.0
+adjustment_saturation = 1.0
+_sections_unfolded = [ "Background" ]
 
 [node name="level" type="Node" index="0"]
 
@@ -25,94 +107,177 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 4, 1, 0, 65525, 0, 1, 65525, 0, 2, 65525, 0, 65535, 65525, 0, 0, 65526, 0, 1, 65526, 0, 2, 65526, 0, 65535, 65526, 0, 0, 65527, 0, 1, 65527, 0, 2, 65527, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 65535, 65528, 0, 0, 65529, 0, 1, 65529, 0, 0, 65530, 0, 1, 65530, 0, 0, 65531, 0, 1, 65531, 0, 0, 65532, 0, 1, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 0, 2, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 1, 0 )
 }
 
-[node name="Player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+
+environment = SubResource( 1 )
+
+[node name="BackgroundControl" type="Control" parent="." index="2"]
 
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08098, 3.14603, 4.17254 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="The Sun" parent="Player/TheCamera" index="0"]
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl" index="0"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1020.0
+margin_bottom = 770.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07499, 3.14603, 6.45859 )
+
+[node name="InteractionArea" parent="Player" index="1"]
+
+editor/display_folded = false
+
+[node name="The Sun" parent="Player" index="3"]
+
+transform = Transform( 0.518659, -0.792414, 0.321047, 0.0896381, 0.423831, 0.901295, -0.85027, -0.438686, 0.290854, -0.381266, 7.92947, -0.0898085 )
 light_cull_mask = -1
+shadow_color = Color( 0.554688, 0.554688, 0.554688, 1 )
+directional_shadow_split_1 = 1.0
+directional_shadow_split_2 = 0.5
+directional_shadow_split_3 = 1.0
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Visibility" ]
 
-[node name="yellow" parent="." index="2" instance=ExtResource( 4 )]
+[node name="TextBox" parent="Player" index="4" instance=ExtResource( 5 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59784, 3.2514, 4.44731 )
+[node name="TextBox" parent="Player/TextBox" index="0"]
 
-[node name="NPC TextBox" parent="yellow" index="2"]
+nextTextboxPath = NodePath("../../../yellow/TextBox4/TextBox")
 
-nextTextboxPath = NodePath("../TextBox2")
+[node name="Portrait" parent="Player/TextBox/TextBox" index="0"]
 
-[node name="Portrait" parent="yellow/NPC TextBox" index="0"]
+texture = ExtResource( 6 )
 
-texture = ExtResource( 5 )
-
-[node name="Text" parent="yellow/NPC TextBox" index="1"]
-
-bbcode_enabled = true
-bbcode_text = "hey commoner, wake up!
-it's the first day of 
-[magic academy!]
-!                  ... press [F]"
-text = "hey commoner, wake up!
-it's the first day of 
-[magic academy!]
-!                  ... press [F]"
-
-[node name="TextBox2" parent="yellow" index="4" instance=ExtResource( 6 )]
-
-[node name="Portrait" parent="yellow/TextBox2" index="0"]
-
-texture = ExtResource( 5 )
-
-[node name="Text" parent="yellow/TextBox2" index="1"]
+[node name="Text" parent="Player/TextBox/TextBox" index="1"]
 
 bbcode_text = ". . . . . . . . . . . . .
 . . . . . .
 . . . .
-                  ... press [F]"
+. . .            ... press F"
 text = ". . . . . . . . . . . . .
 . . . . . .
 . . . .
-                  ... press [F]"
+. . .            ... press F"
 
-[node name="green" parent="." index="3" instance=ExtResource( 4 )]
+[node name="TheCamera" parent="Player" index="5"]
 
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11128, 3.2514, -3.4055 )
+transform = Transform( 0.99972, 0, 0.0236254, 0, 1, 0, -0.0236254, 0, 0.99972, 0, 0.135961, 0 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Portrait" parent="green/NPC TextBox" index="0"]
+[node name="Camera" parent="Player/TheCamera" index="0"]
 
-texture = ExtResource( 7 )
+transform = Transform( 0.999998, -1.49012e-07, 8.9407e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.307469, 9.07962, 10.1547 )
+fov = 70.0
+size = 20.0
 
-[node name="Text" parent="green/NPC TextBox" index="1"]
+[node name="yellow" parent="." index="4" instance=ExtResource( 7 )]
 
-bbcode_text = "talkin' and walkin' is all you know how to do huh?
-tell you what, go learn how 2 'jump'"
-text = "talkin' and walkin' is all you know how to do huh?
-tell you what, go learn how 2 'jump'"
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 
-[node name="Sprite3D" parent="green" index="3"]
+[node name="InteractionArea" parent="yellow" index="1"]
+
+editor/display_folded = false
+
+[node name="TextBox" parent="yellow/NPC TextBox" index="0"]
+
+nextTextboxPath = NodePath("../../TextBox2/TextBox")
+
+[node name="Portrait" parent="yellow/NPC TextBox/TextBox" index="0"]
 
 texture = ExtResource( 8 )
 
-[node name="red" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Text" parent="yellow/NPC TextBox/TextBox" index="1"]
+
+bbcode_text = "hey wake up, dumb ass!
+it's the first day of 
+[magic academy!]
+!                ... press F"
+text = "hey wake up, dumb ass!
+it's the first day of 
+[magic academy!]
+!                ... press F"
+
+[node name="Sprite3D" parent="yellow" index="3"]
+
+texture = ExtResource( 9 )
+
+[node name="TextBox2" parent="yellow" index="4" instance=ExtResource( 5 )]
+
+[node name="TextBox" parent="yellow/TextBox2" index="0"]
+
+nextTextboxPath = NodePath("../../../Player/TextBox/TextBox")
+
+[node name="Portrait" parent="yellow/TextBox2/TextBox" index="0"]
+
+texture = ExtResource( 10 )
+
+[node name="Text" parent="yellow/TextBox2/TextBox" index="1"]
+
+bbcode_text = ". . . . . . . . . . . . .
+. . . . . .
+. . . .
+!                ... press F"
+text = ". . . . . . . . . . . . .
+. . . . . .
+. . . .
+!                ... press F"
+
+[node name="TextBox4" parent="yellow" index="5" instance=ExtResource( 5 )]
 
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32649, 3.2514, -16.4774 )
+
+[node name="Portrait" parent="yellow/TextBox4/TextBox" index="0"]
+
+texture = ExtResource( 10 )
+
+[node name="Text" parent="yellow/TextBox4/TextBox" index="1"]
+
+bbcode_text = "don't tell me you forgot
+the \"WALK\" spell!!!! just
+press \"WASD\" to cast it!"
+text = "don't tell me you forgot
+the \"WALK\" spell!!!! just
+press \"WASD\" to cast it!"
+
+[node name="portdoor" parent="." index="5" instance=ExtResource( 11 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03998, 3.4124, -8.77596 )
+connectedScene = "IntroScene2.tscn"
 
 
 [editable path="Player"]
+[editable path="Player/TextBox"]
 [editable path="yellow"]
 [editable path="yellow/NPC TextBox"]
 [editable path="yellow/TextBox2"]
-[editable path="green"]
-[editable path="green/NPC TextBox"]
-[editable path="red"]
-[editable path="red/NPC TextBox"]
+[editable path="yellow/TextBox4"]

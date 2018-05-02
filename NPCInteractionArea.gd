@@ -2,14 +2,27 @@ extends Area
 
 onready var playerArea = get_parent().get_parent().get_node("Player/InteractionArea")
 
+var interactingWithPlayer = false
+
 func _ready():
 	set_process_input(true)
+	set_process(true)
+	
+func _process(delta):
+	if interactingWithPlayer:
+		# Conversation finished naturally
+		if global.activeInteractor == null:
+			interactingWithPlayer = false
+		# Player walked away, or was teleported/etc.
+		elif not self.touchingPlayer():
+			global.activeInteractor.abort()
+			interactingWithPlayer = false
 
 func _input_event(camera, event, click_position, click_normal, shape_idx):
 	if event is InputEventMouseButton \
 	and event.button_index == BUTTON_LEFT \
 	and event.pressed \
-	and touchingPlayer():
+	and self.touchingPlayer():
 		InteractActivate()
 		
 func touchingPlayer():
@@ -21,4 +34,6 @@ func touchingPlayer():
 
 	
 func InteractActivate():
+	if global.activeInteractor == null:
+		interactingWithPlayer = true
 	get_parent().interact()

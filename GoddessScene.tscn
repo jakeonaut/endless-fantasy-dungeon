@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
@@ -9,8 +9,7 @@
 [ext_resource path="res://MouseCamera.gd" type="Script" id=7]
 [ext_resource path="res://portdoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://NPC.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/mini.png" type="Texture" id=10]
-[ext_resource path="res://assets/witchgirlgoddess.png" type="Texture" id=11]
+[ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -72,7 +71,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Flags", "Parameters", "Rim" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -238,26 +237,15 @@ connectedScene = "Scene.tscn"
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0853724, 21.6885, -4.21639 )
 
-[node name="InteractionArea" parent="NPC" index="2"]
+[node name="InteractionArea" parent="NPC" index="1"]
 
 editor/display_folded = false
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="NPC TextBox" parent="NPC" index="3"]
+[node name="Sprite3D" parent="NPC" index="3"]
 
-portraitTexture = ExtResource( 10 )
-bbcodeText = "in order to enter my mind
-i have to know that i can trust you"
-
-[node name="Text" parent="NPC/NPC TextBox" index="1"]
-
-text = "in order to enter my mind
-i have to know that i can trust you"
-
-[node name="Sprite3D" parent="NPC" index="4"]
-
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 
 [editable path="NPC"]

@@ -24,6 +24,7 @@ transition="*res://transition.tscn"
 [display]
 
 window/size/height=768
+window/size/resizable=false
 
 [input]
 

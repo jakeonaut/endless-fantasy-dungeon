@@ -1,5 +1,4 @@
 extends Node
 
 var lastDoor = ""
-
-var isTalking = false
+var activeInteractor = null

@@ -37,7 +37,7 @@ _sections_unfolded = [ "Pause", "Transform" ]
 
 editor/display_folded = false
 
-[node name="The Sun" parent="Player/TheCamera" index="0"]
+[node name="The Sun" parent="Player" index="3"]
 
 light_cull_mask = -1
 

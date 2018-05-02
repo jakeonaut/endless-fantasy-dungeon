@@ -2,6 +2,7 @@ extends TextureRect
 
 onready var text = get_node("Text")
 onready var dialogSound = get_node("DialogSound")
+onready var abortSound = get_node("AbortSound")
 export var nextTextboxPath = NodePath("")
 
 func _ready():
@@ -15,28 +16,21 @@ func _input_event(camera, event, click_position, click_normal, shape_idx):
 		self.interact()
 		
 func interact():
-	if !self.visible and !global.isTalking:
+	if !self.visible:
 		text.get_v_scroll().value = 0
 		self.show()
 		dialogSound.play()
-		global.isTalking = true
-	elif !self.isDone():
-		self.next()
 	else:
 		self.hide()
-		global.isTalking = false
 		if !nextTextboxPath.is_empty():
 			var nextTextbox = get_node(nextTextboxPath)
 			nextTextbox.interact()
+			global.activeInteractor = nextTextbox
 		else:
-			dialogSound.play()
-		
-func isDone():
-	var vscroll = text.get_v_scroll()
-	if vscroll.value + vscroll.page < vscroll.max_value:
-		return false
-	return true
-	
-func next():
-	var vscroll = text.get_v_scroll()
-	vscroll.value += vscroll.page
+			abortSound.play()
+			global.activeInteractor = null
+			
+func abort():
+	self.hide()
+	abortSound.play()
+	global.activeInteractor = null

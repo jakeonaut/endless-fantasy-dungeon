@@ -1,6 +1,6 @@
 extends KinematicBody
 
-onready var textBox = get_node("NPC TextBox")
+onready var textBox = get_node("NPC TextBox").get_node("TextBox")
 
 func _ready():
 	set_process_input(true)
@@ -17,4 +17,8 @@ func isActive():
 	return textBox.visible
 
 func interact():
-	textBox.interact()
+	if global.activeInteractor == null:
+		global.activeInteractor = textBox
+		textBox.interact()
+	else:
+		global.activeInteractor.interact()
