@@ -19,3 +19,4 @@ it's the first day of
 don't tell me you forgot
 the "WALK" spell!!!! just
 press "WASD" to cast it!
+!                ... press F

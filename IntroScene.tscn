@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=8]
 [ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=9]
 [ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=10]
-[ext_resource path="res://portdoor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://IntroScene_yellow_TextBox4_Event.gd" type="Script" id=11]
+[ext_resource path="res://portdoor.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=1]
 
@@ -147,7 +148,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 2
+expand = true
+stretch_mode = 0
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
@@ -168,7 +170,21 @@ directional_shadow_split_2 = 0.5
 directional_shadow_split_3 = 1.0
 _sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Visibility" ]
 
-[node name="TextBox" parent="Player" index="4" instance=ExtResource( 5 )]
+[node name="TheCamera" parent="Player" index="4"]
+
+editor/display_folded = true
+transform = Transform( 0.99972, 0, 0.0236254, 0, 1, 0, -0.0236254, 0, 0.99972, 0, 0.135961, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera" parent="Player/TheCamera" index="0"]
+
+transform = Transform( 0.999998, -1.49012e-07, 8.9407e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.307469, 9.07962, 10.1547 )
+fov = 70.0
+size = 20.0
+
+[node name="TextBox" parent="Player" index="5" instance=ExtResource( 5 )]
+
+editor/display_folded = true
 
 [node name="TextBox" parent="Player/TextBox" index="0"]
 
@@ -189,19 +205,9 @@ text = ". . . . . . . . . . . . .
 . . . .
 . . .            ... press F"
 
-[node name="TheCamera" parent="Player" index="5"]
-
-transform = Transform( 0.99972, 0, 0.0236254, 0, 1, 0, -0.0236254, 0, 0.99972, 0, 0.135961, 0 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Camera" parent="Player/TheCamera" index="0"]
-
-transform = Transform( 0.999998, -1.49012e-07, 8.9407e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.307469, 9.07962, 10.1547 )
-fov = 70.0
-size = 20.0
-
 [node name="yellow" parent="." index="4" instance=ExtResource( 7 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 
 [node name="InteractionArea" parent="yellow" index="1"]
@@ -233,6 +239,8 @@ texture = ExtResource( 9 )
 
 [node name="TextBox2" parent="yellow" index="4" instance=ExtResource( 5 )]
 
+editor/display_folded = true
+
 [node name="TextBox" parent="yellow/TextBox2" index="0"]
 
 nextTextboxPath = NodePath("../../../Player/TextBox/TextBox")
@@ -254,8 +262,6 @@ text = ". . . . . . . . . . . . .
 
 [node name="TextBox4" parent="yellow" index="5" instance=ExtResource( 5 )]
 
-editor/display_folded = true
-
 [node name="Portrait" parent="yellow/TextBox4/TextBox" index="0"]
 
 texture = ExtResource( 10 )
@@ -264,12 +270,18 @@ texture = ExtResource( 10 )
 
 bbcode_text = "don't tell me you forgot
 the \"WALK\" spell!!!! just
-press \"WASD\" to cast it!"
+press \"WASD\" to cast it!
+!                ... press F"
 text = "don't tell me you forgot
 the \"WALK\" spell!!!! just
-press \"WASD\" to cast it!"
+press \"WASD\" to cast it!
+!                ... press F"
 
-[node name="portdoor" parent="." index="5" instance=ExtResource( 11 )]
+[node name="Event" type="Node" parent="yellow/TextBox4/TextBox" index="4"]
+
+script = ExtResource( 11 )
+
+[node name="portal1" parent="." index="5" instance=ExtResource( 12 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03998, 3.4124, -8.77596 )
 connectedScene = "IntroScene2.tscn"
