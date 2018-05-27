@@ -92,7 +92,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -108,11 +108,11 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 0, 2, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 0, 2, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 1, 0 )
+"_editor_floor_": Vector3( 0, 2, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
@@ -129,6 +129,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -143,6 +144,7 @@ anchor_bottom = 0.0
 margin_right = 1020.0
 margin_bottom = 770.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -156,42 +158,22 @@ stretch_mode = 0
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07499, 3.14603, 6.45859 )
 
-[node name="InteractionArea" parent="Player" index="1"]
+[node name="TheCamera" parent="Player/LightsCamera" index="2"]
 
-editor/display_folded = false
+transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 3.28199, 0 )
 
-[node name="The Sun" parent="Player" index="3"]
-
-transform = Transform( 0.518659, -0.792414, 0.321047, 0.0896381, 0.423831, 0.901295, -0.85027, -0.438686, 0.290854, -0.381266, 7.92947, -0.0898085 )
-light_cull_mask = -1
-shadow_color = Color( 0.554688, 0.554688, 0.554688, 1 )
-directional_shadow_split_1 = 1.0
-directional_shadow_split_2 = 0.5
-directional_shadow_split_3 = 1.0
-_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Visibility" ]
-
-[node name="TheCamera" parent="Player" index="4"]
-
-editor/display_folded = true
-transform = Transform( 0.99972, 0, 0.0236254, 0, 1, 0, -0.0236254, 0, 0.99972, 0, 0.135961, 0 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Camera" parent="Player/TheCamera" index="0"]
-
-transform = Transform( 0.999998, -1.49012e-07, 8.9407e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.307469, 9.07962, 10.1547 )
-fov = 70.0
-size = 20.0
-
-[node name="TextBox" parent="Player" index="5" instance=ExtResource( 5 )]
+[node name="TextBox" parent="Player" index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
 [node name="TextBox" parent="Player/TextBox" index="0"]
 
+rect_clip_content = false
 nextTextboxPath = NodePath("../../../yellow/TextBox4/TextBox")
 
 [node name="Portrait" parent="Player/TextBox/TextBox" index="0"]
 
+rect_clip_content = false
 texture = ExtResource( 6 )
 
 [node name="Text" parent="Player/TextBox/TextBox" index="1"]
@@ -214,12 +196,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 
 editor/display_folded = false
 
+[node name="NPC TextBox" parent="yellow" index="2"]
+
+editor/display_folded = true
+
 [node name="TextBox" parent="yellow/NPC TextBox" index="0"]
 
+rect_clip_content = false
 nextTextboxPath = NodePath("../../TextBox2/TextBox")
 
 [node name="Portrait" parent="yellow/NPC TextBox/TextBox" index="0"]
 
+rect_clip_content = false
 texture = ExtResource( 8 )
 
 [node name="Text" parent="yellow/NPC TextBox/TextBox" index="1"]
@@ -243,10 +231,12 @@ editor/display_folded = true
 
 [node name="TextBox" parent="yellow/TextBox2" index="0"]
 
+rect_clip_content = false
 nextTextboxPath = NodePath("../../../Player/TextBox/TextBox")
 
 [node name="Portrait" parent="yellow/TextBox2/TextBox" index="0"]
 
+rect_clip_content = false
 texture = ExtResource( 10 )
 
 [node name="Text" parent="yellow/TextBox2/TextBox" index="1"]
@@ -262,9 +252,17 @@ text = ". . . . . . . . . . . . .
 
 [node name="TextBox4" parent="yellow" index="5" instance=ExtResource( 5 )]
 
+editor/display_folded = true
+
+[node name="TextBox" parent="yellow/TextBox4" index="0"]
+
+editor/display_folded = true
+rect_clip_content = false
+
 [node name="Portrait" parent="yellow/TextBox4/TextBox" index="0"]
 
-texture = ExtResource( 10 )
+rect_clip_content = false
+texture = ExtResource( 8 )
 
 [node name="Text" parent="yellow/TextBox4/TextBox" index="1"]
 

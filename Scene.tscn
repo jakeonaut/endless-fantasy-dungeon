@@ -37,10 +37,6 @@ _sections_unfolded = [ "Pause", "Transform" ]
 
 editor/display_folded = false
 
-[node name="The Sun" parent="Player" index="3"]
-
-light_cull_mask = -1
-
 [node name="NPC" parent="." index="2" instance=ExtResource( 4 )]
 
 [node name="door1" parent="." index="3" instance=ExtResource( 5 )]

@@ -138,7 +138,7 @@ flip_h = false
 flip_v = false
 modulate = Color( 1, 1, 1, 1 )
 opacity = 1.0
-pixel_size = 0.04
+pixel_size = 0.08
 axis = 2
 transparent = true
 shaded = true
@@ -146,16 +146,18 @@ double_sided = true
 alpha_cut = 2
 texture = ExtResource( 3 )
 vframes = 2
-hframes = 2
+hframes = 4
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "Pause", "Region", "Transform", "Visibility" ]
 
-[node name="The Sun" type="DirectionalLight" parent="." index="3"]
+[node name="LightsCamera" type="Spatial" parent="." index="3"]
 
-transform = Transform( 0.518659, -0.792414, 0.321047, 0.0896381, 0.423831, 0.901295, -0.85027, -0.438686, 0.290854, -1.34166, 7.92947, -0.0898085 )
+[node name="The Sun" type="DirectionalLight" parent="LightsCamera" index="0"]
+
+transform = Transform( 0.518659, -0.792414, 0.321047, 0.0896381, 0.423831, 0.901295, -0.85027, -0.438686, 0.290854, -1.34166, 11.0755, -0.0898085 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -165,15 +167,15 @@ light_specular = 0.5
 light_bake_mode = 1
 light_cull_mask = -1
 shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
+shadow_color = Color( 0.552941, 0.552941, 0.552941, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
 directional_shadow_mode = 2
-directional_shadow_split_1 = 0.1
-directional_shadow_split_2 = 0.2
-directional_shadow_split_3 = 0.5
+directional_shadow_split_1 = 1.0
+directional_shadow_split_2 = 0.5
+directional_shadow_split_3 = 1.0
 directional_shadow_blend_splits = false
 directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
@@ -181,12 +183,41 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
-[node name="TheCamera" type="Spatial" parent="." index="4"]
+[node name="The Sun2" type="DirectionalLight" parent="LightsCamera" index="1"]
 
-transform = Transform( 0.750644, 0, 0.660706, 0, 1, 0, -0.660706, 0, 0.750644, 0, 0.135961, 0 )
+transform = Transform( 0.491622, -0.0240315, -0.870477, 0.699153, -0.585023, 0.411013, -0.519128, -0.810659, -0.27081, -8.93561, 6.39808, -2.53809 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 0.25
+light_indirect_energy = 0.25
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0.552941, 0.552941, 0.552941, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 1.0
+directional_shadow_split_2 = 0.5
+directional_shadow_split_3 = 1.0
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
+
+[node name="TheCamera" type="Spatial" parent="LightsCamera" index="2"]
+
+transform = Transform( 0.750644, 0, 0.660706, 0, 1, 0, -0.660706, 0, 0.750644, 2.08822, 3.28199, 2.37248 )
 script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera" parent="TheCamera" index="0"]
+[node name="Camera" type="Camera" parent="LightsCamera/TheCamera" index="0"]
 
 transform = Transform( 0.999998, -1.19209e-07, 5.96046e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.30747, 9.07962, 10.1547 )
 keep_aspect = 1
@@ -198,7 +229,7 @@ doppler_tracking = 0
 projection = 0
 current = false
 fov = 65.0
-size = 1.0
+size = 20.0
 near = 0.1
 far = 100.0
 
