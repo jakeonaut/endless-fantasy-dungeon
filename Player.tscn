@@ -66,9 +66,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Flags", "Metallic", "Parameters", "Proximity Fade", "Rim", "Roughness", "UV2", "Vertex Color" ]
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -81,6 +81,7 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
@@ -153,9 +154,9 @@ region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "Pause", "Region", "Transform", "Visibility" ]
 
-[node name="LightsCamera" type="Spatial" parent="." index="3"]
+[node name="Lights" type="Spatial" parent="." index="3"]
 
-[node name="The Sun" type="DirectionalLight" parent="LightsCamera" index="0"]
+[node name="The Sun" type="DirectionalLight" parent="Lights" index="0"]
 
 transform = Transform( 0.518659, -0.792414, 0.321047, 0.0896381, 0.423831, 0.901295, -0.85027, -0.438686, 0.290854, -1.34166, 11.0755, -0.0898085 )
 layers = 1
@@ -183,7 +184,7 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
-[node name="The Sun2" type="DirectionalLight" parent="LightsCamera" index="1"]
+[node name="The Sun2" type="DirectionalLight" parent="Lights" index="1"]
 
 transform = Transform( 0.491622, -0.0240315, -0.870477, 0.699153, -0.585023, 0.411013, -0.519128, -0.810659, -0.27081, -8.93561, 6.39808, -2.53809 )
 layers = 1
@@ -211,15 +212,15 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
-[node name="TheCamera" type="Spatial" parent="LightsCamera" index="2"]
+[node name="TheCamera" type="Spatial" parent="." index="4"]
 
-transform = Transform( 0.750644, 0, 0.660706, 0, 1, 0, -0.660706, 0, 0.750644, 2.08822, 3.28199, 2.37248 )
+transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera" parent="LightsCamera/TheCamera" index="0"]
+[node name="Camera" type="Camera" parent="TheCamera" index="0"]
 
-transform = Transform( 0.999998, -1.19209e-07, 5.96046e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0.30747, 9.07962, 10.1547 )
+transform = Transform( 0.999998, -1.19209e-07, 5.96046e-08, 0, 0.730189, 0.683244, -2.98023e-08, -0.683244, 0.730187, 0, 10, 10 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -232,5 +233,6 @@ fov = 65.0
 size = 20.0
 near = 0.1
 far = 100.0
+_sections_unfolded = [ "Transform" ]
 
 

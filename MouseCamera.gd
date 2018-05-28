@@ -13,8 +13,8 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	var diff = abs(target_rotation - current_rotation)
-	var step = max(min(diff*6, 10), 2)
+	#var diff = abs(target_rotation - current_rotation)
+	var step = 5 #max(min(diff*6, 10), 2)
 	
 	if target_rotation > current_rotation:
 		current_rotation += step*delta
@@ -41,10 +41,10 @@ func _input(ev):
 			startClickPos = ev.position
 			
 func rotate_right():
-	target_rotation -= deg2rad(90)
+	target_rotation += deg2rad(90)
 	
 func rotate_left():
-	target_rotation += deg2rad(90)
+	target_rotation -= deg2rad(90)
 	
 func normalizeTarget():
 	while target_rotation < 0:

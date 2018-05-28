@@ -4,7 +4,7 @@ var walk_speed = 8
 var jump_force = 20
 var grav = 80
 var terminal_vel = 32
-onready var camera = get_node("LightsCamera/TheCamera") # the "camera"
+onready var camera = get_node("TheCamera") # the "camera"
 var on_ground = true
 
 var linear_velocity = Vector3()
