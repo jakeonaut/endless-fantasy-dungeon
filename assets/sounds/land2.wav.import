@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/land2.wav-36258c08a43ca29669a5a8c9f8821aab.sample"
+
+[deps]
+
+source_file="res://assets/sounds/land2.wav"
+source_md5="0552db357b535a6fc962e94e630cd274"
+
+dest_files=[ "res://.import/land2.wav-36258c08a43ca29669a5a8c9f8821aab.sample" ]
+dest_md5="b57389ad378eb7f1a34a17f28aa4b5ba"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=7]
 [ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=8]
-[ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=9]
+[ext_resource path="res://assets/npcs/goddessportrait.png" type="Texture" id=9]
+[ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=10]
 
 [sub_resource type="Environment" id=1]
 
@@ -89,7 +90,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -163,18 +164,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 9.14516, -2.87161 )
 
-[node name="NPC TextBox" parent="NPC" index="2"]
+[node name="CollisionShape" parent="NPC" index="0"]
 
-editor/display_folded = true
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="TextBox" parent="NPC/NPC TextBox" index="0"]
 
+visible = false
 rect_clip_content = false
+_sections_unfolded = [ "Margin", "Material", "Rect", "Visibility" ]
 
 [node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
 
 rect_clip_content = false
 texture = ExtResource( 7 )
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
 
@@ -189,16 +193,34 @@ rotate my view???"
 
 texture = ExtResource( 8 )
 
-[node name="NPC2" parent="." index="6" instance=ExtResource( 6 )]
+[node name="Teacher" parent="." index="6" instance=ExtResource( 6 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 25.2514, -6.79153 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 26.2514, -6.79153 )
 
-[node name="Sprite3D" parent="NPC2" index="3"]
+[node name="TextBox" parent="Teacher/NPC TextBox" index="0"]
 
+rect_clip_content = false
+
+[node name="Portrait" parent="Teacher/NPC TextBox/TextBox" index="0"]
+
+margin_right = 287.0
+margin_bottom = 281.0
+rect_clip_content = false
 texture = ExtResource( 9 )
+expand = false
+
+[node name="Text" parent="Teacher/NPC TextBox/TextBox" index="1"]
+
+bbcode_text = "you have done well to make it this far, young one"
+text = "you have done well to make it this far, young one"
+
+[node name="Sprite3D" parent="Teacher" index="3"]
+
+texture = ExtResource( 10 )
 
 
 [editable path="Player"]
 [editable path="NPC"]
 [editable path="NPC/NPC TextBox"]
-[editable path="NPC2"]
+[editable path="Teacher"]
+[editable path="Teacher/NPC TextBox"]
