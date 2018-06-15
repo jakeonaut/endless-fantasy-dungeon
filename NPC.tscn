@@ -121,14 +121,6 @@ disabled = false
 
 [node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
 
-[node name="TextBox" parent="NPC TextBox" index="0"]
-
-rect_clip_content = false
-
-[node name="Portrait" parent="NPC TextBox/TextBox" index="0"]
-
-rect_clip_content = false
-
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 
 layers = 1

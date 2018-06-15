@@ -41,7 +41,7 @@ func _physics_process(delta):
 		fallCounter += 1
 	
 	# jump
-	if is_on_floor() and Input.is_action_just_pressed("ui_jump"):
+	if Input.is_action_just_pressed("ui_jump"): #is_on_floor() and Input.is_action_just_pressed("ui_jump"):
 		vv = jump_force
 		jumpSound.play()
 	elif take_fall_damage:

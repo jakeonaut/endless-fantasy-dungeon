@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://portdoor.gd" type="Script" id=1]
 [ext_resource path="res://portdoorArea.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/LA_Stairs.wav" type="AudioStream" id=3]
 [ext_resource path="res://PolyTriangle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/color0000.png" type="Texture" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -164,9 +166,11 @@ region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Visibility" ]
 connectedScene = "GenericScene.tscn"
+isLocked = false
 
 [node name="Area" type="Area" parent="." index="0"]
 
+editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
@@ -212,6 +216,7 @@ material/0 = null
 
 [node name="landing-pad" type="Area" parent="." index="1"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3249, 3.48362 )
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -265,4 +270,22 @@ bus = "Master"
 
 [node name="PolyTriangle" parent="." index="3" instance=ExtResource( 4 )]
 
+[node name="portdoorTextBox" parent="." index="4" instance=ExtResource( 5 )]
 
+[node name="TextBox" parent="portdoorTextBox" index="0"]
+
+rect_clip_content = false
+
+[node name="Portrait" parent="portdoorTextBox/TextBox" index="0"]
+
+rect_clip_content = false
+texture = ExtResource( 6 )
+
+[node name="Text" parent="portdoorTextBox/TextBox" index="1"]
+
+bbcode_text = "door is lock"
+text = "door is lock"
+_sections_unfolded = [ "BBCode", "Margin", "Size Flags", "custom_fonts" ]
+
+
+[editable path="portdoorTextBox"]

@@ -8,10 +8,10 @@ path.etc2="res://.import/Image60000.png-7e8a5a65b38b73c0e705b987dc603fc4.etc2.st
 [deps]
 
 source_file="res://assets/Image60000.png"
-source_md5="0ee440cc43c184072e287a9e01cf6461"
+source_md5="86c525eb5180f392521ca8bdf99e159b"
 
 dest_files=[ "res://.import/Image60000.png-7e8a5a65b38b73c0e705b987dc603fc4.s3tc.stex", "res://.import/Image60000.png-7e8a5a65b38b73c0e705b987dc603fc4.etc2.stex" ]
-dest_md5="c140a12731053c43b02f3dbba2d7e6f5"
+dest_md5="08cf401bf93455032b7ec69d66428afa"
 
 [params]
 

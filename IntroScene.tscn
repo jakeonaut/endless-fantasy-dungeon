@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=9]
 [ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=10]
 [ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=11]
-[ext_resource path="res://IntroScene_yellow_TextBox4_Event.gd" type="Script" id=12]
+[ext_resource path="res://SetAsTextbox.gd" type="Script" id=12]
 [ext_resource path="res://portdoor.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Environment" id=1]
@@ -93,7 +93,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -156,6 +156,7 @@ stretch_mode = 0
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07499, 3.14603, 6.45859 )
 
 [node name="The Sun" parent="Player/Lights" index="0"]
@@ -210,10 +211,12 @@ editor/display_folded = true
 
 [node name="TextBox" parent="yellow/NPC TextBox" index="0"]
 
+rect_clip_content = false
 nextTextboxPath = NodePath("../../TextBox2/TextBox")
 
 [node name="Portrait" parent="yellow/NPC TextBox/TextBox" index="0"]
 
+rect_clip_content = false
 texture = ExtResource( 9 )
 
 [node name="Text" parent="yellow/NPC TextBox/TextBox" index="1"]
@@ -262,7 +265,6 @@ editor/display_folded = true
 
 [node name="TextBox" parent="yellow/TextBox4" index="0"]
 
-editor/display_folded = true
 rect_clip_content = false
 
 [node name="Portrait" parent="yellow/TextBox4/TextBox" index="0"]
