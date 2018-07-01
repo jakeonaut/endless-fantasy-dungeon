@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://DogBody.gd" type="Script" id=1]
-[ext_resource path="res://DogInteractionArea.gd" type="Script" id=2]
+[ext_resource path="res://scripts/DogBody.gd" type="Script" id=1]
+[ext_resource path="res://scripts/DogInteractionArea.gd" type="Script" id=2]
 [ext_resource path="res://assets/Image60000.png" type="Texture" id=3]
-[ext_resource path="res://DogSprite.gd" type="Script" id=4]
-[ext_resource path="res://MouseCamera.gd" type="Script" id=5]
+[ext_resource path="res://scripts/DogSprite.gd" type="Script" id=4]
+[ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=5]
 [ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -69,7 +71,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Flags", "Metallic", "Parameters", "Proximity Fade", "Rim", "Roughness", "UV2", "Vertex Color" ]
 
-[node name="Player" type="KinematicBody" index="0"]
+[node name="Player" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
 input_ray_pickable = true
@@ -257,6 +259,22 @@ bus = "Master"
 [node name="BumpSound" type="AudioStreamPlayer" parent="." index="7"]
 
 stream = ExtResource( 8 )
+volume_db = -30.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="WormSound" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 9 )
+volume_db = -30.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="WormClimbSound" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 10 )
 volume_db = -30.0
 autoplay = false
 mix_target = 0

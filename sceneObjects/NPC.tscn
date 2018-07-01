@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Object.gd" type="Script" id=1]
-[ext_resource path="res://NPCInteractionArea.gd" type="Script" id=2]
-[ext_resource path="res://TextBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sounds/pickup.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/realmini.png" type="Texture" id=5]
-[ext_resource path="res://NPCSprite.gd" type="Script" id=6]
+[ext_resource path="res://scripts/NPCBody.gd" type="Script" id=1]
+[ext_resource path="res://scripts/NPCInteractionArea.gd" type="Script" id=2]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/npcs/Imag20000.png" type="Texture" id=4]
+[ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=5]
+
+
+
+
 
 [sub_resource type="BoxShape" id=1]
 
@@ -68,7 +71,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters" ]
 
-[node name="Object" type="KinematicBody"]
+[node name="NPC" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -83,12 +86,11 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
 shape = SubResource( 1 )
-disabled = true
+disabled = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="InteractionArea" type="Area" parent="." index="1"]
@@ -121,17 +123,7 @@ script = ExtResource( 2 )
 shape = SubResource( 2 )
 disabled = false
 
-[node name="Object TextBox" parent="." index="2" instance=ExtResource( 3 )]
-
-[node name="Text" parent="Object TextBox/TextBox" index="1"]
-
-bbcode_text = "item get!!"
-text = "item get!!"
-
-[node name="DialogSound" parent="Object TextBox/TextBox" index="2"]
-
-stream = ExtResource( 4 )
-volume_db = -10.0
+[node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 
@@ -156,14 +148,14 @@ transparent = true
 shaded = true
 double_sided = true
 alpha_cut = 2
-texture = ExtResource( 5 )
-vframes = 1
-hframes = 1
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
-script = ExtResource( 6 )
-_sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
+script = ExtResource( 5 )
+_sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform" ]
 
 
-[editable path="Object TextBox"]
+[editable path="NPC TextBox"]

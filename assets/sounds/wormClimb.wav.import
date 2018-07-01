@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wormClimb.wav-1f222426cb319d795c2fba839da77e0d.sample"
+
+[deps]
+
+source_file="res://assets/sounds/wormClimb.wav"
+source_md5="e6713d6748c6a0ca7e83256161df8831"
+
+dest_files=[ "res://.import/wormClimb.wav-1f222426cb319d795c2fba839da77e0d.sample" ]
+dest_md5="dc2291a5953f3b408edb1e533884d82d"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

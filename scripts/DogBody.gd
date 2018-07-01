@@ -1,7 +1,14 @@
 extends KinematicBody
 
+enum Form {
+	NORMAL,
+	WORM
+}
+var form = Form.NORMAL
+
 var walk_speed = 8
 var jump_force = 20
+var climb_force = 10
 var grav = 80
 var terminal_vel = 32
 onready var camera = get_node("TheCamera") # the "camera"
@@ -13,11 +20,21 @@ var fallCounter = 0
 var fallCountMax = 10
 var take_fall_damage = false
 
+onready var wormSound = get_node("WormSound")
+onready var wormClimbSound = get_node("WormClimbSound")
+var wormClimbCounter = 0
+var wormClimbCountMax = 40
+
 var linear_velocity = Vector3()
 
 func _ready():
 	set_process(true)
 	set_physics_process(true)
+	
+func bugTransform():
+	var sprite = get_node("Sprite3D")
+	sprite.texture =  load("res://assets/playerBug0000.png")
+	form = Form.WORM
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_rotate_right"):
@@ -41,9 +58,15 @@ func _physics_process(delta):
 		fallCounter += 1
 	
 	# jump
-	if Input.is_action_just_pressed("ui_jump"): #is_on_floor() and Input.is_action_just_pressed("ui_jump"):
-		vv = jump_force
-		jumpSound.play()
+	if Input.is_action_just_pressed("ui_jump"): 
+	#is_on_floor() and Input.is_action_just_pressed("ui_jump"):
+		if form == Form.WORM:
+			wormSound.play()
+			vv = jump_force / 4
+		else:
+			vv = jump_force
+			jumpSound.play()
+			
 	elif take_fall_damage:
 		vv = jump_force
 		take_fall_damage = false
@@ -73,6 +96,15 @@ func _physics_process(delta):
 	var was_on_floor = is_on_floor()
 	# move_and_slide automatically includes "delta"
 	linear_velocity = move_and_slide(lv, -g.normalized())
+	
+	if form == Form.WORM and is_on_wall() and (dir.x != 0 or dir.y != 0 or dir.z != 0):
+		linear_velocity.y = climb_force
+		wormClimbCounter += 1
+		if wormClimbCounter >= wormClimbCountMax:
+			wormClimbSound.play()
+			wormClimbCounter = 0
+	else:
+		wormClimbCounter = wormClimbCountMax
 	
 	if not was_on_floor and is_on_floor(): # I just landed!!
 		if vv == -terminal_vel and fallCounter >= fallCountMax: # Falling fast and far

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/switchglitch.wav-c6272fad1bc1644e11116483ac49b322.sample"
+
+[deps]
+
+source_file="res://assets/sounds/switchglitch.wav"
+source_md5="ba9cfd93a22bab04f46487d549c8bb20"
+
+dest_files=[ "res://.import/switchglitch.wav-c6272fad1bc1644e11116483ac49b322.sample" ]
+dest_md5="55575670560d78a313b3c1ebd841baee"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

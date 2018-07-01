@@ -11,14 +11,14 @@ config_version=3
 [application]
 
 config/name="crystal dungeon"
-run/main_scene="res://IntroScene.tscn"
+run/main_scene="res://levels/IntroScene.tscn"
 name="glitch dungeon 2: lovely sweet dreams crystal"
 icon="res://icon.png"
-main_scene="res://IntroScene.tscn"
+main_scene="res://levels/IntroScene.tscn"
 
 [autoload]
 
-global="*res://global.gd"
+global="*res://scripts/global.gd"
 transition="*res://transition.tscn"
 
 [display]
