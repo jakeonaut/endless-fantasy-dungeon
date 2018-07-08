@@ -37,10 +37,11 @@ func bugTransform():
 	form = Form.WORM
 	
 func _process(delta):
-	if Input.is_action_just_pressed("ui_rotate_right"):
-		camera.rotate_right()
-	if Input.is_action_just_pressed("ui_rotate_left"):
-		camera.rotate_left()
+	#if Input.is_action_just_pressed("ui_rotate_right"):
+	#	camera.rotate_right()
+	#if Input.is_action_just_pressed("ui_rotate_left"):
+	#	camera.rotate_left()
+	pass
 	
 func _physics_process(delta):
 	var lv = linear_velocity

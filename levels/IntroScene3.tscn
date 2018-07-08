@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
@@ -12,10 +12,6 @@
 [ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=10]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/UnlockDoor.gd" type="Script" id=12]
-[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=13]
-[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=14]
-[ext_resource path="res://scripts/EventTrigger.gd" type="Script" id=15]
-[ext_resource path="res://assets/realmini.png" type="Texture" id=16]
 
 [sub_resource type="Environment" id=1]
 
@@ -96,10 +92,6 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[sub_resource type="BoxShape" id=2]
-
-extents = Vector3( 1, 1, 1 )
-
 [node name="level" type="Node"]
 
 script = ExtResource( 1 )
@@ -116,11 +108,11 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 4, 0, 65535, 4, 0, 0, 65527, 0, 1, 65527, 0, 2, 65527, 0, 3, 65527, 0, 4, 65527, 0, 65531, 65527, 0, 65532, 65527, 0, 65533, 65527, 0, 65534, 65527, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 3, 65528, 0, 4, 65528, 0, 65531, 65528, 0, 65532, 65528, 0, 65533, 65528, 0, 65534, 65528, 0, 65535, 65528, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 3, 65529, 0, 4, 65529, 0, 65531, 65529, 0, 65532, 65529, 0, 65533, 65529, 0, 65534, 65529, 0, 65535, 65529, 0, 720896, 65529, 0, 786431, 65529, 0, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 65531, 65530, 0, 65532, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 65536, 65530, 0, 65537, 65530, 0, 65538, 65530, 0, 131069, 65530, 0, 131070, 65530, 0, 131071, 65530, 0, 131072, 65530, 0, 131073, 65530, 0, 131074, 65530, 0, 196605, 65530, 0, 196606, 65530, 0, 196607, 65530, 0, 196608, 65530, 0, 196609, 65530, 0, 196610, 65530, 0, 262141, 65530, 0, 262142, 65530, 0, 262143, 65530, 0, 262144, 65530, 0, 262145, 65530, 0, 262146, 65530, 0, 327677, 65530, 0, 327678, 65530, 0, 327679, 65530, 0, 327680, 65530, 0, 327681, 65530, 0, 327682, 65530, 0, 393213, 65530, 0, 393214, 65530, 0, 393215, 65530, 0, 393216, 65530, 0, 393217, 65530, 0, 393218, 65530, 2, 458749, 65530, 0, 458750, 65530, 0, 458751, 65530, 0, 458752, 65530, 0, 524285, 65530, 0, 524286, 65530, 2, 524287, 65530, 0, 589821, 65530, 0, 589822, 65530, 0, 720896, 65530, 0, 786431, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 65531, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 65536, 65531, 0, 65537, 65531, 0, 65538, 65531, 0, 131069, 65531, 0, 131070, 65531, 0, 131071, 65531, 0, 131072, 65531, 0, 131073, 65531, 0, 131074, 65531, 0, 196605, 65531, 0, 196606, 65531, 0, 196607, 65531, 0, 196608, 65531, 0, 196609, 65531, 0, 196610, 65531, 0, 262141, 65531, 0, 262142, 65531, 0, 262143, 65531, 0, 262144, 65531, 0, 262145, 65531, 0, 262146, 65531, 2, 327677, 65531, 0, 327678, 65531, 0, 327679, 65531, 0, 327680, 65531, 0, 327681, 65531, 0, 327682, 65531, 0, 393213, 65531, 0, 393214, 65531, 0, 393215, 65531, 0, 393216, 65531, 0, 393217, 65531, 0, 458749, 65531, 0, 458750, 65531, 0, 458751, 65531, 0, 458752, 65531, 0, 458753, 65531, 0, 524285, 65531, 0, 524286, 65531, 0, 524287, 65531, 0, 524288, 65531, 0, 524289, 65531, 0, 589821, 65531, 0, 589822, 65531, 0, 589823, 65531, 0, 589824, 65531, 0, 589825, 65531, 0, 655358, 65531, 0, 655359, 65531, 2, 655360, 65531, 0, 655361, 65531, 0, 720894, 65531, 0, 720895, 65531, 0, 720896, 65531, 0, 720897, 65531, 0, 786430, 65531, 0, 786431, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65536, 65532, 0, 65537, 65532, 0, 65538, 65532, 0, 131069, 65532, 0, 131070, 65532, 0, 131071, 65532, 0, 131072, 65532, 0, 131073, 65532, 0, 131074, 65532, 0, 196605, 65532, 0, 196606, 65532, 0, 196607, 65532, 0, 196608, 65532, 0, 196609, 65532, 0, 196610, 65532, 0, 262141, 65532, 0, 262142, 65532, 0, 262143, 65532, 0, 262144, 65532, 0, 262145, 65532, 0, 262146, 65532, 0, 327677, 65532, 0, 327678, 65532, 0, 327679, 65532, 0, 327680, 65532, 0, 327681, 65532, 0, 327682, 65532, 0, 393213, 65532, 0, 393214, 65532, 0, 393215, 65532, 0, 393216, 65532, 0, 393217, 65532, 0, 458749, 65532, 0, 458750, 65532, 0, 458751, 65532, 0, 458752, 65532, 0, 458753, 65532, 0, 524285, 65532, 0, 524286, 65532, 0, 524287, 65532, 0, 524288, 65532, 0, 524289, 65532, 0, 589821, 65532, 0, 589822, 65532, 0, 589823, 65532, 0, 589824, 65532, 0, 589825, 65532, 0, 655357, 65532, 0, 655358, 65532, 0, 655359, 65532, 0, 655360, 65532, 0, 655361, 65532, 0, 720894, 65532, 0, 720895, 65532, 0, 720896, 65532, 0, 720897, 65532, 0, 786430, 65532, 0, 786431, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65536, 65533, 0, 65537, 65533, 0, 65538, 65533, 0, 131068, 65533, 1, 131069, 65533, 0, 131070, 65533, 0, 131071, 65533, 0, 131072, 65533, 0, 131073, 65533, 0, 131074, 65533, 0, 196605, 65533, 0, 196606, 65533, 0, 196607, 65533, 0, 196608, 65533, 0, 196609, 65533, 0, 196610, 65533, 0, 262141, 65533, 0, 262142, 65533, 0, 262143, 65533, 0, 262144, 65533, 0, 262145, 65533, 0, 262146, 65533, 2, 327677, 65533, 0, 327678, 65533, 0, 327679, 65533, 0, 327680, 65533, 0, 327681, 65533, 0, 393213, 65533, 0, 393214, 65533, 0, 393215, 65533, 2, 393216, 65533, 0, 393217, 65533, 0, 458749, 65533, 0, 458750, 65533, 0, 458751, 65533, 0, 458752, 65533, 0, 458753, 65533, 0, 524285, 65533, 0, 524286, 65533, 0, 524287, 65533, 0, 524288, 65533, 0, 524289, 65533, 0, 589821, 65533, 0, 589822, 65533, 0, 589823, 65533, 0, 589824, 65533, 0, 589825, 65533, 2, 655357, 65533, 2, 655358, 65533, 0, 655359, 65533, 0, 655360, 65533, 0, 655361, 65533, 0, 720894, 65533, 0, 720895, 65533, 0, 720896, 65533, 0, 720897, 65533, 0, 786430, 65533, 0, 786431, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65536, 65534, 0, 65537, 65534, 0, 65538, 65534, 0, 65539, 65534, 1, 131068, 65534, 1, 131069, 65534, 0, 131070, 65534, 0, 131071, 65534, 0, 131072, 65534, 0, 131073, 65534, 0, 131074, 65534, 0, 196605, 65534, 0, 196606, 65534, 0, 196607, 65534, 0, 196608, 65534, 0, 196609, 65534, 0, 196610, 65534, 0, 262141, 65534, 0, 262142, 65534, 0, 262143, 65534, 0, 262146, 65534, 2, 327677, 65534, 0, 327678, 65534, 0, 393213, 65534, 0, 393214, 65534, 0, 458749, 65534, 0, 458750, 65534, 0, 458752, 65534, 0, 458753, 65534, 0, 524285, 65534, 0, 524286, 65534, 0, 524287, 65534, 0, 524288, 65534, 0, 524289, 65534, 0, 589821, 65534, 0, 589822, 65534, 0, 589823, 65534, 0, 589824, 65534, 0, 589825, 65534, 0, 655357, 65534, 0, 655358, 65534, 0, 655359, 65534, 0, 655360, 65534, 0, 655361, 65534, 0, 720893, 65534, 0, 720894, 65534, 0, 720895, 65534, 0, 720896, 65534, 0, 786431, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65536, 65535, 0, 65537, 65535, 0, 65538, 65535, 0, 65539, 65535, 1, 131069, 65535, 0, 131070, 65535, 0, 131071, 65535, 0, 131072, 65535, 2, 131073, 65535, 0, 131074, 65535, 0, 196607, 65535, 2, 196609, 65535, 0, 196610, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 4, 0, 65535, 4, 0, 458752, 65528, 2, 524287, 65528, 2, 458752, 65529, 2, 524287, 65529, 2, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 458752, 65530, 2, 458753, 65530, 2, 524286, 65530, 2, 524287, 65530, 2, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 458752, 65531, 2, 458753, 65531, 2, 524286, 65531, 2, 524287, 65531, 2, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65536, 65532, 2, 65537, 65532, 2, 131070, 65532, 2, 131071, 65532, 2, 327679, 65532, 2, 393216, 65532, 2, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65537, 65533, 2, 131070, 65533, 2, 196606, 65533, 2, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65537, 65534, 2, 131070, 65534, 2, 196608, 65534, 2, 393214, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65536, 65535, 2, 65537, 65535, 2, 131070, 65535, 2, 131071, 65535, 2 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 11, 0 )
+"_editor_floor_": Vector3( 0, 7, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
@@ -135,6 +127,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -149,6 +142,7 @@ anchor_bottom = 0.0
 margin_right = 1020.0
 margin_bottom = 763.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -163,7 +157,13 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.41
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene2.tscn"
 
-[node name="Player" parent="." index="4" instance=ExtResource( 5 )]
+[node name="portal3" parent="." index="4" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.3297, -15.8962 )
+_sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
+connectedScene = "levels/IntroScene4.tscn"
+
+[node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
@@ -176,10 +176,10 @@ light_cull_mask = -1
 
 light_cull_mask = -1
 
-[node name="NPC" parent="." index="5" instance=ExtResource( 6 )]
+[node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
 
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 9.14516, -2.87161 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.33363, 1.12839 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape" parent="NPC" index="0"]
@@ -203,17 +203,19 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 [node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
 
 bbcode_text = "it gets a little tricky here..
-I think I press \"Q/E\" to 
-rotate my view???"
+I think you click and drag
+the mouse to 
+rotate the view???"
 text = "it gets a little tricky here..
-I think I press \"Q/E\" to 
-rotate my view???"
+I think you click and drag
+the mouse to 
+rotate the view???"
 
 [node name="Sprite3D" parent="NPC" index="3"]
 
 texture = ExtResource( 8 )
 
-[node name="Teacher" parent="." index="6" instance=ExtResource( 6 )]
+[node name="Teacher" parent="." index="7" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 34.2514, -6.79153 )
@@ -272,163 +274,6 @@ best to excellence,"
 
 script = ExtResource( 12 )
 
-[node name="NPC2" parent="." index="7" instance=ExtResource( 6 )]
-
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51555, 25.2514, -5.79153 )
-
-[node name="NPC TextBox" parent="NPC2" index="2"]
-
-editor/display_folded = true
-
-[node name="TextBox" parent="NPC2/NPC TextBox" index="0"]
-
-nextTextboxPath = NodePath("../../NPCText2/TextBox")
-
-[node name="Portrait" parent="NPC2/NPC TextBox/TextBox" index="0"]
-
-texture = ExtResource( 13 )
-
-[node name="Text" parent="NPC2/NPC TextBox/TextBox" index="1"]
-
-bbcode_text = "hey! you finally made it!"
-text = "hey! you finally made it!"
-
-[node name="Sprite3D" parent="NPC2" index="3"]
-
-texture = ExtResource( 8 )
-
-[node name="NPCText2" parent="NPC2" index="4" instance=ExtResource( 11 )]
-
-editor/display_folded = true
-
-[node name="TextBox" parent="NPC2/NPCText2" index="0"]
-
-nextTextboxPath = NodePath("../../NPCText3/TextBox")
-
-[node name="Portrait" parent="NPC2/NPCText2/TextBox" index="0"]
-
-texture = ExtResource( 7 )
-
-[node name="Text" parent="NPC2/NPCText2/TextBox" index="1"]
-
-bbcode_text = "sorry for giving you so
-much shit... i've been
-having a hard time."
-text = "sorry for giving you so
-much shit... i've been
-having a hard time."
-
-[node name="NPCText3" parent="NPC2" index="5" instance=ExtResource( 11 )]
-
-editor/display_folded = true
-
-[node name="TextBox" parent="NPC2/NPCText3" index="0"]
-
-nextTextboxPath = NodePath("../../../Teacher/NPC TextBox/TextBox")
-
-[node name="Portrait" parent="NPC2/NPCText3/TextBox" index="0"]
-
-texture = ExtResource( 13 )
-
-[node name="Text" parent="NPC2/NPCText3/TextBox" index="1"]
-
-bbcode_text = "headmaster says she's 
-gonna expel me if i
-don't pass next test!"
-text = "headmaster says she's 
-gonna expel me if i
-don't pass next test!"
-
-[node name="NPCTextFinal" parent="NPC2" index="6" instance=ExtResource( 11 )]
-
-editor/display_folded = true
-
-[node name="Portrait" parent="NPC2/NPCTextFinal/TextBox" index="0"]
-
-texture = ExtResource( 7 )
-
-[node name="Text" parent="NPC2/NPCTextFinal/TextBox" index="1"]
-
-bbcode_text = "well....
-..
-let's go."
-text = "well....
-..
-let's go."
-
-[node name="Event" type="Node" parent="NPC2/NPCTextFinal/TextBox" index="4"]
-
-script = ExtResource( 14 )
-
-[node name="HideNPC" type="Area" parent="." index="8"]
-
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, -11 )
-input_ray_pickable = true
-input_capture_on_drag = false
-space_override = 0
-gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
-gravity = 9.8
-linear_damp = 0.1
-angular_damp = 1.0
-priority = 0.0
-monitoring = true
-monitorable = true
-collision_layer = 1
-collision_mask = 1
-audio_bus_override = false
-audio_bus_name = "Master"
-reverb_bus_enable = false
-reverb_bus_name = "Master"
-reverb_bus_amount = 0.0
-reverb_bus_uniformity = 0.0
-script = ExtResource( 15 )
-
-[node name="CollisionShape" type="CollisionShape" parent="HideNPC" index="0"]
-
-shape = SubResource( 2 )
-disabled = false
-
-[node name="Sprite3D" type="Sprite3D" parent="HideNPC" index="1"]
-
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-centered = true
-offset = Vector2( 0, 0 )
-flip_h = false
-flip_v = false
-modulate = Color( 1, 1, 1, 1 )
-opacity = 1.0
-pixel_size = 0.01
-axis = 2
-transparent = true
-shaded = false
-double_sided = true
-alpha_cut = 0
-texture = ExtResource( 16 )
-vframes = 1
-hframes = 1
-frame = 0
-region_enabled = false
-region_rect = Rect2( 0, 0, 0, 0 )
-
-[node name="portal3" parent="." index="9" instance=ExtResource( 4 )]
-
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.4124, -14.0479 )
-connectedScene = "levels/ForestScene1.tscn"
-isLocked = true
-
 
 [editable path="Player"]
 [editable path="NPC"]
@@ -436,9 +281,3 @@ isLocked = true
 [editable path="Teacher"]
 [editable path="Teacher/NPC TextBox"]
 [editable path="Teacher/Dialog2"]
-[editable path="NPC2"]
-[editable path="NPC2/NPC TextBox"]
-[editable path="NPC2/NPCText2"]
-[editable path="NPC2/NPCText3"]
-[editable path="NPC2/NPCTextFinal"]
-[editable path="portal3"]

@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://assets/bricks.png" type="Texture" id=3]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=6]
-[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=7]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=7]
 
 [sub_resource type="Environment" id=1]
 
@@ -88,7 +87,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -104,11 +103,11 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 65538, 0, 2, 131068, 0, 0, 131070, 0, 2, 131071, 0, 2, 0, 1, 0, 1, 1, 0, 2, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 65538, 1, 1, 131067, 1, 2, 131068, 1, 2, 131071, 1, 2, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 65536, 2, 2, 65537, 2, 2, 131068, 2, 2, 131069, 2, 2, 131071, 2, 2, 0, 3, 0, 1, 3, 0, 2, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 65534, 4, 0, 65535, 4, 0, 65534, 5, 0, 65535, 5, 0, 65534, 65530, 0, 65535, 65530, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65536, 65533, 2, 65537, 65533, 2, 131068, 65533, 0, 131069, 65533, 2, 131070, 65533, 0, 131071, 65533, 2, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65537, 65534, 2, 65538, 65534, 2, 131068, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65538, 65535, 1, 131068, 65535, 0 )
+"cells": PoolIntArray( 1, 0, 0, 2, 0, 0, 65531, 0, 0, 65532, 0, 0, -65536, 0, -536870911, -65535, 0, -536870911, -4, 0, -536870911, -3, 0, -536870911, -2, 0, -536870911, -1, 0, -536870911, 1, 1, 0, 2, 1, 0, 65531, 1, 0, 65532, 1, 0, -65536, 1, -536870911, -65535, 1, -536870911, -4, 1, -536870911, -3, 1, -536870911, -2, 1, -536870911, -1, 1, -536870911, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, -65536, 2, -536870911, -4, 2, -536870911, -3, 2, -536870911, -2, 2, -536870911, -1, 2, -536870911, 0, 3, 0, 1, 3, 0, 2, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 65534, 4, 0, 65535, 4, 0, 65534, 5, 0, 65535, 5, 0, 65534, 65530, 0, 65535, 65530, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, -65536, 65532, -536870911, -2, 65532, -536870911, -1, 65532, -536870911, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, -65536, 65533, -536870911, -65535, 65533, -536870911, -3, 65533, -536870911, -2, 65533, -536870911, -1, 65533, -536870911, 1, 65534, 0, 2, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, -65536, 65534, -536870911, -65535, 65534, -536870911, -4, 65534, -536870911, -3, 65534, -536870911, -2, 65534, -536870911, -1, 65534, -536870911, 1, 65535, 0, 2, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, -65536, 65535, -536870911, -65535, 65535, -536870911, -4, 65535, -536870911, -3, 65535, -536870911, -2, 65535, -536870911, -1, 65535, -536870911 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, -1, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
@@ -148,44 +147,20 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 0
 
-[node name="portal1" parent="." index="3" instance=ExtResource( 4 )]
+[node name="portal3" parent="." index="3" instance=ExtResource( 4 )]
 
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.9345, 3.4124, 10.9377 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
-connectedScene = "levels/IntroScene.tscn"
+connectedScene = "levels/IntroScene3.tscn"
 
-[node name="portal2" parent="." index="4" instance=ExtResource( 4 )]
+[node name="portalTownDungeon" parent="." index="4" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92759, 3.4124, -10.872 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
-connectedScene = "levels/IntroScene3.tscn"
+connectedScene = "levels/Town.tscn"
 
-[node name="NPC" parent="." index="5" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.845394, 3.2514, -3.09537 )
-
-[node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
-
-texture = ExtResource( 6 )
-
-[node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
-
-bbcode_text = "ugh.. don't tell me you 
-forgot the jump spell too!!
-...
-just press \"SPACE\"!!!"
-text = "ugh.. don't tell me you 
-forgot the jump spell too!!
-...
-just press \"SPACE\"!!!"
-
-[node name="Sprite3D" parent="NPC" index="3"]
-
-texture = ExtResource( 7 )
-
-[node name="Player" parent="." index="6" instance=ExtResource( 8 )]
+[node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91818, 3.14603, 7.501 )
@@ -198,7 +173,21 @@ light_cull_mask = -1
 
 light_cull_mask = -1
 
+[node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51555, 4.2514, 0.20847 )
+
+[node name="CollisionShape" parent="NPC" index="0"]
+
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+
+[node name="Sprite3D" parent="NPC" index="3"]
+
+pixel_size = 0.08
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
+
+
+[editable path="Player"]
 [editable path="NPC"]
 [editable path="NPC/NPC TextBox"]
-[editable path="Player"]

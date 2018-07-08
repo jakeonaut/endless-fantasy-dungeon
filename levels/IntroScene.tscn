@@ -93,7 +93,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -156,7 +156,16 @@ stretch_mode = 0
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07499, 3.14603, 6.45859 )
+
+[node name="The Sun" parent="Player/Lights" index="0"]
+
+light_cull_mask = -1
+
+[node name="The Sun2" parent="Player/Lights" index="1"]
+
+light_cull_mask = -1
 
 [node name="TextBox" parent="Player" index="4" instance=ExtResource( 5 )]
 
@@ -164,12 +173,10 @@ editor/display_folded = true
 
 [node name="TextBox" parent="Player/TextBox" index="0"]
 
-rect_clip_content = false
 nextTextboxPath = NodePath("../../../yellow/TextBox4/TextBox")
 
 [node name="Portrait" parent="Player/TextBox/TextBox" index="0"]
 
-rect_clip_content = false
 texture = ExtResource( 6 )
 
 [node name="Text" parent="Player/TextBox/TextBox" index="1"]
@@ -189,7 +196,6 @@ script = ExtResource( 7 )
 
 [node name="yellow" parent="." index="4" instance=ExtResource( 8 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 
 [node name="InteractionArea" parent="yellow" index="1"]
@@ -202,12 +208,10 @@ editor/display_folded = true
 
 [node name="TextBox" parent="yellow/NPC TextBox" index="0"]
 
-rect_clip_content = false
 nextTextboxPath = NodePath("../../TextBox2/TextBox")
 
 [node name="Portrait" parent="yellow/NPC TextBox/TextBox" index="0"]
 
-rect_clip_content = false
 texture = ExtResource( 9 )
 
 [node name="Text" parent="yellow/NPC TextBox/TextBox" index="1"]
@@ -231,12 +235,10 @@ editor/display_folded = true
 
 [node name="TextBox" parent="yellow/TextBox2" index="0"]
 
-rect_clip_content = false
 nextTextboxPath = NodePath("../../../Player/TextBox/TextBox")
 
 [node name="Portrait" parent="yellow/TextBox2/TextBox" index="0"]
 
-rect_clip_content = false
 texture = ExtResource( 11 )
 
 [node name="Text" parent="yellow/TextBox2/TextBox" index="1"]
@@ -254,13 +256,8 @@ text = ". . . . . . . . . . . . .
 
 editor/display_folded = true
 
-[node name="TextBox" parent="yellow/TextBox4" index="0"]
-
-rect_clip_content = false
-
 [node name="Portrait" parent="yellow/TextBox4/TextBox" index="0"]
 
-rect_clip_content = false
 texture = ExtResource( 9 )
 
 [node name="Text" parent="yellow/TextBox4/TextBox" index="1"]
