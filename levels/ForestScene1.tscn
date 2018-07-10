@@ -163,6 +163,14 @@ hframes = 2
 
 editor/display_folded = true
 
+[node name="The Sun" parent="Player/Lights" index="0"]
+
+light_cull_mask = -1
+
+[node name="The Sun2" parent="Player/Lights" index="1"]
+
+light_cull_mask = -1
+
 [node name="TheCamera" parent="Player" index="4"]
 
 editor/display_folded = true
@@ -182,14 +190,6 @@ script = ExtResource( 8 )
 [node name="Object TextBox" parent="BUg" index="2"]
 
 editor/display_folded = true
-
-[node name="TextBox" parent="BUg/Object TextBox" index="0"]
-
-rect_clip_content = false
-
-[node name="Portrait" parent="BUg/Object TextBox/TextBox" index="0"]
-
-rect_clip_content = false
 
 [node name="Sprite3D" parent="BUg" index="3"]
 

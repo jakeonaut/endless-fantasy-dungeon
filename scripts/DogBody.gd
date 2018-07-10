@@ -3,6 +3,7 @@ extends KinematicBody
 enum Form {
 	NORMAL,
 	WORM
+	FLOOR,
 }
 var form = Form.NORMAL
 
@@ -36,6 +37,11 @@ func bugTransform():
 	sprite.texture =  load("res://assets/playerBug0000.png")
 	form = Form.WORM
 	
+func floorTransform():
+	var sprite = get_node("Sprite3D")
+	sprite.texture = load("res://assets/playerblue0000.png")
+	form = Form.FLOOR
+	
 func _process(delta):
 	#if Input.is_action_just_pressed("ui_rotate_right"):
 	#	camera.rotate_right()
@@ -47,7 +53,8 @@ func _physics_process(delta):
 	var lv = linear_velocity
 	var g = Vector3(0, -grav, 0)
 	
-	lv += g * delta # Apply gravity
+	if not on_ground:
+		lv += g * delta # Apply gravity
 	
 	var up = -g.normalized() # (up is against gravity)
 	var vv = up.dot(lv) # vertical velocity
@@ -67,10 +74,11 @@ func _physics_process(delta):
 		else:
 			vv = jump_force
 			jumpSound.play()
-			
-	elif take_fall_damage:
+		on_ground = false
+	elif take_fall_damage and form != Form.FLOOR:
 		vv = jump_force
 		take_fall_damage = false
+		on_ground = false
 	
 	# Forward as seen by the camera (OpenGL convention)
 	var view_forward = -camera.get_transform().basis.z
@@ -114,3 +122,6 @@ func _physics_process(delta):
 			
 	if is_on_floor():
 		fallCounter = 0
+		on_ground = true
+	elif form != Form.FLOOR:
+		on_ground = false
