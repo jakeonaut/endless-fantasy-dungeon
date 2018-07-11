@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
@@ -7,10 +7,16 @@
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/player0000.png" type="Texture" id=6]
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=8]
-[ext_resource path="res://sceneObjects/Object.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scripts/floorSpell.gd" type="Script" id=10]
-[ext_resource path="res://assets/sounds/switchglitch.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/npcs/goddessportrait.png" type="Texture" id=8]
+[ext_resource path="res://assets/sounds/mysterysong_firered.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/glitterdisappear_firered.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=11]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sounds/land2.wav" type="AudioStream" id=13]
+[ext_resource path="res://scripts/IntroScene4GoddessAbortSound.gd" type="Script" id=14]
+[ext_resource path="res://sceneObjects/Object.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scripts/floorSpell.gd" type="Script" id=16]
+[ext_resource path="res://assets/sounds/switchglitch.wav" type="AudioStream" id=17]
 
 [sub_resource type="Environment" id=1]
 
@@ -107,11 +113,11 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 1, 0, 0, 2, 0, 0, 65531, 0, 0, 65532, 0, 0, -65536, 0, -536870911, -65535, 0, -536870911, -4, 0, -536870911, -3, 0, -536870911, -2, 0, -536870911, -1, 0, -536870911, 1, 1, 0, 2, 1, 0, 65531, 1, 0, 65532, 1, 0, -65536, 1, -536870911, -65535, 1, -536870911, -4, 1, -536870911, -3, 1, -536870911, -2, 1, -536870911, -1, 1, -536870911, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 65537, 2, 0, 131068, 2, 0, 196604, 2, 0, -65536, 2, -536870911, -4, 2, -536870911, -3, 2, -536870911, -2, 2, -536870911, -1, 2, -536870911, 0, 3, 0, 1, 3, 0, 2, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 65534, 4, 0, 65535, 4, 0, 65534, 5, 0, 65535, 5, 0, 65534, 65530, 0, 65535, 65530, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, -65536, 65532, -536870911, -2, 65532, -536870911, -1, 65532, -536870911, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65537, 65533, 0, 131068, 65533, 0, 131073, 65533, 0, 196604, 65533, 0, 196609, 65533, 0, 262140, 65533, 0, 262145, 65533, 0, -65536, 65533, -536870911, -65535, 65533, -536870911, -3, 65533, -536870911, -2, 65533, -536870911, -1, 65533, -536870911, 1, 65534, 0, 2, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, -65536, 65534, -536870911, -65535, 65534, -536870911, -4, 65534, -536870911, -3, 65534, -536870911, -2, 65534, -536870911, -1, 65534, -536870911, 1, 65535, 0, 2, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, -65536, 65535, -536870911, -65535, 65535, -536870911, -4, 65535, -536870911, -3, 65535, -536870911, -2, 65535, -536870911, -1, 65535, -536870911 )
+"cells": PoolIntArray( 1, 0, 0, 2, 0, 0, 65531, 0, 0, 65532, 0, 0, -65536, 0, -536870911, -65535, 0, -536870911, -4, 0, -536870911, -3, 0, -536870911, -2, 0, -536870911, -1, 0, -536870911, 1, 1, 0, 2, 1, 0, 65531, 1, 0, 65532, 1, 0, -65536, 1, -536870911, -65535, 1, -536870911, -4, 1, -536870911, -3, 1, -536870911, -2, 1, -536870911, -1, 1, -536870911, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 65537, 2, 2, 131068, 2, 0, 196604, 2, 2, -65536, 2, -536870911, -4, 2, -536870911, -3, 2, -536870911, -2, 2, -536870911, -1, 2, -536870911, 0, 3, 0, 1, 3, 0, 2, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 65534, 4, 0, 65535, 4, 0, 65534, 5, 0, 65535, 5, 0, 65534, 65530, 0, 65535, 65530, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, -65536, 65532, -536870911, -2, 65532, -536870911, -1, 65532, -536870911, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65537, 65533, 0, 131068, 65533, 0, 131073, 65533, 0, 196604, 65533, 0, 196609, 65533, 0, 262140, 65533, 2, 262145, 65533, 2, -65536, 65533, -536870911, -65535, 65533, -536870911, -3, 65533, -536870911, -2, 65533, -536870911, -1, 65533, -536870911, 1, 65534, 0, 2, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, -65536, 65534, -536870911, -65535, 65534, -536870911, -4, 65534, -536870911, -3, 65534, -536870911, -2, 65534, -536870911, -1, 65534, -536870911, 1, 65535, 0, 2, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, -65536, 65535, -536870911, -65535, 65535, -536870911, -4, 65535, -536870911, -3, 65535, -536870911, -2, 65535, -536870911, -1, 65535, -536870911 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 4, 0 )
+"_editor_floor_": Vector3( 0, 1, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
@@ -120,6 +126,7 @@ environment = SubResource( 1 )
 
 [node name="BackgroundControl" type="Control" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -162,10 +169,11 @@ connectedScene = "levels/IntroScene3.tscn"
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92759, 3.4124, -10.872 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
-connectedScene = "levels/Town.tscn"
+connectedScene = "levels/TownDungeon.tscn"
 
 [node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91818, 3.14603, 7.501 )
 
 [node name="Sprite3D" parent="Player" index="2"]
@@ -181,29 +189,101 @@ light_cull_mask = -1
 
 light_cull_mask = -1
 
-[node name="NPC" parent="." index="6" instance=ExtResource( 7 )]
+[node name="GoddessPreview" parent="." index="6" instance=ExtResource( 7 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51555, 4.2514, 0.20847 )
 
-[node name="CollisionShape" parent="NPC" index="0"]
+[node name="CollisionShape" parent="GoddessPreview" index="0"]
 
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 
-[node name="Sprite3D" parent="NPC" index="3"]
+[node name="InteractionArea" parent="GoddessPreview" index="1"]
+
+editor/display_folded = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" parent="GoddessPreview/InteractionArea" index="0"]
+
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="NPC TextBox" parent="GoddessPreview" index="2"]
+
+editor/display_folded = true
+
+[node name="TextBox" parent="GoddessPreview/NPC TextBox" index="0"]
+
+editor/display_folded = true
+nextTextboxPath = NodePath("../../textbox2/TextBox")
+
+[node name="Portrait" parent="GoddessPreview/NPC TextBox/TextBox" index="0"]
+
+texture = ExtResource( 8 )
+
+[node name="Text" parent="GoddessPreview/NPC TextBox/TextBox" index="1"]
+
+bbcode_text = "everyone is trying to
+escape this place, 
+but i want to make it
+feel like home."
+text = "everyone is trying to
+escape this place, 
+but i want to make it
+feel like home."
+
+[node name="DialogSound" parent="GoddessPreview/NPC TextBox/TextBox" index="2"]
+
+stream = ExtResource( 9 )
+volume_db = -20.0
+
+[node name="AbortSound" parent="GoddessPreview/NPC TextBox/TextBox" index="3"]
+
+stream = ExtResource( 10 )
+volume_db = -30.0
+
+[node name="Sprite3D" parent="GoddessPreview" index="3"]
 
 pixel_size = 0.08
-texture = ExtResource( 8 )
+texture = ExtResource( 11 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
 
-[node name="floorSpell" parent="." index="7" instance=ExtResource( 9 )]
+[node name="textbox2" parent="GoddessPreview" index="4" instance=ExtResource( 12 )]
 
+[node name="Portrait" parent="GoddessPreview/textbox2/TextBox" index="0"]
+
+texture = ExtResource( 8 )
+
+[node name="Text" parent="GoddessPreview/textbox2/TextBox" index="1"]
+
+bbcode_text = "you'll help me out
+
+
+won't you?"
+text = "you'll help me out
+
+
+won't you?"
+
+[node name="DialogSound" parent="GoddessPreview/textbox2/TextBox" index="2"]
+
+stream = ExtResource( 13 )
+volume_db = -15.0
+
+[node name="AbortSound" parent="GoddessPreview/textbox2/TextBox" index="3"]
+
+stream = ExtResource( 10 )
+volume_db = -30.0
+script = ExtResource( 14 )
+
+[node name="floorSpell" parent="." index="7" instance=ExtResource( 15 )]
+
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13762, 5.2514, 5.20847 )
-script = ExtResource( 10 )
+script = ExtResource( 16 )
 
 [node name="TransformSound" type="AudioStreamPlayer" parent="floorSpell" index="4"]
 
-stream = ExtResource( 11 )
+stream = ExtResource( 17 )
 volume_db = -10.0
 autoplay = false
 mix_target = 0
@@ -211,6 +291,7 @@ bus = "Master"
 
 
 [editable path="Player"]
-[editable path="NPC"]
-[editable path="NPC/NPC TextBox"]
+[editable path="GoddessPreview"]
+[editable path="GoddessPreview/NPC TextBox"]
+[editable path="GoddessPreview/textbox2"]
 [editable path="floorSpell"]

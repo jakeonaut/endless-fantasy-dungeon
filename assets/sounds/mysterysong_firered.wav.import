@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mysterysong_firered.wav-0e7e3d09b07b01979d2a175bca2a7e53.sample"
+
+[deps]
+
+source_file="res://assets/sounds/mysterysong_firered.wav"
+source_md5="851b9ba3c02a72cbef3213103c6b397a"
+
+dest_files=[ "res://.import/mysterysong_firered.wav-0e7e3d09b07b01979d2a175bca2a7e53.sample" ]
+dest_md5="0b0ff171675a724fb567c703077290fe"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

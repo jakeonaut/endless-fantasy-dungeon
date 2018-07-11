@@ -31,6 +31,7 @@ func interact():
 			global.activeInteractor = nextTextbox
 		else:
 			abortSound.play()
+			abortSound.activateScript()
 			global.activeInteractor = null
 			
 func abort():

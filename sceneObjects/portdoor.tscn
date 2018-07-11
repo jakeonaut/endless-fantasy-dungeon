@@ -170,7 +170,6 @@ isLocked = false
 
 [node name="Area" type="Area" parent="." index="0"]
 
-editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
@@ -196,8 +195,10 @@ connectedScene = "GenericScene.tscn"
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
+_sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Area" index="1"]
 
@@ -272,13 +273,8 @@ bus = "Master"
 
 [node name="portdoorTextBox" parent="." index="4" instance=ExtResource( 5 )]
 
-[node name="TextBox" parent="portdoorTextBox" index="0"]
-
-rect_clip_content = false
-
 [node name="Portrait" parent="portdoorTextBox/TextBox" index="0"]
 
-rect_clip_content = false
 texture = ExtResource( 6 )
 
 [node name="Text" parent="portdoorTextBox/TextBox" index="1"]

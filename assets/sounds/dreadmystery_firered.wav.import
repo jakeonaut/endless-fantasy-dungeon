@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dreadmystery_firered.wav-9456f1559e0f669de46ff9991d481b3b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/dreadmystery_firered.wav"
+source_md5="bc7b9e65135025ef06cd6568768d0e94"
+
+dest_files=[ "res://.import/dreadmystery_firered.wav-9456f1559e0f669de46ff9991d481b3b.sample" ]
+dest_md5="c43991499c9765d99480c74ae6a9ddd5"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
