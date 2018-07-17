@@ -36,6 +36,16 @@ func _process(delta):
 	mouseDiffX = 0
 	mouseDiffY = 0
 	
+func forceRotation(degrees, step):
+	target_rotation += deg2rad(degrees)
+	real_rotation_target = rotation_degrees.y + degrees
+	is_rotating = true
+	
+	# nudge it along
+	target_rotation += step
+	rotate_y(step)
+	
+	
 func _input(ev):
 	if ev is InputEventMouseButton:
 		mouseDown = ev.is_pressed()

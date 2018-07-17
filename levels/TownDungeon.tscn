@@ -1,13 +1,22 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://assets/realmini.png" type="Texture" id=2]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/npcs/greenglasses.png" type="Texture" id=7]
-[ext_resource path="res://assets/npcs/greenglaasses0000.png" type="Texture" id=8]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/playerportrait.png" type="Texture" id=6]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/npcs/greenglasses.png" type="Texture" id=9]
+[ext_resource path="res://assets/npcs/greenglaasses0000.png" type="Texture" id=10]
+[ext_resource path="res://assets/npcs/glasses.png" type="Texture" id=11]
+[ext_resource path="res://assets/sounds/dreadmystery_firered.wav" type="AudioStream" id=12]
+[ext_resource path="res://scripts/yellowGlasses_3dtea_event.gd" type="Script" id=13]
+[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=14]
+[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=15]
+[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=16]
+[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=17]
 
 [sub_resource type="Environment" id=1]
 
@@ -88,7 +97,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -138,44 +147,188 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 1441792, 1, 0, 1441792, 2, 0, 1441792, 65533, 0, 1441792, 65534, 0, 1441792, 65535, 0, 1441792, 0, 1, 1441792, 1, 1, 1441792, 2, 1, 1441792, 65533, 1, 1441792, 65534, 1, 0, 65535, 1, 1441794, 0, 2, 1441792, 65535, 2, 1441792, 0, 3, 1441792, 65535, 3, 1441792, 0, 65532, 1441792, 1, 65532, 1441792, 2, 65532, 1441792, 65533, 65532, 1441792, 65534, 65532, 1441792, 65535, 65532, 1441792, 0, 65533, 1441792, 1, 65533, 1441792, 2, 65533, 1441792, 65533, 65533, 1441792, 65534, 65533, 1441792, 65535, 65533, 1441792, 0, 65534, 1441792, 1, 65534, 1441792, 2, 65534, 1441792, 65533, 65534, 1441792, 65534, 65534, 1441792, 65535, 65534, 1441792, 0, 65535, 1441792, 1, 65535, 1441792, 2, 65535, 1441792, 65533, 65535, 1441792, 65534, 65535, 1441792, 65535, 65535, 1441792 )
+"cells": PoolIntArray( 0, 0, 1441792, 1, 0, 1441792, 2, 0, 1441792, 3, 0, 0, 65533, 0, 1441792, 65534, 0, 1441792, 65535, 0, 1441792, 0, 1, 1441792, 1, 1, 1441792, 2, 1, 1441792, 3, 1, 0, 65533, 1, 1441792, 65534, 1, 0, 65535, 1, 1441794, 0, 2, 1441792, 65535, 2, 1441792, 0, 3, 1441792, 65535, 3, 1441792, 0, 65515, 0, 1, 65515, 0, 2, 65515, 0, 3, 65515, 0, 4, 65515, 0, 65535, 65515, 0, 0, 65516, 0, 1, 65516, 0, 2, 65516, 0, 3, 65516, 0, 4, 65516, 0, 65535, 65516, 0, 196611, 65516, 2, 262146, 65516, 2, 327681, 65516, 2, 393216, 65516, 2, 0, 65517, 0, 1, 65517, 0, 2, 65517, 0, 3, 65517, 0, 4, 65517, 0, 65535, 65517, 0, 65537, 65517, 0, 65538, 65517, 0, 131073, 65517, 0, 131074, 65517, 0, 131075, 65517, 2, 196609, 65517, 0, 196610, 65517, 0, 262145, 65517, 0, 262146, 65517, 0, 327681, 65517, 0, 327682, 65517, 0, 393217, 65517, 0, 393218, 65517, 0, 458752, 65517, 2, 458753, 65517, 0, 458754, 65517, 0, 524289, 65517, 0, 524290, 65517, 0, 589825, 65517, 0, 589826, 65517, 0, 720897, 65517, 0, 720898, 65517, 0, 0, 65518, 0, 1, 65518, 0, 2, 65518, 0, 3, 65518, 0, 4, 65518, 0, 65535, 65518, 0, 65537, 65518, 0, 65538, 65518, 0, 65539, 65518, 2, 131073, 65518, 0, 131074, 65518, 0, 196609, 65518, 0, 196610, 65518, 0, 262145, 65518, 0, 262146, 65518, 0, 327681, 65518, 0, 327682, 65518, 0, 393217, 65518, 0, 393218, 65518, 0, 458753, 65518, 0, 458754, 65518, 0, 524288, 65518, 2, 524289, 65518, 0, 524290, 65518, 0, 589825, 65518, 0, 589826, 65518, 0, 720897, 65518, 0, 720898, 65518, 0, 0, 65519, 0, 1, 65519, 0, 2, 65519, 0, 3, 65519, 0, 4, 65519, 0, 65535, 65519, 0, 589824, 65519, 2, 655361, 65519, 2, 720898, 65519, 2, 0, 65520, 0, 1, 65520, 0, 2, 65520, 0, 3, 65520, 0, 4, 65520, 0, 65535, 65520, 0, 1, 65522, 0, 2, 65522, 0, 1, 65523, 0, 2, 65523, 0, 1, 65525, 0, 2, 65525, 0, 1, 65526, 0, 2, 65526, 0, 1, 65528, 0, 2, 65528, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 65532, 65529, 0, 65533, 65529, 0, 65534, 65529, 0, 65535, 65529, 0, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 0, 65532, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 131068, 65531, 0, 131071, 65531, 0, 196604, 65531, 0, 196607, 65531, 0, 262140, 65531, 0, 262141, 65531, 0, 262142, 65531, 0, 262143, 65531, 0, 0, 65532, 1441792, 1, 65532, 1441792, 2, 65532, 1441792, 3, 65532, 0, 4, 65532, 0, 65532, 65532, 0, 65533, 65532, 1441792, 65534, 65532, 1441792, 65535, 65532, 1441792, 65537, 65532, 0, 131072, 65532, 0, 262140, 65532, 0, 262143, 65532, 0, 0, 65533, 1441792, 1, 65533, 1441792, 2, 65533, 1441792, 3, 65533, 0, 4, 65533, 0, 65532, 65533, 0, 65533, 65533, 1441792, 65534, 65533, 1441792, 65535, 65533, 1441792, 65537, 65533, 0, 131072, 65533, 0, 262140, 65533, 0, 262143, 65533, 0, 0, 65534, 1441792, 1, 65534, 1441792, 2, 65534, 1441792, 3, 65534, 0, 4, 65534, 0, 65532, 65534, 0, 65533, 65534, 1441792, 65534, 65534, 1441792, 65535, 65534, 1441792, 131068, 65534, 0, 196604, 65534, 0, 262140, 65534, 0, 262141, 65534, 0, 262142, 65534, 0, 262143, 65534, 0, 0, 65535, 1441792, 1, 65535, 1441792, 2, 65535, 1441792, 3, 65535, 0, 4, 65535, 0, 65533, 65535, 1441792, 65534, 65535, 1441792, 65535, 65535, 1441792 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 11, 0 )
 }
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
-[node name="portalTownDungeon" parent="." index="4" instance=ExtResource( 5 )]
+[node name="The Sun" parent="Player/Lights" index="0"]
+
+light_cull_mask = -1
+
+[node name="The Sun2" parent="Player/Lights" index="1"]
+
+light_cull_mask = -1
+
+[node name="TextContainer" parent="Player" index="10" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="TextBox" parent="Player/TextContainer" index="0"]
+
+nextTextboxPath = NodePath("../../../yellowToot/Text2/TextBox")
+
+[node name="Portrait" parent="Player/TextContainer/TextBox" index="0"]
+
+texture = ExtResource( 6 )
+
+[node name="Text" parent="Player/TextContainer/TextBox" index="1"]
+
+bbcode_text = "............
+.................
+..........
+..............."
+text = "............
+.................
+..........
+..............."
+
+[node name="portalTownDungeon" parent="." index="4" instance=ExtResource( 7 )]
 
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 7.87169 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene4.tscn"
 
-[node name="NPC" parent="." index="5" instance=ExtResource( 6 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 3.2514, -2.79153 )
-
-[node name="NPC TextBox" parent="NPC" index="2"]
+[node name="greenGlasses" parent="." index="5" instance=ExtResource( 8 )]
 
 editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48445, 25.2514, -35.7915 )
 
-[node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
+[node name="Portrait" parent="greenGlasses/NPC TextBox/TextBox" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 
-[node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
+[node name="Text" parent="greenGlasses/NPC TextBox/TextBox" index="1"]
 
 bbcode_text = "congratulations!
 you beat the game!!"
 text = "congratulations!
 you beat the game!!"
 
-[node name="Sprite3D" parent="NPC" index="3"]
+[node name="Sprite3D" parent="greenGlasses" index="3"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
+
+[node name="yellowGlasses" parent="." index="6" instance=ExtResource( 8 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51555, 9.2514, -8.79153 )
+
+[node name="Portrait" parent="yellowGlasses/NPC TextBox/TextBox" index="0"]
+
+texture = ExtResource( 11 )
+
+[node name="Text" parent="yellowGlasses/NPC TextBox/TextBox" index="1"]
+
+bbcode_text = "hello newcomer, can I
+interest you in some
+3 dimensional tea?"
+text = "hello newcomer, can I
+interest you in some
+3 dimensional tea?"
+
+[node name="AbortSound" parent="yellowGlasses/NPC TextBox/TextBox" index="3"]
+
+stream = ExtResource( 12 )
+script = ExtResource( 13 )
+
+[node name="yellowToot" parent="." index="7" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48445, 3.2514, -0.79153 )
+
+[node name="NPC TextBox" parent="yellowToot" index="2"]
+
+editor/display_folded = true
+
+[node name="TextBox" parent="yellowToot/NPC TextBox" index="0"]
+
+nextTextboxPath = NodePath("../../../Player/TextContainer/TextBox")
+
+[node name="Portrait" parent="yellowToot/NPC TextBox/TextBox" index="0"]
+
+texture = ExtResource( 14 )
+
+[node name="Text" parent="yellowToot/NPC TextBox/TextBox" index="1"]
+
+bbcode_text = "hey!! you finally made it!
+"
+text = "hey!! you finally made it!
+"
+
+[node name="Sprite3D" parent="yellowToot" index="3"]
+
+texture = ExtResource( 15 )
+
+[node name="Text2" parent="yellowToot" index="4" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="TextBox" parent="yellowToot/Text2" index="0"]
+
+nextTextboxPath = NodePath("../../Text3/TextBox")
+
+[node name="Portrait" parent="yellowToot/Text2/TextBox" index="0"]
+
+texture = ExtResource( 14 )
+
+[node name="Text" parent="yellowToot/Text2/TextBox" index="1"]
+
+bbcode_text = "..........huh??
+you say you saw a giant
+woman who disappeared?"
+text = "..........huh??
+you say you saw a giant
+woman who disappeared?"
+
+[node name="Text3" parent="yellowToot" index="5" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+
+[node name="TextBox" parent="yellowToot/Text3" index="0"]
+
+nextTextboxPath = NodePath("../../Text4/TextBox")
+
+[node name="Portrait" parent="yellowToot/Text3/TextBox" index="0"]
+
+texture = ExtResource( 16 )
+
+[node name="Text" parent="yellowToot/Text3/TextBox" index="1"]
+
+bbcode_text = "hm.... we haven't seen
+a goddess in a long time"
+text = "hm.... we haven't seen
+a goddess in a long time"
+
+[node name="Text4" parent="yellowToot" index="6" instance=ExtResource( 5 )]
+
+[node name="Portrait" parent="yellowToot/Text4/TextBox" index="0"]
+
+texture = ExtResource( 14 )
+
+[node name="Text" parent="yellowToot/Text4/TextBox" index="1"]
+
+bbcode_text = "I wonder why she'd show herself to you!!!
+you haven't learned the first thing yet!!"
+text = "I wonder why she'd show herself to you!!!
+you haven't learned the first thing yet!!"
+
+[node name="AbortSound" parent="yellowToot/Text4/TextBox" index="3"]
+
+script = ExtResource( 17 )
 
 
-[editable path="NPC"]
-[editable path="NPC/NPC TextBox"]
+[editable path="Player"]
+[editable path="Player/TextContainer"]
+[editable path="greenGlasses"]
+[editable path="greenGlasses/NPC TextBox"]
+[editable path="yellowGlasses"]
+[editable path="yellowGlasses/NPC TextBox"]
+[editable path="yellowToot"]
+[editable path="yellowToot/NPC TextBox"]
+[editable path="yellowToot/Text2"]
+[editable path="yellowToot/Text3"]
+[editable path="yellowToot/Text4"]

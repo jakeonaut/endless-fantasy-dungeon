@@ -10,7 +10,7 @@ source_file="res://assets/npcs/tootorial0000.png"
 source_md5="177391faf8b48340c0f88851d5b93d0f"
 
 dest_files=[ "res://.import/tootorial0000.png-cb0268e74acde0148527e6380fa89221.stex" ]
-dest_md5="0078966e896621669bf6aa9949ccf9c7"
+dest_md5="fdbf80d1540d797cb7d8988f04dfffc6"
 
 [params]
 
@@ -22,7 +22,7 @@ flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

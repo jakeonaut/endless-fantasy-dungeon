@@ -153,6 +153,7 @@ stretch_mode = 0
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.9345, 3.4124, 10.9377 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene.tscn"
+isLocked = true
 
 [node name="portal2" parent="." index="4" instance=ExtResource( 4 )]
 
