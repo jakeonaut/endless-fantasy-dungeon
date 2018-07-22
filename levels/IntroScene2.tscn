@@ -160,7 +160,7 @@ isLocked = true
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92759, 3.4124, -10.872 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
-connectedScene = "levels/IntroScene3.tscn"
+connectedScene = "levels/IntroScene3_alttwo_easy.tscn"
 
 [node name="NPC" parent="." index="5" instance=ExtResource( 5 )]
 

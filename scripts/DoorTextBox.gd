@@ -23,10 +23,8 @@ func interact():
 		var event = get_node("Event")
 		if event:
 			event.activate()
-		global.pauseMoveInput = true
 	else:
 		self.hide()
-		global.pauseMoveInput = false
 		if !nextTextboxPath.is_empty():
 			var nextTextbox = get_node(nextTextboxPath)
 			nextTextbox.interact()
@@ -40,4 +38,3 @@ func abort():
 	self.hide()
 	abortSound.play()
 	global.activeInteractor = null
-	global.pauseMoveInput = false

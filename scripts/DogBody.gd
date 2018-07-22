@@ -66,7 +66,7 @@ func _physics_process(delta):
 		fallCounter += 1
 	
 	# jump
-	if Input.is_action_just_pressed("ui_jump"): 
+	if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
 	#is_on_floor() and Input.is_action_just_pressed("ui_jump"):
 		if form == Form.WORM:
 			wormSound.play()
@@ -88,13 +88,13 @@ func _physics_process(delta):
 	var right = view_right
 	
 	var dir = Vector3(0.0, 0.0, 0.0)
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
 		dir += right
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
 		dir -= right
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
 		dir += forward
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
 		dir -= forward
 	
 	# update x and z
