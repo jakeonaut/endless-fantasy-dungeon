@@ -7,19 +7,13 @@ export var nextTextboxPath = NodePath("")
 
 func _ready():
 	self.hide()
-	set_process_input(true)
-
-func _input_event(camera, event, click_position, click_normal, shape_idx):
-	if event is InputEventMouseButton \
-	and event.button_index == BUTTON_LEFT \
-	and event.pressed:
-		self.interact()
 		
 func interact():
 	if !self.visible:
 		text.get_v_scroll().value = 0
 		self.show()
 		dialogSound.play()
+		dialogSound.activateScript()
 		var event = get_node("Event")
 		if event:
 			event.activate()

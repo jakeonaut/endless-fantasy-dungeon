@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/DogBody.gd" type="Script" id=1]
 [ext_resource path="res://scripts/DogInteractionArea.gd" type="Script" id=2]
-[ext_resource path="res://assets/Image60000.png" type="Texture" id=3]
+[ext_resource path="res://assets/player0000.png" type="Texture" id=3]
 [ext_resource path="res://scripts/DogSprite.gd" type="Script" id=4]
 [ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=5]
 [ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/dreadmystery_firered.wav" type="AudioStream" id=12]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -152,7 +154,7 @@ double_sided = true
 alpha_cut = 2
 texture = ExtResource( 3 )
 vframes = 2
-hframes = 4
+hframes = 2
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
@@ -160,6 +162,8 @@ script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "Pause", "Region", "Transform", "Visibility" ]
 
 [node name="Lights" type="Spatial" parent="." index="3"]
+
+editor/display_folded = true
 
 [node name="The Sun" type="DirectionalLight" parent="Lights" index="0"]
 
@@ -219,6 +223,7 @@ _sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 [node name="TheCamera" type="Spatial" parent="." index="4"]
 
+editor/display_folded = true
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
@@ -248,15 +253,15 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="LandSound" type="AudioStreamPlayer" parent="." index="6"]
+[node name="JumpOverallsSound" type="AudioStreamPlayer" parent="." index="6"]
 
 stream = ExtResource( 7 )
-volume_db = -30.0
+volume_db = -20.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="BumpSound" type="AudioStreamPlayer" parent="." index="7"]
+[node name="LandSound" type="AudioStreamPlayer" parent="." index="7"]
 
 stream = ExtResource( 8 )
 volume_db = -30.0
@@ -264,7 +269,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="WormSound" type="AudioStreamPlayer" parent="." index="8"]
+[node name="BumpSound" type="AudioStreamPlayer" parent="." index="8"]
 
 stream = ExtResource( 9 )
 volume_db = -30.0
@@ -272,10 +277,26 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="WormClimbSound" type="AudioStreamPlayer" parent="." index="9"]
+[node name="WormSound" type="AudioStreamPlayer" parent="." index="9"]
 
 stream = ExtResource( 10 )
 volume_db = -30.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="WormClimbSound" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 11 )
+volume_db = -30.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
 autoplay = false
 mix_target = 0
 bus = "Master"

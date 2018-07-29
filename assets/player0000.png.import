@@ -2,28 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/player0000.png-a5ff9ce85f0980ddc22b579cd967e64b.s3tc.stex"
-path.etc2="res://.import/player0000.png-a5ff9ce85f0980ddc22b579cd967e64b.etc2.stex"
+path="res://.import/player0000.png-a5ff9ce85f0980ddc22b579cd967e64b.stex"
 
 [deps]
 
 source_file="res://assets/player0000.png"
-source_md5="7196e86f84e26dfafac019e9ef4f9840"
+source_md5="6929325b5b809892c8c4178736e70e9c"
 
-dest_files=[ "res://.import/player0000.png-a5ff9ce85f0980ddc22b579cd967e64b.s3tc.stex", "res://.import/player0000.png-a5ff9ce85f0980ddc22b579cd967e64b.etc2.stex" ]
-dest_md5="f143e623234da599abc952b35df7c18b"
+dest_files=[ "res://.import/player0000.png-a5ff9ce85f0980ddc22b579cd967e64b.stex" ]
+dest_md5="d806ab8b1e81e082df56ea1832bba8f4"
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_mode=1
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

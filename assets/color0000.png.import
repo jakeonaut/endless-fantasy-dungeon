@@ -11,7 +11,7 @@ source_file="res://assets/color0000.png"
 source_md5="961f38b6c0cef9cb9fe2a77a914e850a"
 
 dest_files=[ "res://.import/color0000.png-107adbeea8f6a4f3678c006a506e5941.s3tc.stex", "res://.import/color0000.png-107adbeea8f6a4f3678c006a506e5941.etc2.stex" ]
-dest_md5="aabbbae67ab3dc39335642f3f8bc631a"
+dest_md5="1d606776934ef344ebf79e301c4e66b3"
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=true
 flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

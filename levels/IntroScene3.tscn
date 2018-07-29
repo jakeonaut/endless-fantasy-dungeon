@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
-[ext_resource path="res://assets/bricks.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=3]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/npcs/witchgirlgoddess.png" type="Texture" id=10]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/UnlockDoor.gd" type="Script" id=12]
+
 
 [sub_resource type="Environment" id=1]
 

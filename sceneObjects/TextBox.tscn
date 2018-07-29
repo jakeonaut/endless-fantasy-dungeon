@@ -28,7 +28,7 @@ extra_spacing_space = 2
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="TextContainer" type="CanvasLayer"]
+[node name="TextContainer" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -120,6 +120,7 @@ volume_db = -10.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+script = ExtResource( 5 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="TextBox" index="3"]
 

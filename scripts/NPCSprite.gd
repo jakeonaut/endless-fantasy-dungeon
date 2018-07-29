@@ -8,6 +8,7 @@ func _ready():
 
 func _process(delta):
 	animate(delta)
+	rotate_y(delta)
 	
 func animate(delta):
 	animation_counter += delta

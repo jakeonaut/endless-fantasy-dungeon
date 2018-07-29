@@ -32,6 +32,11 @@ func _ready():
 	set_process(true)
 	set_physics_process(true)
 	
+func wearCostume():
+	var sprite = get_node("Sprite3D")
+	sprite.texture =  load("res://assets/player_overalls.png")
+	jumpSound = get_node("JumpOverallsSound")
+	
 func bugTransform():
 	var sprite = get_node("Sprite3D")
 	sprite.texture =  load("res://assets/playerBug0000.png")
