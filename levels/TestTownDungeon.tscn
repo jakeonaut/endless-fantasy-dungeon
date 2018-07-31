@@ -158,14 +158,6 @@ __meta__ = {
 
 editor/display_folded = true
 
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="The Sun2" parent="Player/Lights" index="1"]
-
-light_cull_mask = -1
-
 [node name="TextContainer" parent="Player" index="10" instance=ExtResource( 5 )]
 
 editor/display_folded = true

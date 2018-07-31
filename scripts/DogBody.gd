@@ -13,6 +13,7 @@ var climb_force = 10
 var grav = 80
 var terminal_vel = 32
 onready var camera = get_node("TheCamera") # the "camera"
+onready var mySprite = get_node("Sprite3D")
 onready var jumpSound = get_node("JumpSound")
 onready var landSound = get_node("LandSound")
 onready var bumpSound = get_node("BumpSound")
@@ -29,30 +30,19 @@ var wormClimbCountMax = 40
 var linear_velocity = Vector3()
 
 func _ready():
-	set_process(true)
 	set_physics_process(true)
 	
-func wearCostume():
-	var sprite = get_node("Sprite3D")
-	sprite.texture =  load("res://assets/player_overalls.png")
+func wearOveralls():
+	mySprite.setCostumeFrame(2) # hframe for overalls
 	jumpSound = get_node("JumpOverallsSound")
 	
-func bugTransform():
-	var sprite = get_node("Sprite3D")
-	sprite.texture =  load("res://assets/playerBug0000.png")
-	form = Form.WORM
-	
 func floorTransform():
-	var sprite = get_node("Sprite3D")
-	sprite.texture = load("res://assets/playerblue0000.png")
+	mySprite.setGlitchFrame(2) # vframe for floorGlitch
 	form = Form.FLOOR
 	
-func _process(delta):
-	#if Input.is_action_just_pressed("ui_rotate_right"):
-	#	camera.rotate_right()
-	#if Input.is_action_just_pressed("ui_rotate_left"):
-	#	camera.rotate_left()
-	pass
+func bugTransform():
+	pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
+
 	
 func _physics_process(delta):
 	var lv = linear_velocity

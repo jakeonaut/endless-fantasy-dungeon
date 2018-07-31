@@ -26,5 +26,5 @@ func interact():
 		
 func GetCostume():
 	if visible:
-		player.wearCostume()
+		player.wearOveralls()
 		visible = false
