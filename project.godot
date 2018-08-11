@@ -12,8 +12,8 @@ config_version=3
 
 config/name="crystal dungeon"
 run/main_scene="res://levels/IntroScene.tscn"
+config/icon="res://icon.png"
 name="glitch dungeon 2: lovely sweet dreams crystal"
-icon="res://icon.png"
 main_scene="res://levels/IntroScene.tscn"
 
 [autoload]

@@ -82,6 +82,7 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
@@ -91,7 +92,7 @@ _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="InteractionArea" type="Area" parent="." index="1"]
 
-input_ray_pickable = false
+input_ray_pickable = true
 input_capture_on_drag = false
 space_override = 0
 gravity_point = false
@@ -112,6 +113,7 @@ reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 script = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea" index="0"]
 
@@ -119,6 +121,8 @@ shape = SubResource( 2 )
 disabled = false
 
 [node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
+
+editor/display_folded = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 

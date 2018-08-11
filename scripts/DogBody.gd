@@ -29,7 +29,7 @@ var wormClimbCountMax = 40
 
 var linear_velocity = Vector3()
 
-func _ready():
+func ready():
 	set_physics_process(true)
 	
 func wearOveralls():

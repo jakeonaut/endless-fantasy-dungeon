@@ -1,8 +1,7 @@
 extends Area
 
-func _ready():
+func ready():
 	set_process(true)
-	set_process_input(true)
 
 func _process(delta):
 	var areas = get_overlapping_areas()

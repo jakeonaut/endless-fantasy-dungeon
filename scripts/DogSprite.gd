@@ -7,7 +7,7 @@ var costume_hframe = 0
 var myframe = 0
 onready var parent = get_parent()
 
-func _ready():
+func ready():
 	set_process(true)
 
 func _process(delta):

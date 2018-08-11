@@ -12,9 +12,19 @@ var rstep = 90
 var current_rotation = 0
 var is_rotating = false
 
-func _ready():
+func ready():
 	set_process_input(true)
 	set_process(true)
+	
+func _input(ev):
+	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT:
+		mouseDown = ev.is_pressed()
+		startClickPos = ev.position
+	elif ev is InputEventMouseMotion:
+		if mouseDown:
+			mouseDiffX = startClickPos.x - ev.position.x
+			mouseDiffY = startClickPos.y - ev.position.y
+			startClickPos = ev.position
 
 func _process(delta):
 	#var diff = abs(target_rotation - current_rotation)
@@ -44,17 +54,6 @@ func forceRotation(degrees, step):
 	# nudge it along
 	target_rotation += step
 	rotate_y(step)
-	
-	
-func _input(ev):
-	if ev is InputEventMouseButton:
-		mouseDown = ev.is_pressed()
-		startClickPos = ev.position
-	elif ev is InputEventMouseMotion:
-		if (mouseDown):
-			mouseDiffX = startClickPos.x - ev.position.x
-			mouseDiffY = startClickPos.y - ev.position.y
-			startClickPos = ev.position
 			
 func rotate_left():
 	if not is_rotating:
