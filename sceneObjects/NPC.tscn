@@ -122,8 +122,6 @@ disabled = false
 
 [node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
 
-editor/display_folded = true
-
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 
 layers = 1

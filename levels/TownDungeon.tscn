@@ -115,7 +115,6 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -130,7 +129,6 @@ anchor_bottom = 0.0
 margin_right = 1020.0
 margin_bottom = 763.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -161,6 +159,14 @@ __meta__ = {
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
 editor/display_folded = true
+
+[node name="The Sun" parent="Player/Lights" index="0"]
+
+light_cull_mask = -1
+
+[node name="The Sun2" parent="Player/Lights" index="1"]
+
+light_cull_mask = -1
 
 [node name="TextContainer" parent="Player" index="10" instance=ExtResource( 5 )]
 
@@ -214,7 +220,6 @@ texture = ExtResource( 10 )
 
 [node name="yellowGlasses" parent="." index="6" instance=ExtResource( 8 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51555, 9.2514, -8.79153 )
 
 [node name="Portrait" parent="yellowGlasses/NPC TextBox/TextBox" index="0"]

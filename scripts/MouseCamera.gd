@@ -8,6 +8,7 @@ var mouseDiffY = 0
 var real_rotation_target = 0
 var target_rotation = 0
 var rstep = 90
+var highest_rotation_step = 20
 # steps up/down to target_rotation
 var current_rotation = 0
 var is_rotating = false
@@ -17,6 +18,10 @@ func ready():
 	set_process(true)
 	
 func _input(ev):
+	if global.pauseMoveInput:
+		mouseDown = false
+		return
+		
 	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT:
 		mouseDown = ev.is_pressed()
 		startClickPos = ev.position
@@ -41,7 +46,12 @@ func _process(delta):
 		if current_rotation < target_rotation:
 			self.tryNormalizeCurrent()
 			
+	if mouseDiffX < -highest_rotation_step:
+		mouseDiffX = -highest_rotation_step
+	elif mouseDiffX > highest_rotation_step:
+		mouseDiffX = highest_rotation_step
 	rotate_y(mouseDiffX * delta)
+	
 	# rotate_x(mouseDiffY * delta)
 	mouseDiffX = 0
 	mouseDiffY = 0

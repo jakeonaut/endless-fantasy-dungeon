@@ -8,4 +8,4 @@ func _ready():
 
 func activateScript():
 	var playerCamera = get_node("../../../../Player/TheCamera")
-	playerCamera.forceRotation(360, 8)
+	playerCamera.forceRotation(360, 0)

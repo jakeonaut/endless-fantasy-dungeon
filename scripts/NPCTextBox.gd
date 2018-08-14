@@ -5,6 +5,9 @@ onready var dialogSound = get_node("DialogSound")
 onready var abortSound = get_node("AbortSound")
 export var nextTextboxPath = NodePath("")
 
+var bufferTimer = 0
+var bufferTimeLimit = 10
+
 func _ready():
 	self.hide()
 		

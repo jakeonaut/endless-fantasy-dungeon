@@ -73,7 +73,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Flags", "Metallic", "Parameters", "Proximity Fade", "Rim", "Roughness", "UV2", "Vertex Color" ]
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
 input_ray_pickable = true

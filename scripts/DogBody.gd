@@ -31,6 +31,7 @@ var linear_velocity = Vector3()
 
 func ready():
 	set_physics_process(true)
+	set_process_input(true)
 	
 func wearOveralls():
 	mySprite.setCostumeFrame(2) # hframe for overalls
@@ -43,6 +44,20 @@ func floorTransform():
 func bugTransform():
 	pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
 
+# Player needs to handle his own text boxes
+func _input(event):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		if is_activeTextboxMyChild():
+			global.activeInteractor.interact()
+			get_tree().set_input_as_handled()
+
+func is_activeTextboxMyChild():
+	var node = global.activeInteractor
+	while node and node.get_node("..") != get_tree():
+		if node == self: 
+			return true
+		node = node.get_node("..")
+	return false
 	
 func _physics_process(delta):
 	var lv = linear_velocity

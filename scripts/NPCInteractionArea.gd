@@ -31,6 +31,8 @@ func touchingPlayer():
 
 	
 func InteractActivate():
+	if not get_parent().visible: return
+	
 	if global.activeInteractor == null:
 		interactingWithPlayer = true
 	get_parent().interact()
