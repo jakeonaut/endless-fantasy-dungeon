@@ -162,14 +162,6 @@ connectedScene = "levels/IntroScene3_redGlitch.tscn"
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
 
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="The Sun2" parent="Player/Lights" index="1"]
-
-light_cull_mask = -1
-
 [node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.33363, 3.12839 )

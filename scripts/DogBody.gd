@@ -30,8 +30,9 @@ var wormClimbCountMax = 40
 var linear_velocity = Vector3()
 
 func ready():
-	set_physics_process(true)
 	set_process_input(true)
+	set_process(true)
+	set_physics_process(true)
 	
 func wearOveralls():
 	mySprite.setCostumeFrame(2) # hframe for overalls
@@ -58,6 +59,13 @@ func is_activeTextboxMyChild():
 			return true
 		node = node.get_node("..")
 	return false
+	
+func _process(delta):
+	
+	if Input.is_action_pressed("ui_rotate_right"):
+		camera.rotate_right()
+	if Input.is_action_pressed("ui_rotate_left"):
+		camera.rotate_left()
 	
 func _physics_process(delta):
 	var lv = linear_velocity

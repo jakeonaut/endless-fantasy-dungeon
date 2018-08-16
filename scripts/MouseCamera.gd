@@ -7,7 +7,7 @@ var mouseDiffY = 0
 # always either deg2rad(0, 90, 180, or 270)
 var real_rotation_target = 0
 var target_rotation = 0
-var rstep = 90
+var rstep = 5
 var highest_rotation_step = 20
 # steps up/down to target_rotation
 var current_rotation = 0
@@ -51,10 +51,14 @@ func _process(delta):
 	elif mouseDiffX > highest_rotation_step:
 		mouseDiffX = highest_rotation_step
 	rotate_y(mouseDiffX * delta)
-	
-	# rotate_x(mouseDiffY * delta)
+
 	mouseDiffX = 0
 	mouseDiffY = 0
+	
+func rotateTo(target_degrees):
+	real_rotation_target = target_degrees
+	target_rotation = deg2rad(target_degrees)
+	is_rotating = true
 	
 func forceRotation(degrees, step):
 	target_rotation += deg2rad(degrees)
@@ -64,6 +68,13 @@ func forceRotation(degrees, step):
 	# nudge it along
 	target_rotation += step
 	rotate_y(step)
+	
+func setRotationMat(rotationMat):
+	rotation_degrees = rotationMat
+	real_rotation_target = rotation_degrees.y
+	target_rotation = deg2rad(real_rotation_target)
+	current_rotation = target_rotation
+	
 			
 func rotate_left():
 	if not is_rotating:

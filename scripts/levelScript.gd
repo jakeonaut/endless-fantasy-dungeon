@@ -7,7 +7,9 @@ func _ready():
 			door.land()
 		global.lastDoor = ""
 		
+	var player = get_node("Player")
 	if global.cameraRotation != null:
-		var player = get_node("Player")
-		player.get_node("TheCamera").rotation_degrees = global.cameraRotation
+		player.get_node("TheCamera").setRotationMat(global.cameraRotation)
 		global.cameraRotation = null
+		
+	player.get_node("TheCamera").rotateTo(0)

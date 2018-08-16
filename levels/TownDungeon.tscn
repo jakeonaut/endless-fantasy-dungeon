@@ -99,7 +99,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -159,14 +159,6 @@ __meta__ = {
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="The Sun2" parent="Player/Lights" index="1"]
-
-light_cull_mask = -1
 
 [node name="TextContainer" parent="Player" index="10" instance=ExtResource( 5 )]
 
