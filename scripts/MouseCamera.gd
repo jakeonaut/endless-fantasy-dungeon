@@ -45,6 +45,8 @@ func _process(delta):
 		rotate_y(-step * delta)
 		if current_rotation < target_rotation:
 			self.tryNormalizeCurrent()
+	else:
+		self.tryNormalizeCurrent()
 			
 	if mouseDiffX < -highest_rotation_step:
 		mouseDiffX = -highest_rotation_step
@@ -89,10 +91,10 @@ func rotate_right():
 		is_rotating = true
 	
 func tryNormalizeCurrent():
-	is_rotating = false
-	if abs(target_rotation - current_rotation) < 1:
+	if is_rotating and abs(target_rotation - current_rotation) < 1:
 		self.normalizeTarget()
 		current_rotation = target_rotation
+	is_rotating = false
 	
 func normalizeTarget():
 	while target_rotation < 0:

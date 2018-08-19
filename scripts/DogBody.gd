@@ -61,7 +61,6 @@ func is_activeTextboxMyChild():
 	return false
 	
 func _process(delta):
-	
 	if Input.is_action_pressed("ui_rotate_right"):
 		camera.rotate_right()
 	if Input.is_action_pressed("ui_rotate_left"):
