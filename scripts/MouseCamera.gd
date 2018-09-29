@@ -80,14 +80,14 @@ func setRotationMat(rotationMat):
 			
 func rotate_left():
 	if not is_rotating:
-		target_rotation += deg2rad(rstep)
-		real_rotation_target = rotation_degrees.y + rstep
+		target_rotation -= deg2rad(rstep)
+		real_rotation_target = rotation_degrees.y - rstep
 		is_rotating = true
 	
 func rotate_right():
 	if not is_rotating:
-		target_rotation -= deg2rad(rstep)
-		real_rotation_target = rotation_degrees.y - rstep
+		target_rotation += deg2rad(rstep)
+		real_rotation_target = rotation_degrees.y + rstep
 		is_rotating = true
 	
 func tryNormalizeCurrent():
