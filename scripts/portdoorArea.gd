@@ -35,7 +35,7 @@ func _process(delta):
 		# initiate room transition
 		else:
 			global.lastDoor = get_parent().name
-			global.cameraRotation = player.get_node("TheCamera").rotation_degrees
+			global.cameraRotation = player.get_node("CameraY").rotation_degrees
 			if not transitioning:
 				# global transition scene
 				transition.fade_to("res://" + connectedScene)

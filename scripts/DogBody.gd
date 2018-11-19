@@ -8,22 +8,27 @@ enum Form {
 var form = Form.NORMAL
 
 var walk_speed = 8
+var lunge_speed = 16
+var is_lunging = 0
 var jump_force = 20
 var climb_force = 10
 var grav = 80
 var terminal_vel = 32
-onready var camera = get_node("TheCamera") # the "camera"
+onready var camera = get_node("CameraY") # the "camera"
 onready var mySprite = get_node("Sprite3D")
-onready var jumpSound = get_node("JumpSound")
-onready var landSound = get_node("LandSound")
-onready var bumpSound = get_node("BumpSound")
+onready var jumpSound = get_node("Sounds/JumpSound")
+onready var landSound = get_node("Sounds/LandSound")
+onready var bumpSound = get_node("Sounds/BumpSound")
 var on_ground = true
 var fallCounter = 0
 var fallCountMax = 10
 var take_fall_damage = false
 
-onready var wormSound = get_node("WormSound")
-onready var wormClimbSound = get_node("WormClimbSound")
+var facing = Vector3(0, 0, -1) #default to facing forward
+var is_walking = false
+
+onready var wormSound = get_node("Sounds/WormSound")
+onready var wormClimbSound = get_node("Sounds/WormClimbSound")
 var wormClimbCounter = 0
 var wormClimbCountMax = 40
 
@@ -36,7 +41,7 @@ func ready():
 	
 func wearOveralls():
 	mySprite.setCostumeFrame(2) # hframe for overalls
-	jumpSound = get_node("JumpOverallsSound")
+	jumpSound = get_node("Sounds/JumpOverallsSound")
 	
 func floorTransform():
 	mySprite.setGlitchFrame(2) # vframe for floorGlitch
@@ -45,7 +50,7 @@ func floorTransform():
 func bugTransform():
 	pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
 
-# Player needs to handle his own text boxes
+# Player needs to handle her own text boxes
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
 		if is_activeTextboxMyChild():
@@ -65,6 +70,10 @@ func _process(delta):
 		camera.rotate_right()
 	if Input.is_action_pressed("ui_rotate_left"):
 		camera.rotate_left()
+	if Input.is_action_pressed("ui_rotate_up"):
+		camera.rotate_up()
+	if Input.is_action_pressed("ui_rotate_down"):
+		camera.rotate_down()
 	
 func _physics_process(delta):
 	var lv = linear_velocity
@@ -82,16 +91,25 @@ func _physics_process(delta):
 		vv = -terminal_vel
 		fallCounter += 1
 	
+	var has_just_lunged = false
 	# jump
 	if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
-	#is_on_floor() and Input.is_action_just_pressed("ui_jump"):
-		if form == Form.WORM:
-			wormSound.play()
-			vv = jump_force / 4
-		else:
-			vv = jump_force
+		# Jump from the ground
+		if is_lunging == 0:
+			if form == Form.WORM:
+				wormSound.play()
+				vv = jump_force / 4
+			else:
+				vv = jump_force
+				jumpSound.play()
+			on_ground = false
+			is_lunging = 1
+		# Dash lunge
+		elif is_lunging == 1:
+			vv = jump_force / 2
 			jumpSound.play()
-		on_ground = false
+			has_just_lunged = true
+			is_lunging = 2
 	elif take_fall_damage and form != Form.FLOOR:
 		vv = jump_force
 		take_fall_damage = false
@@ -113,9 +131,14 @@ func _physics_process(delta):
 		dir += forward
 	elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
 		dir -= forward
+
+	updateFacing(dir)
 	
 	# update x and z
-	hv = dir.normalized() * walk_speed
+	if is_lunging < 2:
+		hv = dir.normalized() * walk_speed
+	if has_just_lunged:
+		hv = dir.normalized() * lunge_speed
 		
 	lv = hv + (up * vv)
 	
@@ -133,6 +156,7 @@ func _physics_process(delta):
 		wormClimbCounter = wormClimbCountMax
 	
 	if not was_on_floor and is_on_floor(): # I just landed!!
+		is_lunging = 0
 		if vv == -terminal_vel and fallCounter >= fallCountMax: # Falling fast and far
 			take_fall_damage = true
 			bumpSound.play()
@@ -142,3 +166,10 @@ func _physics_process(delta):
 		on_ground = true
 	elif form != Form.FLOOR:
 		on_ground = false
+
+func updateFacing(dir):
+	if dir.x != 0 or dir.y != 0 or dir.z != 0:
+		facing = dir
+		is_walking = true
+	else:
+		is_walking = false

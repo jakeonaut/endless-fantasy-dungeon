@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eggy.png-c8d0bb7e6d43590204e37467a7421af3.stex"
+path="res://.import/201609190250121g7CB.jpg-7c8853d9d5404a4dbdfb323ea0696385.stex"
 
 [deps]
 
-source_file="res://assets/eggy.png"
-source_md5="d347120346861100c7f4f263afe7591a"
+source_file="res://assets/DELETEME/201609190250121g7CB.jpg"
+source_md5="4d715d65a7b59b384b2de9e61c3f97f1"
 
-dest_files=[ "res://.import/eggy.png-c8d0bb7e6d43590204e37467a7421af3.stex" ]
-dest_md5="09a92c2538509fc7ff93e6e1a73308cf"
+dest_files=[ "res://.import/201609190250121g7CB.jpg-7c8853d9d5404a4dbdfb323ea0696385.stex" ]
+dest_md5="eeb34d00574d55df90ac6f4abc12ec73"
 
 [params]
 

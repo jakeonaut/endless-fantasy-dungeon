@@ -4,7 +4,9 @@ var animation_counter = 0
 var animation_count_max = 0.1
 var glitch_vframe = 0
 var costume_hframe = 0
-var myframe = 0
+export var myframe = 0
+var max_frames = 2
+
 onready var parent = get_parent()
 
 func ready():
@@ -37,8 +39,8 @@ func animate(delta):
 	if animation_counter >= animation_count_max:
 		animation_counter = 0
 		var frame = get_frame()
-		# only iterate between the set myframe and its successor (two frame walk animation)
-		if frame == myframe:
-			set_frame(myframe+1)
-		elif frame == myframe+1:
+		
+		if frame >= myframe and frame < myframe + max_frames - 1:
+			set_frame(frame+1)
+		else:
 			set_frame(myframe)

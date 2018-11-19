@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Image60000 - Copy (2).png-bd40e287b2465aff7768e850e6de1dd3.stex"
+path="res://.import/shaderduskreal.png-f514c486d25444a8e558835699872286.stex"
 
 [deps]
 
-source_file="res://assets/Image60000 - Copy (2).png"
-source_md5="c0406bfec9c8a18cf51ef8cf38c068ce"
+source_file="res://assets/DELETEME/shaderduskreal.png"
+source_md5="0f60dbd1ffca320997c3f809bbe5f8e5"
 
-dest_files=[ "res://.import/Image60000 - Copy (2).png-bd40e287b2465aff7768e850e6de1dd3.stex" ]
-dest_md5="6896695ea1058932a132f4dfd9fc8368"
+dest_files=[ "res://.import/shaderduskreal.png-f514c486d25444a8e558835699872286.stex" ]
+dest_md5="131b3c7888c4073f88f013950d077fe6"
 
 [params]
 

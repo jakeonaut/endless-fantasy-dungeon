@@ -1,15 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Object.gd" type="Script" id=1]
-[ext_resource path="res://scripts/NPCInteractionArea.gd" type="Script" id=2]
+[ext_resource path="res://scripts/FrogCatchInteractionArea.gd" type="Script" id=2]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/pickup.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/realmini.png" type="Texture" id=5]
 [ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=6]
-
-
-
-
 
 [sub_resource type="BoxShape" id=1]
 
@@ -135,7 +131,11 @@ text = "item get!!"
 [node name="DialogSound" parent="Object TextBox/TextBox" index="2"]
 
 stream = ExtResource( 4 )
-volume_db = -10.0
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="Object TextBox/TextBox" index="3"]
+
+pitch_scale = 1.0
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 

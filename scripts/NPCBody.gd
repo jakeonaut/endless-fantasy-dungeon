@@ -23,7 +23,7 @@ func is_activeTextboxMyChild():
 # from: https://www.reddit.com/r/godot/comments/8ft84k/get_clicked_object_in_3d/
 func is_self_under_mouse():
 	var RAY_LENGTH = 150
-	var TheCamera = get_node("../Player/TheCamera/Camera")
+	var TheCamera = get_node("../Player/CameraY/CameraX/Camera")
 	var LevelTiles = get_node("../Level Tiles")
 	
 	var mouse_pos = get_viewport().get_mouse_position()

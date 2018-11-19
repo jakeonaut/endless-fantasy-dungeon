@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat.png-74418c656f64bad1813a4e0137c5108d.stex"
+path="res://.import/japan-casino-696x522.jpg-5fa029106e921cbb4555a1025050250c.stex"
 
 [deps]
 
-source_file="res://assets/cat.png"
-source_md5="bbf17e9b2dc4b7dde39a97266293da7d"
+source_file="res://assets/DELETEME/japan-casino-696x522.jpg"
+source_md5="dd62134f1fbf2964cbb7079bf8eb7314"
 
-dest_files=[ "res://.import/cat.png-74418c656f64bad1813a4e0137c5108d.stex" ]
-dest_md5="ee5558b4f0f6ed13d336a98c639b7b0d"
+dest_files=[ "res://.import/japan-casino-696x522.jpg-5fa029106e921cbb4555a1025050250c.stex" ]
+dest_md5="5c9052e571797007177eef2b0f0fca0b"
 
 [params]
 

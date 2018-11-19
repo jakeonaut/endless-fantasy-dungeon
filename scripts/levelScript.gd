@@ -9,7 +9,7 @@ func _ready():
 		
 	var player = get_node("Player")
 	if global.cameraRotation != null:
-		player.get_node("TheCamera").setRotationMat(global.cameraRotation)
+		player.get_node("CameraY").setRotationMat(global.cameraRotation)
 		global.cameraRotation = null
 		
-	player.get_node("TheCamera").rotateTo(0)
+	# player.get_node("CameraY").rotateTo(45)
