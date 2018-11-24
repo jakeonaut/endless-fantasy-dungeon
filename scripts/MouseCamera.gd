@@ -98,13 +98,13 @@ func setRotationMat(rotationMat):
 	current_rotation = target_rotation
 	
 			
-func rotate_left():
+func rotate_right():
 	if not is_rotating:
 		target_rotation -= deg2rad(rstep)
 		real_rotation_target = rotation_degrees.y - rstep
 		is_rotating = true
 	
-func rotate_right():
+func rotate_left():
 	if not is_rotating:
 		target_rotation += deg2rad(rstep)
 		real_rotation_target = rotation_degrees.y + rstep

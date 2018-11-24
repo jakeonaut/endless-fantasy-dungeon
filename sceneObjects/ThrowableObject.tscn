@@ -11,7 +11,7 @@
 
 [sub_resource type="BoxShape" id=1]
 
-extents = Vector3( 1, 1, 1 )
+extents = Vector3( 0.5, 0.8, 0.5 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="SphereShape" id=2]
@@ -75,7 +75,7 @@ _sections_unfolded = [ "Flags", "Parameters" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
 input_capture_on_drag = false
-collision_layer = 1
+collision_layer = 0
 collision_mask = 1
 axis_lock_linear_x = false
 axis_lock_linear_y = false
@@ -85,13 +85,13 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
 shape = SubResource( 1 )
 disabled = false
-_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
+_sections_unfolded = [ "Pause" ]
 
 [node name="InteractionArea" type="Area" parent="." index="1"]
 

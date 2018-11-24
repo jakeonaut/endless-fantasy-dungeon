@@ -74,12 +74,12 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Flags", "Metallic", "Parameters", "Proximity Fade", "Rim", "Roughness", "UV2", "Vertex Color" ]
 
-[node name="Player" type="KinematicBody" index="0"]
+[node name="Player" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
 input_ray_pickable = true
 input_capture_on_drag = false
-collision_layer = 1
+collision_layer = 2
 collision_mask = 1
 axis_lock_linear_x = false
 axis_lock_linear_y = false
@@ -89,7 +89,7 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
@@ -166,7 +166,7 @@ myframe = 0
 
 [node name="The Sun" type="DirectionalLight" parent="Lights" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37113e-08, 1, 0, -0.999999, -4.37114e-08, 0, 10, 4.76837e-07 )
+transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -204,7 +204,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX" index="0"]
 
-transform = Transform( 0.999998, -2.46827e-08, 2.46826e-08, 0, 0.707106, 0.707105, -3.49065e-08, -0.707106, 0.707105, 0, 15, 15 )
+transform = Transform( 0.999998, -2.46827e-008, 2.46826e-008, 0, 0.707106, 0.707105, -3.49065e-008, -0.707106, 0.707105, 0, 15, 15 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -227,6 +227,7 @@ editor/display_folded = true
 
 stream = ExtResource( 6 )
 volume_db = -25.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -235,6 +236,7 @@ bus = "Master"
 
 stream = ExtResource( 7 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -243,6 +245,7 @@ bus = "Master"
 
 stream = ExtResource( 8 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -251,6 +254,7 @@ bus = "Master"
 
 stream = ExtResource( 9 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -259,6 +263,7 @@ bus = "Master"
 
 stream = ExtResource( 10 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -267,6 +272,7 @@ bus = "Master"
 
 stream = ExtResource( 11 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -275,6 +281,7 @@ bus = "Master"
 
 stream = ExtResource( 12 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
