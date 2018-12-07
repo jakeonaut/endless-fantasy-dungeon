@@ -151,19 +151,13 @@ __meta__ = {
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="The Sun2" parent="Player/Lights" index="1"]
-
-light_cull_mask = -1
+editor/display_folded = true
 
 [node name="portalTownForest" parent="." index="4" instance=ExtResource( 5 )]
 
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 7.83071 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
-connectedScene = "levels/TownDungeon.tscn"
+connectedScene = "levels/DebugTown.tscn"
 
 [node name="BUg" parent="." index="5" instance=ExtResource( 6 )]
 

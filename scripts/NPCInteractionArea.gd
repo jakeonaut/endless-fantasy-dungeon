@@ -29,9 +29,12 @@ func touchingPlayer():
 			return true
 	return false
 
+func isActive():
+	return get_parent().visible
+
 	
 func InteractActivate():
-	if not get_parent().visible: return
+	if not isActive(): return
 	
 	if global.activeInteractor == null:
 		interactingWithPlayer = true

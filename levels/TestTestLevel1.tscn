@@ -85,7 +85,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -152,10 +152,6 @@ editor/display_folded = true
 [node name="Sprite3D" parent="Player" index="2"]
 
 myframe = 4
-
-[node name="TheCamera" parent="Player" index="4"]
-
-transform = Transform( 0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, 0, 0, 0 )
 
 [node name="portdoor" parent="." index="4" instance=ExtResource( 5 )]
 

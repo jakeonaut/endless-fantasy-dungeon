@@ -93,7 +93,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -130,6 +130,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -144,6 +145,7 @@ anchor_bottom = 0.0
 margin_right = 1022.0
 margin_bottom = 769.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -154,20 +156,21 @@ stretch_mode = 0
 
 [node name="portal3" parent="." index="3" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.9345, 3.4124, 10.9377 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene3.tscn"
-isLocked = true
 
 [node name="portalTownDungeon" parent="." index="4" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92759, 3.4124, -10.872 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
-connectedScene = "levels/TownDungeon.tscn"
+connectedScene = "levels/DebugTown.tscn"
 
 [node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91818, 3.14603, 7.501 )
 
 [node name="GoddessPreview" parent="." index="6" instance=ExtResource( 6 )]
@@ -257,6 +260,7 @@ volume_db = -30.0
 script = ExtResource( 13 )
 
 
+[editable path="portal3"]
 [editable path="Player"]
 [editable path="GoddessPreview"]
 [editable path="GoddessPreview/NPC TextBox"]

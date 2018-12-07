@@ -88,7 +88,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -123,6 +123,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -137,6 +138,7 @@ anchor_bottom = 0.0
 margin_right = 1020.0
 margin_bottom = 763.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -150,7 +152,6 @@ stretch_mode = 0
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 9.58492 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene2.tscn"
-isLocked = true
 
 [node name="portal2_alt" parent="." index="4" instance=ExtResource( 4 )]
 
@@ -160,11 +161,12 @@ connectedScene = "levels/IntroScene3_redGlitch.tscn"
 
 [node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
 
 [node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.33363, 3.12839 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 3.33363, 3.12839 )
 
 [node name="CollisionShape" parent="NPC" index="0"]
 

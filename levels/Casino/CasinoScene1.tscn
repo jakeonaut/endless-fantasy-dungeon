@@ -152,7 +152,7 @@ __meta__ = {
 [node name="portalTownCasino" parent="." index="4" instance=ExtResource( 5 )]
 
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 6.95208 )
-connectedScene = "levels/TownDungeon.tscn"
+connectedScene = "levels/DebugTown.tscn"
 
 [node name="NPC" parent="." index="5" instance=ExtResource( 6 )]
 

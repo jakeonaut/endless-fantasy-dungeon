@@ -2,10 +2,10 @@ extends AudioStreamPlayer
 
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+    # Called every time the node is added to the scene.
+    # Initialization here
+    pass
 
 func activateScript():
-	var playerCamera = get_node("../../../../Player/CameraY")
-	playerCamera.forceRotation(360, 0)
+    var playerCamera = get_node("../../../../Player/CameraY")
+    playerCamera.forceRotation(360, 0)

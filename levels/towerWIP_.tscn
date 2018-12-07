@@ -17,7 +17,6 @@
 [ext_resource path="res://scripts/EventTrigger.gd" type="Script" id=15]
 [ext_resource path="res://assets/realmini.png" type="Texture" id=16]
 
-
 [sub_resource type="Environment" id=1]
 
 background_mode = 4
@@ -101,7 +100,7 @@ _sections_unfolded = [ "Background" ]
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -136,6 +135,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -150,6 +150,7 @@ anchor_bottom = 0.0
 margin_right = 1020.0
 margin_bottom = 763.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -169,27 +170,14 @@ connectedScene = "levels/IntroScene2.tscn"
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
 
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="The Sun2" parent="Player/Lights" index="1"]
-
-light_cull_mask = -1
-
 [node name="NPC" parent="." index="5" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 9.14516, -2.87161 )
-_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape" parent="NPC" index="0"]
 
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
-
-[node name="InteractionArea" parent="NPC" index="1"]
-
-editor/display_folded = false
 
 [node name="TextBox" parent="NPC/NPC TextBox" index="0"]
 
@@ -219,7 +207,6 @@ texture = ExtResource( 8 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 34.2514, -6.79153 )
 visible = false
-_sections_unfolded = [ "Visibility" ]
 
 [node name="NPC TextBox" parent="Teacher" index="2"]
 

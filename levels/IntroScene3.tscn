@@ -13,7 +13,6 @@
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scripts/UnlockDoor.gd" type="Script" id=12]
 
-
 [sub_resource type="Environment" id=1]
 
 background_mode = 4
@@ -93,7 +92,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node"]
+[node name="level" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -169,31 +168,14 @@ connectedScene = "levels/IntroScene4.tscn"
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
 
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="The Sun2" parent="Player/Lights" index="1"]
-
-light_cull_mask = -1
-
-[node name="Camera" parent="Player/TheCamera" index="0"]
-
-near = 10.0
-
 [node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.33363, 1.12839 )
-_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape" parent="NPC" index="0"]
 
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
-
-[node name="InteractionArea" parent="NPC" index="1"]
-
-editor/display_folded = false
 
 [node name="TextBox" parent="NPC/NPC TextBox" index="0"]
 
@@ -225,7 +207,6 @@ texture = ExtResource( 8 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 34.2514, -6.79153 )
 visible = false
-_sections_unfolded = [ "Visibility" ]
 
 [node name="NPC TextBox" parent="Teacher" index="2"]
 

@@ -10,21 +10,21 @@ onready var landingPad = get_node("landing-pad")
 onready var textBox = get_node("portdoorTextBox").get_node("TextBox")
 
 func _ready():
-	area.hide()
-	landingPad.hide()
-	
-	area.connectedScene = connectedScene
-	
+    area.hide()
+    landingPad.hide()
+    
+    area.connectedScene = connectedScene
+    
 func land():
-	enterSound.play()
-	player.global_transform.origin = landingPad.global_transform.origin
+    enterSound.play()
+    player.global_transform.origin = landingPad.global_transform.origin
 
 func isActive():
-	return textBox.visible
+    return textBox.visible
 
 func interact():
-	if global.activeInteractor == null:
-		global.activeInteractor = textBox
-		textBox.interact()
-	else:
-		global.activeInteractor.interact()
+    if global.activeInteractor == null:
+        global.activeInteractor = textBox
+        textBox.interact()
+    else:
+        global.activeInteractor.interact()

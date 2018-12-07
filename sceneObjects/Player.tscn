@@ -74,7 +74,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Flags", "Metallic", "Parameters", "Proximity Fade", "Rim", "Roughness", "UV2", "Vertex Color" ]
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
 input_ray_pickable = true
@@ -166,7 +166,7 @@ myframe = 0
 
 [node name="The Sun" type="DirectionalLight" parent="Lights" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
+transform = Transform( 1, 0, 0, 0, -4.37113e-08, 1, 0, -0.999999, -4.37114e-08, 0, 10, 4.76837e-07 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -204,7 +204,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX" index="0"]
 
-transform = Transform( 0.999998, -2.46827e-008, 2.46826e-008, 0, 0.707106, 0.707105, -3.49065e-008, -0.707106, 0.707105, 0, 15, 15 )
+transform = Transform( 0.999998, -2.46827e-08, 2.46826e-08, 0, 0.707106, 0.707105, -3.49065e-08, -0.707106, 0.707105, 0, 15, 15 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -219,6 +219,34 @@ near = 0.1
 far = 100.0
 _sections_unfolded = [ "Transform" ]
 
+[node name="Ambient" type="DirectionalLight" parent="CameraY/CameraX" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 0.1
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light", "Omni" ]
+
 [node name="Sounds" type="Node" parent="." index="5"]
 
 editor/display_folded = true
@@ -227,7 +255,6 @@ editor/display_folded = true
 
 stream = ExtResource( 6 )
 volume_db = -25.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -236,7 +263,6 @@ bus = "Master"
 
 stream = ExtResource( 7 )
 volume_db = -30.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -245,7 +271,6 @@ bus = "Master"
 
 stream = ExtResource( 8 )
 volume_db = -30.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -254,7 +279,6 @@ bus = "Master"
 
 stream = ExtResource( 9 )
 volume_db = -30.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -263,7 +287,6 @@ bus = "Master"
 
 stream = ExtResource( 10 )
 volume_db = -30.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -272,7 +295,6 @@ bus = "Master"
 
 stream = ExtResource( 11 )
 volume_db = -30.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -281,7 +303,6 @@ bus = "Master"
 
 stream = ExtResource( 12 )
 volume_db = 0.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
