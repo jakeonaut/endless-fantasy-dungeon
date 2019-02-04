@@ -97,9 +97,12 @@ func processJumpInputs():
         on_ground = false
 
 func processHorizontalInputs():
+    # offset from the camera ??? to be isometric
+    var angle = 45 # does this need to be in radians?
+
     # Forward as seen by the camera (OpenGL convention)
-    var view_forward = -camera.get_transform().basis.z
-    var view_right = -camera.get_transform().basis.x
+    var view_forward = -camera.get_transform().basis.z# - angle
+    var view_right = -camera.get_transform().basis.x# - angle
     # Forward as seen by the dog (???)
     var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
     var right = view_right

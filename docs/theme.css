@@ -2,6 +2,22 @@ body {
 	font-family: monospace, monospace;
 	text-align: center;
 }
+ul {
+	text-align: left;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.link {
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	border-radius: 24px;
+	padding: 1px;
+	padding-left:6px;
+	padding-right: 6px;
+	text-decoration: none;
+}
+
 .dungeon {
 	cursor: pointer;
 	background-color: black;

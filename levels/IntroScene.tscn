@@ -191,9 +191,45 @@ text = ". . . . . . . . . . . . .
 . . . .
 . . .            ... press F"
 
+[node name="DialogSound" parent="Player/TextBox/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="Player/TextBox/TextBox" index="3"]
+
+pitch_scale = 1.0
+
 [node name="Ambient" parent="Player/CameraY/CameraX" index="1"]
 
 light_cull_mask = -1
+
+[node name="JumpSound" parent="Player/Sounds" index="0"]
+
+pitch_scale = 1.0
+
+[node name="JumpOverallsSound" parent="Player/Sounds" index="1"]
+
+pitch_scale = 1.0
+
+[node name="LandSound" parent="Player/Sounds" index="2"]
+
+pitch_scale = 1.0
+
+[node name="BumpSound" parent="Player/Sounds" index="3"]
+
+pitch_scale = 1.0
+
+[node name="WormSound" parent="Player/Sounds" index="4"]
+
+pitch_scale = 1.0
+
+[node name="WormClimbSound" parent="Player/Sounds" index="5"]
+
+pitch_scale = 1.0
+
+[node name="AudioStreamPlayer" parent="Player/Sounds" index="6"]
+
+pitch_scale = 1.0
 
 [node name="NPC" parent="." index="4" instance=ExtResource( 6 )]
 
@@ -232,6 +268,14 @@ it's the first day of
 [magic academy!]
 !                ... press F"
 
+[node name="DialogSound" parent="yellow/NPC TextBox/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="yellow/NPC TextBox/TextBox" index="3"]
+
+pitch_scale = 1.0
+
 [node name="Sprite3D" parent="yellow" index="3"]
 
 texture = ExtResource( 8 )
@@ -259,6 +303,14 @@ text = ". . . . . . . . . . . . .
 . . . .
 !                ... press F"
 
+[node name="DialogSound" parent="yellow/TextBox2/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="yellow/TextBox2/TextBox" index="3"]
+
+pitch_scale = 1.0
+
 [node name="TextBox4" parent="yellow" index="5" instance=ExtResource( 4 )]
 
 editor/display_folded = true
@@ -278,6 +330,14 @@ the \"WALK\" spell!!!! just
 press \"WASD\" to cast it!
 !                ... press F"
 
+[node name="DialogSound" parent="yellow/TextBox4/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="yellow/TextBox4/TextBox" index="3"]
+
+pitch_scale = 1.0
+
 [node name="Event" type="Node" parent="yellow/TextBox4/TextBox" index="4"]
 
 script = ExtResource( 10 )
@@ -291,6 +351,7 @@ connectedScene = "levels/IntroScene2.tscn"
 
 stream = ExtResource( 12 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -299,6 +360,22 @@ bus = "Master"
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.86512, 3.2514, 0.840155 )
+
+[node name="PickupSound" parent="ThrowableObject/Sounds" index="0"]
+
+pitch_scale = 1.0
+
+[node name="ThrowSound" parent="ThrowableObject/Sounds" index="1"]
+
+pitch_scale = 1.0
+
+[node name="LandSound" parent="ThrowableObject/Sounds" index="2"]
+
+pitch_scale = 1.0
+
+[node name="BumpSound" parent="ThrowableObject/Sounds" index="3"]
+
+pitch_scale = 1.0
 
 
 [editable path="Player"]

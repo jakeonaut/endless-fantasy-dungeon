@@ -1,0 +1,60 @@
+#dialog{
+	position:absolute;
+	top: 25%;
+    left: 25%;
+	min-width: 240px;
+	min-height: 120px;
+    /*margin-left: -250px;
+    margin-top: -150px;*/
+	z-index: 9999;
+	
+	border: 1px solid black;
+	background: #cccccc;
+}
+#dialogTitle{
+	border-bottom: 1px solid black;
+	font-size: 16px;
+	padding: 5px;
+	height: 16px;
+}
+#closeDialogButton{
+	position:absolute; 
+	right: 3px; 
+	top: 3px; 
+	height: 16px; 
+	width:16px; 
+	padding: 0px;
+	cursor: pointer;
+}
+#dialogBody{
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 16px;
+	margin-bottom: 64px;
+	/*max-height: 200px;*/
+	overflow-y: auto;
+}
+#dialogButton{
+	position:absolute; 
+	right: 100px; 
+	bottom: 10px; 
+	width: 65px;
+	text-align: center;
+	font-size: 16px;
+	padding: 3px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+#dialogConfirm{
+	position:absolute; 
+	right: 20px; 
+	bottom: 10px; 
+	width: 65px;
+	text-align: center;
+	font-size: 16px;
+	padding: 3px;
+	border: 1px solid black;
+	cursor: pointer;
+	background-color: #aaaaaa;
+}

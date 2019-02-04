@@ -8,10 +8,7 @@ path.etc2="res://.import/playerblue0000.png-68662b49adff653598656d2606240379.etc
 [deps]
 
 source_file="res://assets/playerblue0000.png"
-source_md5="0be3c2387a43bc9a79e24277b4e081ed"
-
 dest_files=[ "res://.import/playerblue0000.png-68662b49adff653598656d2606240379.s3tc.stex", "res://.import/playerblue0000.png-68662b49adff653598656d2606240379.etc2.stex" ]
-dest_md5="2703e29d368df343b6271f8875428b9e"
 
 [params]
 
@@ -23,7 +20,7 @@ flags/repeat=true
 flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

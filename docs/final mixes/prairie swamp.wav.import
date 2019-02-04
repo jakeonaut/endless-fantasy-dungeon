@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/prairie swamp.wav-db381d06dcd44c1ceecc1bc8c38262b6.sample"
+
+[deps]
+
+source_file="res://docs/final mixes/prairie swamp.wav"
+source_md5="8dd59b5ab935496ca4364a1c670b5b6a"
+
+dest_files=[ "res://.import/prairie swamp.wav-db381d06dcd44c1ceecc1bc8c38262b6.sample" ]
+dest_md5="4f8915fae58c2892bacaa5fc889828d8"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

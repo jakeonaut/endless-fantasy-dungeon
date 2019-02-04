@@ -3,17 +3,35 @@
 <title>gd2</title>
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="theme.css">
+<link rel="stylesheet" type="text/css" href="dialog.css">
 <style type="text/css">
 body {
 	background: linear-gradient(#ff00ff, #00ffff);
 	color: white;
 }
+.flexContainer {
+	display: flex;
+}
+.flexChild {
+	margin-right: 64px;
+}
 </style>
+<script src="dialog.js"></script>
+<script>
+window.onload = () => {
+
+const tootorioleButton = document.getElementsByClassName("tootoriole")[0];
+tootorioleButton.onclick = (event) => {
+	Dialog.Alert("yo what up nerd", "tootoriole");
+}
+
+};
+</script>
 </head>
 
 <body>
 <br/>
-<img src="player_normal.gif" />
+<a class="link" href="./player.html"><img src="player_normal.gif" />player</a>
 <h1>glitch dungeon 2</h1>
 <h2>endless fantasy dungeon</h2>
 <h3>a game by <a href="https://jakeonaut.github.io">jakeonaut</a></h3>
@@ -23,10 +41,37 @@ body {
 </audio>
 <i>music by <a href="http://froach.club/Mario/">rio8</a></i>
 <hr>
+
+<div class="flexContainer">
+	<div class="flexChild">
+		<ul><b>goals:</b></ul>
+		<ul>
+		<li>
+			progress through the linear dungeon puzzle rooms
+			<ul>
+			<li>find cool <a class="link" href="./outfits">outfits</a> and talk to cute <a class="link" href="./npcs.html">NPCs</a> to learn and keep your spirits up!</li>
+			<li>use <a class="link" href="./glitches.html">glitches</a> to change your physics and enemy interactions</li>
+			<li>find (and reach) the exit door of each room!</li>
+			<li>use <a class="link" href="./plants.html">plants</a> and <a class="link" href="./animals.html">animals</a> with unique abilities to traverse puzzles!</li>
+			</ul>
+		</li>
+		<li>
+		</li>
+		</ul>
+	</div>
+	<div class="flexChild">
+		<a class="link tootoriole" href="#"><img src="tootoriole.gif" />tutorial</a><br/>
+		<a class="link glasses" href="#"><img src="glasses.gif" />glasses</a><br/>
+		<a class="link eyebrows" href="#"><img src="eyebrows.gif" />eyebrows</a><br/>
+		<a class="link jasmine" href="#"><img src="jasminerice.gif" />jasmine rice</a><br/>
+	</div>
+</div>
+
+<hr>
 <h3>explore!:</h3> 
 <a class="dungeon" href="./prarieswamp.html">prairie wetlands</a>
 <br/><br/>
-<a class="dungeon" href="./luckycatarcade.html">lucky cat arcade</a>
+<a class="dungeon" href="./sunsetarcade.html">sunset arcade</a>
 <a class="dungeon" href="./poisoncrystalforest.html">poison crystal forest</a>
 <br/><br/>
 <a class="dungeon" href="./demonicsuburbs.html">demonic suburbs</a>

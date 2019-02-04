@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scripts/SavePoint.gd" type="Script" id=1]
-[ext_resource path="res://scripts/SavePointInteractionArea.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/glitterdisappear_firered.wav" type="AudioStream" id=3]
+[ext_resource path="res://scripts/coin.gd" type="Script" id=1]
+[ext_resource path="res://scripts/coinPointInteractionArea.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/pickup.wav" type="AudioStream" id=3]
 
-[sub_resource type="PrismMesh" id=1]
+[sub_resource type="CylinderMesh" id=1]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-left_to_right = 0.5
-size = Vector3( -2, -2, 0.01 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
+top_radius = 0.5
+bottom_radius = 0.8
+height = 0.1
+radial_segments = 10
+rings = 4
 
 [sub_resource type="Shader" id=2]
 
@@ -20,9 +20,8 @@ render_mode unshaded;
 
 void fragment() {
     ALBEDO = vec3(1.0, 1.0, 1.0);
-    ALBEDO.bg = UV;
+    ALBEDO.gb = UV;
 }"
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="ShaderMaterial" id=3]
 
@@ -33,12 +32,14 @@ shader = SubResource( 2 )
 
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[node name="SavePoint" type="Spatial"]
+[node name="coin" type="Spatial"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, -0.1 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -51,9 +52,26 @@ lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = SubResource( 3 )
-_sections_unfolded = [ "material" ]
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
 
-[node name="InteractionArea" type="Area" parent="." index="1"]
+[node name="MeshInstance2" type="MeshInstance" parent="." index="1"]
+
+transform = Transform( 0.999962, -0.00872654, 0, -3.81449e-010, -4.37097e-008, -1, 0.00872654, 0.999962, -4.37114e-008, 0, 0, 0.1 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 3 )
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
+
+[node name="InteractionArea" type="Area" parent="." index="2"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -83,11 +101,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245172, 0 )
 shape = SubResource( 4 )
 disabled = false
 
-[node name="SaveSound" type="AudioStreamPlayer" parent="." index="2"]
+[node name="coinSound" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = ExtResource( 3 )
-volume_db = -15.0
-pitch_scale = 1.0
+volume_db = -30.0
+pitch_scale = 2.0
 autoplay = false
 mix_target = 0
 bus = "Master"
