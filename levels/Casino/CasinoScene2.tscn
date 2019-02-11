@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
-[ext_resource path="res://assets/DELETEME/japan-casino-696x522.jpg" type="Texture" id=2]
-[ext_resource path="res://levels/Casino/casinotiles.tres" type="MeshLibrary" id=3]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/cat0000.png" type="Texture" id=7]
-[ext_resource path="res://sceneObjects/coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/Casino/CasinoMusicPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/DELETEME/japan-casino-696x522.jpg" type="Texture" id=3]
+[ext_resource path="res://levels/Casino/casinotiles.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/cat0000.png" type="Texture" id=8]
+[ext_resource path="res://sceneObjects/coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/Casino/Vase.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Environment" id=1]
 
@@ -92,11 +94,13 @@ _sections_unfolded = [ "Background" ]
 
 script = ExtResource( 1 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+[node name="CasinoMusicPlayer" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 
 environment = SubResource( 1 )
 
-[node name="BackgroundControl" type="Control" parent="." index="1"]
+[node name="BackgroundControl" type="Control" parent="." index="2"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -126,12 +130,12 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 
-[node name="Level Tiles" type="GridMap" parent="." index="2"]
+[node name="Level Tiles" type="GridMap" parent="." index="3"]
 
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 cell_size = Vector3( 2, 2, 2 )
 cell_octant_size = 8
 cell_center_x = true
@@ -141,7 +145,7 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 1, 65532, 1, 1, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 1, 2, 2, 1, 3, 2, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 1, 65535, 2, 0, 0, 3, 536870912, 1, 3, 1, 65534, 3, 1, 65535, 3, 0, 0, 4, 1, 1, 4, 1, 65534, 4, 1, 65535, 4, 1, 0, 65526, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 4, 65526, 0, 5, 65526, 0, 6, 65526, 1, 65532, 65526, 1, 65533, 65526, 0, 65534, 65526, 0, 65535, 65526, 0, 65537, 65526, 0, 65538, 65526, 0, 65539, 65526, 0, 65540, 65526, 0, 65541, 65526, 0, 131069, 65526, 0, 131070, 65526, 0, 131073, 65526, 0, 131074, 65526, 0, 131075, 65526, 0, 131076, 65526, 0, 131077, 65526, 0, 196605, 65526, 0, 196606, 65526, 0, 196608, 65526, 0, 196609, 65526, 0, 196610, 65526, 0, 196611, 65526, 0, 196612, 65526, 0, 196613, 65526, 0, 262141, 65526, 0, 262142, 65526, 0, 262143, 65526, 0, 262144, 65526, 0, 262145, 65526, 0, 262146, 65526, 0, 262147, 65526, 0, 262148, 65526, 0, 262149, 65526, 0, 327677, 65526, 0, 327678, 65526, 0, 327679, 65526, 0, 327680, 65526, 0, 327681, 65526, 0, 327682, 65526, 0, 327683, 65526, 0, 327684, 65526, 0, 327685, 65526, 0, 393213, 65526, 0, 393214, 65526, 0, 393215, 65526, 536870912, 0, 65527, 0, 1, 65527, 0, 2, 65527, 536870912, 3, 65527, 0, 4, 65527, 536870912, 5, 65527, 0, 6, 65527, 1, 65532, 65527, 536870913, 65533, 65527, 0, 65534, 65527, 536870912, 65535, 65527, 536870912, 0, 65528, 0, 1, 65528, 536870912, 2, 65528, 536870912, 3, 65528, 0, 4, 65528, 0, 5, 65528, 0, 6, 65528, 536870913, 7, 65528, 1, 8, 65528, 1, 65532, 65528, 1, 65533, 65528, 0, 65534, 65528, -1610612736, 65535, 65528, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 3, 65529, 0, 4, 65529, 0, 5, 65529, 0, 6, 65529, 0, 7, 65529, 536870912, 8, 65529, 536870913, 65532, 65529, 1, 65533, 65529, 0, 65534, 65529, -1610612736, 65535, 65529, 0, 0, 65530, 536870912, 1, 65530, 536870912, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 5, 65530, 0, 6, 65530, 0, 7, 65530, 0, 8, 65530, 1, 65532, 65530, 1, 65533, 65530, 0, 65534, 65530, 536870912, 65535, 65530, 536870912, 0, 65531, 536870912, 1, 65531, 0, 2, 65531, -1610612736, 3, 65531, 0, 4, 65531, 0, 5, 65531, 0, 6, 65531, 536870913, 7, 65531, 1, 8, 65531, 1, 65532, 65531, 1073741825, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 536870912, 2, 65532, 0, 3, 65532, 1, 4, 65532, -1610612735, 5, 65532, 1, 6, 65532, 1, 65532, 65532, 1, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 536870912, 1, 65533, 0, 2, 65533, 0, 3, 65533, 1, 65532, 65533, 1, 65533, 65533, 536870912, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 536870912, 3, 65534, 536870913, 65532, 65534, 1, 65533, 65534, 0, 65534, 65534, 536870912, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 536870912, 3, 65535, 1, 65532, 65535, 536870913, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 1, 65532, 0, 1, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 1, 65532, 1, 1, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 1, 2, 2, 1, 3, 2, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 1, 65535, 2, 0, 0, 3, 0, 1, 3, 1, 65534, 3, 1, 65535, 3, 0, 0, 4, 1, 1, 4, 1, 65534, 4, 1, 65535, 4, 1, 0, 65526, 0, 1, 65526, 0, 2, 65526, 0, 3, 65526, 0, 4, 65526, 0, 5, 65526, 0, 6, 65526, 1, 65532, 65526, 1, 65533, 65526, 0, 65534, 65526, 0, 65535, 65526, 0, 65537, 65526, 0, 65538, 65526, 0, 65539, 65526, 0, 65540, 65526, 0, 65541, 65526, 0, 131069, 65526, 0, 131070, 65526, 0, 131073, 65526, 0, 131074, 65526, 0, 131075, 65526, 0, 131076, 65526, 0, 131077, 65526, 0, 196605, 65526, 0, 196606, 65526, 0, 196608, 65526, 0, 196609, 65526, 0, 196610, 65526, 0, 196611, 65526, 0, 196612, 65526, 0, 196613, 65526, 0, 262141, 65526, 0, 262142, 65526, 0, 262143, 65526, 0, 262144, 65526, 0, 262145, 65526, 0, 262146, 65526, 0, 262147, 65526, 0, 262148, 65526, 0, 262149, 65526, 0, 327677, 65526, 0, 327678, 65526, 0, 327679, 65526, 0, 327680, 65526, 0, 327681, 65526, 0, 327682, 65526, 0, 327683, 65526, 0, 327684, 65526, 0, 327685, 65526, 0, 393213, 65526, 0, 393214, 65526, 0, 393215, 65526, 0, 0, 65527, 0, 1, 65527, 0, 2, 65527, 0, 3, 65527, 0, 4, 65527, 0, 5, 65527, 0, 6, 65527, 1, 65532, 65527, 1, 65533, 65527, 0, 65534, 65527, 0, 65535, 65527, 0, 0, 65528, 0, 1, 65528, 0, 2, 65528, 0, 3, 65528, 0, 4, 65528, 0, 5, 65528, 0, 6, 65528, 1, 7, 65528, 1, 8, 65528, 1, 65532, 65528, 1, 65533, 65528, 0, 65534, 65528, 0, 65535, 65528, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 3, 65529, 0, 4, 65529, 0, 5, 65529, 0, 6, 65529, 0, 7, 65529, 0, 8, 65529, 1, 65532, 65529, 1, 65533, 65529, 0, 65534, 65529, 0, 65535, 65529, 0, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 5, 65530, 0, 6, 65530, 0, 7, 65530, 0, 8, 65530, 1, 65532, 65530, 1, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 5, 65531, 0, 6, 65531, 1, 7, 65531, 1, 8, 65531, 1, 65532, 65531, 1, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 1, 4, 65532, 1, 5, 65532, 1, 6, 65532, 1, 65532, 65532, 1, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 1, 65532, 65533, 1, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 1, 65532, 65534, 1, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 1, 65532, 65535, 1, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
@@ -149,9 +153,9 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="LevelTiles2" type="GridMap" parent="." index="3"]
+[node name="LevelTiles2" type="GridMap" parent="." index="4"]
 
-theme = ExtResource( 3 )
+theme = ExtResource( 4 )
 cell_size = Vector3( 2, 2, 2 )
 cell_octant_size = 8
 cell_center_x = false
@@ -161,7 +165,7 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 65538, 1, 0, 131070, 1, 0, 65538, 65528, 0, 131070, 65528, -1610612736, 65538, 65531, 0, 131070, 65531, 0, 65538, 65534, 0, 131070, 65534, 536870912 )
+"cells": PoolIntArray( 65538, 1, 0, 131070, 1, 0, 65538, 65528, 0, 131070, 65528, 0, 65538, 65531, 0, 131070, 65531, 0, 65538, 65534, 0, 131070, 65534, 0 )
 }
 _sections_unfolded = [ "Cell" ]
 __meta__ = {
@@ -169,14 +173,14 @@ __meta__ = {
 "_editor_floor_": Vector3( 0, 1, 0 )
 }
 
-[node name="Player" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
-[node name="portalTownCasino" parent="." index="5" instance=ExtResource( 5 )]
+[node name="portalTownCasino" parent="." index="6" instance=ExtResource( 6 )]
 
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
 connectedScene = "levels/DebugTown.tscn"
 
-[node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
+[node name="NPC" parent="." index="7" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130639, 3.5133, -15.7915 )
@@ -188,7 +192,7 @@ transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
 
@@ -211,18 +215,76 @@ pitch_scale = 1.0
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454064, 0 )
 pixel_size = 0.12
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
-[node name="coins" type="Node" parent="." index="7"]
+[node name="coins" type="Node" parent="." index="8"]
 
-[node name="coin" parent="coins" index="0" instance=ExtResource( 8 )]
+editor/display_folded = true
+
+[node name="coin" parent="coins" index="0" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin2" parent="coins" index="1" instance=ExtResource( 8 )]
+[node name="coin3" parent="coins" index="1" instance=ExtResource( 9 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -4 )
+
+[node name="coin4" parent="coins" index="2" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -4 )
+
+[node name="coin5" parent="coins" index="3" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -10 )
+
+[node name="coin6" parent="coins" index="4" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -10 )
+
+[node name="coin7" parent="coins" index="5" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -16 )
+
+[node name="coin8" parent="coins" index="6" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -16 )
+
+[node name="coin9" parent="coins" index="7" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="coin10" parent="coins" index="8" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="coin11" parent="coins" index="9" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="coin12" parent="coins" index="10" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="coin13" parent="coins" index="11" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="coin14" parent="coins" index="12" instance=ExtResource( 9 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -13 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="vases" type="Node" parent="." index="9"]
+
+[node name="Vase" parent="vases" index="0" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.2514, 2.0847 )
 
 
 [editable path="NPC"]

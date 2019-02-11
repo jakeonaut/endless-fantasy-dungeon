@@ -1,17 +1,24 @@
-extends "GameMover.gd"
+extends "res://scripts/GameMover.gd"
 
 onready var pickupSound = get_node("Sounds/PickupSound")
 onready var throwSound = get_node("Sounds/ThrowSound")
-onready var player = get_parent().get_node("Player")
+onready var shatterSound = get_node("Sounds/ShatterSound")
+onready var levelRoot = get_tree().get_root().get_node("level")
+var player = null
+
+const coin_resource = preload("res://sceneObjects/coin.tscn")
 
 var is_held = false
 var was_just_thrown = false
+var has_initially_landed = false
 
 var throw_speed = 14
 var jump_force = 10
 
 func _ready():
     set_physics_process(true)
+    print(get_tree().get_root().get_node("level").name)
+    player = levelRoot.get_node("Player")
 
 func _physics_process(delta):
     if is_held:
@@ -21,6 +28,8 @@ func _physics_process(delta):
         return
 
     .processPhysics(delta) #super
+    if not has_initially_landed and on_ground:
+        has_initially_landed = true
 
 # @override
 func processInputs():
@@ -37,8 +46,21 @@ func processInputs():
 
 # @override
 func landed():
-    .landed() #super
+    .landed() # super
     set_collision_mask_bit(1, true)
+    if not has_initially_landed:
+        has_initially_landed = true
+    else:
+        shatterSound.play()
+
+        var newCoin = coin_resource.instance()
+        # TODO(jaketrower): This node container is an ASSUMPTION!!!
+        levelRoot.get_node("coins").add_child(newCoin)
+        newCoin.translation = translation
+        newCoin.bouncing = true
+        
+        hide()
+        set_collision_mask_bit(1, false)
 
 func isActive():
     return visible

@@ -44,7 +44,7 @@ subsurf_scatter_enabled = false
 transmission_enabled = false
 refraction_enabled = false
 detail_enabled = false
-uv1_scale = Vector3( 2, 2, 2 )
+uv1_scale = Vector3( 3, 2, 5 )
 uv1_offset = Vector3( 0, 0, 0 )
 uv1_triplanar = false
 uv1_triplanar_sharpness = 1.0
@@ -54,7 +54,7 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Parameters" ]
+_sections_unfolded = [ "Albedo", "Parameters", "UV1", "UV2" ]
 
 [sub_resource type="CubeMesh" id=2]
 

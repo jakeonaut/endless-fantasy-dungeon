@@ -1,7 +1,6 @@
 extends Area
 
-# Yikes! Assumes coin is under a "coins" node directly under level root
-onready var playerArea = get_parent().get_parent().get_parent().get_node("Player/InteractionArea")
+onready var playerArea = get_tree().get_root().get_node("level").get_node("Player/InteractionArea")
 
 
 func _ready():

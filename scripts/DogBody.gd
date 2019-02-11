@@ -63,12 +63,12 @@ func _process(delta):
         camera.rotate_down()
     
 func _physics_process(delta):
-    .processPhysics(delta)
+    .processPhysics(delta) #super
 
 # @override
 func applyGravity(delta):
     if not on_ground or form != Form.FLOOR:
-        .applyGravity(delta)
+        .applyGravity(delta) #super
 
 # @override
 func processInputs():
@@ -84,13 +84,18 @@ func processJumpInputs():
             vv = jump_force
             jumpSound.play()
             on_ground = false
-            is_lunging = 1
+            is_lunging = -1
         # Dash lunge
         elif is_lunging == 1:
             vv = jump_force / 2
             jumpSound.play()
             has_just_lunged = true
             is_lunging = 2
+        # Double jump
+        elif is_lunging == -1:
+            vv = jump_force / 1.5
+            jumpSound.play()
+            is_lunging = -2
     elif take_fall_damage and form != Form.FLOOR:
         vv = jump_force
         take_fall_damage = false
@@ -135,7 +140,7 @@ func updateFacing(dir):
 # @override
 func landed():
     is_lunging = 0
-    .landed()
+    .landed() #super
 
 # @override
 func noFloorBelow():

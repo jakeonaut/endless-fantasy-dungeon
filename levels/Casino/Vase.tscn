@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/ThrowableObject.gd" type="Script" id=1]
+[ext_resource path="res://levels/Casino/Vase.gd" type="Script" id=1]
 [ext_resource path="res://scripts/ThrowableObjectInteractionArea.gd" type="Script" id=2]
 [ext_resource path="res://assets/objects0000.png" type="Texture" id=3]
 [ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=4]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/sounds/Yoshi - Egg Throw.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/OOT_Pot_Shatter.wav" type="AudioStream" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -68,9 +69,9 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Flags", "Parameters" ]
+_sections_unfolded = [ "Flags", "Parameters", "Vertex Color" ]
 
-[node name="ThrowableObject" type="KinematicBody" index="0"]
+[node name="Vase" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -85,7 +86,7 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
@@ -148,7 +149,7 @@ alpha_cut = 2
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 4
-frame = 0
+frame = 2
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 4 )
@@ -186,6 +187,15 @@ bus = "Master"
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds" index="3"]
 
 stream = ExtResource( 8 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="ShatterSound" type="AudioStreamPlayer" parent="Sounds" index="4"]
+
+stream = ExtResource( 9 )
 volume_db = -20.0
 pitch_scale = 1.0
 autoplay = false
