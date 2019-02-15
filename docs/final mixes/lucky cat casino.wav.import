@@ -10,7 +10,7 @@ source_file="res://docs/final mixes/lucky cat casino.wav"
 source_md5="1ee0ffbba5bbbd240b45f11fe81cb95e"
 
 dest_files=[ "res://.import/lucky cat casino.wav-c52324e0459a5a2199264baa7d30b7c9.sample" ]
-dest_md5="6fe021a8011185cb67e4bc90ae427aa6"
+dest_md5="2606ff9d12c562a2edcf7915054332dc"
 
 [params]
 
@@ -20,5 +20,5 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop=true
 compress/mode=0

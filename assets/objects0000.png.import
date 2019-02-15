@@ -8,7 +8,10 @@ path.etc2="res://.import/objects0000.png-3f30f695c58250235b9b645a204914f9.etc2.s
 [deps]
 
 source_file="res://assets/objects0000.png"
+source_md5="9fb9631b219fbdad89ae542073a1760f"
+
 dest_files=[ "res://.import/objects0000.png-3f30f695c58250235b9b645a204914f9.s3tc.stex", "res://.import/objects0000.png-3f30f695c58250235b9b645a204914f9.etc2.stex" ]
+dest_md5="6cff95cd3d73657cd02b6d86089dd47e"
 
 [params]
 

@@ -90,7 +90,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -177,7 +177,7 @@ __meta__ = {
 
 [node name="portalTownCasino" parent="." index="6" instance=ExtResource( 6 )]
 
-transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 6.95208 )
 connectedScene = "levels/DebugTown.tscn"
 
 [node name="NPC" parent="." index="7" instance=ExtResource( 7 )]
@@ -203,14 +203,6 @@ text = "hey!!!! are you here
 to see the boss??
 you'll need 300 G."
 
-[node name="DialogSound" parent="NPC/NPC TextBox/TextBox" index="2"]
-
-pitch_scale = 1.0
-
-[node name="AbortSound" parent="NPC/NPC TextBox/TextBox" index="3"]
-
-pitch_scale = 1.0
-
 [node name="Sprite3D" parent="NPC" index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454064, 0 )
@@ -221,70 +213,96 @@ texture = ExtResource( 8 )
 
 editor/display_folded = true
 
-[node name="coin" parent="coins" index="0" instance=ExtResource( 9 )]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="coin3" parent="coins" index="1" instance=ExtResource( 9 )]
+[node name="coin3" parent="coins" index="0" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -4 )
 
-[node name="coin4" parent="coins" index="2" instance=ExtResource( 9 )]
+[node name="coin4" parent="coins" index="1" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin5" parent="coins" index="3" instance=ExtResource( 9 )]
+[node name="coin5" parent="coins" index="2" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -10 )
 
-[node name="coin6" parent="coins" index="4" instance=ExtResource( 9 )]
+[node name="coin6" parent="coins" index="3" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -10 )
 
-[node name="coin7" parent="coins" index="5" instance=ExtResource( 9 )]
+[node name="coin7" parent="coins" index="4" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -16 )
 
-[node name="coin8" parent="coins" index="6" instance=ExtResource( 9 )]
+[node name="coin8" parent="coins" index="5" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, -16 )
 
-[node name="coin9" parent="coins" index="7" instance=ExtResource( 9 )]
+[node name="coin9" parent="coins" index="6" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin10" parent="coins" index="8" instance=ExtResource( 9 )]
+[node name="coin10" parent="coins" index="7" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin11" parent="coins" index="9" instance=ExtResource( 9 )]
+[node name="coin11" parent="coins" index="8" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin12" parent="coins" index="10" instance=ExtResource( 9 )]
+[node name="coin12" parent="coins" index="9" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin13" parent="coins" index="11" instance=ExtResource( 9 )]
+[node name="coin13" parent="coins" index="10" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="coin14" parent="coins" index="12" instance=ExtResource( 9 )]
+[node name="coin14" parent="coins" index="11" instance=ExtResource( 9 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -13 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="vases" type="Node" parent="." index="9"]
 
+editor/display_folded = true
+
 [node name="Vase" parent="vases" index="0" instance=ExtResource( 10 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.2514, 2.0847 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 2 )
+
+[node name="Vase2" parent="vases" index="1" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, 2 )
+
+[node name="Vase3" parent="vases" index="2" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -4 )
+
+[node name="Vase4" parent="vases" index="3" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, -4 )
+
+[node name="Vase5" parent="vases" index="4" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -10 )
+
+[node name="Vase6" parent="vases" index="5" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, -10 )
+
+[node name="Vase7" parent="vases" index="6" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -16 )
+
+[node name="Vase8" parent="vases" index="7" instance=ExtResource( 10 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, -16 )
 
 
 [editable path="NPC"]

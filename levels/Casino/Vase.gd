@@ -17,7 +17,6 @@ var jump_force = 10
 
 func _ready():
     set_physics_process(true)
-    print(get_tree().get_root().get_node("level").name)
     player = levelRoot.get_node("Player")
 
 func _physics_process(delta):
@@ -27,7 +26,7 @@ func _physics_process(delta):
         set_collision_mask_bit(1, false)
         return
 
-    .processPhysics(delta) #super
+    .processPhysics(delta) # super
     if not has_initially_landed and on_ground:
         has_initially_landed = true
 

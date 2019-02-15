@@ -5,37 +5,37 @@ onready var playerArea = get_parent().get_parent().get_node("Player/InteractionA
 var interactingWithPlayer = false
 
 func _ready():
-	set_process(true)
-	set_process_input(true)
-	
+    set_process(true)
+    set_process_input(true)
+    
 func _process(delta):
-	if interactingWithPlayer:
-		# Conversation finished naturally
-		if global.activeInteractor == null:
-			interactingWithPlayer = false
-		# Player walked away, or was teleported/etc.
-		elif not self.touchingPlayer():
-			global.activeInteractor.abort()
-			interactingWithPlayer = false
-			
+    if interactingWithPlayer:
+        # Conversation finished naturally
+        if global.activeInteractor == null:
+            interactingWithPlayer = false
+        # Player walked away, or was teleported/etc.
+        elif not self.touchingPlayer():
+            global.activeInteractor.abort()
+            interactingWithPlayer = false
+            
 func _input_event(camera, ev, pos, normal, shape_idx):
-	if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT:
-		print("clicked... finally3")
-		
+    if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT:
+        print("clicked... finally3")
+        
 func touchingPlayer():
-	var areas = get_overlapping_areas()
-	for area in areas:
-		if area == playerArea:
-			return true
-	return false
+    var areas = get_overlapping_areas()
+    for area in areas:
+        if area == playerArea:
+            return true
+    return false
 
 func isActive():
-	return get_parent().visible
+    return get_parent().visible
 
-	
+    
 func InteractActivate():
-	if not isActive(): return
-	
-	if global.activeInteractor == null:
-		interactingWithPlayer = true
-	get_parent().interact()
+    if not isActive(): return
+    
+    if global.activeInteractor == null:
+        interactingWithPlayer = true
+    get_parent().interact()
