@@ -66,6 +66,7 @@ distance_fade_enable = false
 [sub_resource type="CubeMesh" id=3]
 
 material = SubResource( 2 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -77,6 +78,7 @@ extents = Vector3( 1, 1, 1 )
 
 [sub_resource type="CubeMesh" id=5]
 
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 1, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -196,7 +198,7 @@ connectedScene = "GenericScene.tscn"
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
@@ -267,6 +269,7 @@ _sections_unfolded = [ "Transform", "material" ]
 
 stream = ExtResource( 3 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -290,6 +293,14 @@ texture = ExtResource( 7 )
 bbcode_text = "door is lock"
 text = "door is lock"
 _sections_unfolded = [ "BBCode", "Margin", "Size Flags", "custom_fonts" ]
+
+[node name="DialogSound" parent="portdoorTextBox/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="portdoorTextBox/TextBox" index="3"]
+
+pitch_scale = 1.0
 
 
 [editable path="portdoorTextBox"]

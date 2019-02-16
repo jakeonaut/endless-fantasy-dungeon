@@ -9,7 +9,7 @@ func _ready():
         
     if global.cameraRotation != null:
         var player = get_node("Player")
-        player.get_node("TheCamera").rotation_degrees = global.cameraRotation
+        player.get_node("CameraY").setRotationMat(global.cameraRotation)
         global.cameraRotation = null
         
     # TODO(jakeonaut): Global variable for is_game_started??

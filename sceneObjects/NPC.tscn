@@ -122,6 +122,14 @@ disabled = false
 
 [node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
 
+[node name="DialogSound" parent="NPC TextBox/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="NPC TextBox/TextBox" index="3"]
+
+pitch_scale = 1.0
+
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 
 layers = 1

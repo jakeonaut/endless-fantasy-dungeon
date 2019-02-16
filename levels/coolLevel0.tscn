@@ -92,7 +92,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -108,11 +108,11 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 4, 0, 65535, 4, 0, 262144, 65528, 2, 262145, 65528, 2, 262146, 65528, 2, 327678, 65528, 2, 327679, 65528, 2, 262144, 65529, 2, 262145, 65529, 2, 262146, 65529, 2, 327678, 65529, 2, 327679, 65529, 2, 393217, 65529, 2, 524287, 65529, 2, 720895, 65529, 2, 786433, 65529, 2, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 0, 4, 65530, 0, 5, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 262144, 65530, 2, 262145, 65530, 2, 262146, 65530, 2, 327678, 65530, 2, 327679, 65530, 2, 327680, 65530, 0, 393216, 65530, 0, 458752, 65530, 0, 524288, 65530, 2, 589824, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 5, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 262144, 65531, 2, 262145, 65531, 2, 262146, 65531, 2, 327678, 65531, 2, 327679, 65531, 2, 327681, 65531, 2, 589823, 65531, 2, 589825, 65531, 2, 786431, 65531, 2, 851969, 65531, 2, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 5, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 196612, 65532, 2, 262144, 65532, 2, 262145, 65532, 2, 262146, 65532, 2, 327678, 65532, 2, 327679, 65532, 2, 851968, 65532, 2, 851969, 65532, 2, 851970, 65532, 2, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 851968, 65533, 2, 851969, 65533, 2, 851970, 65533, 2, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 851968, 65534, 2, 851969, 65534, 2, 851970, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65537, 65535, 0, 65540, 65535, 0, 131071, 65535, 2, 131073, 65535, 2, 131076, 65535, 0, 196612, 65535, 2 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 4, 0, 65535, 4, 0, 458752, 65528, 2, 524287, 65528, 2, 458752, 65529, 2, 524287, 65529, 2, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 458752, 65530, 2, 458753, 65530, 2, 524286, 65530, 2, 524287, 65530, 2, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 458752, 65531, 2, 458753, 65531, 2, 524286, 65531, 2, 524287, 65531, 2, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65536, 65532, 2, 65537, 65532, 2, 131070, 65532, 2, 131071, 65532, 2, 327679, 65532, 2, 393216, 65532, 2, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65537, 65533, 2, 131070, 65533, 2, 196606, 65533, 2, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65537, 65534, 2, 131070, 65534, 2, 196608, 65534, 1, 393214, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65536, 65535, 2, 65537, 65535, 2, 131070, 65535, 2, 131071, 65535, 2 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 13, 0 )
+"_editor_floor_": Vector3( 0, 3, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
@@ -153,25 +153,61 @@ stretch_mode = 0
 
 [node name="portal2" parent="." index="3" instance=ExtResource( 4 )]
 
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 9.58492 )
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 9.58492 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene2.tscn"
 isLocked = true
 
 [node name="portal3" parent="." index="4" instance=ExtResource( 4 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 17.3297, -15.8962 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.3297, -15.8962 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Transform", "Visibility" ]
 connectedScene = "levels/IntroScene4.tscn"
 
 [node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 6.10637 )
+
+[node name="The Sun" parent="Player/Lights" index="0"]
+
+light_cull_mask = -1
+
+[node name="Ambient" parent="Player/CameraY/CameraX" index="1"]
+
+light_cull_mask = -1
+
+[node name="JumpSound" parent="Player/Sounds" index="0"]
+
+pitch_scale = 1.0
+
+[node name="JumpOverallsSound" parent="Player/Sounds" index="1"]
+
+pitch_scale = 1.0
+
+[node name="LandSound" parent="Player/Sounds" index="2"]
+
+pitch_scale = 1.0
+
+[node name="BumpSound" parent="Player/Sounds" index="3"]
+
+pitch_scale = 1.0
+
+[node name="WormSound" parent="Player/Sounds" index="4"]
+
+pitch_scale = 1.0
+
+[node name="WormClimbSound" parent="Player/Sounds" index="5"]
+
+pitch_scale = 1.0
+
+[node name="AudioStreamPlayer" parent="Player/Sounds" index="6"]
+
+pitch_scale = 1.0
 
 [node name="NPC" parent="." index="6" instance=ExtResource( 6 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51555, 11.3336, -6.87161 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.33363, 1.12839 )
 
 [node name="CollisionShape" parent="NPC" index="0"]
 
@@ -189,8 +225,14 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
 
-bbcode_text = "race you to the top!!!"
-text = "race you to the top!!!"
+bbcode_text = "it gets a little tricky here..
+I think you click and drag
+the mouse to 
+rotate the view???"
+text = "it gets a little tricky here..
+I think you click and drag
+the mouse to 
+rotate the view???"
 
 [node name="Sprite3D" parent="NPC" index="3"]
 
@@ -249,6 +291,14 @@ best to excellence,"
 text = "door, which i've unlocked.
 remember to try your
 best to excellence,"
+
+[node name="DialogSound" parent="Teacher/Dialog2/TextBox" index="2"]
+
+pitch_scale = 1.0
+
+[node name="AbortSound" parent="Teacher/Dialog2/TextBox" index="3"]
+
+pitch_scale = 1.0
 
 [node name="Event" type="Node" parent="Teacher/Dialog2/TextBox" index="4"]
 
