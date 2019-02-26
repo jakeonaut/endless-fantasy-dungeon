@@ -1,7 +1,5 @@
 extends Area
 
-# onready var bugNet = get_node("../Items/BugNet")
-# onready var player = get_node("..")
 
 func ready():
     set_process(true)
@@ -13,7 +11,8 @@ func _process(delta):
     if Input.is_action_just_pressed("ui_interact"):
         for area in areas:
             # TODO(jakeonaut): Only activate nearest area OR throwableObject carried
-            if area.has_method("InteractActivate") and area.isActive() and not hasInteracted:
+            # This should be written.... better :)
+            if area.has_method("InteractActivate") and area.has_method("isACtive") and area.isActive() and not hasInteracted:
                 area.InteractActivate()
                 hasInteracted = true
     

@@ -1,6 +1,7 @@
 extends "GameMover.gd"
 
 onready var camera = get_node("CameraY") # the "camera"
+onready var smallInteractionArea = get_node("SmallInteractionArea")
 onready var mySprite = get_node("Sprite3D")
 onready var jumpSound = get_node("Sounds/JumpSound")
 
@@ -74,6 +75,11 @@ func applyGravity(delta):
 func processInputs():
     processJumpInputs()
     processHorizontalInputs()
+
+    # TODO(jaketrower): Add this to other GameMover
+    if is_walking and smallInteractionArea.is_touching_a_ladder:
+        # CLIMB BABY!!!!
+        vv = jump_force / 3
 
 func processJumpInputs():
     has_just_lunged = false

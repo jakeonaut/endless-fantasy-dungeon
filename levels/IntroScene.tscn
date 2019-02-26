@@ -1,18 +1,19 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/IntroSceneScript.gd" type="Script" id=1]
-[ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/playerportrait.png" type="Texture" id=5]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=7]
-[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=8]
-[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=9]
-[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=10]
-[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/music/door.ogg" type="AudioStream" id=12]
-[ext_resource path="res://sceneObjects/ThrowableObject.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Intro/IntroMusicPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/playerportrait.png" type="Texture" id=6]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=8]
+[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=9]
+[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=10]
+[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=11]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/music/door.ogg" type="AudioStream" id=13]
+[ext_resource path="res://sceneObjects/ThrowableObject.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Environment" id=1]
 
@@ -101,9 +102,11 @@ width = 2048
 
 script = ExtResource( 1 )
 
-[node name="Level Tiles" type="GridMap" parent="." index="0"]
+[node name="IntroMusicPlayer" parent="." index="0" instance=ExtResource( 2 )]
 
-theme = ExtResource( 2 )
+[node name="Level Tiles" type="GridMap" parent="." index="1"]
+
+theme = ExtResource( 3 )
 cell_size = Vector3( 2, 2, 2 )
 cell_octant_size = 4
 cell_center_x = true
@@ -113,19 +116,19 @@ cell_scale = 1.0
 collision_layer = 1
 collision_mask = 1
 data = {
-"cells": PoolIntArray( 0, 0, -536870912, 1, 0, -536870912, 2, 0, -536870912, 3, 0, -536870912, 4, 0, -536870912, 5, 0, -536870912, 6, 0, 5, 65533, 0, -536870907, 65534, 0, -536870912, 65535, 0, -536870912, 65537, 0, -536870912, 65539, 0, -536870906, 65540, 0, -536870906, 0, 1, 0, 1, 1, -536870912, 2, 1, -536870912, 3, 1, 0, 4, 1, 0, 5, 1, -536870912, 6, 1, -536870907, 65533, 1, 5, 65534, 1, 0, 65535, 1, -536870912, 65539, 1, 6, 65540, 1, 6, 0, 2, -536870912, 1, 2, -536870912, 2, 2, -536870912, 3, 2, -536870912, 4, 2, -536870912, 5, 2, -536870912, 6, 2, -536870907, 65533, 2, -536870907, 65534, 2, 0, 65535, 2, 0, 0, 3, -536870912, 1, 3, -536870912, 2, 3, -536870912, 3, 3, 0, 4, 3, -536870912, 5, 3, 0, 6, 3, 5, 65533, 3, -536870907, 65534, 3, -536870912, 65535, 3, 0, 65540, 3, -536870912, 131071, 3, -536870912, 196607, 3, -536870912, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, -536870912, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 5, 65533, 4, 5, 65534, 4, 0, 65535, 4, 0, 0, 5, -536870907, 1, 5, 5, 2, 5, -536870907, 3, 5, -536870907, 4, 5, 5, 5, 5, 5, 6, 5, 5, 65533, 5, 5, 65534, 5, 5, 65535, 5, 5, 0, 65530, 5, 1, 65530, -536870907, 2, 65530, -536870907, 3, 65530, 5, 0, 65531, 5, 1, 65531, 0, 2, 65531, -536870912, 3, 65531, 5, 0, 65532, 5, 1, 65532, 0, 2, 65532, 0, 3, 65532, 5, 4, 65532, -536870907, 5, 65532, 5, 6, 65532, 5, 65533, 65532, -536870907, 65534, 65532, 5, 65535, 65532, 5, 0, 65533, -536870912, 1, 65533, 0, 2, 65533, -536870912, 3, 65533, -536870912, 4, 65533, 0, 5, 65533, 0, 6, 65533, 5, 65533, 65533, -536870907, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, -536870912, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, -536870912, 5, 65534, 0, 6, 65534, 5, 65533, 65534, 5, 65534, 65534, -536870912, 65535, 65534, 0, 65540, 65534, 0, 131071, 65534, 6, 131076, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 5, 65533, 65535, -536870907, 65534, 65535, 0, 65535, 65535, -536870912 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 5, 65533, 0, 5, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 65539, 0, 6, 65540, 0, 6, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 5, 65533, 1, 5, 65534, 1, 0, 65535, 1, 0, 65539, 1, 6, 65540, 1, 6, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 5, 65533, 2, 5, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 5, 65533, 3, 5, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 5, 65533, 4, 5, 65534, 4, 0, 65535, 4, 0, 0, 5, 5, 1, 5, 5, 2, 5, 5, 3, 5, 5, 4, 5, 5, 5, 5, 5, 6, 5, 5, 65533, 5, 5, 65534, 5, 5, 65535, 5, 5, 0, 65530, 5, 1, 65530, 5, 2, 65530, 5, 3, 65530, 5, 0, 65531, 5, 1, 65531, 0, 2, 65531, 0, 3, 65531, 5, 0, 65532, 5, 1, 65532, 0, 2, 65532, 0, 3, 65532, 5, 4, 65532, 5, 5, 65532, 5, 6, 65532, 5, 65533, 65532, 5, 65534, 65532, 5, 65535, 65532, 5, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 6, 65533, 5, 65533, 65533, 5, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 6, 65534, 5, 65533, 65534, 5, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, -536870912, 131071, 65534, 6, 131076, 65534, -536870910, 0, 65535, -536870912, 1, 65535, -536870912, 2, 65535, -536870912, 3, 65535, -536870912, 4, 65535, 0, 5, 65535, -536870912, 6, 65535, 5, 65533, 65535, -536870907, 65534, 65535, -536870912, 65535, 65535, -536870912 )
 }
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 1, 0 )
+"_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 
 environment = SubResource( 1 )
 
-[node name="BackgroundControl" type="Control" parent="." index="2"]
+[node name="BackgroundControl" type="Control" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -159,16 +162,12 @@ expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Material", "Theme", "Visibility" ]
 
-[node name="Player" parent="." index="3" instance=ExtResource( 3 )]
+[node name="Player" parent="." index="4" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07499, 3.14603, 6.45859 )
 
-[node name="The Sun" parent="Player/Lights" index="0"]
-
-light_cull_mask = -1
-
-[node name="TextBox" parent="Player" index="4" instance=ExtResource( 4 )]
+[node name="TextBox" parent="Player" index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
@@ -178,7 +177,7 @@ nextTextboxPath = NodePath("../../../yellow/TextBox4/TextBox")
 
 [node name="Portrait" parent="Player/TextBox/TextBox" index="0"]
 
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Text" parent="Player/TextBox/TextBox" index="1"]
 
@@ -199,48 +198,24 @@ pitch_scale = 1.0
 
 pitch_scale = 1.0
 
+[node name="The Sun" parent="Player/Lights" index="0"]
+
+light_cull_mask = -1
+
 [node name="Ambient" parent="Player/CameraY/CameraX" index="1"]
 
 light_cull_mask = -1
 
-[node name="JumpSound" parent="Player/Sounds" index="0"]
-
-pitch_scale = 1.0
-
-[node name="JumpOverallsSound" parent="Player/Sounds" index="1"]
-
-pitch_scale = 1.0
-
-[node name="LandSound" parent="Player/Sounds" index="2"]
-
-pitch_scale = 1.0
-
-[node name="BumpSound" parent="Player/Sounds" index="3"]
-
-pitch_scale = 1.0
-
-[node name="WormSound" parent="Player/Sounds" index="4"]
-
-pitch_scale = 1.0
-
-[node name="WormClimbSound" parent="Player/Sounds" index="5"]
-
-pitch_scale = 1.0
-
-[node name="AudioStreamPlayer" parent="Player/Sounds" index="6"]
-
-pitch_scale = 1.0
-
-[node name="NPC" parent="." index="4" instance=ExtResource( 6 )]
+[node name="NPC" parent="." index="5" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5434, 3.2514, 14.0089 )
 
-[node name="NPC2" parent="." index="5" instance=ExtResource( 6 )]
+[node name="NPC2" parent="." index="6" instance=ExtResource( 7 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0713, 3.2514, 7.03086 )
 
-[node name="yellow" parent="." index="6" instance=ExtResource( 6 )]
+[node name="yellow" parent="." index="7" instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
@@ -255,24 +230,24 @@ nextTextboxPath = NodePath("../../TextBox2/TextBox")
 
 [node name="Portrait" parent="yellow/NPC TextBox/TextBox" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="Text" parent="yellow/NPC TextBox/TextBox" index="1"]
 
-bbcode_text = "hey wake up, dumb ass!
+bbcode_text = "hey wake up, noob!
 it's the first day of 
 [magic academy!]
 !                ... press F"
-text = "hey wake up, dumb ass!
+text = "hey wake up, noob!
 it's the first day of 
 [magic academy!]
 !                ... press F"
 
 [node name="Sprite3D" parent="yellow" index="3"]
 
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
-[node name="TextBox2" parent="yellow" index="4" instance=ExtResource( 4 )]
+[node name="TextBox2" parent="yellow" index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
@@ -282,7 +257,7 @@ nextTextboxPath = NodePath("../../../Player/TextBox/TextBox")
 
 [node name="Portrait" parent="yellow/TextBox2/TextBox" index="0"]
 
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Text" parent="yellow/TextBox2/TextBox" index="1"]
 
@@ -303,13 +278,13 @@ pitch_scale = 1.0
 
 pitch_scale = 1.0
 
-[node name="TextBox4" parent="yellow" index="5" instance=ExtResource( 4 )]
+[node name="TextBox4" parent="yellow" index="5" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 
 [node name="Portrait" parent="yellow/TextBox4/TextBox" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="Text" parent="yellow/TextBox4/TextBox" index="1"]
 
@@ -332,23 +307,23 @@ pitch_scale = 1.0
 
 [node name="Event" type="Node" parent="yellow/TextBox4/TextBox" index="4"]
 
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
-[node name="portal1" parent="." index="7" instance=ExtResource( 11 )]
+[node name="portal1" parent="." index="8" instance=ExtResource( 12 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03998, 3.4124, -8.77596 )
 connectedScene = "levels/Intro/IntroScene2.tscn"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="9"]
 
-stream = ExtResource( 12 )
+stream = ExtResource( 13 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="ThrowableObject" parent="." index="9" instance=ExtResource( 13 )]
+[node name="ThrowableObject" parent="." index="10" instance=ExtResource( 14 )]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.86512, 3.2514, 0.840155 )

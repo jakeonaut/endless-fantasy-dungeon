@@ -3,7 +3,6 @@ extends Area
 onready var playerArea = get_parent().get_parent().get_node("Player/InteractionArea")
 
 var interactingWithPlayer = false
-var talkingWithPlayer = false
 
 func _ready():
     set_process(true)
@@ -25,8 +24,6 @@ func touchingPlayer():
 func PassiveInteractActivate():
     if not get_parent().visible: return
 
-    # if global.activeInteractor == null:
-    #	interactingWithPlayer = true
     get_parent().interact()
     if not interactingWithPlayer:
         interactingWithPlayer = true
