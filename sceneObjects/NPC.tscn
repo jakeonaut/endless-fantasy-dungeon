@@ -65,7 +65,7 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Flags", "Parameters" ]
+_sections_unfolded = [ "Albedo", "Detail", "Flags", "Metallic", "Parameters", "Refraction", "UV1", "Vertex Color" ]
 
 [node name="NPC" type="KinematicBody"]
 
@@ -86,6 +86,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
+transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]

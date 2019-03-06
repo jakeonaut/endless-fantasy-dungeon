@@ -9,32 +9,32 @@ var bufferTimer = 0
 var bufferTimeLimit = 10
 
 func _ready():
-	self.hide()
-		
+    self.hide()
+        
 func interact():
-	if !self.visible:
-		text.get_v_scroll().value = 0
-		self.show()
-		dialogSound.play()
-		dialogSound.activateScript()
-		var event = get_node("Event")
-		if event:
-			event.activate()
-		global.pauseMoveInput = true
-	else:
-		self.hide()
-		global.pauseMoveInput = false
-		if !nextTextboxPath.is_empty():
-			var nextTextbox = get_node(nextTextboxPath)
-			nextTextbox.interact()
-			global.activeInteractor = nextTextbox
-		else:
-			abortSound.play()
-			abortSound.activateScript()
-			global.activeInteractor = null
-			
+    if !self.visible:
+        text.get_v_scroll().value = 0
+        self.show()
+        dialogSound.play()
+        dialogSound.activateScript()
+        var event = get_node("Event")
+        if event:
+            event.activate()
+        global.pauseMoveInput = true
+    else:
+        self.hide()
+        global.pauseMoveInput = false
+        if !nextTextboxPath.is_empty():
+            var nextTextbox = get_node(nextTextboxPath)
+            nextTextbox.interact()
+            global.activeInteractor = nextTextbox
+        else:
+            abortSound.play()
+            abortSound.activateScript()
+            global.activeInteractor = null
+            
 func abort():
-	self.hide()
-	abortSound.play()
-	global.activeInteractor = null
-	global.pauseMoveInput = false
+    self.hide()
+    abortSound.play()
+    global.activeInteractor = null
+    global.pauseMoveInput = false

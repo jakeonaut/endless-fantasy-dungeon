@@ -1,10 +1,14 @@
 extends Node
 
+var numCoins = 0
+
 var lastDoor = ""
 var cameraRotation = null
+
 var activeInteractor = null
 var activeThrowableObject = null
 var activeSavePoint = null
+
 var pauseMoveInput = false
 
 var greyTheme = preload("res://tiles.tres")

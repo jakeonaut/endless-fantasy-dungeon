@@ -56,7 +56,7 @@ func landed():
         # TODO(jaketrower): This node container is an ASSUMPTION!!!
         levelRoot.get_node("coins").add_child(newCoin)
         newCoin.translation = translation
-        newCoin.bouncing = true
+        newCoin.activate()
         
         hide()
         set_collision_mask_bit(1, false)

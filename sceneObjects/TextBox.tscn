@@ -6,15 +6,15 @@
 [ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=4]
 [ext_resource path="res://scripts/AbortSound.gd" type="Script" id=5]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=4]
 
 offsets = PoolRealArray( 0, 0.988166 )
-colors = PoolColorArray( 0, 0.976563, 1, 1, 1, 0, 0.867188, 1 )
+colors = PoolColorArray( 0, 0.929688, 1, 1, 0.921875, 0, 1, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 
 flags = 4
-gradient = SubResource( 1 )
+gradient = SubResource( 4 )
 width = 500
 
 [sub_resource type="DynamicFont" id=3]
@@ -28,7 +28,7 @@ extra_spacing_space = 2
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[node name="TextContainer" type="CanvasLayer" index="0"]
+[node name="TextContainer" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -117,6 +117,7 @@ _sections_unfolded = [ "BBCode", "Margin", "custom_fonts" ]
 
 stream = ExtResource( 4 )
 volume_db = -10.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -126,6 +127,7 @@ script = ExtResource( 5 )
 
 stream = ExtResource( 4 )
 volume_db = -20.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"

@@ -17,6 +17,7 @@ func animate(delta):
     animation_counter += delta
     if animation_counter >= animation_count_max:
         animation_counter = 0
+        animation_count_max = rand_range(0.1, 1.0)
         var frame = get_frame()
         if frame == start_frame:
             set_frame(start_frame+1)
