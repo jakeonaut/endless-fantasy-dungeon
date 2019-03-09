@@ -16,8 +16,10 @@ func _process(delta):
         step = MIN_STEP
     rotate_y(step*delta)
 
+func activate():
+    if global.activeSavePoint != self:
+        global.activeSavePoint = self
+        saveSound.play()
+
 func isActive():
     return true
-
-func activate():
-    saveSound.play()

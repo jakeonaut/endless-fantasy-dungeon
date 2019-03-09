@@ -7,11 +7,19 @@ onready var player = get_parent().get_node("Player")
 var is_held = false
 var was_just_thrown = false
 
+var pickupCounter = 0
+var pickupCounterMax = 10
+
 var throw_speed = 14
 var jump_force = 10
 
 func _ready():
+    set_process(true)
     set_physics_process(true)
+
+func _process(delta):
+    if global.activeThrowableObject == self and pickupCounter < pickupCounterMax:
+        pickupCounter += 1
 
 func _physics_process(delta):
     if is_held:
@@ -43,11 +51,19 @@ func landed():
 func isActive():
     return visible
 
-func interact():
-    if not is_held:
+func activate():
+    # Should be able to talk while holding an object.
+    if global.activeThrowableObject == null:
+        # Pick up
         pickupSound.play()
         is_held = true
-    else:
+
+        global.activeThrowableObject = self
+        pickupCounter = 0
+    elif pickupCounter >= pickupCounterMax and global.activeThrowableObject == self:
+        # Throw!
         throwSound.play()
         is_held = false
         was_just_thrown = true
+
+        global.activeThrowableObject = null

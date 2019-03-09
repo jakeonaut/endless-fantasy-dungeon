@@ -5,9 +5,6 @@ onready var dialogSound = get_node("DialogSound")
 onready var abortSound = get_node("AbortSound")
 export var nextTextboxPath = NodePath("")
 
-var bufferTimer = 0
-var bufferTimeLimit = 10
-
 func _ready():
     self.hide()
         
@@ -17,9 +14,8 @@ func interact():
         self.show()
         dialogSound.play()
         dialogSound.activateScript()
-        var event = get_node("Event")
-        if event:
-            event.activate()
+        if has_node("Event"):
+            get_node("Event").activate()
         global.pauseMoveInput = true
     else:
         self.hide()

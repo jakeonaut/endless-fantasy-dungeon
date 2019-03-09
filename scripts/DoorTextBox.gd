@@ -20,9 +20,8 @@ func interact():
 		text.get_v_scroll().value = 0
 		self.show()
 		dialogSound.play()
-		var event = get_node("Event")
-		if event:
-			event.activate()
+		if has_node("Event"):
+            get_node("Event").activate()
 	else:
 		self.hide()
 		if !nextTextboxPath.is_empty():

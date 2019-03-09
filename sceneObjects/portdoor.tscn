@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/portdoor.gd" type="Script" id=1]
-[ext_resource path="res://scripts/portdoorArea.gd" type="Script" id=2]
+[ext_resource path="res://scripts/PassiveInteractionArea.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/LA_Stairs.wav" type="AudioStream" id=3]
 [ext_resource path="res://sceneObjects/PolyTriangle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=5]
@@ -168,6 +168,7 @@ region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Animation", "Flags", "Region", "Visibility" ]
+midLevelDir = ""
 connectedScene = "GenericScene.tscn"
 isLocked = false
 
@@ -194,7 +195,6 @@ reverb_bus_name = "Master"
 reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 script = ExtResource( 2 )
-connectedScene = "GenericScene.tscn"
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 
@@ -280,6 +280,8 @@ _sections_unfolded = [ "Animation", "Geometry", "Region" ]
 
 [node name="portdoorTextBox" parent="." index="4" instance=ExtResource( 5 )]
 
+editor/display_folded = true
+
 [node name="TextBox" parent="portdoorTextBox" index="0"]
 
 script = ExtResource( 6 )
@@ -293,14 +295,6 @@ texture = ExtResource( 7 )
 bbcode_text = "door is lock"
 text = "door is lock"
 _sections_unfolded = [ "BBCode", "Margin", "Size Flags", "custom_fonts" ]
-
-[node name="DialogSound" parent="portdoorTextBox/TextBox" index="2"]
-
-pitch_scale = 1.0
-
-[node name="AbortSound" parent="portdoorTextBox/TextBox" index="3"]
-
-pitch_scale = 1.0
 
 
 [editable path="portdoorTextBox"]
