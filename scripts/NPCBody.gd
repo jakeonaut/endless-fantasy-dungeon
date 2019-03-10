@@ -2,13 +2,33 @@ extends KinematicBody
 
 onready var textBox = get_node("NPC TextBox").get_node("TextBox")
 
+var interactingWithPlayer = false
+var touchingPlayer = false
+var wasTouchingPlayer = false
+
 func _ready():
+    set_process(true)
     set_process_input(true)
+
+func _process(delta):
+    if interactingWithPlayer:
+        # Conversation finished naturally
+        if global.activeInteractor == null:
+            interactingWithPlayer = false
+        # Player walked away, or was teleported/etc.
+        elif not touchingPlayer and not wasTouchingPlayer:
+            global.activeInteractor.abort()
+            interactingWithPlayer = false
+    # need to have this buffer variable because the PlayerInteractionArea
+    # handles the PassiveInteractActivate method, and this can occur
+    # before or after this NPC's _process event
+    wasTouchingPlayer = touchingPlayer
+    touchingPlayer = false
     
 func _input(event):
     if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
         if self.visible and (is_self_under_mouse() or is_activeTextboxMyChild()):
-            self.interact()
+            self.activate()
             get_tree().set_input_as_handled()
 
 func is_activeTextboxMyChild():
@@ -23,8 +43,8 @@ func is_activeTextboxMyChild():
 # from: https://www.reddit.com/r/godot/comments/8ft84k/get_clicked_object_in_3d/
 func is_self_under_mouse():
     var RAY_LENGTH = 150
-    var TheCamera = get_node("../Player/CameraY/CameraX/Camera")
-    var LevelTiles = get_node("../Level Tiles")
+    var player = get_tree().get_root().get_node("level/Player")
+    var TheCamera = player.getTrueCamera()
     
     var mouse_pos = get_viewport().get_mouse_position()
     var ray_from = TheCamera.project_ray_origin(mouse_pos)
@@ -47,11 +67,15 @@ func is_self_under_mouse():
     return false
 
 func isActive():
-    return textBox.visible
+    return visible
 
-func interact():
+func activate():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
+        interactingWithPlayer = true
     else:
         global.activeInteractor.interact()
+
+func passiveActivate():
+    touchingPlayer = true

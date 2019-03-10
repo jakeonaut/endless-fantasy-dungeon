@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
 func _ready():
-	pass
+    pass
 
 func activateScript():
-	# OVERRIDE ME
-	pass
+    # OVERRIDE ME
+    pass

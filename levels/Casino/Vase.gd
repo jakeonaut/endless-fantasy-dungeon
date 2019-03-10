@@ -6,7 +6,8 @@ onready var shatterSound = get_node("Sounds/ShatterSound")
 onready var levelRoot = get_tree().get_root().get_node("level")
 var player = null
 
-const coin_resource = preload("res://sceneObjects/coin.tscn")
+# TODO(jaketrower): doing stuff like this... is dangerous 
+const coin_resource = preload("res://levels/Casino/coin.tscn")
 
 var is_held = false
 var was_just_thrown = false
@@ -56,7 +57,7 @@ func landed():
         # TODO(jaketrower): This node container is an ASSUMPTION!!!
         levelRoot.get_node("coins").add_child(newCoin)
         newCoin.translation = translation
-        newCoin.activate()
+        newCoin.passiveActivate()
         
         hide()
         set_collision_mask_bit(1, false)
@@ -64,7 +65,7 @@ func landed():
 func isActive():
     return visible
 
-func interact():
+func activate():
     if not is_held:
         pickupSound.play()
         is_held = true

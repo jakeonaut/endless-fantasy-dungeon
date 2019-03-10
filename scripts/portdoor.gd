@@ -58,7 +58,7 @@ func _process(delta):
 func isActive():
     return visible
 
-func activate():
+func passiveActivate():
     if canInteractWithPlayer:
         # initiate talking if we didn't just finish it!!!
         if isLocked:
@@ -78,7 +78,7 @@ func lockTalk():
 
 func enterDoor():
     global.lastDoor = name
-    global.cameraRotation = player.get_node("CameraY").rotation_degrees
+    global.cameraRotation = player.getCamera().rotation_degrees
     global.activeInteractor = null
     if not transitioning:
         # global transition scene, see res://scripts/transition.gd

@@ -24,7 +24,7 @@ func touchingPlayer():
 func PassiveInteractActivate():
     if not get_parent().visible: return
 
-    get_parent().interact()
+    get_parent().activate()
     if not interactingWithPlayer:
         interactingWithPlayer = true
         get_parent().playCatchSound()

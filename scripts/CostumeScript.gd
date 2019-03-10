@@ -1,30 +1,25 @@
 extends KinematicBody
 
 onready var textBox = get_node("Object TextBox").get_node("TextBox")
-onready var player = get_parent().get_node("Player")
+onready var player = get_tree().get_root().get_node("level/Player")
 
 func _ready():
     set_process_input(true)
 
 func _input(event):
-    if isActive() \
+    if textBox.visible() \
     and event is InputEventMouseButton \
     and event.button_index == BUTTON_LEFT \
     and event.pressed:
-        interact()
+        activate()
 
 
 func isActive():
-    return textBox.visible
+    return visible
 
-func interact():
+func activate():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
-    else:
-        global.activeInteractor.interact()
-        visible = false
-        
-func GetCostume():
-    if visible:
         player.wearOveralls()
+        visible = false

@@ -16,5 +16,5 @@ func _ready():
         
     var player = get_node("Player")
     if global.cameraRotation != null:
-        player.get_node("CameraY").setRotationMat(global.cameraRotation)
+        player.getCamera().setRotationMat(global.cameraRotation)
         global.cameraRotation = null

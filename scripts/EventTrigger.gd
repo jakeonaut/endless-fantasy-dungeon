@@ -1,6 +1,6 @@
 extends Area
 
-onready var playerArea = get_parent().get_node("Player/InteractionArea")
+onready var playerArea = get_tree().get_root().get_node("level/Player/InteractionArea")
 
 var hasActivated = false
 

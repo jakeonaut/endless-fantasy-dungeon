@@ -6,17 +6,17 @@ func _ready():
     set_process_input(true)
 
 func _input(event):
-    if isActive() \
+    if textBox.visible \
     and event is InputEventMouseButton \
     and event.button_index == BUTTON_LEFT \
     and event.pressed:
-        interact()
+        activate()
 
 
 func isActive():
-    return textBox.visible
+    return visible
 
-func interact():
+func activate():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()

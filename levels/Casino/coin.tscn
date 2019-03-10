@@ -1,8 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scripts/coin.gd" type="Script" id=1]
-[ext_resource path="res://scripts/PassiveInteractionArea.gd" type="Script" id=2]
+[ext_resource path="res://levels/Casino/coin.gd" type="Script" id=1]
+[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/pickup.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -32,7 +33,7 @@ shader = SubResource( 2 )
 
 extents = Vector3( 0.3, 0.3, 0.3 )
 
-[node name="coin" type="Spatial"]
+[node name="coin" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]

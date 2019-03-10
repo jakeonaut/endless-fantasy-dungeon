@@ -26,6 +26,9 @@ func ready():
     set_process_input(true)
     set_process(true)
     set_physics_process(true)
+
+func getCamera(): return camera
+func getTrueCamera(): return camera.get_node("CameraX/Camera")
     
 func wearOveralls():
     mySprite.setCostumeFrame(2) # hframe for overalls

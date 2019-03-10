@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/NPCBody.gd" type="Script" id=1]
-[ext_resource path="res://scripts/NPCInteractionArea.gd" type="Script" id=2]
+[ext_resource path="res://scripts/_InteractionArea_ActivePassive.gd" type="Script" id=2]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/npcs/Imag20000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=5]
@@ -67,7 +67,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Detail", "Flags", "Metallic", "Parameters", "Refraction", "UV1", "Vertex Color" ]
 
-[node name="NPC" type="KinematicBody"]
+[node name="NPC" type="KinematicBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -123,13 +123,7 @@ disabled = false
 
 [node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
 
-[node name="DialogSound" parent="NPC TextBox/TextBox" index="2"]
-
-pitch_scale = 1.0
-
-[node name="AbortSound" parent="NPC TextBox/TextBox" index="3"]
-
-pitch_scale = 1.0
+editor/display_folded = true
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 

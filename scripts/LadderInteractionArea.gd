@@ -1,6 +1,5 @@
 extends Area
 
-var interactingWithPlayer = false
 var is_a_ladder = true
 
 func isALadder():
