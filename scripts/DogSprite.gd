@@ -2,8 +2,8 @@ extends Sprite3D
 
 var animation_counter = 0
 var animation_count_max = 0.1
-var glitch_vframe = 0
-var costume_hframe = 0
+var vframe = 0
+var hframe = 0
 export var myframe = 0
 var max_frames = 2
 
@@ -22,16 +22,16 @@ func _process(delta):
 		animation_count_max = 0.3
 	animate(delta)
 
-func setCostumeFrame(val):
-	costume_hframe = val
+func setOverallsCostume():
+	hframe = 4
+	vframe = 0
 	updateMyframe()
 
-func setGlitchFrame(val):
-	glitch_vframe = val
-	updateMyframe()
+func setFloorGlitch():
+	pass
 
 func updateMyframe():
-	myframe = (self.hframes * glitch_vframe) + costume_hframe
+	myframe = (self.hframes * vframe) + hframe
 	set_frame(myframe)
 	
 func animate(delta):

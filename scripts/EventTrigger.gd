@@ -9,9 +9,8 @@ func _ready():
 	self.visible = false
 	
 func _process(delta):
-	if touchingPlayer() and !hasActivated:
-		InteractActivate()
-		hasActivated = true
+	if touchingPlayer():
+		passiveActivate()
 			
 func touchingPlayer():
 	var areas = get_overlapping_areas()
@@ -21,6 +20,8 @@ func touchingPlayer():
 	return false
 	
 # TO BE OVERRIDDEN
-func InteractActivate():
-	var npc = get_parent().get_node("NPC")
-	npc.visible = false
+func passiveActivate():
+	if not hasActivated:
+		var npc = get_parent().get_node("NPC")
+		npc.visible = false
+		hasActivated = true

@@ -31,11 +31,11 @@ func getCamera(): return camera
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
     
 func wearOveralls():
-    mySprite.setCostumeFrame(2) # hframe for overalls
+    mySprite.setOverallsCostume()
     jumpSound = get_node("Sounds/JumpOverallsSound")
     
 func floorTransform():
-    mySprite.setGlitchFrame(2) # vframe for floorGlitch
+    mySprite.setFloorGlitch() # vframe for floorGlitch
     form = Form.FLOOR
     
 func bugTransform():

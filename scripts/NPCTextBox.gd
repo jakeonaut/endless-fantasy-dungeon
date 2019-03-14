@@ -9,7 +9,7 @@ func _ready():
     self.hide()
         
 func interact():
-    if !self.visible:
+    if !visible:
         text.get_v_scroll().value = 0
         self.show()
         dialogSound.play()
@@ -30,7 +30,7 @@ func interact():
             global.activeInteractor = null
             
 func abort():
-    self.hide()
+    hide()
     abortSound.play()
     global.activeInteractor = null
     global.pauseMoveInput = false

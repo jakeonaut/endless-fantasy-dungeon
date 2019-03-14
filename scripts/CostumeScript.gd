@@ -7,7 +7,7 @@ func _ready():
     set_process_input(true)
 
 func _input(event):
-    if textBox.visible() \
+    if textBox.visible \
     and event is InputEventMouseButton \
     and event.button_index == BUTTON_LEFT \
     and event.pressed:

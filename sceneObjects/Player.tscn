@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/DogBody.gd" type="Script" id=1]
 [ext_resource path="res://scripts/DogInteractionArea.gd" type="Script" id=2]
 [ext_resource path="res://scripts/DogSmallInteractionArea.gd" type="Script" id=3]
-[ext_resource path="res://assets/player0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/DogSprite.gd" type="Script" id=5]
 [ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=6]
 [ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=7]
@@ -23,11 +23,11 @@ extents = Vector3( 1, 1, 1 )
 
 radius = 2.0
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=3]
 
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 
 render_priority = 0
 flags_transparent = true
@@ -105,6 +105,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="InteractionArea" type="Area" parent="." index="1"]
 
+editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
@@ -135,6 +136,7 @@ disabled = false
 
 [node name="SmallInteractionArea" type="Area" parent="." index="2"]
 
+editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
@@ -160,14 +162,14 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 disabled = false
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135961, 0 )
 layers = 1
-material_override = SubResource( 3 )
+material_override = SubResource( 4 )
 cast_shadow = 1
 extra_cull_margin = 0.0
 use_in_baked_light = false
@@ -199,6 +201,8 @@ myframe = 0
 
 [node name="Lights" type="Spatial" parent="." index="4"]
 
+editor/display_folded = true
+
 [node name="The Sun" type="DirectionalLight" parent="Lights" index="0"]
 
 transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
@@ -229,12 +233,14 @@ _sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
 [node name="CameraY" type="Spatial" parent="." index="5"]
 
+editor/display_folded = true
 transform = Transform( 0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, 0, 0, 0 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CameraX" type="Spatial" parent="CameraY" index="0"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.978148, -0.207912, 0, 0.207912, 0.978148, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
@@ -350,6 +356,8 @@ mix_target = 0
 bus = "Master"
 
 [node name="Items" type="Node" parent="." index="7"]
+
+editor/display_folded = true
 
 [node name="BugNet" parent="Items" index="0" instance=ExtResource( 14 )]
 

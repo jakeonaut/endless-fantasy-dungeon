@@ -16,7 +16,7 @@ func _input(event):
 func isActive():
     return visible
 
-func activate():
+func passiveActivate():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
