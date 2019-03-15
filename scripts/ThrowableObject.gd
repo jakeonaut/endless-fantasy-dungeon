@@ -49,7 +49,10 @@ func landed():
     set_collision_mask_bit(1, true)
 
 func isActive():
-    return visible
+    # since "isActive" is used for determining when the object is "interacted" with
+    # by the player, don't count as "active" when player is holding this object.
+    # BECAUSE player will already know about it through the global var.
+    return visible and !global.activeThrowableObject
 
 func activate():
     # Should be able to talk while holding an object.

@@ -11,14 +11,13 @@ func _ready():
     set_process_input(true)
 
 func _process(delta):
-    if interactingWithPlayer:
-        # Conversation finished naturally
-        if global.activeInteractor == null:
-            interactingWithPlayer = false
-        # Player walked away, or was teleported/etc.
-        elif not touchingPlayer and not wasTouchingPlayer:
-            global.activeInteractor.abort()
-            interactingWithPlayer = false
+    # if interactingWithPlayer:
+    #     # Conversation finished naturally, Player walked away, or was teleported/etc.
+    #     if global.activeInteractor == null or not (touchingPlayer and wasTouchingPlayer):
+    #         if global.activeInteractor:
+    #             global.activeInteractor.abort()
+    #         interactingWithPlayer = false
+        
     # need to have this buffer variable because the PlayerInteractionArea
     # handles the PassiveInteractActivate method, and this can occur
     # before or after this NPC's _process event
@@ -74,8 +73,6 @@ func activate():
         global.activeInteractor = textBox
         textBox.interact()
         interactingWithPlayer = true
-    else:
-        global.activeInteractor.interact()
 
 func passiveActivate():
     touchingPlayer = true

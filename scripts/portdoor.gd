@@ -73,13 +73,10 @@ func lockTalk():
         textBox.interact()
         interactingWithPlayer = true
         canInteractWithPlayer = false
-    else:
-        global.activeInteractor.interact()
 
 func enterDoor():
     global.lastDoor = name
     global.cameraRotation = player.getCamera().rotation_degrees
-    global.activeInteractor = null
     if not transitioning:
         # global transition scene, see res://scripts/transition.gd
         transition.fade_to("res://" + connectedScene)

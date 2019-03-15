@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+    global.activeInteractor = null
     if global.lastDoor != "":
         var door = get_node(global.lastDoor)
         if door != null:

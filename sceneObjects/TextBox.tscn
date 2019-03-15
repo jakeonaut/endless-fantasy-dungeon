@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scripts/NPCTextBox.gd" type="Script" id=1]
+[ext_resource path="res://scripts/TextBox.gd" type="Script" id=1]
 [ext_resource path="res://assets/mini.png" type="Texture" id=2]
 [ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=4]

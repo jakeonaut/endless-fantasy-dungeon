@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/portdoor.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/LA_Stairs.wav" type="AudioStream" id=3]
 [ext_resource path="res://sceneObjects/PolyTriangle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/DoorTextBox.gd" type="Script" id=6]
-[ext_resource path="res://assets/npcs/tootorialgrey.png" type="Texture" id=7]
+[ext_resource path="res://assets/npcs/tootorialgrey.png" type="Texture" id=6]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -136,7 +135,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters" ]
 
-[node name="portdoor" type="Sprite3D" index="0"]
+[node name="portdoor" type="Sprite3D"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4124, -6.04792 )
 layers = 1
@@ -280,15 +279,9 @@ _sections_unfolded = [ "Animation", "Geometry", "Region" ]
 
 [node name="portdoorTextBox" parent="." index="4" instance=ExtResource( 5 )]
 
-editor/display_folded = true
-
-[node name="TextBox" parent="portdoorTextBox" index="0"]
-
-script = ExtResource( 6 )
-
 [node name="Portrait" parent="portdoorTextBox/TextBox" index="0"]
 
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="Text" parent="portdoorTextBox/TextBox" index="1"]
 
