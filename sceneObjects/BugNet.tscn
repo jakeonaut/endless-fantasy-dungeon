@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/BugNet.gd" type="Script" id=1]
 [ext_resource path="res://assets/DELETEME/bugnet0000.png" type="Texture" id=2]
-[ext_resource path="res://scripts/BugNetSprite.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -65,7 +65,7 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[node name="BugNet" type="KinematicBody"]
+[node name="BugNet" type="KinematicBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -111,6 +111,10 @@ region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Transform" ]
+frame_delay = 0.05
+should_randomize_frame_delay = false
+start_frame = 0
+max_frames = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 

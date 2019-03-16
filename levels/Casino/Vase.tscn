@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/Casino/Vase.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://assets/objects0000.png" type="Texture" id=3]
-[ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/Link - Bomb Deploy.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/Yoshi - Egg Throw.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=7]
@@ -154,6 +154,10 @@ region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
+frame_delay = 0.4
+should_randomize_frame_delay = true
+start_frame = 2
+max_frames = 2
 
 [node name="Sounds" type="Node" parent="." index="3"]
 

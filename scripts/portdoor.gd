@@ -24,6 +24,10 @@ func _ready():
     
     parseConnectedScene()
 
+func unlock():
+    isLocked = false
+    get_node("PolyTriangle").unlock()
+
 func parseConnectedScene():
     # strip ".tscn" from connectedScene if it exists, and then add ".tscn"
     # allows user to just refer to level by name and not specify ".tscn".

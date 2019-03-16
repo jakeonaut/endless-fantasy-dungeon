@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/floorSpell.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://assets/collection_sheet.png" type="Texture" id=3]
-[ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/switchglitch.wav" type="AudioStream" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -151,6 +151,10 @@ region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
+frame_delay = 0.4
+should_randomize_frame_delay = false
+start_frame = 0
+max_frames = 1
 
 [node name="TransformSound" type="AudioStreamPlayer" parent="." index="3"]
 

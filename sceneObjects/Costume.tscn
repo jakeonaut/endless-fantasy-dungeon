@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/overalls.png" type="Texture" id=4]
 [ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/sounds/pickup.wav" type="AudioStream" id=6]
-[ext_resource path="res://scripts/NPCSprite.gd" type="Script" id=7]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -91,7 +91,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters" ]
 
-[node name="Costume" type="KinematicBody"]
+[node name="Costume" type="KinematicBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -197,6 +197,10 @@ region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 7 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
+frame_delay = 0.4
+should_randomize_frame_delay = false
+start_frame = 0
+max_frames = 1
 
 
 [editable path="Object TextBox"]

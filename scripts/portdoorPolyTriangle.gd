@@ -9,3 +9,6 @@ func _ready():
 
 func _process(delta):
     rotate_y(step*delta)
+
+func unlock():
+    texture = load("res://assets/npcs/tootorial0000.png")
