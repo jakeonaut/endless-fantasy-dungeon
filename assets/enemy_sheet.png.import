@@ -7,7 +7,10 @@ path="res://.import/enemy_sheet.png-4b5640a05c54f0bccc204b48cd95eeb2.stex"
 [deps]
 
 source_file="res://assets/enemy_sheet.png"
+source_md5="0ededd301a8c58ef0aa26e50048ef8df"
+
 dest_files=[ "res://.import/enemy_sheet.png-4b5640a05c54f0bccc204b48cd95eeb2.stex" ]
+dest_md5="6bcd5f5c40e55e52f7f2c50d47229a46"
 
 [params]
 

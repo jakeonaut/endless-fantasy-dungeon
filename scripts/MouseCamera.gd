@@ -6,22 +6,37 @@ var mouseDown = false
 var startClickPos = Vector2(0, 0)
 var mouseDiffX = 0
 var mouseDiffY = 0
-# always either deg2rad(0, 90, 180, or 270)
+# real rotation target is in degrees
 var real_rotation_target = 0
 var real_rotation_target_x = 0
+# target rotation is in radians
 var target_rotation = 0
 var target_rotation_x = 0
 var rstep = 5
 var highest_rotation_step = 20
-# steps up/down to target_rotation
+# steps up/down to target_rotation (also in radians)
 var current_rotation = 0
 var current_rotation_x = 0
 var is_rotating = false
 var is_rotating_x = false
 
-func ready():
+# TODO(jaketrower): There are a lot of "same but for X" code repetition here
+# TODO(jaketrower): can we somehow consolidate them into common methods?
+func _ready():
     set_process_input(true)
     set_process(true)
+
+    # grab current rotation from position of camera,
+    # so future calculations will be accurate
+    target_rotation = self.rotation.y
+    real_rotation_target = self.rotation_degrees.y
+    self.normalizeTarget()
+    current_rotation = target_rotation
+    # same but for X
+    target_rotation_x = camera_x.rotation.x
+    real_rotation_target_x = camera_x.rotation_degrees.x
+    self.normalizeTargetX()
+    current_rotation_x = target_rotation_x
     
 func _input(ev):
     if global.pauseMoveInput:
@@ -38,8 +53,7 @@ func _input(ev):
             startClickPos = ev.position
 
 func _process(delta):
-    #var diff = abs(target_rotation - current_rotation)
-    var step = 4 #max(min(diff*6, 10), 2)
+    var step = 4
     
     if target_rotation > current_rotation:
         current_rotation += step*delta
@@ -81,6 +95,11 @@ func rotateTo(target_degrees):
     real_rotation_target = target_degrees
     target_rotation = deg2rad(target_degrees)
     is_rotating = true
+
+func rotateXTo(target_degrees):
+    real_rotation_target_x = target_degrees
+    target_rotation_x = deg2rad(target_degrees)
+    is_rotating_x = true
     
 func forceRotation(degrees, step):
     target_rotation += deg2rad(degrees)
@@ -110,17 +129,26 @@ func rotate_left():
         real_rotation_target = rotation_degrees.y + rstep
         is_rotating = true
 
+# TODO(jaketrower):
 func rotate_up():
     if not is_rotating_x:
-        target_rotation_x -= deg2rad(rstep)
-        real_rotation_target_x = camera_x.rotation_degrees.x - rstep
-        is_rotating_x = true
+        if rad2deg(target_rotation_x) > 270:
+            target_rotation_x -= deg2rad(rstep)
+            real_rotation_target_x = camera_x.rotation_degrees.x - rstep
+            is_rotating_x = true
+        else:
+            rotate_left()
 
+# TODO(jaketrower):
 func rotate_down():
     if not is_rotating_x:
-        target_rotation_x += deg2rad(rstep)
-        real_rotation_target_x = camera_x.rotation_degrees.x + rstep
-        is_rotating_x = true
+        if (rad2deg(target_rotation_x) < 360 and rad2deg(target_rotation_x) >= 270) or \
+           (rad2deg(target_rotation_x) > 0 and rad2deg(target_rotation_x) <= 90):
+            target_rotation_x += deg2rad(rstep)
+            real_rotation_target_x = camera_x.rotation_degrees.x + rstep
+            is_rotating_x = true
+        else:
+            rotate_right()
     
 func tryNormalizeCurrent():
     if is_rotating and abs(target_rotation - current_rotation) < 1:

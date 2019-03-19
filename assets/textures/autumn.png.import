@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spell.png-3e6385d3ef5b80bd8f139fd4e24fa84a.stex"
+path="res://.import/autumn.png-e4c3e7773d19ab044f0047bc1446a708.stex"
 
 [deps]
 
-source_file="res://assets/spell.png"
-source_md5="3fbf0392d155207302aea754b0872d8d"
+source_file="res://assets/textures/autumn.png"
+source_md5="ca3dd40b554263fe0036340c3f9e1c92"
 
-dest_files=[ "res://.import/spell.png-3e6385d3ef5b80bd8f139fd4e24fa84a.stex" ]
-dest_md5="c1a28044bcbf5c24ab8c42b00f7f1a74"
+dest_files=[ "res://.import/autumn.png-e4c3e7773d19ab044f0047bc1446a708.stex" ]
+dest_md5="6eeac82f3e4f305e6ac27a624e8c7de3"
 
 [params]
 

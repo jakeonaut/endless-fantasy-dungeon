@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/overalls.png-30c112726ffa2ed6c1a34d67149d64aa.stex"
+path="res://.import/grass.png-44de1b601ed5e0482c9aa195977ab90c.stex"
 
 [deps]
 
-source_file="res://assets/overalls.png"
-source_md5="d7a50637af1f809418a518c9f07fa4c4"
+source_file="res://assets/textures/grass.png"
+source_md5="71a421be4d16922f3386f10ee33f8569"
 
-dest_files=[ "res://.import/overalls.png-30c112726ffa2ed6c1a34d67149d64aa.stex" ]
-dest_md5="055d907d8ae0756a5512c7902c4d296e"
+dest_files=[ "res://.import/grass.png-44de1b601ed5e0482c9aa195977ab90c.stex" ]
+dest_md5="a27c91a50e8192f42edb855d2aec9a35"
 
 [params]
 
@@ -20,9 +20,9 @@ compress/hdr_mode=1
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

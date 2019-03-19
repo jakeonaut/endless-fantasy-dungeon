@@ -8,7 +8,10 @@ path.etc2="res://.import/goddessportrait.png-c61c1bca4c5296fe1ba799195ae08713.et
 [deps]
 
 source_file="res://assets/npcs/goddessportrait.png"
+source_md5="de3252bfcc86e4bb055644f6d1132970"
+
 dest_files=[ "res://.import/goddessportrait.png-c61c1bca4c5296fe1ba799195ae08713.s3tc.stex", "res://.import/goddessportrait.png-c61c1bca4c5296fe1ba799195ae08713.etc2.stex" ]
+dest_md5="b2ecd942614917136406bde889ad7cb1"
 
 [params]
 

@@ -7,7 +7,10 @@ path="res://.import/eyebrowsport.png-799aab1265f2fb48a4535182469e488e.stex"
 [deps]
 
 source_file="res://assets/npcs/eyebrowsport.png"
+source_md5="e8ffe1c1ef03408e0fc4b8344eae42d9"
+
 dest_files=[ "res://.import/eyebrowsport.png-799aab1265f2fb48a4535182469e488e.stex" ]
+dest_md5="a3ad0fbac8816dc3852ab3e45b66d0de"
 
 [params]
 

@@ -11,12 +11,11 @@ onready var player = get_tree().get_root().get_node("level/Player")
 onready var landingPad = get_node("landing-pad")
 onready var textBox = get_node("portdoorTextBox").get_node("TextBox")
 
-var interactingWithPlayer = false
 var canInteractWithPlayer = true
+
 var transitioning = false
 
 func _ready():
-    set_process(true)
     add_to_group("doors")
 
     area.hide()
@@ -46,19 +45,6 @@ func parseConnectedScene():
             dir += "/" + midLevelDir
         connectedScene = dir + "/" + connectedScene
 
-func _process(delta):
-    # If we're already talking...
-    if interactingWithPlayer:
-        # Conversation finished naturally
-        if global.activeInteractor == null:
-            interactingWithPlayer = false
-        # Player walked away, or was teleported/etc.
-        #elif not self.touchingPlayer():
-        #    global.activeInteractor.abort()
-        #    interactingWithPlayer = false 
-    else: # no longer touching player
-        canInteractWithPlayer = true
-
 func isActive():
     return visible
 
@@ -71,11 +57,13 @@ func passiveActivate():
         else:
             enterDoor()
 
+func stopPassiveActivate():
+    canInteractWithPlayer = true
+
 func lockTalk():    
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
-        interactingWithPlayer = true
         canInteractWithPlayer = false
 
 func enterDoor():

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spell.png-3e6385d3ef5b80bd8f139fd4e24fa84a.stex"
+path="res://.import/halloweentokyo.png-ac4d472e83a5bccd21768c11532a279d.stex"
 
 [deps]
 
-source_file="res://assets/spell.png"
-source_md5="3fbf0392d155207302aea754b0872d8d"
+source_file="res://assets/textures/halloweentokyo.png"
+source_md5="0db6f370e01843fff78d51b18fe2774c"
 
-dest_files=[ "res://.import/spell.png-3e6385d3ef5b80bd8f139fd4e24fa84a.stex" ]
-dest_md5="c1a28044bcbf5c24ab8c42b00f7f1a74"
+dest_files=[ "res://.import/halloweentokyo.png-ac4d472e83a5bccd21768c11532a279d.stex" ]
+dest_md5="476c45a111659d68d5f0c8d18d8982df"
 
 [params]
 

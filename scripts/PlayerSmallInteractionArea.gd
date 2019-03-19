@@ -2,7 +2,7 @@ extends Area
 
 var is_touching_a_ladder = false
 
-func ready():
+func _ready():
     set_process(true)
 
 func _process(delta):

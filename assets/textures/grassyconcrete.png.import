@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spell.png-3e6385d3ef5b80bd8f139fd4e24fa84a.stex"
+path="res://.import/grassyconcrete.png-9643b751d1e8a095e6b5fc8132cf5507.stex"
 
 [deps]
 
-source_file="res://assets/spell.png"
-source_md5="3fbf0392d155207302aea754b0872d8d"
+source_file="res://assets/textures/grassyconcrete.png"
+source_md5="15091236bd472b3fb780a18199d765a6"
 
-dest_files=[ "res://.import/spell.png-3e6385d3ef5b80bd8f139fd4e24fa84a.stex" ]
-dest_md5="c1a28044bcbf5c24ab8c42b00f7f1a74"
+dest_files=[ "res://.import/grassyconcrete.png-9643b751d1e8a095e6b5fc8132cf5507.stex" ]
+dest_md5="e14969fea96122669c897687b6b6c994"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

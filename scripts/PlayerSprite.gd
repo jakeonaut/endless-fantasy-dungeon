@@ -4,7 +4,7 @@ var vframe = 0
 var hframe = 0
 onready var parent = get_parent()
 
-func ready():
+func _ready():
 	set_process(true)
 
 func _process(delta):

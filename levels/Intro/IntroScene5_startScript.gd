@@ -5,3 +5,4 @@ func _ready():
         
     var player = get_node("Player")
     player.getCamera().rotateTo(0)
+    player.getCamera().rotateXTo(-45) # I think!

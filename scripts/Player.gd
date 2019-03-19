@@ -18,11 +18,13 @@ var lunge_speed = 16
 var is_lunging = 0
 var jump_force = 20
 var has_just_lunged = false
+var has_just_jumped_timer = 0
+var has_just_jumped_time_limit = 10
 var is_walking = false
 var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
 
-func ready():
+func _ready():
     set_process_input(true)
     set_process(true)
     set_physics_process(true)
@@ -94,42 +96,45 @@ func processJumpInputs():
             jumpSound.play()
             on_ground = false
             is_lunging = -1
+            has_just_jumped_timer = 0
         # Dash lunge
         elif is_lunging == 1:
             vv = jump_force / 2
             jumpSound.play()
             has_just_lunged = true
             is_lunging = 2
+            has_just_jumped_timer = 0
         # Double jump
         elif is_lunging == -1:
             vv = jump_force / 1.5
             jumpSound.play()
             is_lunging = -2
+            has_just_jumped_timer = 0
     elif take_fall_damage and form != Form.FLOOR:
         vv = jump_force
         take_fall_damage = false
         on_ground = false
 
 func processHorizontalInputs():
-    # offset from the camera ??? to be isometric
-    var angle = 45 # does this need to be in radians?
-
     # Forward as seen by the camera (OpenGL convention)
-    var view_forward = -camera.get_transform().basis.z# - angle
-    var view_right = -camera.get_transform().basis.x# - angle
-    # Forward as seen by the dog (???)
+    var view_forward = -camera.get_transform().basis.z
+    var view_right = -camera.get_transform().basis.x
+    # Forward as seen by the player
     var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
     var right = view_right
     
-    dir = Vector3(0.0, 0.0, 0.0)
-    if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
-        dir += right
-    elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
-        dir -= right
-    if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
-        dir += forward
-    elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
-        dir -= forward
+    if on_ground or has_just_jumped_timer < has_just_jumped_time_limit:
+        has_just_jumped_timer += 1
+        
+        dir = Vector3(0.0, 0.0, 0.0)
+        if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
+            dir += right
+        elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
+            dir -= right
+        if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
+            dir += forward
+        elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
+            dir -= forward
 
     updateFacing(dir)
     

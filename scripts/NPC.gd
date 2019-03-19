@@ -2,27 +2,8 @@ extends KinematicBody
 
 onready var textBox = get_node("NPC TextBox").get_node("TextBox")
 
-var interactingWithPlayer = false
-var touchingPlayer = false
-var wasTouchingPlayer = false
-
 func _ready():
-    set_process(true)
     set_process_input(true)
-
-func _process(delta):
-    # if interactingWithPlayer:
-    #     # Conversation finished naturally, Player walked away, or was teleported/etc.
-    #     if global.activeInteractor == null or not (touchingPlayer and wasTouchingPlayer):
-    #         if global.activeInteractor:
-    #             global.activeInteractor.abort()
-    #         interactingWithPlayer = false
-        
-    # need to have this buffer variable because the PlayerInteractionArea
-    # handles the PassiveInteractActivate method, and this can occur
-    # before or after this NPC's _process event
-    wasTouchingPlayer = touchingPlayer
-    touchingPlayer = false
     
 func _input(event):
     if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
@@ -72,7 +53,9 @@ func activate():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
-        interactingWithPlayer = true
 
 func passiveActivate():
-    touchingPlayer = true
+    pass
+
+func stopPassiveActivate():
+    pass

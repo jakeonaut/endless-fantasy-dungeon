@@ -64,7 +64,6 @@ _sections_unfolded = [ "Albedo" ]
 [sub_resource type="CubeMesh" id=2]
 
 material = SubResource( 1 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -130,7 +129,6 @@ _sections_unfolded = [ "Albedo" ]
 [sub_resource type="CubeMesh" id=5]
 
 material = SubResource( 4 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -192,7 +190,6 @@ _sections_unfolded = [ "Albedo", "Flags" ]
 [sub_resource type="CubeMesh" id=7]
 
 material = SubResource( 6 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -258,7 +255,6 @@ _sections_unfolded = [ "Albedo" ]
 [sub_resource type="CubeMesh" id=10]
 
 material = SubResource( 9 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -324,7 +320,6 @@ _sections_unfolded = [ "Albedo" ]
 [sub_resource type="CubeMesh" id=13]
 
 material = SubResource( 12 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -390,7 +385,6 @@ _sections_unfolded = [ "Albedo", "Flags" ]
 [sub_resource type="CubeMesh" id=16]
 
 material = SubResource( 15 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -461,7 +455,6 @@ _sections_unfolded = [ "NormalMap", "UV1" ]
 [sub_resource type="CubeMesh" id=19]
 
 material = SubResource( 18 )
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0

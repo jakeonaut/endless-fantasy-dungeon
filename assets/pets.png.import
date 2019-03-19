@@ -8,7 +8,10 @@ path.etc2="res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.etc2.stex"
 [deps]
 
 source_file="res://assets/pets.png"
+source_md5="1df03dadd5b43990a5eecd2658c19dbc"
+
 dest_files=[ "res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.s3tc.stex", "res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.etc2.stex" ]
+dest_md5="3649bde8a0f0d75b599945df528d2c47"
 
 [params]
 
