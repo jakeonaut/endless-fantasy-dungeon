@@ -7,10 +7,7 @@ path="res://.import/halloweentokyo.png-ac4d472e83a5bccd21768c11532a279d.stex"
 [deps]
 
 source_file="res://assets/textures/halloweentokyo.png"
-source_md5="0db6f370e01843fff78d51b18fe2774c"
-
 dest_files=[ "res://.import/halloweentokyo.png-ac4d472e83a5bccd21768c11532a279d.stex" ]
-dest_md5="476c45a111659d68d5f0c8d18d8982df"
 
 [params]
 
