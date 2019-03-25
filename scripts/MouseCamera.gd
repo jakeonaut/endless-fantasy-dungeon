@@ -91,15 +91,27 @@ func _process(delta):
     mouseDiffX = 0
     mouseDiffY = 0
     
-func rotateTo(target_degrees):
+func rotateTo(target_degrees, immediate=false):
     real_rotation_target = target_degrees
     target_rotation = deg2rad(target_degrees)
     is_rotating = true
 
-func rotateXTo(target_degrees):
+    if immediate:
+        rotation_degrees.y = real_rotation_target
+        is_rotating = false
+        self.normalizeTarget()
+        current_rotation = target_rotation
+
+func rotateXTo(target_degrees, immediate=false):
     real_rotation_target_x = target_degrees
     target_rotation_x = deg2rad(target_degrees)
     is_rotating_x = true
+
+    if immediate:
+        camera_x.rotation_degrees.x = real_rotation_target_x
+        is_rotating_x = false
+        self.normalizeTargetX()
+        current_rotation_x = target_rotation_x
     
 func forceRotation(degrees, step):
     target_rotation += deg2rad(degrees)
@@ -119,14 +131,14 @@ func setRotationMat(rotationMat):
             
 func rotate_right():
     if not is_rotating:
-        target_rotation -= deg2rad(rstep)
-        real_rotation_target = rotation_degrees.y - rstep
+        target_rotation += deg2rad(rstep)
+        real_rotation_target = rotation_degrees.y + rstep
         is_rotating = true
     
 func rotate_left():
     if not is_rotating:
-        target_rotation += deg2rad(rstep)
-        real_rotation_target = rotation_degrees.y + rstep
+        target_rotation -= deg2rad(rstep)
+        real_rotation_target = rotation_degrees.y - rstep
         is_rotating = true
 
 # TODO(jaketrower):
