@@ -2,12 +2,10 @@
 
 [ext_resource path="res://docs/final mixes/dungeon.wav" type="AudioStream" id=1]
 
-[node name="IntroMusicPlayer" type="Node"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="0"]
+[node name="DungeonThemePlayer" type="AudioStreamPlayer"]
 
 stream = ExtResource( 1 )
-volume_db = -15.0
+volume_db = -16.0
 pitch_scale = 1.0
 autoplay = true
 mix_target = 0

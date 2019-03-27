@@ -20,6 +20,8 @@ main_scene="res://levels/IntroScene.tscn"
 
 global="*res://scripts/global.gd"
 transition="*res://transition.tscn"
+DungeonThemePlayer="*res://sceneObjects/MusicPlayers/DungeonThemePlayer.tscn"
+DebugTownThemePlayer="*res://sceneObjects/MusicPlayers/DebugTownThemePlayer.tscn"
 
 [display]
 

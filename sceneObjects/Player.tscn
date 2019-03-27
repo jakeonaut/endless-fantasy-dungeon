@@ -79,7 +79,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Anisotropy", "Clearcoat", "Depth", "Distance Fade", "Flags", "Metallic", "Parameters", "Proximity Fade", "Rim", "Roughness", "UV2", "Vertex Color" ]
 
-[node name="Player" type="KinematicBody" index="0"]
+[node name="Player" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
 input_ray_pickable = true
@@ -207,7 +207,7 @@ editor/display_folded = true
 
 [node name="The Sun" type="DirectionalLight" parent="Lights" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37113e-08, 1, 0, -0.999999, -4.37114e-08, 0, 10, 4.76837e-07 )
+transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -241,7 +241,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CameraX" type="Spatial" parent="CameraY" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX" index="0"]
@@ -296,6 +296,7 @@ editor/display_folded = true
 
 stream = ExtResource( 7 )
 volume_db = -25.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -304,6 +305,7 @@ bus = "Master"
 
 stream = ExtResource( 8 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -312,6 +314,7 @@ bus = "Master"
 
 stream = ExtResource( 9 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -320,6 +323,7 @@ bus = "Master"
 
 stream = ExtResource( 10 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -328,6 +332,7 @@ bus = "Master"
 
 stream = ExtResource( 11 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -336,6 +341,7 @@ bus = "Master"
 
 stream = ExtResource( 12 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -344,6 +350,7 @@ bus = "Master"
 
 stream = ExtResource( 13 )
 volume_db = 0.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
