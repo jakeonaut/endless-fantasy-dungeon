@@ -22,10 +22,15 @@ func _ready():
     landingPad.hide()
     
     parseConnectedScene()
+    
+    if isLocked:
+        get_node("PolyTriangle").texture = load("res://assets/npcs/tootorialgrey.png")
+        get_node("PolyTriangle").step = 1
 
 func unlock():
     isLocked = false
-    get_node("PolyTriangle").unlock()
+    get_node("PolyTriangle").texture = load("res://assets/npcs/tootorial0000.png")
+    get_node("PolyTriangle").step = 2
 
 func parseConnectedScene():
     # strip ".tscn" from connectedScene if it exists, and then add ".tscn"

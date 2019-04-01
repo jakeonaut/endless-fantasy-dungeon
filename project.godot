@@ -27,7 +27,6 @@ DebugTownThemePlayer="*res://sceneObjects/MusicPlayers/DebugTownThemePlayer.tscn
 
 window/size/width=768
 window/size/height=768
-window/size/resizable=false
 
 [input]
 

@@ -136,7 +136,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters" ]
 
-[node name="portdoor" type="Sprite3D" index="0"]
+[node name="portdoor" type="Sprite3D"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4124, -6.04792 )
 layers = 1

@@ -21,5 +21,14 @@ func activate():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()
-        player.wearOveralls()
-        visible = false
+        
+        match get_node("Sprite3D").frame:
+            0: player.wearNormalClothes()
+            1: player.wearMothCostume()
+            # 2:
+            3: player.wearBugCatcherCostume()
+            4: player.wearClericCostume()
+            # 5: 
+            6: player.wearLuckyCatCostume()
+            7: player.wearNightgown()
+        # visible = false

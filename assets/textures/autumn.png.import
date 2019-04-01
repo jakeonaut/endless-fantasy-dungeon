@@ -7,7 +7,10 @@ path="res://.import/autumn.png-e4c3e7773d19ab044f0047bc1446a708.stex"
 [deps]
 
 source_file="res://assets/textures/autumn.png"
+source_md5="ca3dd40b554263fe0036340c3f9e1c92"
+
 dest_files=[ "res://.import/autumn.png-e4c3e7773d19ab044f0047bc1446a708.stex" ]
+dest_md5="6eeac82f3e4f305e6ac27a624e8c7de3"
 
 [params]
 

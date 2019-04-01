@@ -2,27 +2,27 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/overalls.png-30c112726ffa2ed6c1a34d67149d64aa.stex"
+path="res://.import/costumes0000.png-deb1bbf8fdf6c838cfbee2bd0b0cf1d7.stex"
 
 [deps]
 
-source_file="res://assets/overalls.png"
-source_md5="d7a50637af1f809418a518c9f07fa4c4"
+source_file="res://assets/costumes0000.png"
+source_md5="08b6e5251f034eb0126e2c5a6cc5521f"
 
-dest_files=[ "res://.import/overalls.png-30c112726ffa2ed6c1a34d67149d64aa.stex" ]
-dest_md5="2f59db5a06d868b05ae3a57b699be075"
+dest_files=[ "res://.import/costumes0000.png-deb1bbf8fdf6c838cfbee2bd0b0cf1d7.stex" ]
+dest_md5="5c8a5120c603839b39c89f3e0c675412"
 
 [params]
 
 compress/mode=3
 compress/lossy_quality=0.7
-compress/hdr_mode=1
+compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

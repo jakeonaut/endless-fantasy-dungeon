@@ -1,7 +1,5 @@
 extends "Sprite.gd"
 
-var vframe = 0
-var hframe = 0
 onready var parent = get_parent()
 
 func _ready():
@@ -17,14 +15,22 @@ func _process(delta):
         frame_delay = 0.4
     animate(delta)
 
-func setOverallsCostume():
-    hframe = 4
-    vframe = 0
-    updateStartframe()
+func setNormalClothes():
+    updateStartFrame(0, 0)
+func setMothCostume():
+    updateStartFrame(0, 6)
+func setBugCatcherCostume():
+    updateStartFrame(0, 2)
+func setClericCostume():
+    updateStartFrame(4, 0)
+func setLuckyCatCostume():
+    updateStartFrame(0, 4)
+func setNightgown():
+    updateStartFrame(4, 2)
 
 func setFloorGlitch():
     pass
 
-func updateStartFrame():
+func updateStartFrame(hframe, vframe):
     start_frame = (self.hframes * vframe) + hframe
     set_frame(start_frame)

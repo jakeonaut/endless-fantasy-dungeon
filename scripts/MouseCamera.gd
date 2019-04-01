@@ -13,7 +13,9 @@ var real_rotation_target_x = 0
 var target_rotation = 0
 var target_rotation_x = 0
 var rstep = 5
-var highest_rotation_step = 20
+var curr_step = Vector2(4, 4)
+var highest_rotation_step = 4
+var highest_mouse_rotation_step = 20
 # steps up/down to target_rotation (also in radians)
 var current_rotation = 0
 var current_rotation_x = 0
@@ -39,55 +41,60 @@ func _ready():
     current_rotation_x = target_rotation_x
     
 func _input(ev):
-    if global.pauseMoveInput:
-        mouseDown = false
-        return
-        
-    if ev is InputEventMouseButton and ev.button_index == BUTTON_LEFT:
+    if ev is InputEventMouseButton and ev.button_index == BUTTON_RIGHT:
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
-    elif ev is InputEventMouseMotion:
+    elif ev is InputEventMouseMotion and not global.pauseMoveInput:
         if mouseDown:
             mouseDiffX = startClickPos.x - ev.position.x
             mouseDiffY = startClickPos.y - ev.position.y
             startClickPos = ev.position
 
 func _process(delta):
-    var step = 4
-    
     if target_rotation > current_rotation:
-        current_rotation += step*delta
-        rotate_y(step * delta)
+        current_rotation += curr_step.y*delta
+        rotate_y(curr_step.y * delta)
         if current_rotation > target_rotation:
             self.tryNormalizeCurrent()
     elif target_rotation < current_rotation:
-        current_rotation -= step*delta
-        rotate_y(-step * delta)
+        current_rotation -= curr_step.y*delta
+        rotate_y(-curr_step.y * delta)
         if current_rotation < target_rotation:
             self.tryNormalizeCurrent()
     else:
         self.tryNormalizeCurrent()
 
     if target_rotation_x > current_rotation_x:
-        current_rotation_x += step*delta
-        camera_x.rotate_x(step * delta)
+        current_rotation_x += curr_step.x*delta
+        camera_x.rotate_x(curr_step.x * delta)
         if current_rotation_x > target_rotation_x:
             self.tryNormalizeCurrentX()
     elif target_rotation_x < current_rotation_x:
-        current_rotation_x -= step*delta
-        camera_x.rotate_x(-step * delta)
+        current_rotation_x -= curr_step.x*delta
+        camera_x.rotate_x(-curr_step.x * delta)
         if current_rotation_x < target_rotation_x:
             self.tryNormalizeCurrentX()
     else:
         self.tryNormalizeCurrentX()
-            
-    # NOW DO MOUSE???
-    if mouseDiffX < -highest_rotation_step:
-        mouseDiffX = -highest_rotation_step
-    elif mouseDiffX > highest_rotation_step:
-        mouseDiffX = highest_rotation_step
-    rotate_y(mouseDiffX * delta)
 
+    if not is_rotating:
+        # if curr_step.y > 3.5:
+        curr_step.y = 4
+            
+        
+    # NOW DO MOUSE???
+    if mouseDiffX < -highest_mouse_rotation_step:
+        mouseDiffX = -highest_mouse_rotation_step
+    elif mouseDiffX > highest_mouse_rotation_step:
+        mouseDiffX = highest_mouse_rotation_step
+    if mouseDiffY < -highest_mouse_rotation_step:
+        mouseDiffY = -highest_mouse_rotation_step
+    elif mouseDiffY > highest_mouse_rotation_step:
+        mouseDiffY = highest_mouse_rotation_step
+    rotate_y(mouseDiffX * delta)
+    if (mouseDiffY > 0 and not self.gateKeepDownCondition_(camera_x.rotation.x)) or \
+       (mouseDiffY < 0 and not self.gateKeepUpCondition_(camera_x.rotation.x)):
+        camera_x.rotate_x(mouseDiffY * delta)
     mouseDiffX = 0
     mouseDiffY = 0
     
@@ -129,38 +136,54 @@ func setRotationMat(rotationMat):
     current_rotation = target_rotation
     
             
-func rotate_right():
+func rotate_right(step=4):
+    self.curr_step.y = step
+    if curr_step.y >= highest_rotation_step:
+        curr_step.y = highest_rotation_step
+
     if not is_rotating:
-        target_rotation += deg2rad(rstep)
-        real_rotation_target = rotation_degrees.y + rstep
+        target_rotation += deg2rad(step)
+        real_rotation_target = rotation_degrees.y + step
         is_rotating = true
     
-func rotate_left():
+func rotate_left(step=4):
+    self.curr_step.y = step
+    if curr_step.y >= highest_rotation_step:
+        curr_step.y = highest_rotation_step
+
     if not is_rotating:
-        target_rotation -= deg2rad(rstep)
-        real_rotation_target = rotation_degrees.y - rstep
+        target_rotation -= deg2rad(step)
+        real_rotation_target = rotation_degrees.y - step
         is_rotating = true
 
 # TODO(jaketrower):
 func rotate_up():
     if not is_rotating_x:
-        if rad2deg(target_rotation_x) > 270:
+        if self.gateKeepUpCondition_(target_rotation_x):
             target_rotation_x -= deg2rad(rstep)
             real_rotation_target_x = camera_x.rotation_degrees.x - rstep
             is_rotating_x = true
         else:
             rotate_left()
+            
+func gateKeepUpCondition_(rx):
+    print(rx)
+    print(rad2deg(rx))
+    if rx > 0: return rad2deg(rx) > 270
+    if rx < 0: return rad2deg(rx) < -90
 
 # TODO(jaketrower):
 func rotate_down():
     if not is_rotating_x:
-        if (rad2deg(target_rotation_x) < 360 and rad2deg(target_rotation_x) >= 270) or \
-           (rad2deg(target_rotation_x) > 0 and rad2deg(target_rotation_x) <= 90):
+        if self.gateKeepDownCondition_(target_rotation_x):
             target_rotation_x += deg2rad(rstep)
             real_rotation_target_x = camera_x.rotation_degrees.x + rstep
             is_rotating_x = true
         else:
             rotate_right()
+            
+func gateKeepDownCondition_(rx):
+    return (rad2deg(rx) < 360 and rad2deg(rx) >= 270) or (rad2deg(rx) > 0 and rad2deg(rx) <= 90)
     
 func tryNormalizeCurrent():
     if is_rotating and abs(target_rotation - current_rotation) < 1:

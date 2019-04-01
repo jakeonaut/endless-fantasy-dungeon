@@ -12,5 +12,9 @@ func fade_to(scn_path):
 
 # PRIVATE FUNCTION. CALLED AT THE MIDDLE OF THE TRANSITION ANIMATION
 func change_scene():
+    global.activeInteractor = null
+    global.activeThrowableObject = null
+    global.activeSavePoint = null
+
     if path != "":
         get_tree().change_scene(path)

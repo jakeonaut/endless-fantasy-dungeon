@@ -7,7 +7,10 @@ path="res://.import/concrete.png-8a358c51f81529195a3aed05934b1218.stex"
 [deps]
 
 source_file="res://assets/textures/concrete.png"
+source_md5="369b860330c00bcfefadd53528ace548"
+
 dest_files=[ "res://.import/concrete.png-8a358c51f81529195a3aed05934b1218.stex" ]
+dest_md5="36f4475956483c07f396095da00d0b3c"
 
 [params]
 

@@ -7,7 +7,10 @@ path="res://.import/mossybricks_light.png-e476caf0130d96c16eab192029239896.stex"
 [deps]
 
 source_file="res://assets/textures/mossybricks_light.png"
+source_md5="6cefac05c8d8625d301a965ef484b9d8"
+
 dest_files=[ "res://.import/mossybricks_light.png-e476caf0130d96c16eab192029239896.stex" ]
+dest_md5="e446b190f0978d924824e4979d84b97c"
 
 [params]
 

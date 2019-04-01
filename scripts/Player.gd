@@ -23,6 +23,8 @@ var has_just_jumped_time_limit = 10
 var is_walking = false
 var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
+var cameraRotationCounter = 0
+var cameraRotationFastCount = 1.0 # multiple of delta... is this the right way to do it? TODO(jaketrower):
 
 func _ready():
     set_process_input(true)
@@ -31,10 +33,21 @@ func _ready():
 
 func getCamera(): return camera
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
-    
-func wearOveralls():
-    mySprite.setOverallsCostume()
+
+func wearNormalClothes():
+    mySprite.setNormalClothes()
+func wearMothCostume():
+    mySprite.setMothCostume()
+func wearBugCatcherCostume():
+    mySprite.setBugCatcherCostume()
+func wearClericCostume():
+    mySprite.setClericCostume()
     jumpSound = get_node("Sounds/JumpOverallsSound")
+func wearLuckyCatCostume():
+    mySprite.setLuckyCatCostume()
+func wearNightgown():
+    mySprite.setNightgown()
+
     
 func floorTransform():
     mySprite.setFloorGlitch() # vframe for floorGlitch
@@ -59,14 +72,22 @@ func is_activeTextboxMyChild():
     return false
     
 func _process(delta):
-    if Input.is_action_pressed("ui_rotate_right"):
-        camera.rotate_right()
-    if Input.is_action_pressed("ui_rotate_left"):
-        camera.rotate_left()
-    if Input.is_action_pressed("ui_rotate_up"):
-        camera.rotate_up()
-    if Input.is_action_pressed("ui_rotate_down"):
-        camera.rotate_down()
+    tryRotateCamera(delta)
+
+func tryRotateCamera(delta):
+    if Input.is_action_pressed("ui_rotate_left") and not global.pauseMoveInput:
+        cameraRotationCounter += delta
+        getCamera().rotate_left(1+(cameraRotationCounter*18))
+    elif Input.is_action_pressed("ui_rotate_right") and not global.pauseMoveInput:
+        cameraRotationCounter += delta
+        getCamera().rotate_right(1+(cameraRotationCounter*18))
+    else: cameraRotationCounter = 0
+    
+    if Input.is_action_pressed("ui_rotate_up") and not global.pauseMoveInput:
+        getCamera().rotate_up()
+    if Input.is_action_pressed("ui_rotate_down") and not global.pauseMoveInput:
+        getCamera().rotate_down()
+
     
 func _physics_process(delta):
     .processPhysics(delta) #super
@@ -117,8 +138,8 @@ func processJumpInputs():
 
 func processHorizontalInputs():
     # Forward as seen by the camera (OpenGL convention)
-    var view_forward = -camera.get_transform().basis.z
-    var view_right = -camera.get_transform().basis.x
+    var view_forward = -getCamera().get_transform().basis.z
+    var view_right = -getCamera().get_transform().basis.x
     # Forward as seen by the player
     var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
     var right = view_right
