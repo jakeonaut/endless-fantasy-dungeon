@@ -18,3 +18,4 @@ func change_scene():
 
     if path != "":
         get_tree().change_scene(path)
+        musicPlayer.conductFromScenePath(path)

@@ -147,15 +147,17 @@ func processHorizontalInputs():
     if on_ground or has_just_jumped_timer < has_just_jumped_time_limit:
         has_just_jumped_timer += 1
         
-        dir = Vector3(0.0, 0.0, 0.0)
-        if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
-            dir += right
-        elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
-            dir -= right
-        if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
-            dir += forward
-        elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
-            dir -= forward
+        if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
+            Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
+            dir = Vector3(0.0, 0.0, 0.0)
+            if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
+                dir += right
+            elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
+                dir -= right
+            if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
+                dir += forward
+            elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
+                dir -= forward
 
     updateFacing(dir)
     

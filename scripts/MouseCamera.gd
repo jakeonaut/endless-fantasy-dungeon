@@ -163,12 +163,8 @@ func rotate_up():
             target_rotation_x -= deg2rad(rstep)
             real_rotation_target_x = camera_x.rotation_degrees.x - rstep
             is_rotating_x = true
-        else:
-            rotate_left()
             
 func gateKeepUpCondition_(rx):
-    print(rx)
-    print(rad2deg(rx))
     if rx > 0: return rad2deg(rx) > 270
     if rx < 0: return rad2deg(rx) < -90
 
@@ -179,8 +175,6 @@ func rotate_down():
             target_rotation_x += deg2rad(rstep)
             real_rotation_target_x = camera_x.rotation_degrees.x + rstep
             is_rotating_x = true
-        else:
-            rotate_right()
             
 func gateKeepDownCondition_(rx):
     return (rad2deg(rx) < 360 and rad2deg(rx) >= 270) or (rad2deg(rx) > 0 and rad2deg(rx) <= 90)
