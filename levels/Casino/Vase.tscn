@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levels/Casino/Vase.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
@@ -6,9 +6,8 @@
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/Link - Bomb Deploy.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/Yoshi - Egg Throw.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/sounds/OOT_Pot_Shatter.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/OOT_Pot_Shatter.wav" type="AudioStream" id=8]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -71,7 +70,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Flags", "Parameters", "Vertex Color" ]
 
-[node name="Vase" type="KinematicBody" index="0"]
+[node name="Vase" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -156,7 +155,6 @@ script = ExtResource( 4 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform", "Visibility" ]
 frame_delay = 0.4
 should_randomize_frame_delay = true
-start_frame = 2
 max_frames = 2
 
 [node name="Sounds" type="Node" parent="." index="3"]
@@ -165,7 +163,6 @@ max_frames = 2
 
 stream = ExtResource( 5 )
 volume_db = -15.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -174,34 +171,30 @@ bus = "Master"
 
 stream = ExtResource( 6 )
 volume_db = -15.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
 [node name="LandSound" type="AudioStreamPlayer" parent="Sounds" index="2"]
 
-stream = ExtResource( 7 )
+stream = null
 volume_db = -20.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds" index="3"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 volume_db = -20.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
 
 [node name="ShatterSound" type="AudioStreamPlayer" parent="Sounds" index="4"]
 
-stream = ExtResource( 9 )
+stream = ExtResource( 8 )
 volume_db = -20.0
-pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
