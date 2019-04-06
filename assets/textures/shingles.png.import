@@ -7,10 +7,10 @@ path="res://.import/shingles.png-197f6e63c75138875d79244e9a10877d.stex"
 [deps]
 
 source_file="res://assets/textures/shingles.png"
-source_md5="13c871d31ae756e3ab982c18e036008b"
+source_md5="6397c2eb1d1eb854e1e437b6a656bd11"
 
 dest_files=[ "res://.import/shingles.png-197f6e63c75138875d79244e9a10877d.stex" ]
-dest_md5="3d1e1eb49226af992b2ac1adf19b7754"
+dest_md5="8c401a701948318b5e65c6a68f8aaf36"
 
 [params]
 

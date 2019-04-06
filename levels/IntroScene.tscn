@@ -96,7 +96,7 @@ adjustment_saturation = 1.0
 flags = 4
 width = 2048
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -204,7 +204,6 @@ light_cull_mask = -1
 
 [node name="yellow" parent="." index="4" instance=ExtResource( 6 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 
 [node name="InteractionArea" parent="yellow" index="1"]

@@ -24,7 +24,7 @@ var is_walking = false
 var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
 var cameraRotationCounter = 0
-var cameraRotationFastCount = 1.0 # multiple of delta... is this the right way to do it? TODO(jaketrower):
+var transitioning = false
 
 func _ready():
     set_process_input(true)
@@ -91,6 +91,11 @@ func tryRotateCamera(delta):
     
 func _physics_process(delta):
     .processPhysics(delta) #super
+    if not on_ground and translation.y < -10 and not transitioning:
+        # global transition scene, see res://scripts/transition.gd
+        var currLevelPath = get_tree().get_root().get_node("level").filename
+        transition.fade_to(currLevelPath)
+        transitioning = true
 
 # @override
 func applyGravity(delta):

@@ -15,7 +15,10 @@ func _ready():
                     break
         global.lastDoor = ""
         
-    var player = get_node("Player")
     if global.cameraRotation != null:
-        player.getCamera().setRotationMat(global.cameraRotation)
+        get_node("Player").getCamera().setRotationMat(global.cameraRotation)
         global.cameraRotation = null
+
+    # doing some MEMORY management
+    if global.memory.has("active_save_point"):
+        global.activeSavePoint = global.memory["active_save_point"]

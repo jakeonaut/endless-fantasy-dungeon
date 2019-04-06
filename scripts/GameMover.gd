@@ -6,6 +6,7 @@ onready var bumpSound = get_node("Sounds/BumpSound")
 var terminal_vel = 32
 var on_ground = true
 var was_on_ground = true
+var lastOnGroundPoint = self.translation
 var fallCounter = 0
 var fallCountMax = 10
 var take_fall_damage = false
@@ -48,6 +49,8 @@ func processPhysics(delta):
     linear_velocity = move_and_slide(lv, -g.normalized())
 
     noFloorBelow()
+    if on_ground:
+        lastOnGroundPoint = self.translation
     
     if not was_on_ground and on_ground: # I just landed!!
         landed()

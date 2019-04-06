@@ -1,5 +1,7 @@
 extends Node
 
+var memory = {}
+
 var numCoins = 0
 
 var lastDoor = ""
