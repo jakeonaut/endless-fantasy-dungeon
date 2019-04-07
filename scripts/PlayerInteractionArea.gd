@@ -3,6 +3,23 @@ extends Area
 
 func _ready():
     set_process(true)
+    set_process_input(true)
+    
+func _input(event):
+    if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+        # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
+        # I am already looking at one (e.g. if global.activeInteractor exists   )
+        if global.activeInteractor:
+            global.activeInteractor.InteractActivate()
+            get_tree().set_input_as_handled()
+            return
+
+        var activeArea = getActiveInteractionAreaUnderMouse()
+        if activeArea:
+            activeArea.InteractActivate()
+            get_tree().set_input_as_handled()
+            return
+            
 
 func _process(delta):
     # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
@@ -40,5 +57,32 @@ func _process(delta):
             global.activeThrowableObject.activate()
     # otherwise, try to interact passive areas
     elif nearest_passive_area:
-        nearest_passive_area.PassiveInteractActivate()
-        
+        nearest_passive_area.PassiveInteractActivate()     
+
+# cast a ray from camera at mouse position, and get the object colliding with the ray
+# from: https://www.reddit.com/r/godot/comments/8ft84k/get_clicked_object_in_3d/
+func getActiveInteractionAreaUnderMouse():
+    var RAY_LENGTH = 150
+    var player = get_node("..")
+    var TheCamera = player.getTrueCamera()
+    
+    var mouse_pos = get_viewport().get_mouse_position()
+    var ray_from = TheCamera.project_ray_origin(mouse_pos)
+    var ray_to = ray_from + TheCamera.project_ray_normal(mouse_pos) * RAY_LENGTH
+    var space_state = get_world().direct_space_state
+    var hits = []
+    # dummy fill
+    var selection = true
+    while selection:
+        selection = space_state.intersect_ray(ray_from, ray_to, hits)
+        if selection:
+            # see if the selection collider is a child of me!! 
+            var collider = selection.collider
+            while collider and collider.get_node("..") != get_tree():
+                if collider.has_method("InteractActivate"): 
+                    var areas = get_overlapping_areas()
+                    if collider in areas: return collider
+                collider = collider.get_node("..")
+            # only gets here if the selection collider was not my child
+            hits.append(selection.rid)
+    return null

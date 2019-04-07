@@ -135,6 +135,11 @@ func setRotationMat(rotationMat):
     target_rotation = deg2rad(real_rotation_target)
     current_rotation = target_rotation
     
+func setRotationMatX(rotationMatX):
+    camera_x.rotation_degrees = rotationMatX
+    real_rotation_target_x = camera_x.rotation_degrees.x
+    target_rotation_x = deg2rad(real_rotation_target_x)
+    current_rotation_x = target_rotation_x
             
 func rotate_right(step=4):
     self.curr_step.y = step

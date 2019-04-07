@@ -32,6 +32,7 @@ func _ready():
     set_physics_process(true)
 
 func getCamera(): return camera
+func getCameraX(): return camera.get_node("CameraX")
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
 
 func wearNormalClothes():
@@ -91,7 +92,13 @@ func tryRotateCamera(delta):
     
 func _physics_process(delta):
     .processPhysics(delta) #super
+
+    # TODO(jaketrower): Add this to other GameMover
     if not on_ground and translation.y < -10 and not transitioning:
+        global.playerJustFell = true
+        print(str(lastOnGroundPoint) + ", " + str(lastOnGroundHv/4))
+        global.lastOnGroundPoint = lastOnGroundPoint - (lastOnGroundHv/4)
+        global.cameraRotation = getCamera().rotation_degrees.y
         # global transition scene, see res://scripts/transition.gd
         var currLevelPath = get_tree().get_root().get_node("level").filename
         transition.fade_to(currLevelPath)

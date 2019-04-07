@@ -1,5 +1,7 @@
 extends Node
 
+onready var player = get_node("Player")
+
 func _ready():
     global.activeInteractor = null
     if global.lastDoor != "":
@@ -14,10 +16,17 @@ func _ready():
                     child.land()
                     break
         global.lastDoor = ""
-        
-    if global.cameraRotation != null:
-        get_node("Player").getCamera().setRotationMat(global.cameraRotation)
+
+    if global.playerJustFell and global.lastOnGroundPoint != null and global.cameraRotation != null:
+        player.translation = global.lastOnGroundPoint
+        player.getCamera().rotateTo(global.cameraRotation, true)
+
+        global.playerJustFell = false
+        global.lastOnGroundPoint = null
         global.cameraRotation = null
+
+    # update music
+    musicPlayer.conductFromScenePath(self.filename)
 
     # doing some MEMORY management
     if global.memory.has("active_save_point"):

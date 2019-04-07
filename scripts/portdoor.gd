@@ -73,7 +73,6 @@ func lockTalk():
 
 func enterDoor():
     global.lastDoor = name
-    global.cameraRotation = player.getCamera().rotation_degrees
     if not transitioning:
         # global transition scene, see res://scripts/transition.gd
         transition.fade_to("res://" + connectedScene)
@@ -83,3 +82,4 @@ func enterDoor():
 func land():
     enterSound.play()
     player.global_transform.origin = landingPad.global_transform.origin
+    player.getCamera().rotateTo(180 + self.rotation_degrees.y, true)

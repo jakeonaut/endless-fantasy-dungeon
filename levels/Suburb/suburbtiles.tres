@@ -61,6 +61,7 @@ _sections_unfolded = [ "Albedo", "Parameters", "UV1", "UV2" ]
 [sub_resource type="CubeMesh" id=2]
 
 material = SubResource( 1 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -146,6 +147,7 @@ _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Depth", "Detail", "Emissi
 [sub_resource type="CubeMesh" id=7]
 
 material = SubResource( 6 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -227,6 +229,7 @@ _sections_unfolded = [ "Albedo", "Parameters", "UV1", "UV2" ]
 [sub_resource type="CubeMesh" id=11]
 
 material = SubResource( 10 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -308,6 +311,7 @@ _sections_unfolded = [ "Albedo", "Flags" ]
 [sub_resource type="CubeMesh" id=15]
 
 material = SubResource( 14 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0

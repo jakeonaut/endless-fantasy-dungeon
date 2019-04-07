@@ -3,13 +3,14 @@ extends Node
 var memory = {}
 
 var numCoins = 0
-
-var lastDoor = ""
-var cameraRotation = null
-
 var activeInteractor = null
 var activeThrowableObject = null
 var activeSavePoint = null
+
+var lastDoor = ""
+var playerJustFell = false
+var cameraRotation = null
+var lastOnGroundPoint = null
 
 var pauseMoveInput = false # don't allow player physics or camera input??
 var pauseGame = false

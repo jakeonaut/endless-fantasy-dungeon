@@ -156,7 +156,6 @@ _sections_unfolded = [ "Material", "Theme", "Visibility" ]
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07499, 3.14603, 6.45859 )
 
 [node name="TextBox" parent="Player" index="4" instance=ExtResource( 5 )]
@@ -186,20 +185,41 @@ text = ". . . . . . . . . . . . .
 
 light_cull_mask = -1
 
-[node name="CameraY" parent="Player" index="6"]
-
-editor/display_folded = true
-
-[node name="CameraX" parent="Player/CameraY" index="0"]
-
-editor/display_folded = true
-
 [node name="Ambient" parent="Player/CameraY/CameraX" index="1"]
 
 light_cull_mask = -1
 
+[node name="JumpSound" parent="Player/Sounds" index="0"]
+
+pitch_scale = 1.0
+
+[node name="JumpOverallsSound" parent="Player/Sounds" index="1"]
+
+pitch_scale = 1.0
+
+[node name="LandSound" parent="Player/Sounds" index="2"]
+
+pitch_scale = 1.0
+
+[node name="BumpSound" parent="Player/Sounds" index="3"]
+
+pitch_scale = 1.0
+
+[node name="WormSound" parent="Player/Sounds" index="4"]
+
+pitch_scale = 1.0
+
+[node name="WormClimbSound" parent="Player/Sounds" index="5"]
+
+pitch_scale = 1.0
+
+[node name="AudioStreamPlayer" parent="Player/Sounds" index="6"]
+
+pitch_scale = 1.0
+
 [node name="yellow" parent="." index="4" instance=ExtResource( 7 )]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 
 [node name="InteractionArea" parent="yellow" index="1"]

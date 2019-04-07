@@ -67,7 +67,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Detail", "Flags", "Metallic", "Parameters", "Refraction", "UV1", "Vertex Color" ]
 
-[node name="NPC" type="KinematicBody" index="0"]
+[node name="NPC" type="KinematicBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 input_ray_pickable = true
@@ -123,6 +123,8 @@ disabled = false
 
 [node name="NPC TextBox" parent="." index="2" instance=ExtResource( 3 )]
 
+editor/display_folded = true
+
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 
 layers = 1
@@ -156,7 +158,6 @@ script = ExtResource( 5 )
 _sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region", "Transform" ]
 frame_delay = 0.4
 should_randomize_frame_delay = true
-start_frame = 0
 max_frames = 2
 
 
