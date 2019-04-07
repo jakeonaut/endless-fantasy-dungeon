@@ -14,7 +14,7 @@ func fade_to(scn_path):
 func change_scene():
     global.activeInteractor = null
     global.activeThrowableObject = null
-    global.activeSavePoint = null
+    global.pauseMoveInput = false
 
     if path != "":
         get_tree().change_scene(path)

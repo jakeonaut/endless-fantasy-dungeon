@@ -7,10 +7,7 @@ path="res://.import/demon suburb.wav-e04a6df6e05ad0083fe244e7d83c06be.sample"
 [deps]
 
 source_file="res://docs/final mixes/demon suburb.wav"
-source_md5="e5b4b00ccb872693e464f6414f6a5de1"
-
 dest_files=[ "res://.import/demon suburb.wav-e04a6df6e05ad0083fe244e7d83c06be.sample" ]
-dest_md5="2e7e7924f7486a15cb45732d421ec53a"
 
 [params]
 
@@ -20,5 +17,5 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop=true
 compress/mode=0

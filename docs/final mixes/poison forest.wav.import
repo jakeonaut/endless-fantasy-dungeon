@@ -7,10 +7,7 @@ path="res://.import/poison forest.wav-5ee2f5ff1956dcede50a1e7d0ac4b0cd.sample"
 [deps]
 
 source_file="res://docs/final mixes/poison forest.wav"
-source_md5="b73e32a028f060fa4b8642404bd2b5ef"
-
 dest_files=[ "res://.import/poison forest.wav-5ee2f5ff1956dcede50a1e7d0ac4b0cd.sample" ]
-dest_md5="d26c33392770ccd3e1d0161819d5de72"
 
 [params]
 
@@ -20,5 +17,5 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=true
 edit/normalize=true
-edit/loop=false
+edit/loop=true
 compress/mode=0

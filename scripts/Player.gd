@@ -56,21 +56,6 @@ func floorTransform():
     
 func bugTransform():
     pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
-
-# Player needs to handle her own text boxes
-func _input(event):
-    if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-        if is_activeTextboxMyChild():
-            global.activeInteractor.interact()
-            get_tree().set_input_as_handled()
-
-func is_activeTextboxMyChild():
-    var node = global.activeInteractor
-    while node and node.get_node("..") != get_tree():
-        if node == self: 
-            return true
-        node = node.get_node("..")
-    return false
     
 func _process(delta):
     tryRotateCamera(delta)
@@ -88,7 +73,6 @@ func tryRotateCamera(delta):
         getCamera().rotate_up()
     if Input.is_action_pressed("ui_rotate_down") and not global.pauseMoveInput:
         getCamera().rotate_down()
-
     
 func _physics_process(delta):
     .processPhysics(delta) #super
