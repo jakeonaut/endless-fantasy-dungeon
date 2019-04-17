@@ -7,7 +7,10 @@ path="res://.import/smallbricks.png-9794f936118ef3e17a700d9246fe8b2a.stex"
 [deps]
 
 source_file="res://assets/textures/smallbricks.png"
+source_md5="b53b22ec29a2c7a82c78e72b004ef198"
+
 dest_files=[ "res://.import/smallbricks.png-9794f936118ef3e17a700d9246fe8b2a.stex" ]
+dest_md5="aae0b6ee5830073b098f2fe22f10214d"
 
 [params]
 

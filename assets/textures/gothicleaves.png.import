@@ -8,7 +8,10 @@ path.etc2="res://.import/gothicleaves.png-d0d6be12d0cb8a601759e64bbdb55cf7.etc2.
 [deps]
 
 source_file="res://assets/textures/gothicleaves.png"
+source_md5="d32ab4b9e5ce1b910545dccb69f56165"
+
 dest_files=[ "res://.import/gothicleaves.png-d0d6be12d0cb8a601759e64bbdb55cf7.s3tc.stex", "res://.import/gothicleaves.png-d0d6be12d0cb8a601759e64bbdb55cf7.etc2.stex" ]
+dest_md5="b8f813774745f92fa00cfdc9395bb5c5"
 
 [params]
 

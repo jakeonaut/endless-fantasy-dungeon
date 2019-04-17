@@ -7,7 +7,10 @@ path="res://.import/debug town.wav-bde658eaf659acca2244b105eaade4ec.sample"
 [deps]
 
 source_file="res://docs/final mixes/debug town.wav"
+source_md5="e3c1ea77df92e49e0939c37d0fbf4d3a"
+
 dest_files=[ "res://.import/debug town.wav-bde658eaf659acca2244b105eaade4ec.sample" ]
+dest_md5="c0f03c405ac212c3228713c69e96f0fe"
 
 [params]
 

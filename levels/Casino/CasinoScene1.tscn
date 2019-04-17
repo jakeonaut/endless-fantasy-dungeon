@@ -88,7 +88,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background" ]
 
-[node name="level" type="Node" index="0"]
+[node name="level" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -151,7 +151,7 @@ __meta__ = {
 
 [node name="portalTownCasino" parent="." index="4" instance=ExtResource( 5 )]
 
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.4124, 6.95208 )
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
 connectedScene = "levels/DebugTown.tscn"
 
 [node name="NPC" parent="." index="5" instance=ExtResource( 6 )]

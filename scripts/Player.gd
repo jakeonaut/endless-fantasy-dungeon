@@ -35,19 +35,32 @@ func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
 func getTrueCamera(): return camera.get_node("CameraX/Camera")
 
+func wearCostume(costume):
+    if costume == "normal": wearNormalClothes()
+    elif costume == "moth": wearMothCostume()
+    elif costume == "bugcatcher": wearBugCatcherCostume()
+    elif costume == "cleric": wearClericCostume()
+    elif costume == "luckycat": wearLuckyCatCostume()
+    elif costume == "nightgown": wearNightgown()
 func wearNormalClothes():
     mySprite.setNormalClothes()
+    global.memory["player_costume"] = "normal"
 func wearMothCostume():
     mySprite.setMothCostume()
+    global.memory["player_costume"] = "moth"
 func wearBugCatcherCostume():
     mySprite.setBugCatcherCostume()
+    global.memory["player_costume"] = "bugcatcher"
 func wearClericCostume():
     mySprite.setClericCostume()
     jumpSound = get_node("Sounds/JumpOverallsSound")
+    global.memory["player_costume"] = "cleric"
 func wearLuckyCatCostume():
     mySprite.setLuckyCatCostume()
+    global.memory["player_costume"] = "luckycat"
 func wearNightgown():
     mySprite.setNightgown()
+    global.memory["player_costume"] = "nightgown"
 
     
 func floorTransform():
@@ -63,10 +76,10 @@ func _process(delta):
 func tryRotateCamera(delta):
     if Input.is_action_pressed("ui_rotate_left") and not global.pauseMoveInput:
         cameraRotationCounter += delta
-        getCamera().rotate_left(1+(cameraRotationCounter*18))
+        getCamera().rotate_left(1+(cameraRotationCounter*36))
     elif Input.is_action_pressed("ui_rotate_right") and not global.pauseMoveInput:
         cameraRotationCounter += delta
-        getCamera().rotate_right(1+(cameraRotationCounter*18))
+        getCamera().rotate_right(1+(cameraRotationCounter*36))
     else: cameraRotationCounter = 0
     
     if Input.is_action_pressed("ui_rotate_up") and not global.pauseMoveInput:
@@ -148,8 +161,10 @@ func processHorizontalInputs():
             dir = Vector3(0.0, 0.0, 0.0)
             if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
                 dir += right
+                # getCamera().rotate_right(5)
             elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
                 dir -= right
+                # getCamera().rotate_left(5)
             if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
                 dir += forward
             elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:

@@ -31,3 +31,5 @@ func _ready():
     # doing some MEMORY management
     if global.memory.has("active_save_point"):
         global.activeSavePoint = global.memory["active_save_point"]
+    if global.memory.has("player_costume"):
+        player.wearCostume(global.memory["player_costume"])
