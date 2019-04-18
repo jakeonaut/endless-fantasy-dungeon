@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/portdoor.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/LA_Stairs.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=4]
+[ext_resource path="res://assets/minecraftdoor0000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/portdoorPolyTriangle.gd" type="Script" id=5]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/npcs/tootorialgrey.png" type="Texture" id=7]
@@ -66,6 +66,7 @@ distance_fade_enable = false
 [sub_resource type="CubeMesh" id=3]
 
 material = SubResource( 2 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -77,6 +78,7 @@ extents = Vector3( 1, 1, 1 )
 
 [sub_resource type="CubeMesh" id=5]
 
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 1, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -267,6 +269,7 @@ _sections_unfolded = [ "Transform", "material" ]
 
 stream = ExtResource( 3 )
 volume_db = -30.0
+pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
@@ -295,13 +298,13 @@ shaded = false
 double_sided = true
 alpha_cut = 2
 texture = ExtResource( 4 )
-vframes = 2
-hframes = 2
+vframes = 1
+hframes = 1
 frame = 0
 region_enabled = false
 region_rect = Rect2( 0, 0, 0, 0 )
 script = ExtResource( 5 )
-_sections_unfolded = [ "Flags", "Geometry", "LOD", "Region" ]
+_sections_unfolded = [ "Animation", "Flags", "Geometry", "LOD", "Region" ]
 
 [node name="portdoorTextBox" parent="." index="4" instance=ExtResource( 6 )]
 

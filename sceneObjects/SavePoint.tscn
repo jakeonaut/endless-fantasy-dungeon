@@ -33,7 +33,7 @@ shader = SubResource( 2 )
 
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[node name="SavePoint" type="Spatial" index="0"]
+[node name="SavePoint" type="Spatial"]
 
 script = ExtResource( 1 )
 

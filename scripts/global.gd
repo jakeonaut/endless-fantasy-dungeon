@@ -3,6 +3,8 @@ extends Node
 var memory = {}
 
 var numCoins = 0
+var numHearts = 3
+
 var activeInteractor = null
 var activeThrowableObject = null
 var activeSavePoint = null
