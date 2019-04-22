@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/concrete.png-8a358c51f81529195a3aed05934b1218.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/textures/concrete.png"
-source_md5="369b860330c00bcfefadd53528ace548"
-
 dest_files=[ "res://.import/concrete.png-8a358c51f81529195a3aed05934b1218.stex" ]
-dest_md5="36f4475956483c07f396095da00d0b3c"
 
 [params]
 
 compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=2
 flags/repeat=1
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=0
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

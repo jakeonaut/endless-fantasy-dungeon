@@ -5,15 +5,18 @@ onready var parent = get_parent()
 func _ready():
     set_process(true)
 
-func _process(delta):
-    if parent.linear_velocity.x != 0 or parent.linear_velocity.z != 0:
-        frame_delay = 0.2
+func preProcess():
+    .preProcess() # super
+
+    # an object in motion...
+    if parent.linear_velocity.x > 0.001 or parent.linear_velocity.x < -0.001 \
+       or parent.linear_velocity.z > 0.001 or parent.linear_velocity.z < -0.001:
+        frame_delay = 0.1
     elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
-    or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
-        frame_delay = 0.3
+         or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
+        frame_delay = 0.2
     else:
         frame_delay = 0.4
-    animate(delta)
 
 func setNormalClothes():
     updateStartFrame(0, 0)

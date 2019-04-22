@@ -14,12 +14,18 @@ var form = Form.NORMAL
 
 # Physics variables
 var walk_speed = 8
+var recover_walk_speed = 4
 var lunge_speed = 16
 var is_lunging = 0
 var jump_force = 20
+var weaker_jump_force = 19
 var has_just_lunged = false
 var has_just_jumped_timer = 0
 var has_just_jumped_time_limit = 10
+var should_recover = false
+var is_recovering = false
+var recover_timer = 0
+var recover_time_limit = 10
 var is_walking = false
 var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
@@ -71,6 +77,8 @@ func bugTransform():
     pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
     
 func _process(delta):
+    # ._process(delta) #NOTE: this super method is called automatically 
+    # https://github.com/godotengine/godot/issues/6500
     tryRotateCamera(delta)
 
 func tryRotateCamera(delta):
@@ -88,12 +96,19 @@ func tryRotateCamera(delta):
         getCamera().rotate_down()
     
 func _physics_process(delta):
+    # ._process_physics(delta) #NOTE: this super method is called automatically 
+    # https://github.com/godotengine/godot/issues/6500
+
     .processPhysics(delta) #super
+    if is_recovering:
+        recover_timer += 1
+        if recover_timer >= recover_time_limit:
+            recover_timer = 0
+            is_recovering = false
 
     # TODO(jaketrower): Add this to other GameMover
     if not on_ground and translation.y < -10 and not transitioning:
         global.playerJustFell = true
-        print(str(lastOnGroundPoint) + ", " + str(lastOnGroundHv/4))
         global.lastOnGroundPoint = lastOnGroundPoint - (lastOnGroundHv/4)
         global.cameraRotation = getCamera().rotation_degrees.y
         # global transition scene, see res://scripts/transition.gd
@@ -122,7 +137,17 @@ func processJumpInputs():
     if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
         # Jump from the ground
         if is_lunging == 0:
-            vv = jump_force
+            is_recovering = false
+            var curr_jump_force = jump_force
+            # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
+            if linear_velocity.x < walk_speed/2 and linear_velocity.x > -walk_speed/2 \
+            and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2 \
+            and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
+            or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
+                curr_jump_force = weaker_jump_force
+                should_recover = true
+            vv = curr_jump_force
+
             jumpSound.play()
             on_ground = false
             is_lunging = -1
@@ -169,12 +194,14 @@ func processHorizontalInputs():
                 dir += forward
             elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
                 dir -= forward
-
     updateFacing(dir)
-    
+    var curr_walk_speed = walk_speed
+    if is_recovering or should_recover:
+        curr_walk_speed = recover_walk_speed
+
     # update x and z
     if is_lunging < 2:
-        hv = dir.normalized() * walk_speed
+        hv = dir.normalized() * curr_walk_speed
     if has_just_lunged:
         hv = dir.normalized() * lunge_speed
 
@@ -195,5 +222,8 @@ func noFloorBelow():
     if is_on_floor():
         fallCounter = 0
         on_ground = true
+        if should_recover:
+            is_recovering = true
+            should_recover = false
     elif form != Form.FLOOR:
         on_ground = false

@@ -10,9 +10,12 @@ export var max_frames = 2
 func _ready():
     set_process(true)
     start_frame = get_frame()
-    
+
+func preProcess():
+    pass
 
 func _process(delta):
+    preProcess()
     animate(delta)
     
 func animate(delta):

@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/greenglasses.png-4d0140fabe2c4d12cf5e76968cc10e91.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/npcs/greenglasses.png"
-source_md5="5ceb32f42487699dbd2002e5366aaecd"
-
 dest_files=[ "res://.import/greenglasses.png-4d0140fabe2c4d12cf5e76968cc10e91.stex" ]
-dest_md5="e0a3c10f186303d13c8efa150321f3ce"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

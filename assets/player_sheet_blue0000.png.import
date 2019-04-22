@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/player_sheet_blue0000.png-31a080f796de2ab23fe6ed3eac57f657.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/player_sheet_blue0000.png"
-source_md5="9c9ead0979deb6e8fb0bea48c66c7916"
-
 dest_files=[ "res://.import/player_sheet_blue0000.png-31a080f796de2ab23fe6ed3eac57f657.stex" ]
-dest_md5="07f6803db5d39bc7bc44eccc6beeadd1"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

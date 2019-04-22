@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/eyebrows.png-36ab57f06fb39a1fea390fede39d1f63.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/npcs/eyebrows.png"
-source_md5="0b9578b59091c17378d22bd49fbadea4"
-
 dest_files=[ "res://.import/eyebrows.png-36ab57f06fb39a1fea390fede39d1f63.stex" ]
-dest_md5="ccb3c05867e104ebf243a8a3f2e63bcd"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.0
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

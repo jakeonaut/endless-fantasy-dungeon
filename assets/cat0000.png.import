@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/cat0000.png-17b06900ea213e2a141f3811fd487247.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/cat0000.png"
-source_md5="437cb8d958d4291e09ae629b9424dd13"
-
 dest_files=[ "res://.import/cat0000.png-17b06900ea213e2a141f3811fd487247.stex" ]
-dest_md5="40543e7c349f3facb5c0df749a425df5"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

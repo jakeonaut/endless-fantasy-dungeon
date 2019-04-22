@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/autumn.png-e4c3e7773d19ab044f0047bc1446a708.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/textures/autumn.png"
-source_md5="ca3dd40b554263fe0036340c3f9e1c92"
-
 dest_files=[ "res://.import/autumn.png-e4c3e7773d19ab044f0047bc1446a708.stex" ]
-dest_md5="6eeac82f3e4f305e6ac27a624e8c7de3"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

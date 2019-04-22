@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/tutorial1.png-98c3344e4efc22c4bbcc475a80e4a900.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/npcs/tutorial1.png"
-source_md5="dfa776fb4246ab7b1679a44dcab9946c"
-
 dest_files=[ "res://.import/tutorial1.png-98c3344e4efc22c4bbcc475a80e4a900.stex" ]
-dest_md5="ee4a5dbff35524f8252a808bff9c6768"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

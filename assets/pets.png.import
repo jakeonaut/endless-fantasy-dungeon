@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.s3tc.stex"
 path.etc2="res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/pets.png"
-source_md5="1df03dadd5b43990a5eecd2658c19dbc"
-
 dest_files=[ "res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.s3tc.stex", "res://.import/pets.png-977a120cd80d91f4a5927def1db5b552.etc2.stex" ]
-dest_md5="3649bde8a0f0d75b599945df528d2c47"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/bricks_blue.png-7fc1adf4b2023e70759a0e1ee43f940a.s3tc.stex"
 path.etc2="res://.import/bricks_blue.png-7fc1adf4b2023e70759a0e1ee43f940a.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/textures/bricks_blue.png"
-source_md5="1ac38b311cdb5250ca6b146a1dc1367e"
-
 dest_files=[ "res://.import/bricks_blue.png-7fc1adf4b2023e70759a0e1ee43f940a.s3tc.stex", "res://.import/bricks_blue.png-7fc1adf4b2023e70759a0e1ee43f940a.etc2.stex" ]
-dest_md5="f3faa65717ace636453f3ac535511ef2"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

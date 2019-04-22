@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/marble.png-bbcc8a8956e106232d81ba12692860e5.s3tc.stex"
 path.etc2="res://.import/marble.png-bbcc8a8956e106232d81ba12692860e5.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/textures/marble.png"
-source_md5="0a2f7ade5ac18d2e392155d20d49a76c"
-
 dest_files=[ "res://.import/marble.png-bbcc8a8956e106232d81ba12692860e5.s3tc.stex", "res://.import/marble.png-bbcc8a8956e106232d81ba12692860e5.etc2.stex" ]
-dest_md5="0ae3258e173b237c82846a870444d171"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

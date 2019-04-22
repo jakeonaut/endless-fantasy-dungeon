@@ -1,6 +1,8 @@
 extends Spatial
 
 onready var camera_x = get_node("CameraX")
+onready var true_camera = get_node("CameraX/Camera")
+onready var player = get_node("..")
 
 var mouseDown = false
 var startClickPos = Vector2(0, 0)
@@ -21,12 +23,14 @@ var current_rotation = 0
 var current_rotation_x = 0
 var is_rotating = false
 var is_rotating_x = false
+var last_obstructing_objects = []
 
 # TODO(jaketrower): There are a lot of "same but for X" code repetition here
 # TODO(jaketrower): can we somehow consolidate them into common methods?
 func _ready():
     set_process_input(true)
     set_process(true)
+    set_physics_process(true)
 
     # grab current rotation from position of camera,
     # so future calculations will be accurate
@@ -41,7 +45,7 @@ func _ready():
     current_rotation_x = target_rotation_x
     
 func _input(ev):
-    if ev is InputEventMouseButton and ev.button_index == BUTTON_RIGHT:
+    if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
         mouseDown = ev.is_pressed()
         startClickPos = ev.position
     elif ev is InputEventMouseMotion and not global.pauseMoveInput:
@@ -97,6 +101,46 @@ func _process(delta):
         camera_x.rotate_x(mouseDiffY * delta)
     mouseDiffX = 0
     mouseDiffY = 0
+
+func _physics_process(delta):
+    var space_state = get_world().get_direct_space_state()
+    var camera_pos = true_camera.global_transform.origin
+    var player_pos = player.global_transform.origin
+    var obstructing_objects = []
+
+    var collision_result = true
+    # while collision_result:
+    #     collision_result = space_state.intersect_ray(camera_pos, player_pos, 
+    #                                                      obstructing_objects)
+    #     if collision_result and !collision_result.collider == player:
+    #         if (collision_result.collider is GridMap):
+    #             var gridmap = collision_result.collider
+    #             var grid_pos = gridmap.world_to_map(collision_result.position)
+    #             # obstructing_objects.push_back(gridmap)
+    #             var cell_id = gridmap.get_cell_item(grid_pos.x, grid_pos.y, grid_pos.z)
+    #             var mesh_library = gridmap.theme
+    #             var cell_mesh_name = mesh_library.get_item_name(cell_id)
+    #             if not "Transparent" in cell_mesh_name:
+    #                 var transparent_mesh_name = cell_mesh_name + "Transparent"
+    #                 var transparent_cell_id = mesh_library.find_item_by_name(transparent_mesh_name)
+    #                 gridmap.set_cell_item(grid_pos.x, grid_pos.y, grid_pos.z, transparent_cell_id)
+    #             # gridmap.set_cell_item(grid_pos.x, grid_pos.y, grid_pos.z, GridMap.INVALID_CELL_ITEM)
+    #             break
+    #         else:
+    #             obstructing_objects.push_back(collision_result.collider)
+    #     else:
+    #         break # No more collisions/collided with player
+        
+    # # last_obstructing_objects.show()
+    # for obj in last_obstructing_objects:
+    #     obj.show()
+
+    # # obstructing_objects.hide()
+    # for obj in obstructing_objects:
+    #     obj.hide()
+
+    last_obstructing_objects = obstructing_objects
+
     
 func rotateTo(target_degrees, immediate=false):
     real_rotation_target = target_degrees

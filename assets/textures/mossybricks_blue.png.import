@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/mossybricks_blue.png-4d22080d89bcc18e6682ff3914d02418.s3tc.stex"
 path.etc2="res://.import/mossybricks_blue.png-4d22080d89bcc18e6682ff3914d02418.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/textures/mossybricks_blue.png"
-source_md5="486c72c0f779023f8bfeae755cfcc1ff"
-
 dest_files=[ "res://.import/mossybricks_blue.png-4d22080d89bcc18e6682ff3914d02418.s3tc.stex", "res://.import/mossybricks_blue.png-4d22080d89bcc18e6682ff3914d02418.etc2.stex" ]
-dest_md5="7d57c09910019989fd459de48e19c45a"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

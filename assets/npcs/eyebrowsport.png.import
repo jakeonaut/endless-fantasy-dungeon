@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/eyebrowsport.png-799aab1265f2fb48a4535182469e488e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/npcs/eyebrowsport.png"
-source_md5="e8ffe1c1ef03408e0fc4b8344eae42d9"
-
 dest_files=[ "res://.import/eyebrowsport.png-799aab1265f2fb48a4535182469e488e.stex" ]
-dest_md5="a3ad0fbac8816dc3852ab3e45b66d0de"
 
 [params]
 
 compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

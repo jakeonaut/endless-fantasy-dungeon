@@ -1,4 +1,4 @@
-extends Node
+extends Spatial
 
 onready var saveSound = get_node("SaveSound")
 

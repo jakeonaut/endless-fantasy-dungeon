@@ -1,4 +1,4 @@
-extends Node
+extends Spatial
 
 onready var coinSound = get_node("coinSound")
 

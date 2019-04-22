@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/glasses.png-a9c12f5853490a0a5412a6be8f420950.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://assets/npcs/glasses.png"
-source_md5="c064a4054fddcbf3a92a5ea7a3eb20ef"
-
 dest_files=[ "res://.import/glasses.png-a9c12f5853490a0a5412a6be8f420950.stex" ]
-dest_md5="f148bda3bd132a3d8d245411ee359489"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

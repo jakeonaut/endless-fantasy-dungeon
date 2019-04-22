@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/minecraftdoor0000.png-5462f7a1f213cfaae4ac547833c19f08.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
@@ -14,6 +17,7 @@ dest_files=[ "res://.import/minecraftdoor0000.png-5462f7a1f213cfaae4ac547833c19f
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=1
+compress/bptc_ldr=0
 compress/normal_map=2
 flags/repeat=true
 flags/filter=false
@@ -23,6 +27,7 @@ flags/srgb=1
 process/fix_alpha_border=false
 process/premult_alpha=true
 process/HDR_as_SRGB=true
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

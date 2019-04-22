@@ -4,20 +4,22 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/flower.png-d8da568454562905e55fc3fbec409fec.s3tc.stex"
 path.etc2="res://.import/flower.png-d8da568454562905e55fc3fbec409fec.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/textures/flower.png"
-source_md5="dc20bcded36964313f69fce0baf73689"
-
 dest_files=[ "res://.import/flower.png-d8da568454562905e55fc3fbec409fec.s3tc.stex", "res://.import/flower.png-d8da568454562905e55fc3fbec409fec.etc2.stex" ]
-dest_md5="4810b7109a93b73ddd27129c8502a4dd"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
@@ -27,6 +29,7 @@ flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

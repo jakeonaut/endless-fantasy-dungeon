@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.988166 )
+colors = PoolColorArray( 0, 0.929688, 1, 1, 0.921875, 0, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 500
+
+[node name="PlayerOverlayRender" type="CanvasLayer"]
+
+[node name="TextBox" type="TextureRect" parent="."]
+margin_right = 578.0
+margin_bottom = 207.0
+texture = SubResource( 2 )
+expand = true
+
