@@ -87,12 +87,6 @@ fov = 65.0
 size = 20.0
 near = 0.1
 
-[node name="Camera2" type="Camera" parent="CameraY/CameraX"]
-transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 5 )
-fov = 115.2
-size = 20.0
-near = 0.1
-
 [node name="Ambient" type="DirectionalLight" parent="CameraY/CameraX"]
 light_energy = 0.1
 shadow_bias = 0.15

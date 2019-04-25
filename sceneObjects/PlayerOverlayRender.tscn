@@ -1,18 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.988166 )
-colors = PoolColorArray( 0, 0.929688, 1, 1, 0.921875, 0, 1, 1 )
+[ext_resource path="res://assets/realmini.png" type="Texture" id=1]
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-width = 500
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
 
-[node name="PlayerOverlayRender" type="CanvasLayer"]
+uniform float brightness = 2.0;
+uniform float contrast = 1.0;
+uniform float saturation = 2.0;
 
-[node name="TextBox" type="TextureRect" parent="."]
-margin_right = 578.0
-margin_bottom = 207.0
-texture = SubResource( 2 )
-expand = true
+void fragment() {
+        vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+
+        c.rgb = mix(vec3(0.0), c.rgb, brightness);
+        c.rgb = mix(vec3(0.5), c.rgb, contrast);
+        c.rgb = mix(vec3(dot(vec3(1.0), c.rgb)*0.33333), c.rgb, saturation);
+
+        ALBEDO.rgb = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/brightness = 2.0
+shader_param/contrast = 1.0
+shader_param/saturation = 2.0
+
+[node name="PlayerOverlayRender" type="Node"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 671.235, 177.285 )
+scale = Vector2( 2.22102, 2.38504 )
+z_index = 1
+texture = ExtResource( 1 )
 

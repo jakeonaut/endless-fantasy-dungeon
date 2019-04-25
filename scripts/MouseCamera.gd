@@ -106,40 +106,52 @@ func _physics_process(delta):
     var space_state = get_world().get_direct_space_state()
     var camera_pos = true_camera.global_transform.origin
     var player_pos = player.global_transform.origin
-    var obstructing_objects = []
+    var exclude = []
 
-    var collision_result = true
+    # Not currently working with grid maps unfortunately
+    # https://github.com/godotengine/godot/issues/14608
+    # https://github.com/godotengine/godot/issues/27282
+    # var collision_result = true
     # while collision_result:
-    #     collision_result = space_state.intersect_ray(camera_pos, player_pos, 
-    #                                                      obstructing_objects)
+    #     collision_result = space_state.intersect_ray(camera_pos, player_pos, exclude)
     #     if collision_result and !collision_result.collider == player:
     #         if (collision_result.collider is GridMap):
     #             var gridmap = collision_result.collider
+    #             if not gridmap in exclude:
+    #                 exclude.push_back(gridmap)
     #             var grid_pos = gridmap.world_to_map(collision_result.position)
-    #             # obstructing_objects.push_back(gridmap)
     #             var cell_id = gridmap.get_cell_item(grid_pos.x, grid_pos.y, grid_pos.z)
-    #             var mesh_library = gridmap.theme
-    #             var cell_mesh_name = mesh_library.get_item_name(cell_id)
-    #             if not "Transparent" in cell_mesh_name:
-    #                 var transparent_mesh_name = cell_mesh_name + "Transparent"
-    #                 var transparent_cell_id = mesh_library.find_item_by_name(transparent_mesh_name)
-    #                 gridmap.set_cell_item(grid_pos.x, grid_pos.y, grid_pos.z, transparent_cell_id)
-    #             # gridmap.set_cell_item(grid_pos.x, grid_pos.y, grid_pos.z, GridMap.INVALID_CELL_ITEM)
-    #             break
+    #             if cell_id == -1: 
+    #                 #print(collision_result)
+    #                 #print(grid_pos)
+    #                 # while true: pass
+    #                 break
+                
+    #             print(collision_result.position)
+    #             print(grid_pos)
+    #             print(cell_id)
+    #             # var bake_mesh_rid = gridmap.get_bake_mesh_instance(cell_id)
+    #             # exclude.push_back(bake_mesh_rid)
+    #             print(exclude)
+
+    #             gridmap.set_cell_item(grid_pos.x, grid_pos.y, grid_pos.z, GridMap.INVALID_CELL_ITEM)
+    #             # while true:
+    #             #     pass
+                
     #         else:
-    #             obstructing_objects.push_back(collision_result.collider)
+    #             exclude.push_back(collision_result.collider)
     #     else:
     #         break # No more collisions/collided with player
         
-    # # last_obstructing_objects.show()
+    # last_obstructing_objects.show()
     # for obj in last_obstructing_objects:
     #     obj.show()
 
-    # # obstructing_objects.hide()
-    # for obj in obstructing_objects:
+    # # exclude.hide()
+    # for obj in exclude:
     #     obj.hide()
 
-    last_obstructing_objects = obstructing_objects
+    last_obstructing_objects = exclude
 
     
 func rotateTo(target_degrees, immediate=false):
