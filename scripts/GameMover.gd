@@ -7,7 +7,6 @@ var terminal_vel = 32
 var on_ground = true
 var was_on_ground = true
 var lastOnGroundPoint = self.translation
-var lastOnGroundHv = Vector3(0, 0, 0)
 var fallCounter = 0
 var fallCountMax = 10
 var take_fall_damage = false
@@ -26,6 +25,12 @@ func _ready():
     set_process_input(true)
     set_process(true)
     set_physics_process(true)
+
+func _process(delta):
+    pass
+
+func _physics_process(delta):
+    pass
 
 func processPhysics(delta):
     lv = linear_velocity
@@ -51,8 +56,7 @@ func processPhysics(delta):
 
     noFloorBelow()
     if on_ground and self.is_on_floor() and hv.x != 0 and hv.z != 0:
-        lastOnGroundPoint = self.translation
-        lastOnGroundHv = hv
+        tryCalculateLastOnGroundPoint()
     
     if not was_on_ground and on_ground: # I just landed!!
         landed()
@@ -91,3 +95,6 @@ func noFloorBelow():
         on_ground = true
     else:
         on_ground = false
+
+func tryCalculateLastOnGroundPoint():
+    lastOnGroundPoint = self.translation

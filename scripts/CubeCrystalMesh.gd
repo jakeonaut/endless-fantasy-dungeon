@@ -38,36 +38,37 @@ func split_vertices():
             vertices.append( b - mid * split )
 
 func cube_create():
+    var s = 0.5
 
     vertices = []
     # top
-    vertices.append( Vector3( -1, -1, -1 ) )
-    vertices.append( Vector3( 1, -1, -1 ) )
-    vertices.append( Vector3( 1, -1, -1 ) )
-    vertices.append( Vector3( 1, -1, 1 ) )
-    vertices.append( Vector3( 1, -1, 1 ) )
-    vertices.append( Vector3( -1, -1, 1 ) )
-    vertices.append( Vector3( -1, -1, 1 ) )
-    vertices.append( Vector3( -1, -1, -1 ) )
+    vertices.append( Vector3( -s, -s, -s ) )
+    vertices.append( Vector3( s, -s, -s ) )
+    vertices.append( Vector3( s, -s, -s ) )
+    vertices.append( Vector3( s, -s, s ) )
+    vertices.append( Vector3( s, -s, s ) )
+    vertices.append( Vector3( -s, -s, s ) )
+    vertices.append( Vector3( -s, -s, s ) )
+    vertices.append( Vector3( -s, -s, -s ) )
     # bottom
-    vertices.append( Vector3( -1, 1, -1 ) )
-    vertices.append( Vector3( 1, 1, -1 ) )
-    vertices.append( Vector3( 1, 1, -1 ) )
-    vertices.append( Vector3( 1, 1, 1 ) )
-    vertices.append( Vector3( 1, 1, 1 ) )
-    vertices.append( Vector3( -1, 1, 1 ) )
-    vertices.append( Vector3( -1, 1, 1 ) )
-    vertices.append( Vector3( -1, 1, -1 ) )
+    vertices.append( Vector3( -s, s, -s ) )
+    vertices.append( Vector3( s, s, -s ) )
+    vertices.append( Vector3( s, s, -s ) )
+    vertices.append( Vector3( s, s, s ) )
+    vertices.append( Vector3( s, s, s ) )
+    vertices.append( Vector3( -s, s, s ) )
+    vertices.append( Vector3( -s, s, s ) )
+    vertices.append( Vector3( -s, s, -s ) )
 
     if sides:
-        vertices.append( Vector3( -1, -1, -1 ) )
-        vertices.append( Vector3( -1, 1, -1 ) )
-        vertices.append( Vector3( 1, -1, -1 ) )
-        vertices.append( Vector3( 1, 1, -1 ) )
-        vertices.append( Vector3( 1, -1, 1 ) )
-        vertices.append( Vector3( 1, 1, 1 ) )
-        vertices.append( Vector3( -1, -1, 1 ) )
-        vertices.append( Vector3( -1, 1, 1 ) )
+        vertices.append( Vector3( -s, -s, -s ) )
+        vertices.append( Vector3( -s, s, -s ) )
+        vertices.append( Vector3( s, -s, -s ) )
+        vertices.append( Vector3( s, s, -s ) )
+        vertices.append( Vector3( s, -s, s ) )
+        vertices.append( Vector3( s, s, s ) )
+        vertices.append( Vector3( -s, -s, s ) )
+        vertices.append( Vector3( -s, s, s ) )
 
     split_vertices()
 
