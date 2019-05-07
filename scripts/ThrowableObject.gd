@@ -42,7 +42,7 @@ func processInputs():
 
     if was_just_thrown:
         was_just_thrown = false
-        hv = player.dir.normalized() * throw_speed
+        hv = player.facing.normalized() * throw_speed
         vv = jump_force
     elif on_ground: 
         hv = Vector3()

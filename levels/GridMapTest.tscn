@@ -11,7 +11,7 @@ script = ExtResource( 1 )
 mesh_library = ExtResource( 2 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, -1610612736, 1, 0, 9, 2, 0, 0, 65538, 1, 4 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 9, 2, 0, 0, 65538, 1, 4 )
 }
 __meta__ = {
 "_editor_clip_": 0,

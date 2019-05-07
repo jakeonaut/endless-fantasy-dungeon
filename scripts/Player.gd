@@ -29,6 +29,9 @@ var recover_time_limit = 10
 var is_walking = false
 var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
+var sprite_facing = ""
+var sprite_reset_timer = 0
+var sprite_reset_limit = 3
 var cameraRotationCounter = 0
 var transitioning = false
 
@@ -81,6 +84,14 @@ func _process(delta):
     # https://github.com/godotengine/godot/issues/6500
     tryRotateCamera(delta)
 
+    if sprite_facing == "":
+        sprite_reset_timer += delta
+        if sprite_reset_timer >= sprite_reset_limit and not mySprite.isFacingDown():
+            mySprite.faceDown()
+    else:
+        sprite_reset_timer = 0
+        
+
 func tryRotateCamera(delta):
     if Input.is_action_pressed("ui_rotate_left") and not global.pauseMoveInput:
         cameraRotationCounter += delta
@@ -123,7 +134,8 @@ func applyGravity(delta):
 
 # @override
 func tryCalculateLastOnGroundPoint():
-    lastOnGroundPoint = self.translation
+    if self.is_on_floor() or form != Form.FLOOR:
+        lastOnGroundPoint = self.translation
 
 # @override
 func processInputs():
@@ -188,16 +200,41 @@ func processHorizontalInputs():
         if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
             Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
             dir = Vector3(0.0, 0.0, 0.0)
-            if Input.is_action_pressed("ui_left") and not global.pauseMoveInput:
-                dir += right
+            if Input.is_action_pressed("ui_left"):
+                if not global.pauseMoveInput: 
+                    dir += right
+                # only change sprite facing if i'm idle of if I just pressed this
+                if sprite_facing == "" or Input.is_action_just_pressed("ui_left"):
+                    sprite_facing = "left"
                 # getCamera().rotate_right(5)
-            elif Input.is_action_pressed("ui_right") and not global.pauseMoveInput:
-                dir -= right
+            elif Input.is_action_pressed("ui_right"):
+                if not global.pauseMoveInput: 
+                    dir -= right
+                # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
+                if sprite_facing == "" or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left"):
+                    sprite_facing = "right"
                 # getCamera().rotate_left(5)
-            if Input.is_action_pressed("ui_up") and not global.pauseMoveInput:
-                dir += forward
-            elif Input.is_action_pressed("ui_down") and not global.pauseMoveInput:
-                dir -= forward
+            else: sprite_facing = "" # need to reset facing left and right if I'm holding walking up or down
+
+            if Input.is_action_pressed("ui_up"):
+                if not global.pauseMoveInput: 
+                    dir += forward
+                # only change sprite facing if i'm idle of if I just pressed this
+                if sprite_facing == "" or Input.is_action_just_pressed("ui_up"):
+                    sprite_facing = "up"
+            elif Input.is_action_pressed("ui_down"):
+                if not global.pauseMoveInput: 
+                    dir -= forward
+                # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
+                if sprite_facing == "" or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up"):
+                    sprite_facing = "down"
+
+            # only do final sprite change at end of conditional so that sprite "remembers" which way it was previously facing.
+            # otherwise, glitches on initial frame when walking diagonally
+            if sprite_facing == "left": mySprite.faceLeft()
+            elif sprite_facing == "right": mySprite.faceRight()
+            elif sprite_facing == "up": mySprite.faceUp()
+            elif sprite_facing == "down": mySprite.faceDown()
     updateFacing(dir)
     var curr_walk_speed = walk_speed
     if is_recovering or should_recover:
@@ -215,6 +252,7 @@ func updateFacing(dir):
         is_walking = true
     else:
         is_walking = false
+        sprite_facing = ""
 
 # @override
 func landed():
