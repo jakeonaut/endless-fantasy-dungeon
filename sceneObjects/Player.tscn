@@ -87,9 +87,27 @@ fov = 65.0
 size = 20.0
 near = 0.1
 
+[node name="CloseCamera" type="Camera" parent="CameraY/CameraX"]
+transform = Transform( 1, 0, 0, 0, 1, -8.34465e-007, 0, -2.98023e-008, 1, 0, 0, 10 )
+fov = 65.0
+size = 20.0
+near = 0.1
+
+[node name="MidCamera" type="Camera" parent="CameraY/CameraX"]
+transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 15 )
+fov = 65.0
+size = 20.0
+near = 0.1
+
 [node name="Ambient" type="DirectionalLight" parent="CameraY/CameraX"]
 light_energy = 0.1
 shadow_bias = 0.15
+
+[node name="ToyboxCamera" type="Camera" parent="CameraY"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15 )
+fov = 65.0
+size = 20.0
+near = 0.1
 
 [node name="Sounds" type="Node" parent="."]
 editor/display_folded = true

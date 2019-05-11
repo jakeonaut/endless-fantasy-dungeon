@@ -2,6 +2,9 @@ extends Spatial
 
 onready var camera_x = get_node("CameraX")
 onready var true_camera = get_node("CameraX/Camera")
+onready var close_camera = get_node("CameraX/CloseCamera")
+onready var mid_camera = get_node("CameraX/MidCamera")
+onready var toybox_camera = get_node("ToyboxCamera")
 onready var player = get_node("..")
 
 var mouseDown = false
@@ -24,6 +27,11 @@ var current_rotation_x = 0
 var is_rotating = false
 var is_rotating_x = false
 var last_obstructing_objects = []
+var lerp_timer = 0
+var is_lerping = false
+var source_lerp_index = 0
+var target_lerp_index = 1
+var lerp_targets = [0, 0]
 
 # TODO(jaketrower): There are a lot of "same but for X" code repetition here
 # TODO(jaketrower): can we somehow consolidate them into common methods?
@@ -43,6 +51,8 @@ func _ready():
     real_rotation_target_x = camera_x.rotation_degrees.x
     self.normalizeTargetX()
     current_rotation_x = target_rotation_x
+
+    lerp_targets = [close_camera, toybox_camera]
     
 func _input(ev):
     if ev is InputEventMouseButton: # and ev.button_index == BUTTON_RIGHT:
@@ -102,7 +112,28 @@ func _process(delta):
     mouseDiffX = 0
     mouseDiffY = 0
 
+func toggleNext():
+    if not is_lerping:
+        lerp_timer = 0
+        is_lerping = true
+
 func _physics_process(delta):
+    if is_lerping:
+        lerp_timer += delta*2
+        var source_transform = lerp_targets[source_lerp_index].global_transform
+        var target_transform = lerp_targets[target_lerp_index].global_transform
+        true_camera.global_transform = source_transform.interpolate_with(
+            target_transform, lerp_timer)
+        var dist = true_camera.global_transform.origin.distance_to(target_transform.origin)
+        if dist < delta:
+            is_lerping = false
+            source_lerp_index += 1
+            if source_lerp_index >= lerp_targets.size(): 
+                source_lerp_index = 0
+            target_lerp_index += 1
+            if target_lerp_index >= lerp_targets.size():
+                target_lerp_index = 0
+
     var space_state = get_world().get_direct_space_state()
     var camera_pos = true_camera.global_transform.origin
     var player_pos = player.global_transform.origin
@@ -219,6 +250,8 @@ func rotate_left(step=4):
 
 # TODO(jaketrower):
 func rotate_up():
+    if source_lerp_index == 1: return
+
     if not is_rotating_x:
         if self.gateKeepUpCondition_(target_rotation_x):
             target_rotation_x -= deg2rad(rstep)
@@ -231,6 +264,7 @@ func gateKeepUpCondition_(rx):
 
 # TODO(jaketrower):
 func rotate_down():
+    if source_lerp_index == 1: return
     if not is_rotating_x:
         if self.gateKeepDownCondition_(target_rotation_x):
             target_rotation_x += deg2rad(rstep)

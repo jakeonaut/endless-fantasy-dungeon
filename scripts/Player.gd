@@ -84,6 +84,9 @@ func _process(delta):
     # https://github.com/godotengine/godot/issues/6500
     tryRotateCamera(delta)
 
+    if Input.is_action_just_pressed("ui_focus_next"):
+        getCamera().toggleNext()
+
     if sprite_facing == "":
         sprite_reset_timer += delta
         if sprite_reset_timer >= sprite_reset_limit and not mySprite.isFacingDown():
