@@ -9,12 +9,14 @@ var path = ""
 func fade_to(scn_path):
     self.path = scn_path # store the scene path
     get_node("AnimationPlayer").play("fade") # play the transition animation
+func long_fade_to(scn_path):
+    self.path = scn_path # store the scene path
+    get_node("AnimationPlayer").play("long_fade") # play the long transition animation
 
 # PRIVATE FUNCTION. CALLED AT THE MIDDLE OF THE TRANSITION ANIMATION
 func change_scene():
-    global.activeInteractor = null
-    global.activeThrowableObject = null
-    global.pauseMoveInput = false
+    if self.path != "":
+        get_tree().change_scene(self.path)
+        global.memory["roomPath"] = self.path
 
-    if path != "":
-        get_tree().change_scene(path)
+    global.saveGame()

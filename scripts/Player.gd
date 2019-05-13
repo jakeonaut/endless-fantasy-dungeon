@@ -4,6 +4,7 @@ onready var camera = get_node("CameraY") # the "camera"
 onready var smallInteractionArea = get_node("SmallInteractionArea")
 onready var mySprite = get_node("Sprite3D")
 onready var jumpSound = get_node("Sounds/JumpSound")
+onready var fallSound = get_node("Sounds/FallSound")
 
 # Form variables
 enum Form {
@@ -121,24 +122,19 @@ func _physics_process(delta):
             is_recovering = false
 
     # TODO(jaketrower): Add this to other GameMover
-    if not on_ground and translation.y < -10 and not transitioning:
+    if not on_ground and translation.y < -6 and not transitioning:
         global.playerJustFell = true
-        global.lastOnGroundPoint = lastOnGroundPoint
         global.cameraRotation = getCamera().rotation_degrees.y
+        fallSound.play()
         # global transition scene, see res://scripts/transition.gd
         var currLevelPath = get_tree().get_root().get_node("level").filename
-        transition.fade_to(currLevelPath)
+        transition.long_fade_to(currLevelPath)
         transitioning = true
 
 # @override
 func applyGravity(delta):
     if not on_ground or form != Form.FLOOR:
         .applyGravity(delta) #super
-
-# @override
-func tryCalculateLastOnGroundPoint():
-    if self.is_on_floor() or form != Form.FLOOR:
-        lastOnGroundPoint = self.translation
 
 # @override
 func processInputs():

@@ -72,7 +72,7 @@ func lockTalk():
         canInteractWithPlayer = false
 
 func enterDoor():
-    global.lastDoor = name
+    global.memory["lastDoor"] = name
     if not transitioning:
         # global transition scene, see res://scripts/transition.gd
         transition.fade_to("res://" + connectedScene)
@@ -80,6 +80,7 @@ func enterDoor():
         # when entering a new level, res://scripts/levelScript.gd runs
 
 func land():
-    enterSound.play()
+    if not global.playerJustFell:
+        enterSound.play()
     player.global_transform.origin = landingPad.global_transform.origin
     player.getCamera().rotateTo(180 + self.rotation_degrees.y, true)

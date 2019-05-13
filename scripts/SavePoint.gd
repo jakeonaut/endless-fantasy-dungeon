@@ -1,5 +1,6 @@
 extends Spatial
 
+onready var player = get_tree().get_root().get_node("level/Player")
 onready var saveSound = get_node("SaveSound")
 
 var MIN_STEP = 1
@@ -26,6 +27,7 @@ func passiveActivate():
         global.activeSavePoint = self.id
         saveSound.play()
         global.memory["active_save_point"] = self.id
+        global.memory["active_save_point_translation"] = self.translation
 
 func isActive():
     return true
