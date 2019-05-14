@@ -25,7 +25,7 @@ func _ready():
         if global.cameraRotation:
             player.getCamera().rotateTo(global.cameraRotation, true)   
     
-    if global.memory.has("active_save_point") and global.isRespawning:
+    if global.memory.has("active_save_point") and global.isRespawning and global.memory["roomPath"] == self.get_filename():
         player.global_transform.origin = Vector3(
             global.memory["active_save_point_x"], 
             global.memory["active_save_point_y"], 
