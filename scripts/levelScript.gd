@@ -9,6 +9,8 @@ func _ready():
         if global.memory.has("roomPath"):
             transition.path = global.memory["roomPath"]
             transition.change_scene()
+            if global.memory.has("active_save_point"):
+                global.isRespawning = true
             return
         
 
@@ -16,18 +18,19 @@ func _ready():
     global.activeThrowableObject = null
     global.pauseMoveInput = false
 
-    # doing some MEMORY management
-    if global.memory.has("active_save_point"):
-        global.activeSavePoint = global.memory["active_save_point"]
     if global.memory.has("player_costume"):
         player.wearCostume(global.memory["player_costume"])
 
-    if global.playerJustFell:
+    if global.isRespawning:
         if global.cameraRotation:
-            player.getCamera().rotateTo(global.cameraRotation, true)
-        global.playerJustFell = false   
+            player.getCamera().rotateTo(global.cameraRotation, true)   
     
-    if global.memory.has("lastDoor"):
+    if global.memory.has("active_save_point") and global.isRespawning:
+        player.global_transform.origin = Vector3(
+            global.memory["active_save_point_x"], 
+            global.memory["active_save_point_y"], 
+            global.memory["active_save_point_z"])
+    elif global.memory.has("lastDoor"):
         var door = get_node(global.memory["lastDoor"])
         if door != null:
             door.land()   
@@ -42,4 +45,4 @@ func _ready():
     # update music
     musicPlayer.conductFromScenePath(self.filename)
 
-    global.saveGame()        
+    global.isRespawning = false

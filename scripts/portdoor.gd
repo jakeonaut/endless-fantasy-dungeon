@@ -80,7 +80,7 @@ func enterDoor():
         # when entering a new level, res://scripts/levelScript.gd runs
 
 func land():
-    if not global.playerJustFell:
+    if not global.isRespawning:
         enterSound.play()
     player.global_transform.origin = landingPad.global_transform.origin
     player.getCamera().rotateTo(180 + self.rotation_degrees.y, true)

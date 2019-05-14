@@ -10,7 +10,7 @@ var activeInteractor = null
 var activeThrowableObject = null
 var activeSavePoint = null
 
-var playerJustFell = false
+var isRespawning = false
 var cameraRotation = null
 
 var pauseMoveInput = false # don't allow player physics or camera input??

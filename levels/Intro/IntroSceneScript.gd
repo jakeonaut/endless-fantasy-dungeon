@@ -1,7 +1,7 @@
 extends "res://scripts/levelScript.gd"
 
 func _ready():
-    ._ready() #super
+    # ._ready() #super
         
     if not global.memory.has("game_story_has_started"):
         get_node("yellow/InteractionArea").InteractActivate()

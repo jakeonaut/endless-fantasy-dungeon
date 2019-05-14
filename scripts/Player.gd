@@ -123,7 +123,7 @@ func _physics_process(delta):
 
     # TODO(jaketrower): Add this to other GameMover
     if not on_ground and translation.y < -6 and not transitioning:
-        global.playerJustFell = true
+        global.isRespawning = true
         global.cameraRotation = getCamera().rotation_degrees.y
         fallSound.play()
         # global transition scene, see res://scripts/transition.gd
