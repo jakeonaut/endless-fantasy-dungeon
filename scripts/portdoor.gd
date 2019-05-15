@@ -77,10 +77,13 @@ func enterDoor():
         # global transition scene, see res://scripts/transition.gd
         transition.fade_to("res://" + connectedScene)
         transitioning = true
-        # when entering a new level, res://scripts/levelScript.gd runs
+        # take into account enterDoor rotation + player's camera rotation
+        global.cameraRotation = player.getCamera().real_rotation_target - self.rotation_degrees.y
 
-func land():
+        # NOTE: when entering a new level, res://scripts/levelScript.gd runs
+
+func land(prevCameraRotation):
+    player.global_transform.origin = landingPad.global_transform.origin
     if not global.isRespawning:
         enterSound.play()
-    player.global_transform.origin = landingPad.global_transform.origin
-    player.getCamera().rotateTo(180 + self.rotation_degrees.y, true)
+        player.getCamera().rotateTo(prevCameraRotation + self.rotation_degrees.y + 180, true)
