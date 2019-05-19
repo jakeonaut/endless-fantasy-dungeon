@@ -17,6 +17,7 @@ func _ready():
     global.activeInteractor = null
     global.activeThrowableObject = null
     global.pauseMoveInput = false
+    global.pauseGame = false
 
     if global.memory.has("player_costume"):
         player.wearCostume(global.memory["player_costume"])

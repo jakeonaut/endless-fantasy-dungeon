@@ -21,6 +21,11 @@ func _ready():
     player = levelRoot.get_node("Player")
 
 func _physics_process(delta):
+    #._physics_process(delta) # NOTE: This super method is called automatically
+    # https://github.com/godotengine/godot/issues/6500
+    
+    if global.pauseGame: return
+
     if is_held:
         self.translation = player.translation
         self.translation.y += 2

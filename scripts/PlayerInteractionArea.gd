@@ -6,6 +6,8 @@ func _ready():
     set_process_input(true)
     
 func _input(event):
+    if global.pauseGame: return
+
     if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
         # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
         # I am already looking at one (e.g. if global.activeInteractor exists   )
@@ -22,6 +24,8 @@ func _input(event):
             
 
 func _process(delta):
+    if global.pauseGame: return
+
     # can short circuit and just immediately interact with "activeInteractor" AKA TextBox if 
     # I am already looking at one (e.g. if global.activeInteractor exists   )
     if Input.is_action_just_pressed("ui_interact") and global.activeInteractor:

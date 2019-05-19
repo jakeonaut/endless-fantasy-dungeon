@@ -11,6 +11,10 @@ func _ready():
     set_physics_process(true)
 
 func _physics_process(delta):
+    #._physics_process(delta) # NOTE: This super method is called automatically
+    # https://github.com/godotengine/godot/issues/6500
+
+    if global.pauseGame: return
     .processPhysics(delta) # super
     
 # @override

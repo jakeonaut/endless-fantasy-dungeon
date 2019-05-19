@@ -1,6 +1,7 @@
 extends "GameMover.gd"
 
 onready var camera = get_node("CameraY") # the "camera"
+onready var pauseMenu = get_node("PauseMenu/MenuBox")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
 onready var mySprite = get_node("Sprite3D")
 onready var jumpSound = get_node("Sounds/JumpSound")
@@ -40,6 +41,7 @@ func _ready():
     set_process_input(true)
     set_process(true)
     set_physics_process(true)
+    pauseMenu.hide()
 
 func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
@@ -83,8 +85,18 @@ func bugTransform():
 func _process(delta):
     # ._process(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
-    tryRotateCamera(delta)
 
+    if Input.is_action_just_pressed("ui_accept") and not global.pauseMoveInput:
+        if not global.pauseGame:
+            pauseMenu.show()
+            global.pauseGame = true
+        else:
+            pauseMenu.hide()
+            global.pauseGame = false
+
+    if global.pauseGame: return
+
+    tryRotateCamera(delta)
     if Input.is_action_just_pressed("ui_focus_next"):
         getCamera().toggleNext()
 
@@ -113,6 +125,8 @@ func tryRotateCamera(delta):
 func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
+
+    if global.pauseGame: return
 
     .processPhysics(delta) #super
     if is_recovering:
