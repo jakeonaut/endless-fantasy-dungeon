@@ -11,7 +11,7 @@ var activeThrowableObject = null
 var activeSavePoint = null
 
 var isRespawning = false
-var cameraRotation = null
+var cameraRotation = 0
 
 var pauseMoveInput = false # don't allow player physics or camera input??
 var pauseGame = false

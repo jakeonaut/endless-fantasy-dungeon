@@ -18,7 +18,7 @@ dest_files=[ "res://.import/goddessportrait.png-c61c1bca4c5296fe1ba799195ae08713
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_mode=1
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
