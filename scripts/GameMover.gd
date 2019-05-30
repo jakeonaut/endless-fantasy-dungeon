@@ -7,7 +7,7 @@ var terminal_vel = 32
 var on_ground = true
 var was_on_ground = true
 var fallCounter = 0
-var fallCountMax = 10
+var fallCountMax = 3
 var take_fall_damage = false
 
 var linear_velocity = Vector3()
@@ -44,9 +44,9 @@ func processPhysics(delta):
     # apply terminal velocity to fall speed
     if vv < -terminal_vel:
         vv = -terminal_vel
-        fallCounter += 1
+        fallCounter += (delta*22)
     
-    processInputs()
+    processInputs(delta)
         
     lv = hv + (up * vv)
     
@@ -70,7 +70,7 @@ func processPhysics(delta):
 func applyGravity(delta):
     lv += g * delta
 
-func processInputs():
+func processInputs(delta):
     pass
     
 func landed():

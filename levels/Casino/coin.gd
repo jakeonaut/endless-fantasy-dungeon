@@ -7,7 +7,7 @@ var MAX_STEP = -12
 var step = MIN_STEP
 
 var disappearing = false
-var disappearTimer = 30
+var disappearTimer = 12
 
 func _ready():
     set_process(true)
@@ -18,7 +18,7 @@ func _process(delta):
             step = MAX_STEP
             translate(Vector3(0, -MIN_STEP*delta, 0))
             if disappearing: 
-                disappearTimer -= 1
+                disappearTimer -= (delta*22)
                 if disappearTimer <= 0: 
                     hide()
                     disappearing = false

@@ -13,12 +13,24 @@ var is_held = false
 var was_just_thrown = false
 var has_initially_landed = false
 
+var pickupCounter = 0
+var pickupCounterMax = 3
+
 var throw_speed = 14
 var jump_force = 10
 
 func _ready():
     set_physics_process(true)
     player = levelRoot.get_node("Player")
+
+func _process(delta):
+    #._process(delta) # NOTE: This super method is called automatically
+    # https://github.com/godotengine/godot/issues/6500
+
+    if global.pauseGame: return
+
+    if is_held and pickupCounter < pickupCounterMax:
+        pickupCounter += (delta*22)
 
 func _physics_process(delta):
     #._physics_process(delta) # NOTE: This super method is called automatically
@@ -28,7 +40,7 @@ func _physics_process(delta):
 
     if is_held:
         self.translation = player.translation
-        self.translation.y += 2
+        self.translation.y += 2 # nodelta
         set_collision_mask_bit(1, false)
         return
 
@@ -37,7 +49,7 @@ func _physics_process(delta):
         has_initially_landed = true
 
 # @override
-func processInputs():
+func processInputs(delta):
     if take_fall_damage:
         vv = jump_force
         on_ground = false
@@ -74,7 +86,8 @@ func activate():
     if not is_held:
         pickupSound.play()
         is_held = true
-    else:
+        pickupCounter = 0
+    elif pickupCounter >= pickupCounterMax and is_held:
         throwSound.play()
         is_held = false
         was_just_thrown = true

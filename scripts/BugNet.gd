@@ -56,5 +56,5 @@ func _physics_process(delta):
 
     lv = hv
 
-    # Now, actually do the move!!
+    # Now, actually do the move!! # automatically accounts for delta
     linear_velocity = move_and_slide(lv, -Vector3(0, -1, 0).normalized())

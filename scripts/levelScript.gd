@@ -11,7 +11,8 @@ func _ready():
     if global.memory.has("player_costume"):
         player.wearCostume(global.memory["player_costume"])
     
-    if global.memory.has("active_save_point") and global.isRespawning and global.memory["roomPath"] == self.get_filename():
+    if global.memory.has("active_save_point") and global.isRespawning \
+       and global.memory["roomPath"] == self.get_filename():
         player.global_transform.origin = Vector3(
             global.memory["active_save_point_x"], 
             global.memory["active_save_point_y"], 
@@ -19,16 +20,18 @@ func _ready():
         if global.cameraRotation:
             player.getCamera().rotateTo(global.cameraRotation, true)
     elif global.memory.has("lastDoor"):
-        var door = get_node(global.memory["lastDoor"])
-        if door != null:
-            door.land(global.cameraRotation)   
-        else:
-            # if no door found, pick the first door in the level!
-            var children = get_children()
-            for child in children:
-                if child.is_in_group("doors"):
-                    child.land(global.cameraRotation)
-                    break
+        var door_id = global.memory["lastDoor"]
+        var doors = get_tree().get_nodes_in_group("doors")
+        var found_door = null
+        for door in doors:
+            if door.id == door_id:
+                found_door = door
+                break
+        # if no door found, pick the first door in the level!
+        if not found_door and doors.size() > 0:
+            found_door = doors[0]
+
+        if found_door: found_door.land(global.cameraRotation)
 
     # update music
     musicPlayer.conductFromScenePath(self.filename)

@@ -6,6 +6,7 @@ onready var smallInteractionArea = get_node("SmallInteractionArea")
 onready var mySprite = get_node("Sprite3D")
 onready var jumpSound = get_node("Sounds/JumpSound")
 onready var fallSound = get_node("Sounds/FallSound")
+onready var hurtSound = get_node("Sounds/HurtSound")
 
 # Form variables
 enum Form {
@@ -23,11 +24,11 @@ var jump_force = 20
 var weaker_jump_force = 19
 var has_just_lunged = false
 var has_just_jumped_timer = 0
-var has_just_jumped_time_limit = 10
+var has_just_jumped_time_limit = 3
 var should_recover = false
 var is_recovering = false
 var recover_timer = 0
-var recover_time_limit = 10
+var recover_time_limit = 3
 var is_walking = false
 var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
@@ -96,6 +97,7 @@ func _process(delta):
 
     if global.pauseGame: return
 
+    tryDieToEnemy()
     tryRotateCamera(delta)
     if Input.is_action_just_pressed("ui_focus_next"):
         getCamera().toggleNext()
@@ -107,20 +109,29 @@ func _process(delta):
     else:
         sprite_reset_timer = 0
         
+func tryDieToEnemy():
+    if smallInteractionArea.is_touching_enemy and not transitioning:
+        global.isRespawning = true
+        global.cameraRotation = getCamera().rotation_degrees.y
+        hurtSound.play()
+        # global transition scene, see res://scripts/transition.gd
+        var currLevelPath = get_tree().get_root().get_node("level").filename
+        transition.fade_to(currLevelPath)
+        transitioning = true
 
 func tryRotateCamera(delta):
     if Input.is_action_pressed("ui_rotate_left") and not global.pauseMoveInput:
         cameraRotationCounter += delta
-        getCamera().rotate_left(1+(cameraRotationCounter*36))
+        getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
     elif Input.is_action_pressed("ui_rotate_right") and not global.pauseMoveInput:
         cameraRotationCounter += delta
-        getCamera().rotate_right(1+(cameraRotationCounter*36))
+        getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
     else: cameraRotationCounter = 0
     
     if Input.is_action_pressed("ui_rotate_up") and not global.pauseMoveInput:
-        getCamera().rotate_up()
+        getCamera().rotate_up(3*(delta*66))
     if Input.is_action_pressed("ui_rotate_down") and not global.pauseMoveInput:
-        getCamera().rotate_down()
+        getCamera().rotate_down(3*(delta*66))
     
 func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 
@@ -130,7 +141,7 @@ func _physics_process(delta):
 
     .processPhysics(delta) #super
     if is_recovering:
-        recover_timer += 1
+        recover_timer += (delta*22)
         if recover_timer >= recover_time_limit:
             recover_timer = 0
             is_recovering = false
@@ -151,16 +162,16 @@ func applyGravity(delta):
         .applyGravity(delta) #super
 
 # @override
-func processInputs():
-    processJumpInputs()
-    processHorizontalInputs()
+func processInputs(delta):
+    processJumpInputs(delta)
+    processHorizontalInputs(delta)
 
     # TODO(jaketrower): Add this to other GameMover
     if is_walking and smallInteractionArea.is_touching_a_ladder:
         # CLIMB BABY!!!!
         vv = jump_force / 3
 
-func processJumpInputs():
+func processJumpInputs(delta):
     has_just_lunged = false
     # jump
     if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
@@ -199,7 +210,7 @@ func processJumpInputs():
         take_fall_damage = false
         on_ground = false
 
-func processHorizontalInputs():
+func processHorizontalInputs(delta):
     # Forward as seen by the camera (OpenGL convention)
     var view_forward = -getCamera().get_transform().basis.z
     var view_right = -getCamera().get_transform().basis.x
@@ -208,7 +219,7 @@ func processHorizontalInputs():
     var right = view_right
     
     if on_ground or has_just_jumped_timer < has_just_jumped_time_limit:
-        has_just_jumped_timer += 1
+        has_just_jumped_timer += (delta*22)
         
         if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
             Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):

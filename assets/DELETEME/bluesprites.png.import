@@ -2,23 +2,23 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy_sheet.png-4b5640a05c54f0bccc204b48cd95eeb2.stex"
+path="res://.import/bluesprites.png-cd32e4979d5c3b24e4d46e037674c4cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy_sheet.png"
-dest_files=[ "res://.import/enemy_sheet.png-4b5640a05c54f0bccc204b48cd95eeb2.stex" ]
+source_file="res://assets/DELETEME/bluesprites.png"
+dest_files=[ "res://.import/bluesprites.png-cd32e4979d5c3b24e4d46e037674c4cd.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=0
+compress/normal_map=2
 flags/repeat=true
 flags/filter=false
 flags/mipmaps=true

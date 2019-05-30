@@ -127,10 +127,10 @@ func _physics_process(delta):
         var dist = true_camera.global_transform.origin.distance_to(target_transform.origin)
         if dist < delta:
             is_lerping = false
-            source_lerp_index += 1
+            source_lerp_index += 1 # nodelta
             if source_lerp_index >= lerp_targets.size(): 
                 source_lerp_index = 0
-            target_lerp_index += 1
+            target_lerp_index += 1 # nodelta
             if target_lerp_index >= lerp_targets.size():
                 target_lerp_index = 0
 
@@ -249,7 +249,7 @@ func rotate_left(step=4):
         is_rotating = true
 
 # TODO(jaketrower):
-func rotate_up():
+func rotate_up(step=5):
     if source_lerp_index == 1: return
 
     if not is_rotating_x:
@@ -263,7 +263,7 @@ func gateKeepUpCondition_(rx):
     if rx < 0: return rad2deg(rx) < -90
 
 # TODO(jaketrower):
-func rotate_down():
+func rotate_down(step=5):
     if source_lerp_index == 1: return
     if not is_rotating_x:
         if self.gateKeepDownCondition_(target_rotation_x):

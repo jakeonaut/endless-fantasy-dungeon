@@ -10,6 +10,5 @@ func isActive():
 func activate():
     transformSound.play()
     player.floorTransform()
-    print(global.blueTheme)
     levelTiles.theme = global.blueTheme
     visible = false

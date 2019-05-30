@@ -18,7 +18,7 @@ func _physics_process(delta):
     .processPhysics(delta) # super
     
 # @override
-func processInputs():
+func processInputs(delta):
     if shouldJump:
         vv = jump_force
         on_ground = false

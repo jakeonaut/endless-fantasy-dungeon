@@ -8,8 +8,10 @@ var step = MIN_STEP
 var id = null
 
 func _ready():
+    add_to_group("savepoints")
+    id = self.generateId()
+
     set_process(true)
-    id = generateId()
 
 func _process(delta):
     if global.memory.has("active_save_point") and global.memory["active_save_point"] == self.id:

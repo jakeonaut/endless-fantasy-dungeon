@@ -1,5 +1,6 @@
 extends Sprite3D
 
+var id = null
 var topLevelDir = "levels"
 export var midLevelDir = ""
 export var connectedScene = "GenericScene.tscn"
@@ -17,6 +18,7 @@ var transitioning = false
 
 func _ready():
     add_to_group("doors")
+    id = self.generateId()
 
     area.hide()
     landingPad.hide()
@@ -26,6 +28,9 @@ func _ready():
     if isLocked:
         get_node("PolyTriangle").texture = load("res://assets/npcs/tootorialgrey.png")
         get_node("PolyTriangle").step = 1
+
+func generateId():
+    return get_tree().get_root().get_node("level").get_filename() + ":" + get_name()
 
 func unlock():
     isLocked = false
@@ -72,7 +77,7 @@ func lockTalk():
         canInteractWithPlayer = false
 
 func enterDoor():
-    global.memory["lastDoor"] = name
+    global.memory["lastDoor"] = id
     if not transitioning:
         # global transition scene, see res://scripts/transition.gd
         transition.fade_to("res://" + connectedScene)

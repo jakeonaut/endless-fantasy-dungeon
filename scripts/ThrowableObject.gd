@@ -8,7 +8,7 @@ var is_held = false
 var was_just_thrown = false
 
 var pickupCounter = 0
-var pickupCounterMax = 10
+var pickupCounterMax = 3
 
 var throw_speed = 14
 var jump_force = 10
@@ -24,7 +24,7 @@ func _process(delta):
     if global.pauseGame: return
 
     if global.activeThrowableObject == self and pickupCounter < pickupCounterMax:
-        pickupCounter += 1
+        pickupCounter += (delta*22)
 
 func _physics_process(delta):
     #._physics_process(delta) # NOTE: This super method is called automatically
@@ -34,14 +34,14 @@ func _physics_process(delta):
 
     if is_held:
         self.translation = player.translation
-        self.translation.y += 2
+        self.translation.y += 2 # nodelta
         set_collision_mask_bit(1, false)
         return
 
     .processPhysics(delta)
 
 # @override
-func processInputs():
+func processInputs(delta):
     if take_fall_damage:
         vv = jump_force
         on_ground = false
