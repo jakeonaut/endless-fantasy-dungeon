@@ -95,12 +95,13 @@ func _process(delta):
             pauseMenu.hide()
             global.pauseGame = false
 
-    if global.pauseGame: return
-
-    tryDieToEnemy()
     tryRotateCamera(delta)
     if Input.is_action_just_pressed("ui_focus_next"):
         getCamera().toggleNext()
+
+    if global.pauseGame: return
+
+    tryDieToEnemy()
 
     if sprite_facing == "":
         sprite_reset_timer += delta
@@ -108,7 +109,23 @@ func _process(delta):
             mySprite.faceDown()
     else:
         sprite_reset_timer = 0
+
+func tryRotateCamera(delta):
+    if Input.is_action_pressed("ui_rotate_left"):
+        cameraRotationCounter += delta
+        getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
+    elif Input.is_action_pressed("ui_rotate_right"):
+        cameraRotationCounter += delta
+        getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
+    else: cameraRotationCounter = 0
         
+    if cameraRotationCounter > 1: cameraRotationCounter = 1
+    
+    if Input.is_action_pressed("ui_rotate_up"):
+        getCamera().rotate_up(3*(delta*66))
+    if Input.is_action_pressed("ui_rotate_down"):
+        getCamera().rotate_down(3*(delta*66))
+
 func tryDieToEnemy():
     if smallInteractionArea.is_touching_enemy and not transitioning:
         global.isRespawning = true
@@ -118,20 +135,6 @@ func tryDieToEnemy():
         var currLevelPath = get_tree().get_root().get_node("level").filename
         transition.fade_to(currLevelPath)
         transitioning = true
-
-func tryRotateCamera(delta):
-    if Input.is_action_pressed("ui_rotate_left") and not global.pauseMoveInput:
-        cameraRotationCounter += delta
-        getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
-    elif Input.is_action_pressed("ui_rotate_right") and not global.pauseMoveInput:
-        cameraRotationCounter += delta
-        getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
-    else: cameraRotationCounter = 0
-    
-    if Input.is_action_pressed("ui_rotate_up") and not global.pauseMoveInput:
-        getCamera().rotate_up(3*(delta*66))
-    if Input.is_action_pressed("ui_rotate_down") and not global.pauseMoveInput:
-        getCamera().rotate_down(3*(delta*66))
     
 func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 

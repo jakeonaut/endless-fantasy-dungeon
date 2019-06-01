@@ -27,9 +27,11 @@ func interact():
         dialogSound.activateScript()
         if has_node("Event"):
             get_node("Event").activate()
+        global.pauseGame = true
         global.pauseMoveInput = true
     else:
         self.hide()
+        global.pauseGame = false
         global.pauseMoveInput = false
         if !nextTextboxPath.is_empty():
             var nextTextbox = get_node(nextTextboxPath)
@@ -44,4 +46,5 @@ func abort():
     hide()
     abortSound.play()
     global.activeInteractor = null
+    global.pauseGame = false
     global.pauseMoveInput = false
