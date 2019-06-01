@@ -30,7 +30,7 @@ func _ready():
         get_node("PolyTriangle").step = 1
 
 func generateId():
-    return get_tree().get_root().get_node("level").get_filename() + ":" + get_name()
+    return get_name()
 
 func unlock():
     isLocked = false
