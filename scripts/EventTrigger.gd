@@ -10,7 +10,7 @@ func _ready():
 	
 func _process(delta):
 	if touchingPlayer():
-		passiveActivate()
+		passiveActivate(delta)
 			
 func touchingPlayer():
 	var areas = get_overlapping_areas()
@@ -20,7 +20,7 @@ func touchingPlayer():
 	return false
 	
 # TO BE OVERRIDDEN
-func passiveActivate():
+func passiveActivate(delta):
 	if not hasActivated:
 		var npc = get_parent().get_node("NPC")
 		npc.visible = false

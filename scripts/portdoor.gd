@@ -58,7 +58,7 @@ func parseConnectedScene():
 func isActive():
     return visible
 
-func passiveActivate():
+func passiveActivate(delta):
     if canInteractWithPlayer:
         # initiate talking if we didn't just finish it!!!
         if isLocked:

@@ -14,9 +14,9 @@ func isActive():
 func InteractActivate():
     parent.has_method("activate") and parent.activate()
 
-func PassiveInteractActivate():
+func PassiveInteractActivate(delta):
     if parent.has_method("passiveActivate"):
-        parent.passiveActivate()
+        parent.passiveActivate(delta)
     touchingPlayer = true
 
 func _process(delta):

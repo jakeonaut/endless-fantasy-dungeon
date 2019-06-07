@@ -23,7 +23,7 @@ func _process(delta):
 func generateId():
     return get_tree().get_root().get_node("level").get_filename() + ":" + get_name()
 
-func passiveActivate():
+func passiveActivate(delta):
     if not global.memory.has("active_save_point") or global.memory["active_save_point"] != self.id:
         saveSound.play()
         global.memory["active_save_point"] = self.id

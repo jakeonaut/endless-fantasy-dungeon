@@ -61,7 +61,7 @@ func _process(delta):
             global.activeThrowableObject.activate()
     # otherwise, try to interact passive areas
     elif nearest_passive_area:
-        nearest_passive_area.PassiveInteractActivate()     
+        nearest_passive_area.PassiveInteractActivate(delta)     
 
 # cast a ray from camera at mouse position, and get the object colliding with the ray
 # from: https://www.reddit.com/r/godot/comments/8ft84k/get_clicked_object_in_3d/

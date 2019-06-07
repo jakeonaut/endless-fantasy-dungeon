@@ -20,10 +20,13 @@ body {
 <script>
 window.onload = () => {
 
-const tootorioleButton = document.getElementsByClassName("tootoriole")[0];
-tootorioleButton.onclick = (event) => {
+document.getElementsByClassName("tootoriole")[0].onclick = (event) => {
 	Dialog.Alert("yo what up nerd", "tootoriole");
-}
+};
+
+document.getElementsByClassName("esther")[0].onclick = (event) => {
+	Dialog.Alert("true neutral half-dark-elf warlock/witch.<br/>lvl 7", "esther greywood ♀");
+};
 
 };
 </script>
@@ -68,10 +71,11 @@ tootorioleButton.onclick = (event) => {
 		</ul>
 	</div>
 	<div class="flexChild">
-		<a class="link tootoriole" href="#"><img src="tootoriole.gif" />tutorial</a><br/>
-		<a class="link glasses" href="#"><img src="glasses.gif" />glasses</a><br/>
-		<a class="link eyebrows" href="#"><img src="eyebrows.gif" />eyebrows</a><br/>
+		<a class="link tootoriole" href="#"><img src="tootoriole.gif" />tutorial</a>
+		<a class="link glasses" href="#"><img src="glasses.gif" />glasses</a>
+		<a class="link eyebrows" href="#"><img src="eyebrows.gif" />eyebrows</a>
 		<a class="link jasmine" href="#"><img src="jasminerice.gif" />jasmine rice</a><br/>
+		<a class="link esther" href="#">esther greywood</a>
 	</div>
 </div>
 

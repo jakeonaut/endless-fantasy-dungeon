@@ -53,6 +53,8 @@ func processPhysics(delta):
     # move_and_slide automatically includes "delta"
     linear_velocity = move_and_slide(lv, -g.normalized())
 
+    postProcessInputs(delta)
+
     noFloorBelow()
     
     if not was_on_ground and on_ground: # I just landed!!
@@ -72,16 +74,19 @@ func applyGravity(delta):
 
 func processInputs(delta):
     pass
+
+func postProcessInputs(delta):
+    pass
     
 func landed():
     pass
 
 func landedFast():
     take_fall_damage = true
-    bumpSound.play()
+    if bumpSound: bumpSound.play()
 
 func landedNormally():
-    landSound.play()
+    if landSound: landSound.play()
 
 func landedFromBounce():
     take_fall_damage = false

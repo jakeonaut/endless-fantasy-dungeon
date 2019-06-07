@@ -26,7 +26,7 @@ func isActive():
 func activate():
     pass
 
-func passiveActivate():
+func passiveActivate(delta):
     pass
 
 func stopPassiveActivate():

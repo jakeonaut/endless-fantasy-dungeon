@@ -29,7 +29,7 @@ func _process(delta):
 func isActive():
     return is_visible() and not disappearing
 
-func passiveActivate():
+func passiveActivate(delta):
     coinSound.play()
     disappearing = true
 
