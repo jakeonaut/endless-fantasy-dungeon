@@ -117,6 +117,9 @@ func toggleNext():
         lerp_timer = 0
         is_lerping = true
 
+func isToyboxView():
+    return source_lerp_index == 1
+
 func _physics_process(delta):
     if is_lerping:
         lerp_timer += delta*2
@@ -250,7 +253,7 @@ func rotate_left(step=4):
 
 # TODO(jaketrower):
 func rotate_up(step=5):
-    if source_lerp_index == 1: return
+    if self.isToyboxView(): return
 
     if not is_rotating_x:
         if self.gateKeepUpCondition_(target_rotation_x):
@@ -264,7 +267,7 @@ func gateKeepUpCondition_(rx):
 
 # TODO(jaketrower):
 func rotate_down(step=5):
-    if source_lerp_index == 1: return
+    if self.isToyboxView(): return
     if not is_rotating_x:
         if self.gateKeepDownCondition_(target_rotation_x):
             target_rotation_x += deg2rad(rstep)

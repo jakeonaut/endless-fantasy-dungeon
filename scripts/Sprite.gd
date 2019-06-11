@@ -5,6 +5,7 @@ export var frame_delay = 0.4
 # If true, this will override frame_delay after first frame change.
 export var should_randomize_frame_delay = false
 var start_frame = 0
+var base_frame = start_frame
 export var max_frames = 2
 
 func _ready():
@@ -34,3 +35,44 @@ func animate(delta):
 
 func randomizeFrameDelay():
     frame_delay = rand_range(0.1, 1.0)
+
+func updateStartFrame(hframe, vframe):
+    start_frame = (self.hframes * vframe) + hframe
+    base_frame = start_frame
+    set_frame(start_frame)
+
+func faceLeft():
+    var left_frame = base_frame + (self.hframes) + 2
+    if start_frame != left_frame:
+        start_frame = left_frame
+        set_frame(start_frame)
+func isFacingLeft():
+    var left_frame = base_frame + (self.hframes) + 2
+    return start_frame == left_frame
+
+func faceRight():
+    var right_frame = base_frame + 2
+    if start_frame != right_frame:
+        start_frame = right_frame
+        set_frame(start_frame)
+func isFacingRight():
+    var right_frame = base_frame + 2
+    return start_frame == right_frame
+
+func faceUp():
+    var up_frame = base_frame + (self.hframes)
+    if start_frame != up_frame:
+        start_frame = up_frame
+        set_frame(start_frame)
+func isFacingUp(): 
+    var up_frame = base_frame + (self.hframes)
+    return start_frame == up_frame
+
+func faceDown():
+    var down_frame = base_frame
+    if start_frame != down_frame:
+        start_frame = down_frame
+        set_frame(start_frame)
+func isFacingDown(): 
+    var down_frame = base_frame
+    return start_frame == down_frame

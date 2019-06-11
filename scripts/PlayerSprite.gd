@@ -1,7 +1,6 @@
 extends "Sprite.gd"
 
 onready var parent = get_parent()
-var base_frame = start_frame
 
 func _ready():
     set_process(true)
@@ -32,32 +31,5 @@ func setLuckyCatCostume():
 func setNightgown():
     updateStartFrame(4, 2)
 
-func faceLeft():
-    var left_frame = base_frame + (self.hframes) + 2
-    if start_frame != left_frame:
-        start_frame = left_frame
-        set_frame(start_frame)
-func faceRight():
-    var right_frame = base_frame + 2
-    if start_frame != right_frame:
-        start_frame = right_frame
-        set_frame(start_frame)
-func faceUp():
-    var up_frame = base_frame + (self.hframes)
-    if start_frame != up_frame:
-        start_frame = up_frame
-        set_frame(start_frame)
-func faceDown():
-    var down_frame = base_frame
-    if start_frame != down_frame:
-        start_frame = down_frame
-        set_frame(start_frame)
-func isFacingDown(): return start_frame == base_frame
-
 func setFloorGlitch():
     pass
-
-func updateStartFrame(hframe, vframe):
-    start_frame = (self.hframes * vframe) + hframe
-    base_frame = start_frame
-    set_frame(start_frame)

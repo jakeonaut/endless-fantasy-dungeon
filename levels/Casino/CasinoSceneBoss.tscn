@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://sceneObjects/UI/CoinUI.tscn" type="PackedScene" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://levels/Casino/casinotiles.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/RollerSkateGirl.gd" type="Script" id=8]
-[ext_resource path="res://assets/npcs/r0llergirl.png" type="Texture" id=9]
+[ext_resource path="res://sceneObjects/RollerGirl.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -33,11 +31,11 @@ stretch_mode = 2
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 1073741824, 1, 0, 1073741824, 2, 0, -1073741824, 65533, 0, 1073741824, 65534, 0, -1073741824, 65535, 0, 1610612736, 0, 1, 0, 1, 1, -1073741824, 2, 1, 1073741824, 65533, 1, 1073741824, 65534, 1, 1073741824, 65535, 1, 1073741824, 131069, 1, -1073741824, 131070, 1, 0, 0, 2, -1073741824, 65535, 2, -1073741824, 0, 3, 0, 65535, 3, -1073741824, 0, 65532, 0, 1, 65532, 1073741824, 2, 65532, -1073741824, 65533, 65532, 0, 65534, 65532, 1073741824, 65535, 65532, 0, 65538, 65532, -1610612736, 131069, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65533, 65533, 1073741824, 65534, 65533, 0, 65535, 65533, 1073741824, 131070, 65533, 0, 0, 65534, 1073741824, 1, 65534, -1073741824, 2, 65534, -1073741824, 65533, 65534, -1073741824, 65534, 65534, 0, 65535, 65534, -1073741824, 131069, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, -1073741824, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131071, 65535, 0 )
+"cells": PoolIntArray( 0, 0, -1073741824, 1, 0, 0, 2, 0, -1073741824, 65533, 0, 1073741824, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, -1073741824, 65533, 1, 0, 65534, 1, 1073741824, 65535, 1, -1073741824, 131069, 1, 0, 131070, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 1073741824, 65535, 3, -1073741824, 0, 65532, 1610612736, 1, 65532, -1073741824, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65538, 65532, 0, 131069, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 1073741824, 65535, 65533, -1073741824, 131070, 65533, 0, 0, 65534, -1610612736, 1, 65534, 1610612736, 2, 65534, 1073741824, 65532, 65534, -1073741824, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 131068, 65534, 536870912, 0, 65535, 0, 1, 65535, 0, 2, 65535, -1610612736, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131071, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 1, 0 )
+"_editor_floor_": Vector3( 0, 0, 0 )
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
@@ -54,17 +52,8 @@ transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.
 midLevelDir = "Casino"
 connectedScene = "CasinoScene2"
 
-[node name="NPC" parent="." instance=ExtResource( 7 )]
+[node name="RollerNPC" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48445, 3.2514, 1.20847 )
-script = ExtResource( 8 )
-
-[node name="Sprite3D" parent="NPC" index="4"]
-pixel_size = 0.08
-texture = ExtResource( 9 )
-vframes = 4
-hframes = 4
 
 
 [editable path="Player"]
-
-[editable path="NPC"]

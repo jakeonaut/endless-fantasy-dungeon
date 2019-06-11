@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/RollerSkateGirl.gd" type="Script" id=1]
+[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
+[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=3]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/npcs/r0llerportrait.png" type="Texture" id=5]
+[ext_resource path="res://assets/npcs/r0llergirl.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=9]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SphereShape" id=2]
+radius = 2.0
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+params_depth_draw_mode = 3
+params_billboard_mode = 1
+
+[node name="RollerNPC" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="InteractionArea" type="Area" parent="."]
+input_ray_pickable = true
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
+shape = SubResource( 2 )
+
+[node name="SmallInteractionArea" type="Area" parent="."]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
+shape = SubResource( 3 )
+
+[node name="NPC TextBox" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+
+[node name="Portrait" parent="NPC TextBox/TextBox" index="0"]
+texture = ExtResource( 5 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = SubResource( 4 )
+pixel_size = 0.08
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 6 )
+vframes = 4
+hframes = 4
+script = ExtResource( 7 )
+should_randomize_frame_delay = true
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 8 )
+volume_db = -15.0
+
+[node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+
+[editable path="NPC TextBox"]
