@@ -20,10 +20,11 @@ flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 
-[node name="Vase" type="KinematicBody"]
+[node name="ShinyVase" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 collision_layer = 0
 script = ExtResource( 1 )
+num_coins = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
@@ -42,7 +43,7 @@ alpha_cut = 2
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 4
-frame = 2
+frame = 8
 script = ExtResource( 4 )
 should_randomize_frame_delay = true
 

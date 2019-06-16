@@ -1,9 +1,12 @@
 extends Area
 
+onready var parent = get_parent()
+
 var touchingPlayer = false
 var wasTouchingPlayer = false
 var is_touching_speed_boost = false
-onready var parent = get_parent()
+var speed_boost_angle = 0
+var speed_boost_origin = Vector3(0,0,0)
 
 func _ready():
     set_process(true)
@@ -34,3 +37,4 @@ func _process(delta):
     for area in areas:
         if area.is_in_group("speedboosts"):
             is_touching_speed_boost = true
+            speed_boost_angle = area.get_node("..").rotation_degrees.y

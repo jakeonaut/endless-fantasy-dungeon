@@ -8,6 +8,7 @@ var player = null
 
 # TODO(jaketrower): doing stuff like this... is dangerous 
 const coin_resource = preload("res://levels/Casino/coin.tscn")
+export var num_coins = 1
 
 var is_held = false
 var was_just_thrown = false
@@ -19,6 +20,10 @@ var pickupCounterMax = 3
 var throw_speed = 14
 var jump_force = 10
 
+var num_coins_spawned = 0
+var coinSpawnTimer = 0
+var coinSpawnTimeLimit = 2
+
 func _ready():
     set_physics_process(true)
     player = levelRoot.get_node("Player")
@@ -28,6 +33,11 @@ func _process(delta):
     # https://github.com/godotengine/godot/issues/6500
 
     if global.pauseGame: return
+
+    if num_coins_spawned >= 1 and num_coins_spawned < num_coins:
+        coinSpawnTimer += (delta*22)
+        if coinSpawnTimer > coinSpawnTimeLimit:
+            self.spawnCoin()
 
     if is_held and pickupCounter < pickupCounterMax:
         pickupCounter += (delta*22)
@@ -69,15 +79,18 @@ func landed():
         has_initially_landed = true
     else:
         shatterSound.play()
-
-        var newCoin = coin_resource.instance()
-        # TODO(jaketrower): This node container is an ASSUMPTION!!!
-        levelRoot.get_node("coins").add_child(newCoin)
-        newCoin.translation = translation
-        newCoin.passiveActivate(0)
-        
         hide()
         set_collision_mask_bit(1, false)
+        self.spawnCoin()
+
+func spawnCoin():
+    var newCoin = coin_resource.instance()
+    # TODO(jaketrower): This node container is an ASSUMPTION!!!
+    levelRoot.get_node("coins").add_child(newCoin)
+    newCoin.translation = translation
+    newCoin.passiveActivate(0)
+    num_coins_spawned += 1
+    coinSpawnTimer = 0
 
 func isActive():
     return visible

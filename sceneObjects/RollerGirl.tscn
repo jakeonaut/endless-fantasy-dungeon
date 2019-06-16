@@ -46,10 +46,19 @@ script = ExtResource( 3 )
 shape = SubResource( 3 )
 
 [node name="NPC TextBox" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 
 [node name="Portrait" parent="NPC TextBox/TextBox" index="0"]
 texture = ExtResource( 5 )
+
+[node name="Text" parent="NPC TextBox/TextBox" index="1"]
+bbcode_text = "skate...
+or....
+....
+DIE"
+text = "skate...
+or....
+....
+DIE"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 4 )
@@ -63,6 +72,7 @@ script = ExtResource( 7 )
 should_randomize_frame_delay = true
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )

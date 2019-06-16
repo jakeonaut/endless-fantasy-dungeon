@@ -1,24 +1,21 @@
 extends "NPC.gd"
 
 onready var player = get_tree().get_root().get_node("level/Player")
-onready var mySprite = get_node("Sprite3D")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
-onready var skateSound = get_node("Sounds/SkateSound")
 
 var pushTimer = 0
-var pushTimeLimit = 10
-var rotateTimer = 0
-var rotateTimeLimit = 1
-var walk_speed = 8
-var is_skating = false
-var skateVector = Vector3(0, 0, 0)
-var skateStartTimer = 0
-var skateStartTimeLimit = 1
-var skateActuallyStarted = false
+var pushTimeLimit = 7
+
+# @override
+func _physics_process(delta):
+    # NPC.gd super method already called
+    self.is_touching_speed_boost = smallInteractionArea.is_touching_speed_boost
+    self.speed_boost_angle = smallInteractionArea.speed_boost_angle
+    self.speed_boost_origin = smallInteractionArea.speed_boost_origin
 
 # @override
 func passiveActivate(delta):
-    if not is_skating and rotateTimer == 0:
+    if not is_skating and skateRotateTimer == 0:
         # have to calculate player's dir and modulo to nearest 90 degree angle
         # also player.linear_velocity.x < walk_speed / 2 and player.linear_velocity.x > -walk_speed/2
         # ALSO player should have their x/z coordinates inline with the 90 degree modulo above
@@ -43,51 +40,10 @@ func passiveActivate(delta):
             pushTimer = 0
 
         if pushTimer >= pushTimeLimit:
-            self.tryStartSkate()       
-        
-func tryStartSkate():
-    is_skating = true
-    pushTimer = 0
-    skateStartTimer = 0
-    skateActuallyStarted = false
+            pushTimer = 0
+            self.tryStartSkate()
 
 func stopPassiveActivate():
     if not is_skating: 
         pushTimer = 0
-
-# @override
-func processInputs(delta):
-    if smallInteractionArea.is_touching_speed_boost:
-        self.tryStartSkate()
-        skateVector = Vector3(-1, 0, 0)
-
-    if is_skating:
-        hv = skateVector.normalized() * walk_speed
-
-        rotateTimer += delta*22
-        if rotateTimer >= rotateTimeLimit:
-            rotateTimer = 0
-            if mySprite.isFacingDown(): mySprite.faceLeft()
-            elif mySprite.isFacingLeft(): mySprite.faceUp()
-            elif mySprite.isFacingUp(): mySprite.faceRight()
-            elif mySprite.isFacingRight(): mySprite.faceDown()
-
-        skateStartTimer += delta*22
-        if skateStartTimer >= skateStartTimeLimit and not skateActuallyStarted:
-            skateSound.play()
-            skateActuallyStarted = true
-
-# @override
-func postProcessInputs(delta):
-    if is_skating \
-    and linear_velocity.x < walk_speed/2 and linear_velocity.x > -walk_speed/2 \
-    and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2:
-        is_skating = false
-        mySprite.faceDown()
-        pushTimer = 0
-        rotateTimer = 0
-        skateStartTimer = 0
-        if skateActuallyStarted:
-            bumpSound.play()
-            skateActuallyStarted = false
         

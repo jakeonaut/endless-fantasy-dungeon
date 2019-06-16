@@ -3,7 +3,6 @@ extends "GameMover.gd"
 onready var camera = get_node("CameraY") # the "camera"
 onready var pauseMenu = get_node("PauseMenu/MenuBox")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
-onready var mySprite = get_node("Sprite3D")
 onready var jumpSound = get_node("Sounds/JumpSound")
 onready var fallSound = get_node("Sounds/FallSound")
 onready var hurtSound = get_node("Sounds/HurtSound")
@@ -16,7 +15,6 @@ enum Form {
 var form = Form.NORMAL
 
 # Physics variables
-var walk_speed = 8
 var recover_walk_speed = 4
 var lunge_speed = 16
 var is_lunging = 0
@@ -139,6 +137,10 @@ func tryDieToEnemy():
 func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
+
+    self.is_touching_speed_boost = smallInteractionArea.is_touching_speed_boost
+    self.speed_boost_angle = smallInteractionArea.speed_boost_angle
+    self.speed_boost_origin = smallInteractionArea.speed_boost_origin
 
     if global.pauseGame: return
 
