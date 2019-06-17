@@ -37,4 +37,4 @@ func _process(delta):
     for area in areas:
         if area.is_in_group("speedboosts"):
             is_touching_speed_boost = true
-            speed_boost_angle = area.get_node("..").rotation_degrees.y
+            speed_boost_angle = area.get_node("..").rotation.y
