@@ -126,13 +126,24 @@ func tryRotateCamera(delta):
 
 func tryDieToEnemy():
     if smallInteractionArea.is_touching_enemy and not transitioning:
-        global.isRespawning = true
-        global.cameraRotation = getCamera().rotation_degrees.y
         hurtSound.play()
-        # global transition scene, see res://scripts/transition.gd
-        var currLevelPath = get_tree().get_root().get_node("level").filename
+        global.pauseGame = true
+        self.respawn("blink_fade")
+
+# param transition name only used as a crappy enum
+func respawn(transition_name):
+    global.isRespawning = true
+    global.cameraRotation = getCamera().rotation_degrees.y
+    # global transition scene, see res://scripts/transition.gd
+    var currLevelPath = get_tree().get_root().get_node("level").filename
+    transitioning = true
+
+    if transition_name == "long_fade":
+        transition.long_fade_to(currLevelPath)
+    elif transition_name == "blink_fade":
+        transition.blink_fade_to(currLevelPath)
+    else:
         transition.fade_to(currLevelPath)
-        transitioning = true
     
 func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 
@@ -153,13 +164,8 @@ func _physics_process(delta):
 
     # TODO(jaketrower): Add this to other GameMover
     if not on_ground and translation.y < -6 and not transitioning:
-        global.isRespawning = true
-        global.cameraRotation = getCamera().rotation_degrees.y
         fallSound.play()
-        # global transition scene, see res://scripts/transition.gd
-        var currLevelPath = get_tree().get_root().get_node("level").filename
-        transition.long_fade_to(currLevelPath)
-        transitioning = true
+        self.respawn("long_fade")
 
 # @override
 func applyGravity(delta):

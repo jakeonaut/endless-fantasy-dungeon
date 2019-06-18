@@ -107,10 +107,7 @@ func processSkateInputs(delta):
             is_skating = true
             skateStartTimer = 0
             skateActuallyStarted = false
-            skateVector = Vector3(-1, 0, 0)
-            if (speed_boost_angle > 178 and speed_boost_angle < 182) or \
-            (speed_boost_angle < -178 and speed_boost_angle > -182):
-                skateVector = Vector3(1, 0, 0)
+            skateVector = Vector3(-1, 0, 0).rotated(Vector3(0, 1, 0), speed_boost_angle)
         elif not is_skating:
             if skate_origin == null:
                 skate_origin = self.global_transform.origin
