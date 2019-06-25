@@ -72,7 +72,6 @@ script = ExtResource( 7 )
 should_randomize_frame_delay = true
 
 [node name="Sounds" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
@@ -80,7 +79,7 @@ volume_db = -25.0
 
 [node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
-volume_db = -15.0
+volume_db = -20.0
 
 
 [editable path="NPC TextBox"]

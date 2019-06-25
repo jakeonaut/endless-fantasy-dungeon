@@ -15,9 +15,13 @@ func _process(delta):
     if Input.is_action_just_pressed("ui_accept"):
         self.loadGame()
 
+    if Input.is_action_just_pressed("ui_select"):
+        self.newGame()
+
 func newGame():
     global.cameraRotation = 0
     global.hasLoadedGame = true
+    global.memory = {}
     transition.long_fade_to("res://levels/IntroScene.tscn")
 
 func loadGame():

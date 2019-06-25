@@ -17,11 +17,10 @@ func _process(delta):
         if disappearing:
             step = MAX_STEP
             translate(Vector3(0, -MIN_STEP*delta, 0))
-            if disappearing: 
-                disappearTimer -= (delta*22)
-                if disappearTimer <= 0: 
-                    hide()
-                    disappearing = false
+            disappearTimer -= (delta*22)
+            if disappearTimer <= 0: 
+                hide()
+                disappearing = false
         else:
             step = MIN_STEP
         rotate_y(step*delta) 
@@ -33,4 +32,7 @@ func passiveActivate(delta):
     coinSound.play()
     disappearing = true
 
-    global.numCoins += 1
+    if global.memory.has("numCoins"):
+        global.memory["numCoins"] += 1
+    else: 
+        global.memory["numCoins"] = 0

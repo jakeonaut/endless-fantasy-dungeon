@@ -150,10 +150,9 @@ volume_db = -20.0
 
 [node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 15 )
-volume_db = -25.0
+volume_db = -20.0
 
 [node name="Items" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="BugNet" parent="Items" instance=ExtResource( 16 )]
 

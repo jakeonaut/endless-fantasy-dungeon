@@ -8,6 +8,7 @@ onready var skateSound = get_node("Sounds/SkateSound")
 var terminal_vel = 32
 var on_ground = true
 var was_on_ground = true
+var just_landed = false
 var fallCounter = 0
 var fallCountMax = 3
 var take_fall_damage = false
@@ -78,6 +79,7 @@ func processPhysics(delta):
 
     noFloorBelow()
     
+    just_landed = false
     if not was_on_ground and on_ground: # I just landed!!
         landed()
         # Falling fast and far
@@ -87,6 +89,7 @@ func processPhysics(delta):
             landedNormally()
         else:
             landedFromBounce()
+        just_landed = true
 
     was_on_ground = on_ground
     

@@ -4,7 +4,8 @@ func _ready():
     pass
 
 func activateScript():
-    if global.numCoins >= 20:
-        global.numCoins -= 20
-        get_node("../Text").set_bbcode(
-            "we all have needs.\nand that's ok.")
+    if global.memory.has("numCoins") and global.memory["numCoins"] >= 20:
+        var myTextBox = get_node("..")
+        # NodePath path is relative from self, 
+        # which is to say from the NPC/NPC TextBox/TextBox/AbortSound
+        myTextBox.nextTextboxPath = NodePath(@"../../GotCoin TextBox/TextBox")

@@ -69,8 +69,9 @@ func passiveActivate(delta):
 
 func stopPassiveActivate():
     canInteractWithPlayer = true
+    transitioning = false
 
-func lockTalk():    
+func lockTalk():
     if global.activeInteractor == null:
         global.activeInteractor = textBox
         textBox.interact()

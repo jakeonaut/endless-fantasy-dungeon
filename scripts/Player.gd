@@ -296,6 +296,9 @@ func processHorizontalInputs(delta):
     if has_just_lunged:
         hv = dir.normalized() * lunge_speed
 
+func faceDown():
+    mySprite.faceDown()
+
 func updateFacing(dir):
     if dir.x != 0 or dir.y != 0 or dir.z != 0:
         facing = dir

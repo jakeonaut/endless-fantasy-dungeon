@@ -4,7 +4,7 @@ onready var player = get_tree().get_root().get_node("level/Player")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
 
 var pushTimer = 0
-var pushTimeLimit = 7
+var pushTimeLimit = 5
 
 # @override
 func _physics_process(delta):
