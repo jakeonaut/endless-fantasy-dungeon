@@ -7,6 +7,7 @@ onready var levelRoot = get_tree().get_root().get_node("level")
 var player = null
 
 # TODO(jaketrower): doing stuff like this... is dangerous 
+# see: https://www.reddit.com/r/godot/comments/ait6y8/preloading_in_godot_31_vs_30/
 const coin_resource = preload("res://levels/Casino/coin.tscn")
 export var num_coins = 1
 
