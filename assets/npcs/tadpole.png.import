@@ -2,23 +2,23 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.stex"
+path="res://.import/tadpole.png-9a33257fcb810a1cd71ebc6bd345d5ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/water_normal_2.png"
-dest_files=[ "res://.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.stex" ]
+source_file="res://assets/npcs/tadpole.png"
+dest_files=[ "res://.import/tadpole.png-9a33257fcb810a1cd71ebc6bd345d5ef.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=1
+compress/normal_map=0
 flags/repeat=true
 flags/filter=false
 flags/mipmaps=true

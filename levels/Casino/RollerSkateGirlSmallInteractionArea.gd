@@ -38,3 +38,4 @@ func _process(delta):
         if area.is_in_group("speedboosts"):
             is_touching_speed_boost = true
             speed_boost_angle = area.get_node("..").rotation.y
+            speed_boost_origin = area.get_node("..").global_transform.origin

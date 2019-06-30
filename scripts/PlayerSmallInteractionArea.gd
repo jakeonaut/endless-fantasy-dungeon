@@ -3,6 +3,7 @@ extends Area
 var is_touching_a_ladder = false
 var is_touching_enemy = false
 var is_touching_speed_boost = false
+var is_touching_water = false
 var speed_boost_angle = 0
 var speed_boost_origin = Vector3(0,0,0)
 
@@ -14,6 +15,7 @@ func _process(delta):
     is_touching_a_ladder = false
     is_touching_enemy = false
     is_touching_speed_boost = false
+    is_touching_water = false
     for area in areas:
         if area.is_in_group("ladders"):
             is_touching_a_ladder = true
@@ -23,3 +25,5 @@ func _process(delta):
             is_touching_speed_boost = true
             speed_boost_angle = area.get_node("..").rotation.y
             speed_boost_origin = area.get_node("..").global_transform.origin
+        if area.is_in_group("water"):
+            is_touching_water = true

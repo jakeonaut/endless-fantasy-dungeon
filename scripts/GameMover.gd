@@ -5,7 +5,10 @@ onready var landSound = get_node("Sounds/LandSound")
 onready var bumpSound = get_node("Sounds/BumpSound")
 onready var skateSound = get_node("Sounds/SkateSound")
 
-var terminal_vel = 32
+var true_terminal_vel = 32
+var terminal_vel = true_terminal_vel
+var is_floating = false
+var is_touching_water = false
 var on_ground = true
 var was_on_ground = true
 var just_landed = false
@@ -19,6 +22,7 @@ var lv = linear_velocity
 var grav = 80
 var g = Vector3(0, -grav, 0)
 
+var dir = Vector3(0, 0, 0)
 var up = -g.normalized() # (up is against gravity)
 var vv = up.dot(lv) # vertical velocity
 var hv = lv - up * vv # horizontal velocity
@@ -54,20 +58,24 @@ func processPhysics(delta):
     lv = linear_velocity
     g = Vector3(0, -grav, 0)
     
+    if not is_touching_water:
+        is_floating = false
     applyGravity(delta)
     
     up = -g.normalized() # (up is against gravity)
     vv = up.dot(lv) # vertical velocity
     hv = lv - up * vv # horizontal velocity
     
-    # apply terminal velocity to fall speed
-    if vv < -terminal_vel:
-        vv = -terminal_vel
-        fallCounter += (delta*22)
+    applyTerminalVelocity(delta)
     
     processSkateInputs(delta)
     if not is_skating:
         processInputs(delta)
+    if is_touching_water:
+        hv -= (hv.normalized()*delta*22)
+        if abs(hv.length()) < delta*22:
+            hv = Vector3()
+            dir = Vector3(0.0, 0.0, 0.0)
         
     lv = hv + (up * vv)
     
@@ -94,7 +102,26 @@ func processPhysics(delta):
     was_on_ground = on_ground
     
 func applyGravity(delta):
+    if is_floating:
+        g = Vector3(0, grav/2, 0)
+        on_ground = false
+    else:
+        g = Vector3(0, -grav, 0)
     lv += g * delta
+
+func applyTerminalVelocity(delta):
+    if is_touching_water:
+        terminal_vel = true_terminal_vel/4
+    else:
+        terminal_vel = true_terminal_vel
+
+    if vv < -terminal_vel:
+        vv = -terminal_vel
+        fallCounter += (delta*22)
+        if is_touching_water:
+            is_floating = true
+    if vv > terminal_vel:
+        vv = terminal_vel
 
 func tryStartSkate():
     is_skating = true
@@ -170,5 +197,7 @@ func noFloorBelow():
     if is_on_floor():
         fallCounter = 0
         on_ground = true
+        if is_touching_water:
+            is_floating = true
     else:
         on_ground = false

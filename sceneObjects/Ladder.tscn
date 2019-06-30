@@ -23,7 +23,6 @@ shape = SubResource( 1 )
 [node name="InteractionArea" type="Area" parent="." groups=[
 "ladders",
 ]]
-editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, -4.76837e-007, 0 )

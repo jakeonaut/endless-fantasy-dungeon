@@ -16,7 +16,8 @@ func conductFromScenePath(path):
     elif path.find("Casino") > 0:
         self.playCasino()
     elif path.find("Forest") > 0 or path.find("Toxic") > 0:
-        self.playToxic()
+        # self.playToxic()
+        self.playSwamp()
     elif path.find("Suburb") > 0:
         self.playSuburb()
     elif path.find("Swamp") > 0:

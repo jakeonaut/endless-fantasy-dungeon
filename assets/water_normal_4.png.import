@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.stex"
+path="res://.import/water_normal_4.png-32e9c8656d27fc5a21037ff83335cb27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/water_normal_2.png"
-dest_files=[ "res://.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.stex" ]
+source_file="res://assets/water_normal_4.png"
+dest_files=[ "res://.import/water_normal_4.png-32e9c8656d27fc5a21037ff83335cb27.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

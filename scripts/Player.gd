@@ -16,6 +16,8 @@ var form = Form.NORMAL
 
 # Physics variables
 var recover_walk_speed = 4
+var swimming_walk_speed = 6
+var water_terminal_vel = 5
 var lunge_speed = 16
 var is_lunging = 0
 var jump_force = 20
@@ -28,7 +30,6 @@ var is_recovering = false
 var recover_timer = 0
 var recover_time_limit = 3
 var is_walking = false
-var dir = Vector3(0, 0, 0)
 var facing = Vector3(0, 0, -1) #default to facing forward
 var sprite_facing = false
 var sprite_reset_timer = 0
@@ -149,12 +150,14 @@ func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
 
+    # these variables used by GameMover.gd
     self.is_touching_speed_boost = smallInteractionArea.is_touching_speed_boost
     self.speed_boost_angle = smallInteractionArea.speed_boost_angle
     self.speed_boost_origin = smallInteractionArea.speed_boost_origin
 
     if global.pauseGame: return
 
+    is_touching_water = smallInteractionArea.is_touching_water
     .processPhysics(delta) #super
     if is_recovering:
         recover_timer += (delta*22)
@@ -169,8 +172,26 @@ func _physics_process(delta):
 
 # @override
 func applyGravity(delta):
+    if smallInteractionArea.is_touching_water:
+        g = Vector3(0, -grav/2, 0)
+    else:
+        g = Vector3(0, -grav, 0)
+
     if not on_ground or form != Form.FLOOR:
-        .applyGravity(delta) #super
+        lv += g * delta
+
+# @override
+func applyTerminalVelocity(delta):
+    if smallInteractionArea.is_touching_water:
+        g = Vector3(0, -grav/2, 0)
+        terminal_vel = water_terminal_vel
+    else:
+        g = Vector3(0, -grav, 0)
+        terminal_vel = true_terminal_vel
+
+    if vv < -terminal_vel:
+        vv = -terminal_vel
+        fallCounter += (delta*22)
 
 # @override
 func processInputs(delta):
@@ -186,8 +207,16 @@ func processJumpInputs(delta):
     has_just_lunged = false
     # jump
     if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
+        # Jump from the water
+        if smallInteractionArea.is_touching_water:
+            on_ground = false
+            is_recovering = false
+            vv = (2*jump_force) / 3
+            jumpSound.play()
+            has_just_jumped_timer = -has_just_jumped_time_limit
+            is_lunging = 0
         # Jump from the ground
-        if is_lunging == 0:
+        elif is_lunging == 0:
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
@@ -246,11 +275,13 @@ func processHorizontalInputs(delta):
                 forward = Vector3(1, 0, 0)
                 right = Vector3(0, 0, -1)
     
-    if on_ground or has_just_jumped_timer < has_just_jumped_time_limit:
+    var horizontal_input = false
+    if on_ground or has_just_jumped_timer < has_just_jumped_time_limit or smallInteractionArea.is_touching_water:
         has_just_jumped_timer += (delta*22)
         
         if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
             Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
+            horizontal_input = true
             dir = Vector3(0.0, 0.0, 0.0)
             if Input.is_action_pressed("ui_left"):
                 if not global.pauseMoveInput: 
@@ -287,11 +318,13 @@ func processHorizontalInputs(delta):
 
     updateFacing(dir)
     var curr_walk_speed = walk_speed
-    if is_recovering or should_recover:
+    if smallInteractionArea.is_touching_water:
+        curr_walk_speed = swimming_walk_speed
+    elif is_recovering or should_recover:
         curr_walk_speed = recover_walk_speed
 
     # update x and z
-    if is_lunging < 2:
+    if is_lunging < 2 and (not smallInteractionArea.is_touching_water or horizontal_input):
         hv = dir.normalized() * curr_walk_speed
     if has_just_lunged:
         hv = dir.normalized() * lunge_speed

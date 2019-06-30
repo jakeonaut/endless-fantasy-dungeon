@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scripts/DemonGirl.gd" type="Script" id=1]
+[ext_resource path="res://levels/Suburb/DemonGirl.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=3]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=4]
@@ -13,6 +13,7 @@
 radius = 2.0
 
 [sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.5, 0.5, 0.5 )
 
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
@@ -40,6 +41,7 @@ shape = SubResource( 2 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 3 )
 
 [node name="NPC TextBox" parent="." instance=ExtResource( 4 )]

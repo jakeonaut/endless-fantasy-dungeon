@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/gothicleaves.png" type="Texture" id=2]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
+[ext_resource path="res://water_tiles.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/Costume.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sceneObjects/ThrowableObject.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/Forest/TadpoleNPC.gd" type="Script" id=10]
+[ext_resource path="res://assets/npcs/tadpole.png" type="Texture" id=11]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2.5, 2.5, 2.5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.5, 1.5, 1.5 )
+
+[node name="level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BackgroundControl" type="Control" parent="."]
+editor/display_folded = true
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Level Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+cell_octant_size = 4
+data = {
+"cells": PoolIntArray( 0, 0, 1, 1, 0, -1610612735, 2, 0, 536870914, 65533, 0, 2, 65534, 0, 3, 65535, 0, 1073741825, 0, 1, 1, 1, 1, 536870913, 2, 1, 1, 65533, 1, 1, 65534, 1, 1, 65535, 1, 1073741825, 0, 2, 1, 65535, 2, 1, 0, 3, 1, 65535, 3, 1, 393217, 65523, 1, 393218, 65523, 1, 393217, 65524, 1, 393218, 65524, 1, 393216, 65525, -1073741823, 393217, 65525, 1, 393218, 65525, 1, 393219, 65525, 536870913, 393220, 65525, -1610612735, 458751, 65525, 1073741825, 393216, 65526, 1, 393217, 65526, -1610612735, 393218, 65526, 1, 393219, 65526, -1610612735, 393220, 65526, -1610612735, 458751, 65526, 1, 393216, 65527, -1610612735, 393217, 65527, 1, 393218, 65527, -1610612735, 393219, 65527, 1, 393220, 65527, 1, 458751, 65527, -1610612735, 393216, 65528, 1, 393217, 65528, -1610612735, 393218, 65528, 1, 393219, 65528, 1, 393220, 65528, 1, 458751, 65528, 1, 393216, 65529, 1, 393217, 65529, 1, 393218, 65529, 536870913, 393219, 65529, 1, 393220, 65529, 1, 458751, 65529, 1, 196609, 65530, 2, 196610, 65530, 2, 196611, 65530, -1610612734, 196609, 65531, 2, 196610, 65531, 2, 196611, 65531, 536870914, 0, 65532, -1610612735, 1, 65532, 1, 2, 65532, 1, 65533, 65532, 1, 65534, 65532, -1610612735, 65535, 65532, 2, 196609, 65532, 536870914, 196610, 65532, -1610612734, 196611, 65532, 2, 0, 65533, 1, 1, 65533, 3, 2, 65533, -1610612735, 65533, 65533, 1, 65534, 65533, 1, 65535, 65533, 1073741825, 0, 65534, -1610612735, 1, 65534, 1, 2, 65534, 1, 65533, 65534, 1, 65534, 65534, 1, 65535, 65534, 1, 0, 65535, 1, 1, 65535, 1, 2, 65535, 1, 65533, 65535, 1073741827, 65534, 65535, 1, 65535, 65535, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 3, 0 )
+}
+
+[node name="Water Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 262145, 65530, 0, 262146, 65530, 536870912, 262147, 65530, 536870912, 327681, 65530, 536870912, 327682, 65530, 536870912, 327683, 65530, 536870912, 393217, 65530, 536870912, 393218, 65530, 0, 393219, 65530, 536870912, 262145, 65531, 536870912, 262146, 65531, -1610612736, 262147, 65531, 0, 327681, 65531, -1610612736, 327682, 65531, 536870912, 327683, 65531, 536870912, 393217, 65531, 0, 393218, 65531, 536870912, 393219, 65531, 536870912, 262145, 65532, 536870912, 262146, 65532, 0, 262147, 65532, 536870912, 327681, 65532, 0, 327682, 65532, -1610612736, 327683, 65532, 536870912, 393217, 65532, 0, 393218, 65532, 0, 393219, 65532, -1610612736, 65536, 65533, 536870912, 65538, 65533, 536870912, 65539, 65533, 0, 131070, 65533, -1610612736, 131071, 65533, 0, 131072, 65533, 0, 131074, 65533, -1610612736, 131075, 65533, 0, 196606, 65533, 536870912, 196607, 65533, 0, 196608, 65533, -536870912, 262142, 65533, 0, 262143, 65533, 536870912, 65536, 65534, 536870912, 65538, 65534, 0, 65539, 65534, 0, 131070, 65534, 0, 131071, 65534, 0, 131072, 65534, 0, 131074, 65534, 1073741824, 131075, 65534, 0, 196606, 65534, 0, 196607, 65534, 536870912, 196608, 65534, 536870912, 262142, 65534, 0, 262143, 65534, 0, 65536, 65535, 536870912, 131070, 65535, 536870912, 131071, 65535, -1610612736, 131072, 65535, 0, 196606, 65535, 0, 196607, 65535, -1610612736, 196608, 65535, 0, 262142, 65535, 1073741824, 262143, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 6, 0 )
+}
+
+[node name="WaterAreas" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Area" type="Area" parent="WaterAreas" groups=[
+"water",
+]]
+editor/display_folded = true
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterAreas/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -3 )
+shape = SubResource( 2 )
+
+[node name="Area2" type="Area" parent="WaterAreas" groups=[
+"water",
+]]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterAreas/Area2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, -3 )
+shape = SubResource( 3 )
+
+[node name="Area3" type="Area" parent="WaterAreas" groups=[
+"water",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11, -9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterAreas/Area3"]
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.14603, 0.21971 )
+
+[node name="InteractionArea" parent="Player" index="1"]
+editor/display_folded = true
+
+[node name="CameraY" parent="Player" index="5"]
+editor/display_folded = false
+
+[node name="portdoor" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 7.95208 )
+
+[node name="Costume" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51555, 3.2514, 2.20847 )
+
+[node name="Sprite3D" parent="Costume" index="3"]
+frame = 1
+
+[node name="ThrowableObject" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48445, 3.2514, 3.20847 )
+
+[node name="TadpoleNPC" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48445, 9.2514, -6.79153 )
+script = ExtResource( 10 )
+
+[node name="Sprite3D" parent="TadpoleNPC" index="4"]
+pixel_size = 0.06
+texture = ExtResource( 11 )
+vframes = 4
+hframes = 4
+
+
+[editable path="Player"]
+
+[editable path="Costume"]
+
+[editable path="TadpoleNPC"]
