@@ -1,12 +1,13 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/textures/bricks.png" type="Texture" id=1]
-[ext_resource path="res://assets/textures/leaves.png" type="Texture" id=2]
-[ext_resource path="res://assets/textures/mossybricks.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/dirtygrass.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/marble2.png" type="Texture" id=5]
-[ext_resource path="res://assets/player0000.png" type="Texture" id=6]
-[ext_resource path="res://assets/textures/gothicbricks.png" type="Texture" id=7]
+[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/leaves.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/mossybricks.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/dirtygrass.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/marble2.png" type="Texture" id=6]
+[ext_resource path="res://assets/player0000.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/gothicbricks.png" type="Texture" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 1 )
@@ -17,15 +18,26 @@ material = SubResource( 1 )
 
 [sub_resource type="BoxShape" id=3]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=24]
+flags_transparent = true
+flags_unshaded = true
 albedo_texture = ExtResource( 2 )
+distance_fade_mode = 2
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 20.0
+
+[sub_resource type="CubeMesh" id=25]
+material = SubResource( 24 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 3 )
 roughness = 0.0
 
 [sub_resource type="CubeMesh" id=5]
 material = SubResource( 4 )
 
 [sub_resource type="SpatialMaterial" id=6]
-albedo_texture = ExtResource( 3 )
+albedo_texture = ExtResource( 4 )
 roughness = 0.0
 
 [sub_resource type="CubeMesh" id=7]
@@ -34,7 +46,7 @@ material = SubResource( 6 )
 [sub_resource type="BoxShape" id=8]
 
 [sub_resource type="SpatialMaterial" id=9]
-albedo_texture = ExtResource( 4 )
+albedo_texture = ExtResource( 5 )
 roughness = 0.0
 
 [sub_resource type="CubeMesh" id=10]
@@ -43,7 +55,7 @@ material = SubResource( 9 )
 [sub_resource type="BoxShape" id=11]
 
 [sub_resource type="SpatialMaterial" id=12]
-albedo_texture = ExtResource( 5 )
+albedo_texture = ExtResource( 6 )
 roughness = 0.0
 uv1_scale = Vector3( 3, 2, 5 )
 
@@ -54,7 +66,7 @@ material = SubResource( 12 )
 
 [sub_resource type="SpatialMaterial" id=15]
 flags_transparent = true
-albedo_texture = ExtResource( 6 )
+albedo_texture = ExtResource( 7 )
 roughness = 0.0
 
 [sub_resource type="CubeMesh" id=16]
@@ -65,7 +77,7 @@ material = SubResource( 15 )
 [sub_resource type="SpatialMaterial" id=18]
 flags_albedo_tex_force_srgb = true
 params_diffuse_mode = 4
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 8 )
 roughness = 0.0
 uv1_scale = Vector3( 3, 2, 5 )
 
@@ -82,7 +94,7 @@ material = SubResource( 20 )
 
 [sub_resource type="SpatialMaterial" id=22]
 flags_transparent = true
-albedo_texture = ExtResource( 3 )
+albedo_texture = ExtResource( 4 )
 roughness = 0.0
 
 [sub_resource type="CubeMesh" id=23]
@@ -99,6 +111,11 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
 shape = SubResource( 3 )
+
+[node name="Water2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+mesh = SubResource( 25 )
+material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
 editor/display_folded = true
@@ -158,7 +175,6 @@ transform = Transform( 1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 17 )
 
 [node name="MeshInstance8" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0 )
 mesh = SubResource( 19 )
 material/0 = null

@@ -21,7 +21,7 @@ flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 
-[node name="DemonNpc" type="KinematicBody"]
+[node name="DemonNPC" type="KinematicBody"]
 collision_layer = 0
 script = ExtResource( 1 )
 

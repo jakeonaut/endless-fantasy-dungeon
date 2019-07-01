@@ -6,9 +6,15 @@ onready var bumpSound = get_node("Sounds/BumpSound")
 onready var skateSound = get_node("Sounds/SkateSound")
 
 var true_terminal_vel = 32
+var water_terminal_vel = 5
+var hit_water_terminal_vel = 1
 var terminal_vel = true_terminal_vel
 var is_floating = false
+var float_timer = 0
+var float_time_limit = 2
+var big_float_time_limit = 5
 var is_touching_water = false
+var was_touching_water = false
 var on_ground = true
 var was_on_ground = true
 var just_landed = false
@@ -47,6 +53,7 @@ func _ready():
     set_process_input(true)
     set_process(true)
     set_physics_process(true)
+    float_timer = float_time_limit
 
 func _process(delta):
     pass
@@ -99,19 +106,30 @@ func processPhysics(delta):
             landedFromBounce()
         just_landed = true
 
+
+    if not is_touching_water and was_touching_water:
+        float_timer = 0
     was_on_ground = on_ground
+    was_touching_water = is_touching_water
     
 func applyGravity(delta):
     if is_floating:
-        g = Vector3(0, grav/2, 0)
+        g = Vector3(0, grav/10, 0)
+        if float_timer >= big_float_time_limit:
+            g = Vector3(0, grav/2, 0)
         on_ground = false
+    elif is_touching_water:
+        g = Vector3(0, -grav/2, 0)
     else:
         g = Vector3(0, -grav, 0)
+
     lv += g * delta
 
 func applyTerminalVelocity(delta):
     if is_touching_water:
-        terminal_vel = true_terminal_vel/4
+        terminal_vel = hit_water_terminal_vel
+        if float_timer >= big_float_time_limit:
+            terminal_vel = water_terminal_vel
     else:
         terminal_vel = true_terminal_vel
 
@@ -119,8 +137,10 @@ func applyTerminalVelocity(delta):
         vv = -terminal_vel
         fallCounter += (delta*22)
         if is_touching_water:
-            is_floating = true
-    if vv > terminal_vel:
+            float_timer += (delta*22)
+            if float_timer >= float_time_limit:
+                is_floating = true
+    if vv > terminal_vel and is_floating:
         vv = terminal_vel
 
 func tryStartSkate():

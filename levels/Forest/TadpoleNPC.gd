@@ -1,13 +1,13 @@
 extends "res://scripts/GameMover.gd"
 
 onready var textBox = get_node("NPC TextBox").get_node("TextBox")
-onready var interactionArea = get_node("InteractionArea")
+onready var interactionArea = get_node("SmallInteractionArea")
 
 func _ready():
     set_process(true)
     set_physics_process(true)
 
-    set_collision_mask_bit(1, true)
+    set_collision_mask_bit(1, false)
 
 func isActive():
     return visible

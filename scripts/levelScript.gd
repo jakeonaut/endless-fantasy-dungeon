@@ -8,6 +8,8 @@ func _ready():
     global.pauseMoveInput = false
     global.pauseGame = false
 
+    player.lightsOn()
+
     if global.memory.has("player_costume"):
         player.wearCostume(global.memory["player_costume"])
     

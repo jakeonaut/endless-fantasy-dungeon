@@ -78,6 +78,7 @@ func activate():
         pickupCounter = 0
     elif pickupCounter >= pickupCounterMax and global.activeThrowableObject == self:
         is_floating = false
+        float_timer = float_time_limit
         # Throw!
         throwSound.play()
         is_held = false

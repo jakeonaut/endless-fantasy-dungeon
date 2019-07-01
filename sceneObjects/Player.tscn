@@ -42,12 +42,14 @@ transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
+editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 2 )
 
 [node name="SmallInteractionArea" type="Area" parent="."]
+editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
@@ -81,6 +83,7 @@ transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX"]
@@ -113,6 +116,7 @@ size = 20.0
 near = 0.1
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 7 )
@@ -151,6 +155,7 @@ stream = ExtResource( 15 )
 volume_db = -20.0
 
 [node name="Items" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="BugNet" parent="Items" instance=ExtResource( 16 )]
 
