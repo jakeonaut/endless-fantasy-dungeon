@@ -15,6 +15,9 @@ var form = Form.NORMAL
 # Physics variables
 var recover_walk_speed = 4
 var swimming_walk_speed = 6
+var is_swamp_hopping = false
+var swamp_hop_counter = 0
+var swamp_hop_count_limit = 3
 var lunge_speed = 16
 var is_lunging = 0
 var jump_force = 20
@@ -65,6 +68,16 @@ func _physics_process(delta):
     if global.pauseGame: return
 
     is_touching_water = smallInteractionArea.is_touching_water
+    if not was_touching_water and is_touching_water and swamp_hop_counter < swamp_hop_count_limit \
+       and smallInteractionArea.water_y < global_transform.origin.y + 0.5:
+        is_swamp_hopping = true
+        take_fall_damage = true
+        swamp_hop_counter += 1
+        if swamp_hop_counter == swamp_hop_count_limit:
+            self.startRotateSprite(1)
+        if bumpSound:
+            bumpSound.play()
+
     .processPhysics(delta) #super
     if is_recovering:
         recover_timer += (delta*22)
@@ -114,7 +127,7 @@ func processInputs(delta):
 func processJumpInputs(delta):
     has_just_lunged = false
     # jump
-    if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
+    if Input.is_action_just_pressed("ui_jump") and not is_swamp_hopping and not global.pauseMoveInput: 
         # Jump from the water
         if smallInteractionArea.is_touching_water:
             on_ground = false
@@ -123,6 +136,7 @@ func processJumpInputs(delta):
             jumpSound.play()
             has_just_jumped_timer = -has_just_jumped_time_limit
             is_lunging = 0
+            swamp_hop_counter = swamp_hop_count_limit
         # Jump from the ground
         elif is_lunging == 0:
             is_recovering = false
@@ -154,28 +168,29 @@ func processJumpInputs(delta):
             is_lunging = -2
             has_just_jumped_timer = 0
     elif take_fall_damage and form != Form.FLOOR:
-        vv = jump_force
+        vv = (2*jump_force)/3
         take_fall_damage = false
         on_ground = false
 
-    if is_touching_water:
-        if Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
-            float_timer += (delta*22)
-            if float_timer >= big_float_time_limit:
-                is_floating = true
-        elif not Input.is_action_pressed("ui_jump"):
+    if not is_swamp_hopping:
+        if is_touching_water:
+            if Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
+                float_timer += (delta*22)
+                if float_timer >= big_float_time_limit:
+                    is_floating = true
+            elif not Input.is_action_pressed("ui_jump"):
+                is_floating = false
+                float_timer = 0
+        else: 
             is_floating = false
             float_timer = 0
-    else: 
-        is_floating = false
-        float_timer = 0
-        if Input.is_action_pressed("ui_jump") and was_touching_water and not global.pauseMoveInput:
-            on_ground = false
-            is_recovering = false
-            vv = jump_force
-            jumpSound.play()
-            has_just_jumped_timer = -has_just_jumped_time_limit
-            is_lunging = 0
+            if Input.is_action_pressed("ui_jump") and was_touching_water and not global.pauseMoveInput:
+                on_ground = false
+                is_recovering = false
+                vv = jump_force
+                jumpSound.play()
+                has_just_jumped_timer = -has_just_jumped_time_limit
+                is_lunging = 0
 
 func processHorizontalInputs(delta):
     # Forward as "seen" by the camera (OpenGL convention)
@@ -268,6 +283,8 @@ func updateFacing(dir):
 func landed():
     is_lunging = 0
     .landed() #super
+    swamp_hop_counter = 0
+    is_swamp_hopping = false
 
 # @override
 func noFloorBelow():
