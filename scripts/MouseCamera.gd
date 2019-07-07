@@ -112,6 +112,10 @@ func _process(delta):
     mouseDiffX = 0
     mouseDiffY = 0
 
+func focusForward(facing):
+    var target_degrees = rad2deg(Vector3(0, 0, -1).normalized().angle_to(facing.normalized()))
+    self.rotateTo(target_degrees)
+
 func toggleNext():
     if not is_lerping:
         lerp_timer = 0

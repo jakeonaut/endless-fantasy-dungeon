@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://levels/Suburb/DemonGirl.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=3]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/npcs/demongirl.png" type="Texture" id=5]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=6]
+[ext_resource path="res://assets/npcs/demongirlport.png" type="Texture" id=5]
+[ext_resource path="res://assets/npcs/demongirl.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
+[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/enemy_sheet.png" type="Texture" id=9]
+[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -20,6 +24,29 @@ flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
+
+[sub_resource type="AnimatedTexture" id=5]
+flags = 19
+frames = 2
+fps = 6.0
+frame_0/texture = ExtResource( 9 )
+frame_1/texture = ExtResource( 10 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+flags_unshaded = true
+params_blend_mode = 3
+albedo_color = Color( 0.219608, 1, 0.8, 1 )
+albedo_texture = SubResource( 5 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv2_scale = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.1, 0.1, 0.1 )
 
 [node name="DemonNPC" type="KinematicBody"]
 collision_layer = 0
@@ -47,14 +74,33 @@ shape = SubResource( 3 )
 [node name="NPC TextBox" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 
+[node name="TextBox" parent="NPC TextBox" index="0"]
+editor/display_folded = true
+
+[node name="Portrait" parent="NPC TextBox/TextBox" index="0"]
+texture = ExtResource( 5 )
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 4 )
 pixel_size = 0.08
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 vframes = 4
 hframes = 4
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 should_randomize_frame_delay = true
 
+[node name="GlitchEnemy" parent="." instance=ExtResource( 8 )]
+
+[node name="MeshInstance" parent="GlitchEnemy" index="0"]
+material_override = SubResource( 7 )
+mesh = SubResource( 6 )
+
+[node name="CollisionShape" parent="GlitchEnemy/InteractionArea" index="0"]
+shape = SubResource( 8 )
+
+
+[editable path="NPC TextBox"]
+
+[editable path="GlitchEnemy"]

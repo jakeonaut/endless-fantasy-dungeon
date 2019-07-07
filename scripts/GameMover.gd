@@ -174,6 +174,8 @@ func startRotateSprite(max2):
 
 func processSkateInputs(delta):
     if is_touching_speed_boost:
+        if speedBoostTimer == 0:
+            self.startRotateSprite(999)
         speedBoostTimer += (delta*22)
         if speedBoostTimer > speedBoostTimeLimit:
             skate_origin = null
@@ -205,9 +207,10 @@ func postProcessSkateInputs(delta):
     if is_skating \
     and linear_velocity.x < walk_speed/2 and linear_velocity.x > -walk_speed/2 \
     and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2:
+        is_rotating = false
         is_skating = false
         mySprite.faceDown()
-        is_rotating = false
+        rotateTimer = 0
         skateStartTimer = 0
         if skateActuallyStarted:
             bumpSound.play()

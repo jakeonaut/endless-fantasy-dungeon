@@ -66,6 +66,8 @@ func _process(delta):
     tryRotateCamera(delta)
     if Input.is_action_just_pressed("ui_focus_next"):
         getCamera().toggleNext()
+    if Input.is_action_just_pressed("ui_focus_forward"):
+        getCamera().focusForward(facing)
 
     if global.pauseGame: return
 

@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/gothicleaves.png" type="Texture" id=2]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/Costume.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.5, 1.5, 1.5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 2.5, 2.5, 2.5 )
+
+[node name="level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BackgroundControl" type="Control" parent="."]
+editor/display_folded = true
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Level Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+cell_octant_size = 4
+data = {
+"cells": PoolIntArray( 0, 0, 536870913, 1, 0, 536870913, 65533, 0, 2, 65534, 0, 536870915, 65535, 0, 536870913, 0, 1, 536870913, 1, 1, 536870913, 65533, 1, 536870913, 65534, 1, 536870913, 65535, 1, 536870913, 0, 2, 536870913, 65535, 2, -536870911, 0, 3, 536870913, 65535, 3, 536870913, 131073, 65530, 536870912, 131074, 65530, 536870912, 131075, 65530, 0, 196609, 65530, 536870924, 196610, 65530, 536870924, 196611, 65530, 536870924, 262145, 65530, 536870924, 262146, 65530, 12, 262147, 65530, 12, 327680, 65530, 0, 327681, 65530, 12, 327682, 65530, 12, 327683, 65530, 1073741836, 393214, 65530, 0, 393215, 65530, 0, 131073, 65531, 536870912, 131075, 65531, 0, 196609, 65531, 12, 196610, 65531, 12, 196611, 65531, 12, 262145, 65531, 12, 262146, 65531, 12, 262147, 65531, 12, 327680, 65531, 0, 327681, 65531, 12, 327682, 65531, 536870924, 327683, 65531, 12, 393214, 65531, 0, 393215, 65531, 0, 0, 65532, 1, 1, 65532, 1, 2, 65532, 1, 65533, 65532, 1, 65534, 65532, 1, 65535, 65532, 2, 131073, 65532, 0, 131074, 65532, 0, 131075, 65532, 0, 196609, 65532, 536870924, 196610, 65532, 1073741836, 196611, 65532, 12, 262145, 65532, 12, 262146, 65532, 12, 262147, 65532, 12, 327681, 65532, 12, 327682, 65532, 12, 327683, 65532, 12, 0, 65533, 1073741825, 1, 65533, 3, 2, 65533, 1, 65533, 65533, 1, 65534, 65533, 1, 65535, 65533, 1, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 65533, 65534, 1, 65534, 65534, 1, 65535, 65534, 1, 65536, 65534, -1610612724, 131071, 65534, 12, 131072, 65534, 536870924, 196607, 65534, 536870924, 0, 65535, 1, 1, 65535, 1, 65533, 65535, 3, 65534, 65535, 1, 65535, 65535, 1, 65536, 65535, 12, 131071, 65535, 12, 131072, 65535, 12, 196607, 65535, 12 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 5, 0 )
+}
+
+[node name="WaterAreas" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Area" type="Area" parent="WaterAreas" groups=[
+"water",
+]]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterAreas/Area"]
+shape = SubResource( 2 )
+
+[node name="Area3" type="Area" parent="WaterAreas" groups=[
+"water",
+]]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 9, -9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterAreas/Area3"]
+shape = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.14603, 0.21971 )
+
+[node name="portalForest2Water" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 7.95208 )
+midLevelDir = "Forest"
+connectedScene = "ForestScene2.tscn"
+
+[node name="portalForestFrogWater" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -3, 13.4124, -10.0479 )
+midLevelDir = "Forest"
+connectedScene = "ForestFrogWaterScene1.tscn"
+
+[node name="Costume" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51555, 3.2514, 2.20847 )
+
+[node name="Sprite3D" parent="Costume" index="3"]
+frame = 1
+
+[node name="SavePoint" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -4 )
+
+
+[editable path="Player"]
+
+[editable path="Costume"]

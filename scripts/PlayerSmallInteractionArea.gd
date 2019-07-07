@@ -26,7 +26,8 @@ func _process(delta):
             is_touching_speed_boost = true
             speed_boost_angle = area.get_node("..").rotation.y
             speed_boost_origin = area.get_node("..").global_transform.origin
+            speed_boost_origin.y -= 0.1
         if area.is_in_group("water"):
             var collision_shape = area.get_node("CollisionShape")
             is_touching_water = true
-            water_y = collision_shape.global_transform.origin.y + (collision_shape.get_shape().get_extents().y/2)
+            water_y = collision_shape.global_transform.origin.y + (collision_shape.get_shape().get_extents().y) + 1

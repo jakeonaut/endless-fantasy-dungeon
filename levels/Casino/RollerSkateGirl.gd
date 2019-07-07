@@ -26,7 +26,8 @@ func _physics_process(delta):
 func respawn():
     self.mySprite.faceDown()
     self.is_skating = false
-    self.skateRotateTimer = 0
+    self.is_rotating = false
+    self.rotateTimer = 0
     self.skateStartTimer = 0
     self.hv = Vector3(0, 0, 0)
     self.linear_velocity = Vector3(0, 0, 0)
@@ -36,7 +37,7 @@ func respawn():
 
 # @override
 func passiveActivate(delta):
-    if not is_skating and skateRotateTimer == 0:
+    if not is_skating and rotateTimer == 0:
         # have to calculate player's dir and modulo to nearest 90 degree angle
         # also player.linear_velocity.x < walk_speed / 2 and player.linear_velocity.x > -walk_speed/2
         # ALSO player should have their x/z coordinates inline with the 90 degree modulo above
@@ -63,6 +64,7 @@ func passiveActivate(delta):
         if pushTimer >= pushTimeLimit:
             pushTimer = 0
             self.tryStartSkate()
+            self.startRotateSprite(999)
 
 func stopPassiveActivate():
     if not is_skating: 
