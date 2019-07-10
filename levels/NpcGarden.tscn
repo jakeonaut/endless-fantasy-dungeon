@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
+[ext_resource path="res://assets/realmini.png" type="Texture" id=2]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/npcs/gardenportrait.png" type="Texture" id=7]
+[ext_resource path="res://assets/npcs/farmergarden.png" type="Texture" id=8]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1.7, 1 )
+
+[node name="level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BackgroundControl" type="Control" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Level Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+cell_octant_size = 4
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 2, 3, 0, -1610612736, 65532, 0, 0, 65533, 0, 2, 65534, 0, 0, 65535, 0, 0, 0, 1, 536870912, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65532, 1, 0, 65533, 1, 2, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 65530, 536870912, 1, 65530, 536870912, 2, 65530, 0, 3, 65530, 2, 65532, 65530, 2, 65533, 65530, 536870912, 65534, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 1, 65531, 536870912, 2, 65531, -1610612734, 3, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 65532, 65532, 536870912, 65533, 65532, 2, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 2, 3, 65533, 536870912, 65532, 65533, -1610612736, 65533, 65533, 2, 65534, 65533, 2, 65535, 65533, 0, 0, 65534, 2, 1, 65534, 2, 2, 65534, 0, 3, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 2, 0, 65535, 536870914, 1, 65535, 2, 2, 65535, 0, 3, 65535, 2, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="portdoor" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+connectedScene = "NpcGarden.tscn"
+
+[node name="GardenerNPC" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 3.92472, -3.79153 )
+
+[node name="CollisionShape" parent="GardenerNPC" index="0"]
+shape = SubResource( 2 )
+
+[node name="Portrait" parent="GardenerNPC/NPC TextBox/TextBox" index="0"]
+texture = ExtResource( 7 )
+
+[node name="Text" parent="GardenerNPC/NPC TextBox/TextBox" index="1"]
+bbcode_text = "it is possible for games 
+to function as gardens.
+caretaking represents a healthier way 
+to engage with game worlds"
+text = "it is possible for games 
+to function as gardens.
+caretaking represents a healthier way 
+to engage with game worlds"
+
+[node name="Sprite3D" parent="GardenerNPC" index="4"]
+pixel_size = 0.12
+texture = ExtResource( 8 )
+vframes = 1
+
+
+[editable path="GardenerNPC"]
+
+[editable path="GardenerNPC/NPC TextBox"]

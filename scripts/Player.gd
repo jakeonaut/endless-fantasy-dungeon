@@ -3,6 +3,8 @@ extends "PlayerGameMover.gd"
 onready var pauseMenu = get_node("PauseMenu/MenuBox")
 onready var hurtSound = get_node("Sounds/HurtSound")
 
+onready var cameraFlash = get_node("CameraFlash")
+
 onready var sunLight = get_node("Lights/The Sun")
 onready var ambientLight = get_node("CameraY/CameraX/Ambient")
 
@@ -54,6 +56,9 @@ func bugTransform():
 func _process(delta):
     # ._process(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
+
+    if Input.is_action_just_pressed("ui_interact"):
+        cameraFlash.flash()
 
     if Input.is_action_just_pressed("ui_accept") and not global.pauseMoveInput:
         if not global.pauseGame:
