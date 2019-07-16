@@ -7,10 +7,7 @@ path="res://.import/SprytileQuickStart.dae-b5d310d8e25a1e814cdd71e45598b7e0.scn"
 [deps]
 
 source_file="res://models/SprytileQuickStart.dae"
-source_md5="031a9daa336e0166441f950e050c5233"
-
 dest_files=[ "res://.import/SprytileQuickStart.dae-b5d310d8e25a1e814cdd71e45598b7e0.scn" ]
-dest_md5="b53ac2e886eea9e24a1514fc777c9cde"
 
 [params]
 

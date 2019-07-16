@@ -57,8 +57,8 @@ func _process(delta):
     # ._process(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500
 
-    if Input.is_action_just_pressed("ui_interact"):
-        cameraFlash.flash()
+    #if Input.is_action_just_pressed("ui_interact"):
+    #    cameraFlash.flash()
 
     if Input.is_action_just_pressed("ui_accept") and not global.pauseMoveInput:
         if not global.pauseGame:

@@ -7,6 +7,7 @@ onready var casinoThemePlayer = get_node("CasinoThemePlayer")
 onready var toxicThemePlayer = get_node("ToxicThemePlayer")
 onready var suburbThemePlayer = get_node("SuburbThemePlayer")
 onready var swampThemePlayer = get_node("SwampThemePlayer")
+onready var solarChoirThemePlayer = get_node("SolarChoirThemePlayer")
 
 func conductFromScenePath(path):
     if path.find("Intro") > 0:
@@ -22,8 +23,12 @@ func conductFromScenePath(path):
         self.playSuburb()
     elif path.find("Swamp") > 0:
         self.playSwamp()
+    elif path.find("Goddess") > 0:
+        self.playSolarChoir()
+    else:
+        titleThemePlayer.play()
     
-func stop():
+func stopAll():
     titleThemePlayer.stop()
     dungeonThemePlayer.stop()
     debugThemePlayer.stop()
@@ -34,31 +39,36 @@ func stop():
 
 func playDungeon():
     if dungeonThemePlayer.is_playing(): return
-    self.stop()
+    self.stopAll()
     dungeonThemePlayer.play()
 
 func playDebug():
     if debugThemePlayer.is_playing(): return
-    self.stop()
+    self.stopAll()
     debugThemePlayer.play()
     
 func playCasino():
     if casinoThemePlayer.is_playing(): return
-    self.stop()
+    self.stopAll()
     casinoThemePlayer.play()
     
 # not britney spears, unfortunately
 func playToxic():
     if toxicThemePlayer.is_playing(): return
-    self.stop()
+    self.stopAll()
     toxicThemePlayer.play()
 
 func playSuburb():
     if suburbThemePlayer.is_playing(): return
-    self.stop()
+    self.stopAll()
     suburbThemePlayer.play()
 
 func playSwamp():
     if swampThemePlayer.is_playing(): return
-    self.stop()
+    self.stopAll()
     swampThemePlayer.play()
+
+func playSolarChoir():
+    if solarChoirThemePlayer.is_playing(): return
+    self.stopAll()
+    solarChoirThemePlayer.play()

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/5OUTHO - SOLAR CHOIR (JOYFUL) - Music Video.wav-314b803422bfddeca0b6bc1196133db8.sample"
+
+[deps]
+
+source_file="res://docs/final mixes/5OUTHO - SOLAR CHOIR (JOYFUL) - Music Video.wav"
+dest_files=[ "res://.import/5OUTHO - SOLAR CHOIR (JOYFUL) - Music Video.wav-314b803422bfddeca0b6bc1196133db8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

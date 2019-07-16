@@ -7,10 +7,7 @@ path="res://.import/OOT_Pot_Shatter.wav-ec37bec9b67630817d81c5b593fc35ca.sample"
 [deps]
 
 source_file="res://assets/sounds/OOT_Pot_Shatter.wav"
-source_md5="359c3cc1b8cab9d5c77d4991bfeb7b27"
-
 dest_files=[ "res://.import/OOT_Pot_Shatter.wav-ec37bec9b67630817d81c5b593fc35ca.sample" ]
-dest_md5="f2cbb5e15831c6eed17bb154c323aa33"
 
 [params]
 

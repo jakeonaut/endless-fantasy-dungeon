@@ -7,10 +7,7 @@ path="res://.import/horn.wav-63c9b6c5646bd257f931229f5826e7d8.sample"
 [deps]
 
 source_file="res://assets/DELETEME/horn.wav"
-source_md5="e9bcec083bace3d74d8062e3f9215278"
-
 dest_files=[ "res://.import/horn.wav-63c9b6c5646bd257f931229f5826e7d8.sample" ]
-dest_md5="a70dc23e70e0a7fff2acb95e245855c0"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/door.ogg-005168333bac5a2ec2749175557c3b56.oggstr"
 [deps]
 
 source_file="res://assets/music/door.ogg"
-source_md5="c442f9d4046584d7545e9736452f0a8a"
-
 dest_files=[ "res://.import/door.ogg-005168333bac5a2ec2749175557c3b56.oggstr" ]
-dest_md5="e2f2f4f66c883740afbbb9e52362ca06"
 
 [params]
 

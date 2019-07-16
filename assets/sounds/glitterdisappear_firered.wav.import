@@ -7,10 +7,7 @@ path="res://.import/glitterdisappear_firered.wav-6c8037e41069dc3b4f7df6621961234
 [deps]
 
 source_file="res://assets/sounds/glitterdisappear_firered.wav"
-source_md5="5ceec4d4566d2cc314d4656427b4236d"
-
 dest_files=[ "res://.import/glitterdisappear_firered.wav-6c8037e41069dc3b4f7df66219612347.sample" ]
-dest_md5="6dbd882617ffda1632898d2063586830"
 
 [params]
 

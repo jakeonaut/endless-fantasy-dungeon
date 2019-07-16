@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scripts/TextBox.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/closebutton.png" type="Texture" id=2]
-[ext_resource path="res://assets/playerportrait.png" type="Texture" id=3]
-[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=4]
 [ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=5]
 [ext_resource path="res://scripts/AbortSound.gd" type="Script" id=6]
 
@@ -27,15 +27,15 @@ size = 27
 extra_spacing_top = 16
 extra_spacing_char = 2
 extra_spacing_space = 2
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [node name="PauseMenu" type="CanvasLayer"]
 
 [node name="MenuBox" type="TextureRect" parent="."]
-margin_left = 157.0
-margin_top = 161.0
-margin_right = 630.0
-margin_bottom = 551.0
+margin_left = 18.0
+margin_top = 21.0
+margin_right = 748.0
+margin_bottom = 740.0
 texture = SubResource( 2 )
 expand = true
 script = ExtResource( 1 )
@@ -55,30 +55,91 @@ shortcut_in_tooltip = false
 texture_normal = ExtResource( 2 )
 expand = true
 
-[node name="Portrait" type="TextureRect" parent="MenuBox"]
-margin_left = 35.8268
-margin_top = 89.4086
-margin_right = 185.827
-margin_bottom = 239.409
-texture = ExtResource( 3 )
-expand = true
-
-[node name="Text" type="RichTextLabel" parent="MenuBox"]
-margin_left = 210.153
-margin_top = 89.7566
-margin_right = 433.153
-margin_bottom = 368.757
+[node name="Text5" type="RichTextLabel" parent="MenuBox/TitleBar"]
+margin_left = 112.0
+margin_top = 87.0
+margin_right = 335.0
+margin_bottom = 140.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 5 )
-bbcode_text = "welcome to the
-wonderful world of...
+bbcode_text = "costume"
+text = "costume"
 
-pause menu!!!"
-text = "welcome to the
-wonderful world of...
+[node name="Sprite" type="Sprite" parent="MenuBox"]
+position = Vector2( 60, 110 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+vframes = 8
+hframes = 8
 
-pause menu!!!"
+[node name="Text" type="RichTextLabel" parent="MenuBox"]
+margin_left = 23.0
+margin_top = 1.0
+margin_right = 246.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_text = "menu"
+text = "menu"
+
+[node name="Sprite2" type="Sprite" parent="MenuBox"]
+position = Vector2( 64, 192 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+vframes = 8
+hframes = 8
+frame = 16
+
+[node name="Text2" type="RichTextLabel" parent="MenuBox"]
+margin_left = 111.0
+margin_top = 161.0
+margin_right = 334.0
+margin_bottom = 214.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_text = "palette"
+text = "palette"
+
+[node name="Sprite3" type="Sprite" parent="MenuBox"]
+position = Vector2( 62, 273 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+vframes = 8
+hframes = 8
+frame = 32
+
+[node name="Text3" type="RichTextLabel" parent="MenuBox"]
+margin_left = 113.0
+margin_top = 247.0
+margin_right = 336.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_text = "glitch"
+text = "glitch"
+
+[node name="Sprite4" type="Sprite" parent="MenuBox"]
+position = Vector2( 61, 346 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+vframes = 8
+hframes = 8
+frame = 49
+
+[node name="Text4" type="RichTextLabel" parent="MenuBox"]
+margin_left = 112.0
+margin_top = 322.0
+margin_right = 335.0
+margin_bottom = 375.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_text = "party"
+text = "party"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="MenuBox"]
 stream = ExtResource( 5 )

@@ -7,10 +7,7 @@ path="res://.import/RoccoW_outOfSight.wav-66496f22b8c700581806968ec15fb890.sampl
 [deps]
 
 source_file="res://assets/music/RoccoW_outOfSight.wav"
-source_md5="3b8f8570263e846322ff8b0a1b96a675"
-
 dest_files=[ "res://.import/RoccoW_outOfSight.wav-66496f22b8c700581806968ec15fb890.sample" ]
-dest_md5="1f2a75524fcc47a336e3477f016b3979"
 
 [params]
 

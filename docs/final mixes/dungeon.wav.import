@@ -7,10 +7,7 @@ path="res://.import/dungeon.wav-ee037886afdcc241b0c23c515a2d3453.sample"
 [deps]
 
 source_file="res://docs/final mixes/dungeon.wav"
-source_md5="6a9c5f0af70d77b3f0f4135b7e590d5b"
-
 dest_files=[ "res://.import/dungeon.wav-ee037886afdcc241b0c23c515a2d3453.sample" ]
-dest_md5="50ccb3d93d58f7f15a177a1bb75a260e"
 
 [params]
 

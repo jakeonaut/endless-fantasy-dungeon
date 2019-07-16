@@ -7,10 +7,7 @@ path="res://.import/Link - Bomb Deploy.wav-9c63e92ff5e6d2fc69cf6e84a10832e7.samp
 [deps]
 
 source_file="res://assets/sounds/Link - Bomb Deploy.wav"
-source_md5="c78c962a4360c0c43da0bf956fbcc847"
-
 dest_files=[ "res://.import/Link - Bomb Deploy.wav-9c63e92ff5e6d2fc69cf6e84a10832e7.sample" ]
-dest_md5="6fdb0473fa741e8c119c3a8484436919"
 
 [params]
 

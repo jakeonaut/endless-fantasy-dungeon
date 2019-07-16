@@ -7,10 +7,7 @@ path="res://.import/worm.wav-7a282f505d85b2d82e178d77ae786666.sample"
 [deps]
 
 source_file="res://assets/sounds/worm.wav"
-source_md5="3879a390b99610fef54a2683f7274243"
-
 dest_files=[ "res://.import/worm.wav-7a282f505d85b2d82e178d77ae786666.sample" ]
-dest_md5="4d73f80ac41fd6b42a1dce925cd8eebe"
 
 [params]
 

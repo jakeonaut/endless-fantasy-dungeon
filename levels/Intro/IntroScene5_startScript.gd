@@ -3,7 +3,7 @@ extends "res://scripts/levelScript.gd"
 func _ready():
     # ._ready() #super 
     
-    get_node("/root/musicPlayer").stop()
+    get_node("/root/musicPlayer").stopAll()
     
     if not global.memory.has("intro_scene_5_goddess"):
         var player = get_node("Player")

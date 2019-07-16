@@ -7,10 +7,7 @@ path="res://.import/gurgle_firered.wav-28a50b61e42d670e04c3bd80dbeecbdc.sample"
 [deps]
 
 source_file="res://assets/sounds/gurgle_firered.wav"
-source_md5="338a0f58c8ca43df8a5f8f7a8cf10526"
-
 dest_files=[ "res://.import/gurgle_firered.wav-28a50b61e42d670e04c3bd80dbeecbdc.sample" ]
-dest_md5="b8420a4a7d394b8ea34e97ca2ea227bc"
 
 [params]
 

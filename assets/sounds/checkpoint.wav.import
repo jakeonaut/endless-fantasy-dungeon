@@ -7,10 +7,7 @@ path="res://.import/checkpoint.wav-19674617c047adccc62be101549f95f5.sample"
 [deps]
 
 source_file="res://assets/sounds/checkpoint.wav"
-source_md5="d231368834c29c767958232659209fc1"
-
 dest_files=[ "res://.import/checkpoint.wav-19674617c047adccc62be101549f95f5.sample" ]
-dest_md5="903c97e57b0cc7a8371b952b9ce3b42f"
 
 [params]
 

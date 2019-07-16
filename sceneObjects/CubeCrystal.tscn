@@ -1,28 +1,23 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/CubeCrystal.gd" type="Script" id=1]
 [ext_resource path="res://scripts/CubeCrystalMesh.gd" type="Script" id=2]
-[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=3]
-[ext_resource path="res://assets/sounds/glitterdisappear_firered.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/water_normal_3.png" type="Texture" id=3]
+[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=4]
+[ext_resource path="res://assets/sounds/glitterdisappear_firered.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/pickup.wav" type="AudioStream" id=6]
+[ext_resource path="res://sceneObjects/SpriteMaterial.tres" type="Material" id=7]
+[ext_resource path="res://assets/npcs/eyebrows.png" type="Texture" id=8]
+[ext_resource path="res://scripts/portdoorPolyTriangle.gd" type="Script" id=9]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=11]
+[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=12]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type spatial;
-render_mode unshaded;
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
 
-varying smooth vec3 our_color;
-
-void vertex() {
-    our_color = VERTEX;
-}
-
-void fragment() {
-    ALBEDO = vec3(1.0, 1.0, 1.0); // our_color;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-
-[sub_resource type="ArrayMesh" id=3]
+[sub_resource type="ArrayMesh" id=9]
 surfaces/0 = {
 "aabb": AABB( -0.5, -0.5, -0.5, 1, 1, 1 ),
 "array_data": PoolByteArray( 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 63 ),
@@ -35,58 +30,93 @@ surfaces/0 = {
 "vertex_count": 8
 }
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+params_blend_mode = 1
+albedo_texture = ExtResource( 3 )
+distance_fade_mode = 2
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 5.0
+
+[sub_resource type="CubeMesh" id=10]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="Shader" id=5]
-code = "shader_type spatial;
-render_mode unshaded;
-
-varying smooth vec3 our_color;
-
-void vertex() {
-    our_color = VERTEX;
-}
-
-void fragment() {
-    ALBEDO = our_color;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 64
+extra_spacing_top = 32
+extra_spacing_char = 3
+extra_spacing_space = 2
+font_data = ExtResource( 12 )
 
 [node name="CubeCrystal" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-visible = false
-material_override = SubResource( 2 )
-mesh = SubResource( 3 )
+[node name="CubeContainer" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="MeshInstance" type="MeshInstance" parent="CubeContainer"]
+material_override = SubResource( 8 )
+mesh = SubResource( 9 )
 material/0 = null
 script = ExtResource( 2 )
-sides = true
-split = 0.0
 
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 6 )
+[node name="MeshInstance2" type="MeshInstance" parent="CubeContainer"]
+material_override = SubResource( 7 )
+mesh = SubResource( 10 )
+material/0 = null
 
 [node name="InteractionArea" type="Area" parent="."]
-script = ExtResource( 3 )
+editor/display_folded = true
+script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="cubeSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -20.0
 pitch_scale = 1.5
 
 [node name="cubeSound2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -20.0
 pitch_scale = 0.5
 
+[node name="cubeSound3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+pitch_scale = 1.43
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = ExtResource( 7 )
+pixel_size = 0.04
+texture = ExtResource( 8 )
+vframes = 2
+hframes = 2
+script = ExtResource( 9 )
+
+[node name="TextContainer" parent="." instance=ExtResource( 10 )]
+
+[node name="TextBox" parent="TextContainer" index="0"]
+margin_left = 92.5309
+margin_top = 29.6099
+margin_right = 670.531
+margin_bottom = 236.61
+
+[node name="Portrait" parent="TextContainer/TextBox" index="0"]
+texture = ExtResource( 11 )
+
+[node name="Text" parent="TextContainer/TextBox" index="1"]
+margin_left = 201.0
+margin_top = 3.0
+margin_right = 610.0
+margin_bottom = 229.0
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_text = "crystal cube get!"
+text = "crystal cube get!"
+
+
+[editable path="TextContainer"]

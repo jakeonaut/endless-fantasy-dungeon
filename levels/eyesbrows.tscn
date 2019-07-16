@@ -6,8 +6,8 @@
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/npcs/eyebrows.png" type="Texture" id=7]
-[ext_resource path="res://assets/npcs/eyebrowsport.png" type="Texture" id=8]
+[ext_resource path="res://assets/npcs/eyebrowsport.png" type="Texture" id=7]
+[ext_resource path="res://assets/npcs/eyebrows.png" type="Texture" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -41,22 +41,11 @@ stretch_mode = 2
 mesh_library = ExtResource( 3 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 536870912, 2, 0, 0, 3, 0, 0, 65532, 0, 0, 65533, 0, 1073741824, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65532, 1, 0, 65533, 1, -536870912, 65534, 1, 0, 65535, 1, 536870912, 0, 2, 0, 65535, 2, -536870912, 0, 3, 536870912, 65535, 3, 0, 0, 65529, 0, 1, 65529, 0, 0, 65530, 0, 1, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 1610612736, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 65532, 65533, 0, 65533, 65533, 6, 65534, 65533, 536870912, 65535, 65533, 0, 131069, 65533, 0, 131070, 65533, 0, 131071, 65533, 0, -4, 65533, 0, -3, 65533, 1073741824, -2, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 65532, 65534, 0, 65533, 65534, 536870912, 65534, 65534, 6, 65535, 65534, 0, 131069, 65534, 536870912, 131070, 65534, 536870918, 131071, 65534, 536870912, -4, 65534, 0, -3, 65534, 536870912, -2, 65534, 536870912, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 65532, 65535, 1073741824, 65533, 65535, 6, 65534, 65535, 6, 65535, 65535, 6, 131069, 65535, 0, 131071, 65535, 536870912, -3, 65535, 0, -2, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 1073741824, 2, 0, 0, 3, 0, 1073741824, 65532, 0, 1073741824, 65533, 0, -1073741824, 65534, 0, -1073741824, 65535, 0, 1073741824, 0, 1, 536870912, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65532, 1, 0, 65533, 1, 1073741824, 65534, 1, 1073741824, 65535, 1, -1073741824, 0, 2, 0, 65535, 2, 536870912, 0, 3, 0, 65535, 3, 0, 0, 65529, 0, 1, 65529, 1073741824, 0, 65530, 536870912, 1, 65530, 0, 65537, 65530, 1, 131074, 65530, 1, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 1073741824, 65535, 65531, 0, 0, 65532, -536870912, 1, 65532, 536870912, 2, 65532, 0, 3, 65532, 0, 65532, 65532, 0, 65533, 65532, 1610612736, 65534, 65532, 0, 65535, 65532, 1073741824, 65539, 65532, 1, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 65532, 65533, 0, 65533, 65533, 6, 65534, 65533, 0, 65535, 65533, 0, 131069, 65533, 0, 131070, 65533, 536870912, 131071, 65533, 0, -4, 65533, 0, -3, 65533, 0, -2, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 65532, 65534, 536870912, 65533, 65534, 0, 65534, 65534, 6, 65535, 65534, 0, 131069, 65534, 0, 131070, 65534, 0, 131071, 65534, 0, 196606, 65534, 1, -4, 65534, 0, -3, 65534, 0, -2, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 536870912, 65532, 65535, 0, 65533, 65535, 536870918, 65534, 65535, 6, 65535, 65535, 6, 131069, 65535, 0, 131070, 65535, 0, 131071, 65535, -536870912, -3, 65535, 0, -2, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
-}
-
-[node name="Level Tiles2" type="GridMap" parent="."]
-mesh_library = ExtResource( 3 )
-cell_octant_size = 4
-data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 65532, 0, 0, 65533, 0, 536870912, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 1, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 65532, 65531, 1610612736, 65533, 65531, 536870912, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 536870912, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 65532, 65533, 0, 65533, 65533, 6, 65534, 65533, 536870912, 65535, 65533, 0, 131069, 65533, 0, 131070, 65533, 536870912, 131071, 65533, 0, -4, 65533, 1073741824, -3, 65533, 536870912, -2, 65533, 0, 0, 65534, 536870912, 1, 65534, 0, 2, 65534, 0, 3, 65534, 536870912, 65532, 65534, 0, 65533, 65534, 536870912, 65534, 65534, 536870918, 65535, 65534, 0, 131069, 65534, 0, 131070, 65534, 6, 131071, 65534, 536870912, -4, 65534, 0, -3, 65534, 536870912, -2, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 65532, 65535, 536870912, 65533, 65535, 536870918, 65534, 65535, 6, 65535, 65535, 6, 131069, 65535, 0, 131071, 65535, 0, -3, 65535, 0, -2, 65535, 0 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -1, 0 )
+"_editor_floor_": Vector3( 0, 2, 0 )
 }
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
@@ -65,13 +54,11 @@ __meta__ = {
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
 
 [node name="NPC" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48445, 3.2514, -1.79153 )
 
-[node name="InteractionArea" parent="NPC" index="1"]
-editor/display_folded = true
-
-[node name="NPC TextBox" parent="NPC" index="2"]
-editor/display_folded = true
+[node name="NPC TextBox" parent="NPC" index="3"]
+editor/display_folded = false
 
 [node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
 texture = ExtResource( 7 )
@@ -86,7 +73,7 @@ text = "hello.
 do you think that that
 is true?"
 
-[node name="Sprite3D" parent="NPC" index="3"]
+[node name="Sprite3D" parent="NPC" index="4"]
 material_override = SubResource( 2 )
 modulate = Color( 0, 0.882813, 1, 1 )
 pixel_size = 0.08
@@ -96,27 +83,38 @@ texture = SubResource( 3 )
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51555, 5.2514, -4.79153 )
 
-[node name="InteractionArea" parent="NPC2" index="1"]
-editor/display_folded = true
-
 [node name="Portrait" parent="NPC2/NPC TextBox/TextBox" index="0"]
 anchor_right = 1.0
 margin_right = -397.0
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="Text" parent="NPC2/NPC TextBox/TextBox" index="1"]
-bbcode_text = "do you see that one over
-there?
-point your camera at it
-and take a picture."
-text = "do you see that one over
-there?
-point your camera at it
-and take a picture."
+bbcode_text = "i'm not just some pretty,
+one dimensional person!!"
+text = "i'm not just some pretty,
+one dimensional person!!"
 
-[node name="Sprite3D" parent="NPC2" index="3"]
+[node name="Sprite3D" parent="NPC2" index="4"]
 pixel_size = 0.08
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
+
+[node name="NPC3" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48445, 7.2514, -10.7915 )
+
+[node name="NPC TextBox" parent="NPC3" index="3"]
+editor/display_folded = false
+
+[node name="Text" parent="NPC3/NPC TextBox/TextBox" index="1"]
+bbcode_text = "i'm so sick and tired
+of always turning over
+a new leaf"
+text = "i'm so sick and tired
+of always turning over
+a new leaf"
+
+[node name="Sprite3D" parent="NPC3" index="4"]
+pixel_size = 0.08
+texture = ExtResource( 8 )
 
 
 [editable path="NPC"]
@@ -126,3 +124,7 @@ texture = ExtResource( 7 )
 [editable path="NPC2"]
 
 [editable path="NPC2/NPC TextBox"]
+
+[editable path="NPC3"]
+
+[editable path="NPC3/NPC TextBox"]

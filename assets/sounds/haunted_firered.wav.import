@@ -7,10 +7,7 @@ path="res://.import/haunted_firered.wav-d24a8d2a7229bebc8338129acc03cd35.sample"
 [deps]
 
 source_file="res://assets/sounds/haunted_firered.wav"
-source_md5="1efbe20775e97508d6a75a7baadd6248"
-
 dest_files=[ "res://.import/haunted_firered.wav-d24a8d2a7229bebc8338129acc03cd35.sample" ]
-dest_md5="ac6b4f1189e1d32e3f863111998380d4"
 
 [params]
 

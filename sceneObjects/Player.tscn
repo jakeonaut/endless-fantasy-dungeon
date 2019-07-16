@@ -30,7 +30,6 @@ radius = 2.0
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 flags_unshaded = true
-flags_vertex_lighting = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 
@@ -180,3 +179,5 @@ mesh = SubResource( 6 )
 material/0 = null
 script = ExtResource( 19 )
 
+
+[editable path="PauseMenu"]

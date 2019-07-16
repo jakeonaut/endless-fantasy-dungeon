@@ -7,10 +7,7 @@ path="res://.import/point.ogg-68a8d9b13efc94ac6a8247d287bd5b9b.oggstr"
 [deps]
 
 source_file="res://assets/music/point.ogg"
-source_md5="a82f4ad62b1fa957228f2034c7ab1d72"
-
 dest_files=[ "res://.import/point.ogg-68a8d9b13efc94ac6a8247d287bd5b9b.oggstr" ]
-dest_md5="21c0109db168239da043abda234645a9"
 
 [params]
 

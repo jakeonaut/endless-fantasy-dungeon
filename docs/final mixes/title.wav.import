@@ -7,10 +7,7 @@ path="res://.import/title.wav-9a74efa0bac08b39af7eadbfaca4e28b.sample"
 [deps]
 
 source_file="res://docs/final mixes/title.wav"
-source_md5="3948f8a6fd5e7257c8cb6082f68022ca"
-
 dest_files=[ "res://.import/title.wav-9a74efa0bac08b39af7eadbfaca4e28b.sample" ]
-dest_md5="b4e3ecccee5262c171bebb6c4110dc24"
 
 [params]
 

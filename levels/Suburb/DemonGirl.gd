@@ -2,6 +2,7 @@ extends "res://scripts/NPC.gd"
 
 onready var player = get_tree().get_root().get_node("level/Player")
 onready var levelRoot = get_tree().get_root().get_node("level")
+var cleansed = false
 
 # TODO(jaketrower): doing stuff like this... is dangerous 
 # see: https://www.reddit.com/r/godot/comments/ait6y8/preloading_in_godot_31_vs_30/
@@ -15,7 +16,7 @@ func passiveActivate(delta):
     var sx = self.global_transform.origin.x
     var sy = self.global_transform.origin.y
     var sz = self.global_transform.origin.z
-    if player.just_landed and py > sy \
+    if not cleansed and player.just_landed and py > sy \
        and ((px+0.5>sx-0.5 and px+0.5<sx+0.5) or (px-0.5<sx+0.5 and px-0.5>sx-0.5)) \
        and ((pz+0.5>sz-0.5 and pz+0.5<sz+0.5) or (pz-0.5<sz+0.5 and pz-0.5>sz-0.5)):
         player.take_fall_damage = true
@@ -24,9 +25,15 @@ func passiveActivate(delta):
         hide()
         set_collision_mask_bit(1, false)
         spawnSavepoint()
+        cleansed = true
+        get_node("./NPC TextBox/TextBox/Text").set_bbcode("i'm still here.")
         
 func spawnSavepoint():
     var newSavePoint = save_point_resource.instance()
     levelRoot.add_child(newSavePoint)
     newSavePoint.translation = translation
     newSavePoint.passiveActivate(0)
+
+# @override
+func isActive():
+    return true

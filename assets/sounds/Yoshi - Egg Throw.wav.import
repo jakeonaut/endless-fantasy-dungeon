@@ -7,10 +7,7 @@ path="res://.import/Yoshi - Egg Throw.wav-027a90d17a81be284e0dd24019712f53.sampl
 [deps]
 
 source_file="res://assets/sounds/Yoshi - Egg Throw.wav"
-source_md5="da90d774aee354eef08de89888564bf6"
-
 dest_files=[ "res://.import/Yoshi - Egg Throw.wav-027a90d17a81be284e0dd24019712f53.sample" ]
-dest_md5="8f2823c9fca9bf454494671a32a4aaf3"
 
 [params]
 
