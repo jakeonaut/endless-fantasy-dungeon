@@ -6,3 +6,7 @@ func _ready():
 func activateScript():
     # OVERRIDE ME
     pass
+
+func isActive():
+    # OVERRIDE ME... if you dare
+    return true

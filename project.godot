@@ -29,8 +29,8 @@ musicPlayer="*res://sceneObjects/musicPlayer.tscn"
 
 [display]
 
-window/size/width=768
-window/size/height=768
+window/size/width=640
+window/size/height=640
 
 [input]
 

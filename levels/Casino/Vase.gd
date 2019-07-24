@@ -81,6 +81,7 @@ func landed():
     else:
         shatterSound.play()
         hide()
+        queue_free()
         set_collision_mask_bit(1, false)
         self.spawnCoin()
 

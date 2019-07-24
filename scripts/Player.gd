@@ -16,7 +16,7 @@ func _ready():
     set_process_input(true)
     set_process(true)
     set_physics_process(true)
-    pauseMenu.hide()
+    if pauseMenu: pauseMenu.hide()
 
 func wearCostume(costume):
     if costume == "normal": wearNormalClothes()

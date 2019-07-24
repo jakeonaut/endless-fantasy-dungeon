@@ -77,7 +77,6 @@ hframes = 8
 script = ExtResource( 5 )
 
 [node name="Lights" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="The Sun" type="DirectionalLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
@@ -88,20 +87,19 @@ directional_shadow_split_2 = 0.5
 directional_shadow_split_3 = 1.0
 
 [node name="CameraY" type="Spatial" parent="."]
-editor/display_folded = true
-transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
+transform = Transform( 0.719339, 0, 0.694658, 0, 1, 0, -0.694658, 0, 0.719339, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX"]
-transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 10 )
+transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 15 )
 current = true
 fov = 65.0
 size = 20.0
 near = 0.1
+far = 200.0
 
 [node name="CloseCamera" type="Camera" parent="CameraY/CameraX"]
 transform = Transform( 1, 0, 0, 0, 1, -8.34465e-007, 0, -2.98023e-008, 1, 0, 0, 10 )
@@ -170,6 +168,19 @@ volume_db = -20.0
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 17 )]
+
+[node name="MenuBox" parent="PauseMenu" index="0"]
+margin_right = 613.0
+margin_bottom = 616.0
+
+[node name="TitleBar" parent="PauseMenu/MenuBox" index="0"]
+margin_right = 596.0
+
+[node name="TextureButton" parent="PauseMenu/MenuBox/TitleBar" index="0"]
+margin_left = 549.266
+margin_top = 6.32082
+margin_right = 589.266
+margin_bottom = 47.3208
 
 [node name="CameraFlash" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )

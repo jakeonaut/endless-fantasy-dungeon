@@ -20,7 +20,8 @@ func InteractActivate():
     interact()
         
 func interact():
-    if !visible:
+    # dialogSound.isActive can be overridden
+    if !visible and dialogSound.isActive():
         text.get_v_scroll().value = 0
         self.show()
         dialogSound.play()

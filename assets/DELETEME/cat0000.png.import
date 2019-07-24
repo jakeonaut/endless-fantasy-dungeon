@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cat0000.png-17b06900ea213e2a141f3811fd487247.stex"
+path="res://.import/cat0000.png-3628eb029b51b59c3a835ae919907fcf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cat0000.png"
-dest_files=[ "res://.import/cat0000.png-17b06900ea213e2a141f3811fd487247.stex" ]
+source_file="res://assets/DELETEME/cat0000.png"
+dest_files=[ "res://.import/cat0000.png-3628eb029b51b59c3a835ae919907fcf.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

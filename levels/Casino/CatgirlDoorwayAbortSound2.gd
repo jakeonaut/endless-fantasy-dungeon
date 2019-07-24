@@ -1,8 +1,6 @@
-extends AudioStreamPlayer
+extends "res://scripts/AbortSound.gd"
 
-func _ready():
-    pass
-
+# @override
 func activateScript():
     var myNpc = get_node("../../..")
     # capitalization matters...

@@ -1,5 +1,6 @@
-extends AudioStreamPlayer
+extends "res://scripts/AbortSound.gd"
 
+# @override
 func activateScript():
     var goddess = get_node("../../..")
     goddess.visible = false

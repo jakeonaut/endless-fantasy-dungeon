@@ -7,8 +7,9 @@ func _ready():
     
     if not global.memory.has("intro_scene_5_goddess"):
         var player = get_node("Player")
-        player.getCamera().rotateTo(0, true)
+        player.getCamera().rotateTo(44, true)
         player.getCamera().rotateXTo(-30, true)
+        player.getCamera().changeToIsometric()
     else:
         var goddess = get_node("GoddessPreview")
         goddess.visible = false

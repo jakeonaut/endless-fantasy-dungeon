@@ -116,10 +116,23 @@ func focusForward(facing):
     var target_degrees = rad2deg(Vector3(0, 0, -1).normalized().angle_to(facing.normalized()))
     self.rotateTo(target_degrees)
 
+
+const PROJECTION_PERSPECTIVE = 0
+const PROJECTION_ORTHOGONAL = 1
+func changeToPerspective():
+    true_camera.set_projection(PROJECTION_PERSPECTIVE)
+
+func changeToIsometric():
+    true_camera.set_projection(PROJECTION_ORTHOGONAL)
+
 func toggleNext():
-    if not is_lerping:
-        lerp_timer = 0
-        is_lerping = true
+    if true_camera.get_projection() == PROJECTION_PERSPECTIVE:
+        true_camera.set_projection(PROJECTION_ORTHOGONAL)
+    else:
+        true_camera.set_projection(PROJECTION_PERSPECTIVE)
+    # if not is_lerping:
+    #     lerp_timer = 0
+    #     is_lerping = true
 
 func isToyboxView():
     return source_lerp_index == 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://sceneObjects/UI/CoinUI.tscn" type="PackedScene" id=2]
@@ -6,13 +6,16 @@
 [ext_resource path="res://levels/Casino/casinotiles.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/Casino/RollerGirl.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/npcs/catportrait2.png" type="Texture" id=9]
-[ext_resource path="res://levels/Casino/1GDialogSound.gd" type="Script" id=10]
-[ext_resource path="res://assets/npcs/catgirl.png" type="Texture" id=11]
-[ext_resource path="res://levels/Casino/Speedboost.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/Casino/coin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Casino/coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Casino/RollerGirl.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/npcs/catportrait2.png" type="Texture" id=10]
+[ext_resource path="res://levels/Casino/1GDialogSound.gd" type="Script" id=11]
+[ext_resource path="res://assets/npcs/catgirl.png" type="Texture" id=12]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/npcs/catportrait.png" type="Texture" id=14]
+[ext_resource path="res://assets/npcs/tadpoleportrait.png" type="Texture" id=15]
+[ext_resource path="res://levels/Casino/Speedboost.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -37,11 +40,11 @@ stretch_mode = 2
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, -536870912, 3, 0, -536870912, 65532, 0, -1073741824, 65533, 0, -1610612736, 65534, 0, 536870912, 65535, 0, 0, 0, 1, 0, 1, 1, -1610612736, 2, 1, 1073741824, 65533, 1, 1073741824, 65534, 1, 0, 65535, 1, 0, 131069, 1, 0, 131070, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 65531, 0, 1, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 536870912, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65538, 65532, 0, 131069, 65532, 0, 0, 65533, 536870912, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 65532, 65533, 0, 65533, 65533, -1073741824, 65534, 65533, 0, 65535, 65533, 0, 131070, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 65532, 65534, 0, 65533, 65534, 536870912, 65534, 65534, 0, 65535, 65534, 0, 131068, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 536870912, 3, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131071, 65535, 0, 196607, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 1073741824, 2, 0, 1610612736, 3, 0, -1073741824, 65532, 0, 1073741824, 65533, 0, 0, 65534, 0, 1073741824, 65535, 0, 536870912, 0, 1, -1073741824, 1, 1, 536870912, 2, 1, 0, 65533, 1, -536870912, 65534, 1, 1073741824, 65535, 1, -1073741824, 131069, 1, 0, 131070, 1, 0, 0, 2, 1610612736, 65535, 2, -1610612736, 0, 3, 1610612736, 65535, 3, -1610612736, 0, 65531, -1073741824, 1, 65531, 0, 65534, 65531, 0, 65535, 65531, -1073741824, 65536, 65531, 0, 65537, 65531, 0, 65538, 65531, 0, 0, 65532, 0, 1, 65532, -2147483648, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, -1610612736, 65537, 65532, 0, 65538, 65532, 0, 131069, 65532, 0, 0, 65533, 536870912, 1, 65533, 536870912, 2, 65533, 0, 3, 65533, 0, 65532, 65533, 0, 65533, 65533, 536870912, 65534, 65533, 536870912, 65535, 65533, 0, 131070, 65533, 0, 0, 65534, -2147483648, 1, 65534, 536870912, 2, 65534, 0, 3, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, -536870912, 131068, 65534, 0, 0, 65535, 536870912, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 65532, 65535, 536870912, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131071, 65535, 0, 196607, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 1, 0 )
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
@@ -52,40 +55,108 @@ transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.
 midLevelDir = "Casino"
 connectedScene = "CasinoScene2"
 
-[node name="RollerNPC" parent="." instance=ExtResource( 7 )]
+[node name="coins" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="coin" parent="coins" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, -1 )
+
+[node name="RollerNPC" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48445, 3.2514, 1.20847 )
 
-[node name="NPC" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48445, 5.2514, -6.79153 )
+[node name="NPC" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17, 5.2514, -6.7837 )
 
 [node name="NPC TextBox" parent="NPC" index="3"]
 editor/display_folded = false
 
 [node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
-bbcode_text = "hey! woops sorry yeah i charge 1G per talk"
-text = "hey! woops sorry yeah i charge 1G per talk"
+bbcode_text = "hey! how are you?
+..
+woops sorry yeah
+i charge 1G to talk"
+text = "hey! how are you?
+..
+woops sorry yeah
+i charge 1G to talk"
 
 [node name="DialogSound" parent="NPC/NPC TextBox/TextBox" index="2"]
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Sprite3D" parent="NPC" index="4"]
 pixel_size = 0.08
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 vframes = 4
 hframes = 4
 frame = 2
 
-[node name="Speedboost" parent="." instance=ExtResource( 12 )]
+[node name="NPC2" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.873907, 5.2514, -8.79153 )
+
+[node name="NPC TextBox" parent="NPC2" index="3"]
+editor/display_folded = false
+
+[node name="TextBox" parent="NPC2/NPC TextBox" index="0"]
+nextTextboxPath = NodePath("../../TextBox2/TextBox")
+
+[node name="Portrait" parent="NPC2/NPC TextBox/TextBox" index="0"]
+texture = ExtResource( 10 )
+
+[node name="Text" parent="NPC2/NPC TextBox/TextBox" index="1"]
+bbcode_text = "do you ever get so mad 
+that you were 
+indoctrinated into 
+thinking that"
+text = "do you ever get so mad 
+that you were 
+indoctrinated into 
+thinking that"
+
+[node name="Sprite3D" parent="NPC2" index="4"]
+pixel_size = 0.08
+texture = ExtResource( 12 )
+vframes = 4
+hframes = 4
+frame = 4
+
+[node name="TextBox2" parent="NPC2" instance=ExtResource( 13 )]
+
+[node name="TextBox" parent="NPC2/TextBox2" index="0"]
+nextTextboxPath = NodePath("../../TextBox3/TextBox")
+
+[node name="Portrait" parent="NPC2/TextBox2/TextBox" index="0"]
+texture = ExtResource( 14 )
+
+[node name="Text" parent="NPC2/TextBox2/TextBox" index="1"]
+margin_right = 847.0
+bbcode_text = " your only value is 
+what a company can use
+for their own profit????????
+"
+text = " your only value is 
+what a company can use
+for their own profit????????
+"
+
+[node name="TextBox3" parent="NPC2" instance=ExtResource( 13 )]
+
+[node name="Portrait" parent="NPC2/TextBox3/TextBox" index="0"]
+texture = ExtResource( 15 )
+
+[node name="Text" parent="NPC2/TextBox3/TextBox" index="1"]
+bbcode_text = ".. yeah... me neither.."
+text = ".. yeah... me neither.."
+
+[node name="Speedboost" parent="." instance=ExtResource( 16 )]
 editor/display_folded = true
 
-[node name="Speedboost2" parent="." instance=ExtResource( 12 )]
+[node name="Speedboost2" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1.25696e-007, 1, 3.71549e-008, 0.34202, -7.79046e-008, 0.939693, 0.939693, -1.05407e-007, -0.34202, -5, 3.20625, 1 )
-
-[node name="coin" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, -1 )
 
 
 [editable path="Player"]
@@ -93,5 +164,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, -1 )
 [editable path="NPC"]
 
 [editable path="NPC/NPC TextBox"]
+
+[editable path="NPC2"]
+
+[editable path="NPC2/NPC TextBox"]
+
+[editable path="NPC2/TextBox2"]
+
+[editable path="NPC2/TextBox3"]
 
 [editable path="Speedboost"]
