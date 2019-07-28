@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=18]
 [ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=19]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=20]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -41,6 +42,31 @@ albedo_texture = ExtResource( 18 )
 
 [sub_resource type="CubeMesh" id=6]
 size = Vector3( 1, 1, 1 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float brightness = 1.0;
+uniform float contrast = 25.0;
+uniform float saturation = 50.0;
+
+void fragment() {
+    vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+
+    c.rgb = mix(vec3(0.0), c.rgb, brightness);
+    c.rgb = mix(vec3(0.5), c.rgb, contrast);
+    c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
+    
+    // c.rgb = vec3(1.0, 0.0, 0.0);
+
+    COLOR.rgb = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/brightness = 1.0
+shader_param/contrast = 25.0
+shader_param/saturation = 50.0
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, 4.21971 )
@@ -77,6 +103,7 @@ hframes = 8
 script = ExtResource( 5 )
 
 [node name="Lights" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="The Sun" type="DirectionalLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
@@ -163,11 +190,13 @@ stream = ExtResource( 15 )
 volume_db = -20.0
 
 [node name="Items" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="BugNet" parent="Items" instance=ExtResource( 16 )]
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 17 )]
+editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
 margin_right = 613.0
@@ -189,6 +218,18 @@ material_override = SubResource( 5 )
 mesh = SubResource( 6 )
 material/0 = null
 script = ExtResource( 19 )
+
+[node name="GlitchFilter" type="CanvasLayer" parent="."]
+editor/display_folded = true
+layer = 64
+
+[node name="TextureRect" type="TextureRect" parent="GlitchFilter"]
+visible = false
+material = SubResource( 8 )
+margin_right = 567.0
+margin_bottom = 554.0
+texture = ExtResource( 20 )
+expand = true
 
 
 [editable path="PauseMenu"]

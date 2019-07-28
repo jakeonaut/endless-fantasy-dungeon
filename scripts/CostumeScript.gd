@@ -23,12 +23,12 @@ func activate():
         textBox.interact()
         
         match get_node("Sprite3D").frame:
-            0: player.wearNormalClothes()
-            1: player.wearMothCostume()
+            0: player.wearCostume("normal")
+            1: player.wearCostume("moth")
             # 2:
-            3: player.wearBugCatcherCostume()
-            4: player.wearClericCostume()
+            3: player.wearCostume("bugcatcher")
+            4: player.wearCostume("cleric")
             # 5: 
-            6: player.wearLuckyCatCostume()
-            7: player.wearNightgown()
+            6: player.wearCostume("luckycat")
+            7: player.wearCostume("nightgown")
         # visible = false

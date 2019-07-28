@@ -8,6 +8,8 @@ onready var cameraFlash = get_node("CameraFlash")
 onready var sunLight = get_node("Lights/The Sun")
 onready var ambientLight = get_node("CameraY/CameraX/Ambient")
 
+onready var glitchFilter = get_node("GlitchFilter/TextureRect")
+
 var sprite_reset_timer = 0
 var sprite_reset_limit = 3
 var cameraRotationCounter = 0
@@ -19,36 +21,20 @@ func _ready():
     if pauseMenu: pauseMenu.hide()
 
 func wearCostume(costume):
-    if costume == "normal": wearNormalClothes()
-    elif costume == "moth": wearMothCostume()
-    elif costume == "bugcatcher": wearBugCatcherCostume()
-    elif costume == "cleric": wearClericCostume()
-    elif costume == "luckycat": wearLuckyCatCostume()
-    elif costume == "nightgown": wearNightgown()
-func wearNormalClothes():
-    mySprite.setNormalClothes()
-    global.memory["player_costume"] = "normal"
-func wearMothCostume():
-    mySprite.setMothCostume()
-    global.memory["player_costume"] = "moth"
-func wearBugCatcherCostume():
-    mySprite.setBugCatcherCostume()
-    global.memory["player_costume"] = "bugcatcher"
-func wearClericCostume():
-    mySprite.setClericCostume()
-    jumpSound = get_node("Sounds/JumpOverallsSound")
-    global.memory["player_costume"] = "cleric"
-func wearLuckyCatCostume():
-    mySprite.setLuckyCatCostume()
-    global.memory["player_costume"] = "luckycat"
-func wearNightgown():
-    mySprite.setNightgown()
-    global.memory["player_costume"] = "nightgown"
-
-    
-func floorTransform():
-    mySprite.setFloorGlitch() # vframe for floorGlitch
-    form = Form.FLOOR
+    if costume == "normal": 
+        mySprite.setNormalClothes()
+    elif costume == "moth": 
+        mySprite.setMothCostume()
+    elif costume == "bugcatcher": 
+        mySprite.setBugCatcherCostume()
+    elif costume == "cleric": 
+        mySprite.setClericCostume()
+        jumpSound = get_node("Sounds/JumpOverallsSound")
+    elif costume == "luckycat": 
+        mySprite.setLuckyCatCostume()
+    elif costume == "nightgown": 
+        mySprite.setNightgown()
+    global.memory["player_costume"] = costume
     
 func bugTransform():
     pass # needs to be updated to work with hframe/vframe!!! could be a glitch or a costume ? [both?]
@@ -59,6 +45,9 @@ func _process(delta):
 
     #if Input.is_action_just_pressed("ui_interact"):
     #    cameraFlash.flash()
+
+    if Input.is_action_just_pressed("ui_glitch_left"):
+        glitchFilter.visible = not glitchFilter.visible
 
     if Input.is_action_just_pressed("ui_accept") and not global.pauseMoveInput:
         if not global.pauseGame:

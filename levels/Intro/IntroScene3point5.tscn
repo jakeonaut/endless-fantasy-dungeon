@@ -8,7 +8,8 @@
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=7]
 [ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=8]
-[ext_resource path="res://sceneObjects/FloorSpell.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sceneObjects/Spells/FloorSpell.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="Environment" id=1]
 background_mode = 4

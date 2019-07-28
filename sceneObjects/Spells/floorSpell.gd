@@ -9,6 +9,7 @@ func isActive():
 
 func activate():
     transformSound.play()
-    player.floorTransform()
-    levelTiles.theme = global.blueTheme
     visible = false
+
+    player.glitch_form = player.GlitchForm.FLOOR
+    levelTiles.theme = global.blueTheme

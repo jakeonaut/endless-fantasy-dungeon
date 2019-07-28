@@ -30,6 +30,3 @@ func setLuckyCatCostume():
     updateStartFrame(0, 4)
 func setNightgown():
     updateStartFrame(4, 2)
-
-func setFloorGlitch():
-    pass

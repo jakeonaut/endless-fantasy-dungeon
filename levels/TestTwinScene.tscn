@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/realmini.png" type="Texture" id=1]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=2]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sceneObjects/Spells/PlayerTwin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+
+[node name="level" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BackgroundControl" type="Control" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+
+[node name="Level Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+cell_octant_size = 4
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 65535, 2, 536870912, 0, 3, 0, 65535, 3, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 65533, 65533, 536870912, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 536870912, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 3, 0 )
+}
+
+[node name="portdoor" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+script = null
+
+[node name="Twin" parent="." instance=ExtResource( 4 )]
+
+[node name="CameraY" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="CameraX" type="Spatial" parent="CameraY"]
+transform = Transform( 1, 0, 0, 0, 0.782704, 0.622394, 0, -0.622394, 0.782704, 0, 0, 9.77396 )
+
+[node name="Camera" type="Camera" parent="CameraY/CameraX"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15067, 9.28852 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14603, -4.95488 )
+
