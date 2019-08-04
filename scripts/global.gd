@@ -37,6 +37,7 @@ func loadGame():
     
     global.memory = parse_json(save_game.get_line())
     while not save_game.eof_reached():
+        # ... ??? Is this because global.memory is stored on a single line? enigmatic..
         var current_line = parse_json(save_game.get_line())
         
     save_game.close()

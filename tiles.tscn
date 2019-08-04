@@ -113,7 +113,6 @@ material = SubResource( 26 )
 [node name="Spatial" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-editor/display_folded = true
 mesh = SubResource( 2 )
 material/0 = null
 

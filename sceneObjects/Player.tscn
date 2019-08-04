@@ -114,7 +114,7 @@ directional_shadow_split_2 = 0.5
 directional_shadow_split_3 = 1.0
 
 [node name="CameraY" type="Spatial" parent="."]
-transform = Transform( 0.719339, 0, 0.694658, 0, 1, 0, -0.694658, 0, 0.719339, 0, 0, 0 )
+transform = Transform( 0.984807, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984807, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]

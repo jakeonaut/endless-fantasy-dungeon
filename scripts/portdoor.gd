@@ -88,8 +88,7 @@ func enterDoor():
 
         # NOTE: when entering a new level, res://scripts/levelScript.gd runs
 
-func land(prevCameraRotation):
+func land():
     player.global_transform.origin = landingPad.global_transform.origin
     if not global.isRespawning:
         enterSound.play()
-        player.getCamera().rotateTo(prevCameraRotation + self.rotation_degrees.y + 180, true)

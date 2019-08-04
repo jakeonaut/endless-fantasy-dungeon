@@ -13,18 +13,16 @@ func _ready():
     if global.memory.has("player_costume"):
         player.wearCostume(global.memory["player_costume"])
     
+    var found_door = null
     if global.memory.has("active_save_point") and global.isRespawning \
        and global.memory["roomPath"] == self.get_filename():
         player.global_transform.origin = Vector3(
             global.memory["active_save_point_x"], 
             global.memory["active_save_point_y"], 
             global.memory["active_save_point_z"])
-        if global.cameraRotation:
-            player.getCamera().rotateTo(global.cameraRotation, true)
     elif global.memory.has("lastDoor"):
         var door_id = global.memory["lastDoor"]
         var doors = get_tree().get_nodes_in_group("doors")
-        var found_door = null
         for door in doors:
             if door.id == door_id:
                 found_door = door
@@ -33,9 +31,24 @@ func _ready():
         if not found_door and doors.size() > 0:
             found_door = doors[0]
 
-        if found_door: found_door.land(global.cameraRotation)
+    # camera update ... if player has never visited this room.. give it the "default" perspective
+    if not global.memory.has(self.get_filename()):
+        global.memory[self.get_filename()] = true
+        if found_door:
+            player.getCamera().rotateTo(found_door.rotation_degrees.y + 180, true)
+    elif found_door:
+        found_door.land()
+        player.getCamera().rotateTo(global.cameraRotation + found_door.rotation_degrees.y + 180, true)
+    elif global.cameraRotation:
+        player.getCamera().rotateTo(global.cameraRotation, true)
 
     # update music
-    musicPlayer.conductFromScenePath(self.filename)
+    musicPlayer.conductFromScenePath(self.get_filename())
 
     global.isRespawning = false
+
+    # final global memory management
+    # only treat new rooms as "save points" until we introduce save points.
+    if not global.memory.has("active_save_point"):
+        global.memory["roomPath"] = self.filename
+        global.saveGame()

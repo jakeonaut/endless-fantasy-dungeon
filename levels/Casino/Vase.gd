@@ -39,6 +39,7 @@ func _process(delta):
         coinSpawnTimer += (delta*22)
         if coinSpawnTimer > coinSpawnTimeLimit:
             self.spawnCoin()
+            
 
     if is_held and pickupCounter < pickupCounterMax:
         pickupCounter += (delta*22)
@@ -81,7 +82,6 @@ func landed():
     else:
         shatterSound.play()
         hide()
-        queue_free()
         set_collision_mask_bit(1, false)
         self.spawnCoin()
 
@@ -91,8 +91,10 @@ func spawnCoin():
     levelRoot.get_node("coins").add_child(newCoin)
     newCoin.translation = translation
     newCoin.passiveActivate(0)
-    num_coins_spawned += 1
     coinSpawnTimer = 0
+    num_coins_spawned += 1 
+    if num_coins_spawned >= num_coins:
+        queue_free()
 
 func isActive():
     return visible

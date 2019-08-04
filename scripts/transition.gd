@@ -22,8 +22,3 @@ func blink_fade_to(scn_path):
 func change_scene():
     if self.path != "":
         get_tree().change_scene(self.path)
-
-        # only treat new rooms as "save points" until we introduce save points.
-        if not global.memory.has("active_save_point"):
-            global.memory["roomPath"] = self.path
-            global.saveGame()

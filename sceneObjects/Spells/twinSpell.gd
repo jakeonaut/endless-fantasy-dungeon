@@ -20,4 +20,5 @@ func activate():
     
     var twin = twin_resource.instance()
     levelRoot.add_child(twin)
-    twin.translation = translation
+    twin.global_transform.origin = self.global_transform.origin
+    player.global_transform.origin = self.global_transform.origin

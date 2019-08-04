@@ -1,5 +1,7 @@
 extends "GameMover.gd"
 
+var is_stone = false
+
 # player is my parent for purposes of scripting
 onready var camera = get_node("../Player/CameraY") # the "camera"
 onready var jumpSound = get_node("Sounds/JumpSound")
@@ -46,7 +48,7 @@ func _physics_process(delta):
     # ._process_physics(delta) #NOTE: this super method is called automatically 
     # https://github.com/godotengine/godot/issues/6500  
 
-    if not visible or global.pauseGame: return
+    if not visible or global.pauseGame or is_stone: return
 
     # TODO(jaketrower):
     #is_touching_water = smallInteractionArea.is_touching_water
@@ -249,3 +251,14 @@ func landed():
     .landed() #super
     swamp_hop_counter = 0
     is_swamp_hopping = false
+
+# @override
+func noFloorBelow():
+    if is_on_floor():
+        fallCounter = 0
+        on_ground = true
+        if should_recover:
+            is_recovering = true
+            should_recover = false
+    else:
+        on_ground = false
