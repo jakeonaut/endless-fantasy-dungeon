@@ -1,14 +1,12 @@
 extends "PlayerGameMover.gd"
 
-onready var pauseMenu = get_node("PauseMenu/MenuBox")
+onready var pauseMenu = get_node("PauseMenu/MenuBox") if has_node("PauseMenu/MenuBox") else null
 onready var hurtSound = get_node("Sounds/HurtSound")
-
-onready var cameraFlash = get_node("CameraFlash")
 
 onready var sunLight = get_node("Lights/The Sun")
 onready var ambientLight = get_node("CameraY/CameraX/Ambient")
 
-onready var glitchFilter = get_node("GlitchFilter/TextureRect")
+onready var glitchFilter = get_node("GlitchFilter/TextureRect") if has_node("GlitchFilter/TextureRect") else null
 
 var sprite_reset_timer = 0
 var sprite_reset_limit = 3
@@ -47,14 +45,14 @@ func _process(delta):
     #    cameraFlash.flash()
 
     if Input.is_action_just_pressed("ui_glitch_left"):
-        glitchFilter.visible = not glitchFilter.visible
+        if glitchFilter: glitchFilter.visible = not glitchFilter.visible
 
     if Input.is_action_just_pressed("ui_accept") and not global.pauseMoveInput:
         if not global.pauseGame:
-            pauseMenu.show()
+            if pauseMenu: pauseMenu.show()
             global.pauseGame = true
         else:
-            pauseMenu.hide()
+            if pauseMenu: pauseMenu.hide()
             global.pauseGame = false
 
     tryRotateCamera(delta)

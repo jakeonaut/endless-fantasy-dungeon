@@ -191,6 +191,7 @@ func processJumpInputs(delta):
                 has_just_jumped_timer = -has_just_jumped_time_limit
                 is_lunging = 0
 
+const PROJECTION_ORTHOGONAL = 1
 func processHorizontalInputs(delta):
     # Forward as "seen" by the camera (OpenGL convention)
     var view_forward = -getCamera().get_transform().basis.z
@@ -200,20 +201,21 @@ func processHorizontalInputs(delta):
     var right = view_right
 
     # snap movement to right angles
-    if abs(forward.z) > abs(forward.x):
-        if forward.z < 0:
-            forward = Vector3(0, 0, -1)
-            right = Vector3(-1, 0, 0)
+    if getTrueCamera().get_projection() == PROJECTION_ORTHOGONAL:
+        if abs(forward.z) > abs(forward.x):
+            if forward.z < 0:
+                forward = Vector3(0, 0, -1)
+                right = Vector3(-1, 0, 0)
+            else:
+                forward = Vector3(0, 0, 1)
+                right = Vector3(1, 0, 0)
         else:
-            forward = Vector3(0, 0, 1)
-            right = Vector3(1, 0, 0)
-    else:
-        if forward.x < 0:
-            forward = Vector3(-1, 0, 0)
-            right = Vector3(0, 0, 1)
-        else:
-            forward = Vector3(1, 0, 0)
-            right = Vector3(0, 0, -1)
+            if forward.x < 0:
+                forward = Vector3(-1, 0, 0)
+                right = Vector3(0, 0, 1)
+            else:
+                forward = Vector3(1, 0, 0)
+                right = Vector3(0, 0, -1)
     
     var horizontal_input = false
     if on_ground or has_just_jumped_timer < has_just_jumped_time_limit or smallInteractionArea.is_touching_water:

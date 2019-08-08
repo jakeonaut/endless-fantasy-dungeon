@@ -19,7 +19,7 @@ var target_rotation = 0
 var target_rotation_x = 0
 var rstep = 5
 var curr_step = Vector2(4, 4)
-var highest_rotation_step = 4
+var highest_rotation_step = 3
 var highest_mouse_rotation_step = 20
 # steps up/down to target_rotation (also in radians)
 var current_rotation = 0

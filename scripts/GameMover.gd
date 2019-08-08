@@ -1,9 +1,9 @@
 extends KinematicBody
 
-onready var mySprite = get_node("Sprite3D")
-onready var landSound = get_node("Sounds/LandSound")
-onready var bumpSound = get_node("Sounds/BumpSound")
-onready var skateSound = get_node("Sounds/SkateSound")
+onready var mySprite = get_node("Sprite3D") if has_node("Sprite3D") else null
+onready var landSound = get_node("Sounds/LandSound") if has_node("Sounds/LandSound") else null
+onready var bumpSound = get_node("Sounds/BumpSound") if has_node("Sounds/BumpSound") else null
+onready var skateSound = get_node("Sounds/SkateSound") if has_node("Sounds/SkateSound") else null
 
 var true_terminal_vel = 32
 var water_terminal_vel = 5
@@ -100,14 +100,15 @@ func processPhysics(delta):
         rotateTimer += delta*22
         if rotateTimer >= rotateTimeLimit:
             rotateTimer = 0
-            if mySprite.isFacingDown(): mySprite.faceLeft()
-            elif mySprite.isFacingLeft(): mySprite.faceUp()
-            elif mySprite.isFacingUp(): mySprite.faceRight()
-            elif mySprite.isFacingRight(): 
-                mySprite.faceDown()
-                num_rotations += 1
-                if num_rotations >= max_rotations:
-                    is_rotating = false
+            if mySprite:
+                if mySprite.isFacingDown(): mySprite.faceLeft()
+                elif mySprite.isFacingLeft(): mySprite.faceUp()
+                elif mySprite.isFacingUp(): mySprite.faceRight()
+                elif mySprite.isFacingRight(): 
+                    mySprite.faceDown()
+                    num_rotations += 1
+                    if num_rotations >= max_rotations:
+                        is_rotating = false
 
     noFloorBelow()
     
@@ -170,7 +171,7 @@ func startRotateSprite(max2):
     max_rotations = max2
     is_rotating = true
     rotateTimer = 0
-    mySprite.faceDown()
+    if mySprite: mySprite.faceDown()
 
 func processSkateInputs(delta):
     if is_touching_speed_boost:
@@ -197,7 +198,7 @@ func processSkateInputs(delta):
 
         skateStartTimer += delta*22
         if skateStartTimer >= skateStartTimeLimit and not skateActuallyStarted:
-            skateSound.play()
+            if skateSound: skateSound.play()
             skateActuallyStarted = true
 
 func processInputs(delta):
@@ -209,11 +210,11 @@ func postProcessSkateInputs(delta):
     and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2:
         is_rotating = false
         is_skating = false
-        mySprite.faceDown()
+        if mySprite: mySprite.faceDown()
         rotateTimer = 0
         skateStartTimer = 0
         if skateActuallyStarted:
-            bumpSound.play()
+            if bumpSound: bumpSound.play()
             skateActuallyStarted = false
 
 func postProcessInputs(delta):

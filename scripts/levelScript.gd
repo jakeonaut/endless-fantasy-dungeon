@@ -35,6 +35,7 @@ func _ready():
     if not global.memory.has(self.get_filename()):
         global.memory[self.get_filename()] = true
         if found_door:
+            found_door.land()
             player.getCamera().rotateTo(found_door.rotation_degrees.y + 180, true)
     elif found_door:
         found_door.land()

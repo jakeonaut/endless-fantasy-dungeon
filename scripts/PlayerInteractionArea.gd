@@ -82,7 +82,7 @@ func getActiveInteractionAreaUnderMouse():
         if selection:
             # see if the selection collider is a child of me!! 
             var collider = selection.collider
-            while collider and collider.get_node("..") != get_tree():
+            while collider and collider.has_node("..") and collider.get_node("..") != get_tree():
                 if collider.has_method("InteractActivate"): 
                     var areas = get_overlapping_areas()
                     if collider in areas: return collider

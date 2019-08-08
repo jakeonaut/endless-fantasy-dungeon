@@ -7,14 +7,6 @@ func _ready():
     set_process_input(true)
     randomize()
 
-func is_activeTextboxMyChild():
-    var node = global.activeInteractor
-    while node and node.get_node("..") != get_tree():
-        if node == self:
-            return true
-        node = node.get_node("..")
-    return false
-
 func isActive():
     return textBox.visible
 

@@ -1,9 +1,12 @@
-extends "res://scripts/levelScript.gd"
+extends Node
+
+onready var player = get_node("Player")
 
 func _ready():
     # ._ready() #super
     set_process(true)
 
+    player.lightsOn()
     player.getCamera().toggleNext()
     global.pauseGame = true
     global.pauseMoveInput = true
@@ -28,10 +31,10 @@ func loadGame():
     if not global.hasLoadedGame:
         global.loadGame()
         global.hasLoadedGame = true
-        if global.memory.has("roomPath"):
+        if global.memory.has("roomPath") and global.memory["roomPath"] != self.get_filename():
             # global transition scene, see res://scripts/transition.gd
             transition.long_fade_to(global.memory["roomPath"])
             if global.memory.has("active_save_point"):
                 global.isRespawning = true
-        elif not global.memory.has("game_story_has_started"):
+        else:
             transition.long_fade_to("res://levels/IntroScene.tscn")
