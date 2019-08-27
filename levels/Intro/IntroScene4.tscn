@@ -56,10 +56,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.3297, -12.8962 )
 connectedScene = "levels/Intro/IntroScene5.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.14603, 2.10637 )
 
 [node name="NPC" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48445, 3.33363, 1.12839 )
 
 [node name="CollisionShape" parent="NPC" index="0"]

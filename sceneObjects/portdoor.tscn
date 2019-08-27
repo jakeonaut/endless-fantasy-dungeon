@@ -31,6 +31,7 @@ flags_transparent = true
 flags_unshaded = true
 flags_vertex_lighting = true
 params_cull_mode = 2
+params_depth_draw_mode = 3
 distance_fade_mode = 1
 distance_fade_min_distance = 0.0
 distance_fade_max_distance = 5.0
