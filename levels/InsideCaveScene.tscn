@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=2]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+
+[node name="level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BackgroundControl" type="Control" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Level Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+cell_octant_size = 4
+data = {
+"cells": PoolIntArray( 0, 0, 536870912, 1, 0, 536870912, 2, 0, 536870912, 65533, 0, 536870912, 65534, 0, 536870912, 65535, 0, 536870912, 65537, 0, 15, 65538, 0, 536870927, 131074, 0, 536870927, 196610, 0, 536870927, 0, 1, 1073741824, 1, 1, 536870912, 2, 1, 536870912, 65533, 1, 536870912, 65534, 1, 536870912, 65535, 1, 536870912, 0, 2, 536870912, 65535, 2, 0, 0, 3, 536870912, 65535, 3, 536870912, 0, 65532, 0, 1, 65532, 0, 2, 65532, 536870912, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 536870912, 0, 65533, 536870912, 1, 65533, 536870912, 2, 65533, 0, 65533, 65533, 536870912, 65534, 65533, 536870912, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 536870912, 2, 65534, 0, 65533, 65534, 536870912, 65534, 65534, 0, 65535, 65534, 536870912, 0, 65535, 536870912, 1, 65535, 0, 2, 65535, 536870912, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 3, 0 )
+}
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="portdoor2" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+connectedScene = "CaveIntroScene.tscn"
+

@@ -127,7 +127,6 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
 mesh = SubResource( 7 )
 material/0 = null
@@ -148,7 +147,6 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0 )
 mesh = SubResource( 11 )
 material/0 = null
@@ -159,7 +157,6 @@ material/0 = null
 shape = SubResource( 12 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -170,7 +167,6 @@ material/0 = null
 shape = SubResource( 15 )
 
 [node name="MeshInstance5" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = null
@@ -181,20 +177,17 @@ material/0 = null
 shape = SubResource( 18 )
 
 [node name="MeshInstance6" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0 )
 mesh = SubResource( 20 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="MeshInstance6"]
-editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance6/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 21 )
 
 [node name="MeshInstance8" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0 )
 mesh = SubResource( 23 )
 material/0 = null
@@ -208,7 +201,6 @@ shape = SubResource( 18 )
 transform = Transform( 0.707107, 0.298836, -0.640856, 0, 0.906308, 0.422618, 0.707107, -0.298836, 0.640856, 0, 5, 0 )
 
 [node name="MeshInstanceTransparent" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
 mesh = SubResource( 25 )
 material/0 = null
@@ -219,7 +211,6 @@ material/0 = null
 shape = SubResource( 3 )
 
 [node name="MeshInstance3Transparent" type="MeshInstance" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3 )
 mesh = SubResource( 27 )
 material/0 = null
@@ -228,4 +219,3 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance3Transparent/StaticBody"]
 shape = SubResource( 12 )
-

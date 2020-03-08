@@ -31,17 +31,17 @@ func _ready():
         if not found_door and doors.size() > 0:
             found_door = doors[0]
 
-    # camera update ... if player has never visited this room.. give it the "default" perspective
+    ########### (not anymore!) # camera update ... if player has never visited this room.. give it the "default" perspective
     if not global.memory.has(self.get_filename()):
         global.memory[self.get_filename()] = true
         if found_door:
             found_door.land()
-            player.getCamera().rotateTo(found_door.rotation_degrees.y + 180, true)
+            # player.getCamera().rotateTo(found_door.rotation_degrees.y + 180, true)
     elif found_door:
         found_door.land()
-        player.getCamera().rotateTo(global.cameraRotation + found_door.rotation_degrees.y + 180, true)
-    elif global.cameraRotation:
-        player.getCamera().rotateTo(global.cameraRotation, true)
+        # player.getCamera().rotateTo(global.cameraRotation + found_door.rotation_degrees.y + 180, true)
+    # elif global.cameraRotation:
+        # player.getCamera().rotateTo(global.cameraRotation, true)
 
     # update music
     musicPlayer.conductFromScenePath(self.get_filename())

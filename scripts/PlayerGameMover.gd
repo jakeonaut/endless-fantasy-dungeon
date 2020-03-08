@@ -9,6 +9,7 @@ onready var smallInteractionArea = get_node("SmallInteractionArea")
 enum GlitchForm {
     NORMAL, TWIN,
     FLOOR,
+    FEATHER,
 }
 var glitch_form = GlitchForm.NORMAL
 
@@ -94,7 +95,7 @@ func applyGravity(delta):
     if is_floating:
         g = Vector3(0, grav/2, 0)
         on_ground = false
-    elif smallInteractionArea.is_touching_water:
+    elif smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
         g = Vector3(0, -grav/2, 0)
     else:
         g = Vector3(0, -grav, 0)
@@ -104,7 +105,7 @@ func applyGravity(delta):
 
 # @override
 func applyTerminalVelocity(delta):
-    if smallInteractionArea.is_touching_water:
+    if smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
         terminal_vel = water_terminal_vel
     else:
         terminal_vel = true_terminal_vel
@@ -122,6 +123,7 @@ func processInputs(delta):
     if is_walking and smallInteractionArea.is_touching_a_ladder:
         # CLIMB BABY!!!!
         vv = jump_force / 3
+        # TODO(jaketrower): How to test collision for ladders on normal blocks?
 
 func processJumpInputs(delta):
     has_just_lunged = false
@@ -145,6 +147,7 @@ func processJumpInputs(delta):
             and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2 \
             and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
             or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
+                # TODO(jaketrower): use this for ladder blocking
                 curr_jump_force = weaker_jump_force
                 should_recover = true
             vv = curr_jump_force
@@ -218,11 +221,13 @@ func processHorizontalInputs(delta):
                 right = Vector3(0, 0, -1)
     
     var horizontal_input = false
-    if on_ground or has_just_jumped_timer < has_just_jumped_time_limit or smallInteractionArea.is_touching_water:
+    if on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
+       smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
         has_just_jumped_timer += (delta*22)
         
         if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
-            Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
+           Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")) or \
+           self.glitch_form == GlitchForm.FEATHER:
             horizontal_input = true
             dir = Vector3(0.0, 0.0, 0.0)
             if Input.is_action_pressed("ui_left"):
