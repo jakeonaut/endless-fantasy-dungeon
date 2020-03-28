@@ -167,7 +167,7 @@ directional_shadow_split_2 = 0.5
 directional_shadow_split_3 = 1.0
 
 [node name="CameraY" type="Spatial" parent="."]
-transform = Transform( 0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, 0.707106, 0, 0, 0 )
+transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]
@@ -282,6 +282,5 @@ margin_right = 567.0
 margin_bottom = 554.0
 texture = ExtResource( 21 )
 expand = true
-
 
 [editable path="PauseMenu"]

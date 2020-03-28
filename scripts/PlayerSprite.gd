@@ -12,6 +12,7 @@ func preProcess():
     if parent.linear_velocity.x > 0.001 or parent.linear_velocity.x < -0.001 \
        or parent.linear_velocity.z > 0.001 or parent.linear_velocity.z < -0.001:
         frame_delay = 0.1
+    # TODO (need to pull this from PlayerGameMover, if glitch_form == GlitchForm.FEATHER and not on_ground)
     elif Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
          or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down"):
         frame_delay = 0.2

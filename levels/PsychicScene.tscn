@@ -33,7 +33,6 @@ script = ExtResource( 1 )
 environment = SubResource( 1 )
 
 [node name="BackgroundControl" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -47,7 +46,7 @@ expand = true
 mesh_library = ExtResource( 3 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 536870912, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 0, 2, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 536870912, 65534, 1, 0, 65535, 1, 536870912, 0, 2, 536870912, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 536870912, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 536870912, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 1610612736, 2, 65532, 0, 0, 65533, 0, 1, 65533, 536870912, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 536870912, 65534, 65533, 0, 65535, 65533, 536870912, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 1073741824, 131076, 65534, 536870914, 0, 65535, 536870912, 1, 65535, 0, 2, 65535, 0, 3, 65535, 536870912, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 536870912 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -55,7 +54,6 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.075, 3, 6.459 )
 
 [node name="TextBox" parent="Player" instance=ExtResource( 5 )]
@@ -79,11 +77,7 @@ midLevelDir = "Intro"
 connectedScene = "IntroScene2"
 
 [node name="NPC" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56232, 5.0295, 0.88089 )
-
-[node name="NPC TextBox" parent="NPC" index="3"]
-editor/display_folded = false
 
 [node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
 material = SubResource( 2 )
@@ -107,11 +101,7 @@ hframes = 8
 frame = 16
 
 [node name="NPC2" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73386, 5.0295, 6.88089 )
-
-[node name="NPC TextBox" parent="NPC2" index="3"]
-editor/display_folded = false
 
 [node name="Portrait" parent="NPC2/NPC TextBox/TextBox" index="0"]
 material = SubResource( 4 )
@@ -137,9 +127,6 @@ frame = 16
 [node name="NPC3" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.734, 7.03, -3 )
 
-[node name="NPC TextBox" parent="NPC3" index="3"]
-editor/display_folded = false
-
 [node name="Portrait" parent="NPC3/NPC TextBox/TextBox" index="0"]
 material = SubResource( 5 )
 texture = ExtResource( 6 )
@@ -158,7 +145,6 @@ texture = ExtResource( 9 )
 vframes = 8
 hframes = 8
 frame = 16
-
 
 [editable path="Player"]
 

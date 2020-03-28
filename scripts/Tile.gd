@@ -4,6 +4,7 @@ onready var player = get_tree().get_root().get_node("level/Player")
 onready var meshInstance = self.get_node("MeshInstance")
 onready var floorMeshInstance = self.get_node("FloorMeshInstance")
 onready var featherMeshInstance = self.get_node("FeatherMeshInstance")
+onready var ladderMeshInstance = self.get_node("LadderMeshInstance")
 
 func _ready():
     pass
@@ -15,17 +16,27 @@ func _process(_delta):
     if player.glitch_form == player.GlitchForm.NORMAL:
         floorMeshInstance.visible = false
         featherMeshInstance.visible = false
+        ladderMeshInstance.visible = false
 
         meshInstance.visible = true
 
     if player.glitch_form == player.GlitchForm.FLOOR:
         meshInstance.visible = false
         featherMeshInstance.visible = false
+        ladderMeshInstance.visible = false
 
         floorMeshInstance.visible = true
 
     if player.glitch_form == player.GlitchForm.FEATHER:
         meshInstance.visible = false
         floorMeshInstance.visible = false
+        ladderMeshInstance.visible = false
 
         featherMeshInstance.visible = true
+
+    if player.glitch_form == player.GlitchForm.LADDER:
+        meshInstance.visible = false
+        floorMeshInstance.visible = false
+        featherMeshInstance.visible = false
+
+        ladderMeshInstance.visible = true

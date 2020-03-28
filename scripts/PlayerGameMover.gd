@@ -10,8 +10,11 @@ enum GlitchForm {
     NORMAL, TWIN,
     FLOOR,
     FEATHER,
+    LADDER,
 }
 var glitch_form = GlitchForm.NORMAL
+var feather_fall_timer = 0
+var feather_fall_time_limit = 30
 
 # Physics variables
 var recover_walk_speed = 4
@@ -30,7 +33,10 @@ var should_recover = false
 var is_recovering = false
 var recover_timer = 0
 var recover_time_limit = 3
+# TODO(jaketrower): dedupe with is_pressing_horizontal_input
 var is_walking = false
+var is_pressing_horizontal_input = false
+var was_pressing_horizontal_input = false
 var facing = Vector3(0, 0, -1) #default to facing forward
 var sprite_facing = false
 var transitioning = false
@@ -105,7 +111,9 @@ func applyGravity(delta):
 
 # @override
 func applyTerminalVelocity(delta):
-    if smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
+    feather_fall_timer += (delta*22)
+    if smallInteractionArea.is_touching_water or (
+       self.glitch_form == GlitchForm.FEATHER and feather_fall_timer < feather_fall_time_limit):
         terminal_vel = water_terminal_vel
     else:
         terminal_vel = true_terminal_vel
@@ -119,11 +127,16 @@ func processInputs(delta):
     processJumpInputs(delta)
     processHorizontalInputs(delta)
 
-    # TODO(jaketrower): Add this to other GameMover
-    if is_walking and smallInteractionArea.is_touching_a_ladder:
+    if self.isWalkingIntoWall() and (smallInteractionArea.is_touching_a_ladder or \
+       (glitch_form == GlitchForm.LADDER and was_pressing_horizontal_input)):
         # CLIMB BABY!!!!
         vv = jump_force / 3
-        # TODO(jaketrower): How to test collision for ladders on normal blocks?
+    was_pressing_horizontal_input = is_pressing_horizontal_input
+
+func isWalkingIntoWall():
+    return linear_velocity.x < 2 and linear_velocity.x > -2 \
+            and linear_velocity.z < 2 and linear_velocity.z > -2 \
+            and self.is_pressing_horizontal_input
 
 func processJumpInputs(delta):
     has_just_lunged = false
@@ -138,16 +151,13 @@ func processJumpInputs(delta):
             has_just_jumped_timer = -has_just_jumped_time_limit
             is_lunging = 0
             swamp_hop_counter = swamp_hop_count_limit
+            feather_fall_timer = 0
         # Jump from the ground
         elif is_lunging == 0:
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
-            if linear_velocity.x < walk_speed/2 and linear_velocity.x > -walk_speed/2 \
-            and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2 \
-            and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") \
-            or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")):
-                # TODO(jaketrower): use this for ladder blocking
+            if self.isWalkingIntoWall():
                 curr_jump_force = weaker_jump_force
                 should_recover = true
             vv = curr_jump_force
@@ -156,6 +166,7 @@ func processJumpInputs(delta):
             on_ground = false
             is_lunging = -1
             has_just_jumped_timer = 0
+            feather_fall_timer = 0
         # Dash lunge
         elif is_lunging == 1:
             vv = jump_force / 2
@@ -163,12 +174,14 @@ func processJumpInputs(delta):
             has_just_lunged = true
             is_lunging = 2
             has_just_jumped_timer = 0
+            feather_fall_timer = 0
         # Double jump
         elif is_lunging == -1:
             vv = jump_force / 1.5
             jumpSound.play()
             is_lunging = -2
             has_just_jumped_timer = 0
+            feather_fall_timer = 0
     elif take_fall_damage and self.glitch_form != GlitchForm.FLOOR:
         vv = (2*jump_force)/3
         take_fall_damage = false
@@ -196,6 +209,11 @@ func processJumpInputs(delta):
 
 const PROJECTION_ORTHOGONAL = 1
 func processHorizontalInputs(delta):
+    self.is_pressing_horizontal_input = (Input.is_action_pressed("ui_left") or 
+                                         Input.is_action_pressed("ui_right") or 
+                                         Input.is_action_pressed("ui_up") or 
+                                         Input.is_action_pressed("ui_down"))
+
     # Forward as "seen" by the camera (OpenGL convention)
     var view_forward = -getCamera().get_transform().basis.z
     var view_right = -getCamera().get_transform().basis.x
@@ -219,17 +237,23 @@ func processHorizontalInputs(delta):
             else:
                 forward = Vector3(1, 0, 0)
                 right = Vector3(0, 0, -1)
+
+    if self.glitch_form == GlitchForm.FEATHER:
+        forward = forward / 4
+        right = right / 4
     
     var horizontal_input = false
     if on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
-       smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
+       smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER or \
+       self.glitch_form == GlitchForm.LADDER:
         has_just_jumped_timer += (delta*22)
         
         if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
            Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")) or \
-           self.glitch_form == GlitchForm.FEATHER:
+           self.glitch_form == GlitchForm.FEATHER or self.glitch_form == GlitchForm.LADDER:
             horizontal_input = true
-            dir = Vector3(0.0, 0.0, 0.0)
+            if self.glitch_form != GlitchForm.FEATHER:
+                dir = Vector3(0.0, 0.0, 0.0)
             if Input.is_action_pressed("ui_left"):
                 if not global.pauseMoveInput: 
                     dir += right
@@ -263,18 +287,26 @@ func processHorizontalInputs(delta):
                     sprite_facing = true
                     mySprite.faceDown()
 
+    if self.glitch_form == GlitchForm.FEATHER:
+        if dir.length() > 1:
+            dir = dir.normalized()
+        if on_ground and not self.is_pressing_horizontal_input:
+            dir = dir * 0.9
+            if dir.length() < 0.1:
+                dir = Vector3(0, 0, 0)
+
     updateFacing(dir)
     var curr_walk_speed = walk_speed
-    if smallInteractionArea.is_touching_water:
+    if smallInteractionArea.is_touching_water or (not on_ground and self.glitch_form == GlitchForm.FEATHER):
         curr_walk_speed = swimming_walk_speed
-    elif is_recovering or should_recover:
+    elif is_recovering or should_recover or (not on_ground and self.glitch_form == GlitchForm.LADDER):
         curr_walk_speed = recover_walk_speed
 
     # update x and z
     if is_lunging < 2 and (not smallInteractionArea.is_touching_water or horizontal_input):
-        hv = dir.normalized() * curr_walk_speed
+        hv = dir * curr_walk_speed
     if has_just_lunged:
-        hv = dir.normalized() * lunge_speed
+        hv = dir * lunge_speed
 
 func updateFacing(dir):
     if dir.x != 0 or dir.y != 0 or dir.z != 0:
@@ -295,9 +327,12 @@ func landed():
 func noFloorBelow():
     if is_on_floor():
         fallCounter = 0
+        feather_fall_timer = 0
         on_ground = true
         if should_recover:
             is_recovering = true
             should_recover = false
+        if is_touching_water:
+            is_floating = true
     elif self.glitch_form != GlitchForm.FLOOR:
         on_ground = false
