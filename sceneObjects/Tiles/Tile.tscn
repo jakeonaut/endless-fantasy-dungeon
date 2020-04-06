@@ -15,7 +15,10 @@ albedo_color = Color( 0, 0.858824, 1, 1 )
 albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
 albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 2, 2, 2 )
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 4 )
@@ -52,3 +55,4 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 6 )
+

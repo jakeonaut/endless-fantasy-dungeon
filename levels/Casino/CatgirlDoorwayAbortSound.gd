@@ -6,4 +6,4 @@ func activateScript():
         var myTextBox = get_node("..")
         # NodePath path is relative from self, 
         # which is to say from the NPC/NPC TextBox/TextBox/AbortSound
-        myTextBox.nextTextboxPath = NodePath(@"../../GotCoin TextBox/TextBox")
+        myTextBox.nextTextBoxPath = NodePath(@"../../GotCoin TextBox/TextBox")

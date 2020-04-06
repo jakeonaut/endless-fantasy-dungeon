@@ -38,7 +38,6 @@ var is_walking = false
 var is_pressing_horizontal_input = false
 var was_pressing_horizontal_input = false
 var facing = Vector3(0, 0, -1) #default to facing forward
-var sprite_facing = false
 var transitioning = false
 
 func getCamera(): return camera
@@ -254,38 +253,38 @@ func processHorizontalInputs(delta):
             horizontal_input = true
             if self.glitch_form != GlitchForm.FEATHER:
                 dir = Vector3(0.0, 0.0, 0.0)
+
+            if Input.is_action_pressed("ui_up"):
+                if not global.pauseMoveInput: 
+                    dir += forward
+                # only change sprite facing if i'm idle of if I just pressed this
+                if not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
+                    (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
+                    mySprite.faceUp()
+            elif Input.is_action_pressed("ui_down"):
+                if not global.pauseMoveInput: 
+                    dir -= forward
+                # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
+                if not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
+                    (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
+                    mySprite.faceDown()
+                    
             if Input.is_action_pressed("ui_left"):
                 if not global.pauseMoveInput: 
                     dir += right
                 # only change sprite facing if i'm idle of if I just pressed this
-                if not sprite_facing or Input.is_action_just_pressed("ui_left"):
-                    sprite_facing = true
+                if not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
+                   (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
                     mySprite.faceLeft()
                 # getCamera().rotate_right(5)
             elif Input.is_action_pressed("ui_right"):
                 if not global.pauseMoveInput: 
                     dir -= right
                 # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
-                if not sprite_facing or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left"):
-                    sprite_facing = true
+                if not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
+                   (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
                     mySprite.faceRight()
                 # getCamera().rotate_left(5)
-            else: sprite_facing = "" # need to reset facing left and right if I'm holding walking up or down
-
-            if Input.is_action_pressed("ui_up"):
-                if not global.pauseMoveInput: 
-                    dir += forward
-                # only change sprite facing if i'm idle of if I just pressed this
-                if not sprite_facing or Input.is_action_just_pressed("ui_up"):
-                    sprite_facing = true
-                    mySprite.faceUp()
-            elif Input.is_action_pressed("ui_down"):
-                if not global.pauseMoveInput: 
-                    dir -= forward
-                # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
-                if not sprite_facing or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up"):
-                    sprite_facing = true
-                    mySprite.faceDown()
 
     if self.glitch_form == GlitchForm.FEATHER:
         if dir.length() > 1:
@@ -314,7 +313,6 @@ func updateFacing(dir):
         is_walking = true
     else:
         is_walking = false
-        sprite_facing = false
 
 # @override
 func landed():

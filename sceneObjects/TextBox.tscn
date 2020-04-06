@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/TextBox.gd" type="Script" id=1]
-[ext_resource path="res://assets/mini.png" type="Texture" id=2]
-[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=4]
-[ext_resource path="res://scripts/AbortSound.gd" type="Script" id=5]
+[ext_resource path="res://scripts/TextContainer.gd" type="Script" id=1]
+[ext_resource path="res://scripts/TextBox.gd" type="Script" id=2]
+[ext_resource path="res://assets/mini.png" type="Texture" id=3]
+[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=5]
+[ext_resource path="res://scripts/AbortSound.gd" type="Script" id=6]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.988166 )
@@ -19,23 +20,24 @@ size = 27
 extra_spacing_top = 16
 extra_spacing_char = 2
 extra_spacing_space = 2
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 
 [node name="TextContainer" type="CanvasLayer"]
+script = ExtResource( 1 )
 
 [node name="TextBox" type="TextureRect" parent="."]
 margin_right = 578.0
 margin_bottom = 207.0
 texture = SubResource( 2 )
 expand = true
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Portrait" type="TextureRect" parent="TextBox"]
 margin_left = 31.0
 margin_top = 25.0
 margin_right = 181.0
 margin_bottom = 175.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="TextBox"]
@@ -46,6 +48,7 @@ margin_bottom = 205.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
 bbcode_text = "yo what up
 hey mu dude
 ???????? so why???"
@@ -54,12 +57,12 @@ hey mu dude
 ???????? so why???"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="TextBox"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -10.0
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="TextBox"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -20.0
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 

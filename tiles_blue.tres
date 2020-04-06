@@ -163,3 +163,4 @@ item/5/name = "MeshInstance6"
 item/5/mesh = SubResource( 26 )
 item/5/shapes = [ SubResource( 29 ), Transform( 1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0 ) ]
 item/5/preview = SubResource( 28 )
+

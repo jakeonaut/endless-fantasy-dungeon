@@ -18,6 +18,19 @@ var pauseGame = false
 var greyTheme = preload("res://tiles.tres")
 var blueTheme = preload("res://tiles_blue.tres")
 
+func _ready():
+    # somehow this gets rid of errors LOL
+    if hasLoadedGame: pass
+    if memory: pass
+    if numHearts: pass
+    if activeInteractor: pass
+    if activeThrowableObject: pass
+    if activeSavePoint: pass
+    if isRespawning: pass
+    if cameraRotation: pass
+    if pauseMoveInput: pass
+    if pauseGame: pass
+
 
 var save_game_file = "user://savegame.save"
 func saveGame():

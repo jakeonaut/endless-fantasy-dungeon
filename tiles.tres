@@ -407,3 +407,4 @@ item/14/name = "BigTrunk"
 item/14/mesh = SubResource( 24 )
 item/14/shapes = [  ]
 item/14/preview = SubResource( 28 )
+

@@ -65,7 +65,7 @@ func _process(delta):
 
     tryDieToEnemy()
 
-    if not sprite_facing:
+    if not is_walking:
         sprite_reset_timer += delta
         if sprite_reset_timer >= sprite_reset_limit and not mySprite.isFacingDown():
             mySprite.faceDown()

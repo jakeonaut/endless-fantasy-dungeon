@@ -3,7 +3,8 @@ extends TextureRect
 onready var text = get_node("Text")
 onready var dialogSound = get_node("DialogSound")
 onready var abortSound = get_node("AbortSound")
-export var nextTextboxPath = NodePath("")
+export(NodePath) var nextTextBoxPath = NodePath("")
+var type = "textBox"
 
 func _ready():
     self.hide()
@@ -34,10 +35,14 @@ func interact():
         self.hide()
         global.pauseGame = false
         global.pauseMoveInput = false
-        if !nextTextboxPath.is_empty():
-            var nextTextbox = get_node(nextTextboxPath)
-            nextTextbox.interact()
-            global.activeInteractor = nextTextbox
+        if !nextTextBoxPath.is_empty():
+            var nextTextBox = get_node(nextTextBoxPath)
+            if nextTextBox.type == "textBox":
+                nextTextBox.interact()
+            elif nextTextBox.type == "textBoxContainer":
+                nextTextBox = nextTextBox.get_node("TextBox")
+                nextTextBox.interact()
+            global.activeInteractor = nextTextBox
         else:
             abortSound.play()
             abortSound.activateScript()
