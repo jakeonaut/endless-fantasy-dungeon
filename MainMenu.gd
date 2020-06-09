@@ -10,6 +10,7 @@ func _ready():
     player.getCamera().toggleNext()
     global.pauseGame = true
     global.pauseMoveInput = true
+    musicPlayer.conductFromScenePath(self.get_filename())
 
 func _process(delta):
     # rotate camera slowly
