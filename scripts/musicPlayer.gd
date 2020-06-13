@@ -25,7 +25,7 @@ func conductFromScenePath(path):
         self.playSwamp()
     elif path.find("Goddess") > 0:
         self.playSolarChoir()
-    else:
+    elif path.find("MainMenu"):
         titleThemePlayer.play()
     
 func stopAll():

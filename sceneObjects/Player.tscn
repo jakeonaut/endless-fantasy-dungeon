@@ -157,6 +157,7 @@ hframes = 8
 script = ExtResource( 5 )
 
 [node name="Lights" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="The Sun" type="DirectionalLight" parent="Lights"]
 transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
@@ -167,6 +168,7 @@ directional_shadow_split_2 = 0.5
 directional_shadow_split_3 = 1.0
 
 [node name="CameraY" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628, 0, 0, 0 )
 script = ExtResource( 6 )
 
