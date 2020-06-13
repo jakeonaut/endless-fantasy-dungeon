@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://scripts/ThrowableObject.gd" type="Script" id=1]
+[ext_resource path="res://scripts/NPCSeed.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://assets/objects0000.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/Link - Bomb Deploy.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/Yoshi - Egg Throw.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/OOT_Pot_Shatter.wav" type="AudioStream" id=8]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.8, 0.5 )
@@ -20,9 +20,9 @@ flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 
-[node name="ThrowableObject" type="KinematicBody"]
+[node name="NPCSeed" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
-collision_layer = 0
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -56,9 +56,12 @@ stream = ExtResource( 6 )
 volume_db = -15.0
 
 [node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 7 )
 volume_db = -20.0
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 7 )
+volume_db = -20.0
+
+[node name="ShatterSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
 volume_db = -20.0
