@@ -113,8 +113,24 @@ func _process(delta):
     mouseDiffY = 0
 
 func focusForward(facing):
-    var target_degrees = rad2deg(Vector3(0, 0, -1).normalized().angle_to(facing.normalized()))
+    # STILL DON'T REALLY KNOW WHAT I'M DOING HERE
+    print(facing.normalized())
+    var target_degrees = fposmod(rad2deg(Vector3(0, 0, -1).normalized().angle_to(facing.normalized())), 360)
+    print("!! niotice me naoto")
+    print(target_degrees)
     self.rotateTo(target_degrees)
+
+    # rotate right
+    # var rot_deg = fposmod(rotation_degrees.y, 360)
+    # self.rotateTo(((int(rot_deg + 16)/90) + 1) * 90)
+
+    # # rotate left
+    # var rot_deg = fposmod(rotation_degrees.y-16, 360)
+    # # don't ask me why.
+    # if (int(rot_deg)/90)*90 == 270 and rotation_degrees.y >= 0:
+    #     self.rotateTo(-90)
+    # else:
+    #     self.rotateTo((int(rot_deg)/90)*90)
 
 
 const PROJECTION_PERSPECTIVE = 0
@@ -268,6 +284,33 @@ func rotate_left(step=4):
         real_rotation_target = rotation_degrees.y - step
         is_rotating = true
 
+func rotate_right_90deg():
+    # i.e. if angle is currently at 0, move up to 4
+    # then int divide by 90 (results in 0)
+    # then add 1 (results in 1)
+    # then multiply 90 (results in 90)
+    # 0 -> 0 -> 4 -> 0 -> 1 -> 90
+    # i.e. 10 -> 10 -> 14 -> 0 -> 1 -> 90
+    # i.e. 90 -> 90 -> 94 -> 1 -> 2 -> 180
+    # i.e. -90 -> 270 -> 274 -> 3 -> 4 -> 360
+    var rot_deg = fposmod(rotation_degrees.y, 360)
+    self.rotateTo(((int(rot_deg + 16)/90) + 1) * 90)
+
+func rotate_left_90deg():
+    # i.e. if angle is currently at 180, move down to 176
+    # then int divide by 90 (results in 1)
+    # then multiply 90 (results in 90)
+    # 180 -> 176 -> 1 -> 90
+    # i.e. 150 -> 146 -> 1 -> 90
+    # i.e. 90 -> 86 -> 0 -> 0
+    # i.e. 0 -> -4 -> 
+    var rot_deg = fposmod(rotation_degrees.y-16, 360)
+    # don't ask me why.
+    if (int(rot_deg)/90)*90 == 270 and rotation_degrees.y >= 0:
+        self.rotateTo(-90)
+    else:
+        self.rotateTo((int(rot_deg)/90)*90)
+
 # TODO(jaketrower):
 func rotate_up(step=5):
     if self.isToyboxView(): return
@@ -303,7 +346,7 @@ func tryNormalizeCurrent():
 func normalizeTarget():
     while target_rotation < 0:
         target_rotation += deg2rad(360)
-    while target_rotation > deg2rad(360):
+    while target_rotation >= deg2rad(360):
         target_rotation -= deg2rad(360)
         
     rotation_degrees.y = real_rotation_target

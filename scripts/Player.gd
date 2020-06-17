@@ -56,10 +56,6 @@ func _process(delta):
             global.pauseGame = false
 
     tryRotateCamera(delta)
-    if Input.is_action_just_pressed("ui_focus_next"):
-        getCamera().toggleNext()
-    if Input.is_action_just_pressed("ui_focus_forward"):
-        getCamera().focusForward(facing)
 
     if global.pauseGame: return
 
@@ -78,13 +74,19 @@ func _physics_process(delta):
     pass
 
 func tryRotateCamera(delta):
-    if Input.is_action_pressed("ui_rotate_left"):
-        cameraRotationCounter += delta
-        getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
-    elif Input.is_action_pressed("ui_rotate_right"):
-        cameraRotationCounter += delta
-        getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
-    else: cameraRotationCounter = 0
+    if not Input.is_action_pressed("ui_ctrl"):
+        if Input.is_action_pressed("ui_rotate_left"):
+            cameraRotationCounter += delta
+            getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
+        elif Input.is_action_pressed("ui_rotate_right"):
+            cameraRotationCounter += delta
+            getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
+        else: cameraRotationCounter = 0
+    elif Input.is_action_pressed("ui_ctrl"):
+        if Input.is_action_just_pressed("ui_rotate_left"):
+            getCamera().rotate_left_90deg()
+        elif Input.is_action_just_pressed("ui_rotate_right"):
+            getCamera().rotate_right_90deg()
         
     if cameraRotationCounter > 1: cameraRotationCounter = 1
     
@@ -92,6 +94,11 @@ func tryRotateCamera(delta):
         getCamera().rotate_up(3*(delta*66))
     if Input.is_action_pressed("ui_rotate_down"):
         getCamera().rotate_down(3*(delta*66))
+
+    if Input.is_action_just_pressed("ui_focus_next"):
+        getCamera().toggleNext()
+    if Input.is_action_just_pressed("ui_focus_forward"):
+        getCamera().focusForward(facing)
 
 func tryDieToEnemy():
     if smallInteractionArea.is_touching_enemy and not transitioning:
