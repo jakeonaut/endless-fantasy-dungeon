@@ -4,6 +4,10 @@ onready var player = get_node("Player")
 onready var gridMap = get_node("Level Tiles")
 
 func _ready():
+    # stupid workaround https://godotengine.org/qa/23950/_ready-call-order-is-reversed-from-typical-inheritance#:~:text=When%20inheriting%2C%20typically%20the%20child,the%20parent%2C%20then%20the%20child.
+    _ready_impl()
+
+func _ready_impl():
     set_process_input(true)
     set_process(true)
 
@@ -24,6 +28,7 @@ func _ready():
             global.memory["active_save_point_x"], 
             global.memory["active_save_point_y"], 
             global.memory["active_save_point_z"])
+        player.getCamera().rotation_degrees.y = global.cameraRotation
     elif global.memory.has("lastDoor"):
         var door_id = global.memory["lastDoor"]
         var doors = get_tree().get_nodes_in_group("doors")

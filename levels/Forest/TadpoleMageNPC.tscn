@@ -32,7 +32,6 @@ shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
 editor/display_folded = true
-input_ray_pickable = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
@@ -60,6 +59,5 @@ vframes = 4
 hframes = 4
 script = ExtResource( 7 )
 should_randomize_frame_delay = true
-
 
 [editable path="NPC TextBox"]

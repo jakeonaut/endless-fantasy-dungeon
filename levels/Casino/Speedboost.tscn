@@ -12,12 +12,15 @@ params_diffuse_mode = 4
 extents = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
 flags_unshaded = true
+params_blend_mode = 1
+params_depth_draw_mode = 3
 albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="PrismMesh" id=4]
 material = SubResource( 3 )
-size = Vector3( 1, 1, 1 )
+size = Vector3( 1, 1, 0.5 )
 
 [node name="Speedboost" type="Sprite3D"]
 transform = Transform( -4.35451e-008, -1, -6.70552e-008, 0.34202, -7.79046e-008, 0.939693, -0.939693, 1.79847e-008, 0.34202, 5, 3.20625, -4 )
@@ -35,6 +38,11 @@ script = ExtResource( 2 )
 shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.964907, -5.07002e-009, -0.0964181, -5.07004e-009, 0.7, 1.8454e-009, -0.0964181, 1.8453e-009, 0.735093, 0.0322924, 0.34252, 0.0887233 )
 mesh = SubResource( 4 )
 material/0 = null
 
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.964907, -5.07002e-009, -0.0964183, -5.07003e-009, 0.7, 1.8454e-009, -0.0964181, 1.84529e-009, 0.735093, 0.0322924, -0.234438, 0.0887233 )
+mesh = SubResource( 4 )
+material/0 = null

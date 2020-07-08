@@ -20,19 +20,18 @@ radius = 2.0
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 flags_unshaded = true
-params_blend_mode = 1
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 
 [sub_resource type="AnimatedTexture" id=5]
-flags = 19
+flags = 3
 frames = 2
 fps = 6.0
 frame_0/texture = ExtResource( 8 )
 frame_1/texture = ExtResource( 9 )
 frame_1/delay_sec = 0.0
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=6]
 flags_transparent = true
 flags_unshaded = true
 params_blend_mode = 2
@@ -54,7 +53,6 @@ shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
 editor/display_folded = true
-input_ray_pickable = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
@@ -71,8 +69,9 @@ shape = SubResource( 3 )
 editor/display_folded = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 material_override = SubResource( 4 )
-pixel_size = 0.08
+pixel_size = 0.12
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 5 )
@@ -84,8 +83,9 @@ should_randomize_frame_delay = true
 [node name="GlitchEnemy" parent="." instance=ExtResource( 7 )]
 
 [node name="MeshInstance" parent="GlitchEnemy" index="0"]
-material_override = SubResource( 8 )
+material_override = SubResource( 6 )
 mesh = SubResource( 7 )
+material/0 = null
 
 [node name="InteractionArea" parent="GlitchEnemy" index="1"]
 editor/display_folded = true
@@ -93,6 +93,5 @@ editor/display_folded = true
 [node name="Targets" type="Node" parent="."]
 
 [node name="Target1" type="Spatial" parent="Targets"]
-
 
 [editable path="GlitchEnemy"]

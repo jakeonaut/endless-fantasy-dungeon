@@ -17,6 +17,8 @@ var is_touching_water = false
 var was_touching_water = false
 var on_ground = true
 var was_on_ground = true
+var was_just_on_ground_timer = 0
+var was_just_on_ground_time_limit = 5
 var just_landed = false
 var fallCounter = 0
 var fallCountMax = 3
@@ -127,8 +129,13 @@ func processPhysics(delta):
 
     if not is_touching_water and was_touching_water:
         float_timer = 0
+    if was_on_ground and not on_ground: # I just fell off platform!
+        was_just_on_ground_timer = 0
     was_on_ground = on_ground
     was_touching_water = is_touching_water
+
+    if was_just_on_ground_timer <= was_just_on_ground_time_limit:
+        was_just_on_ground_timer += (delta*22)
     
 func applyGravity(delta):
     if is_floating:

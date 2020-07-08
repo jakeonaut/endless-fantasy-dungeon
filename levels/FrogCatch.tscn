@@ -1,20 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
-[ext_resource path="res://assets/DELETEME/shaderduskreal.png" type="Texture" id=2]
-[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sceneObjects/FrogCatch.tscn" type="PackedScene" id=6]
-
-[sub_resource type="Environment" id=1]
-background_mode = 4
+[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/DELETEME/shaderduskreal.png" type="Texture" id=3]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/FrogCatch.tscn" type="PackedScene" id=7]
 
 [node name="level" type="Node"]
 script = ExtResource( 1 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+[node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundControl" type="Control" parent="."]
 editor/display_folded = true
@@ -24,31 +21,30 @@ margin_left = -81.0
 margin_top = -43.0
 margin_right = 1111.0
 margin_bottom = 720.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 
 [node name="Level Tiles" type="GridMap" parent="."]
-mesh_library = ExtResource( 3 )
+mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 3, 1, 0, 3, 2, 0, 3, 65533, 0, 536870915, 65534, 0, 536870915, 65535, 0, 536870915, 0, 1, 3, 1, 1, 536870915, 2, 1, 3, 65533, 1, 3, 65534, 1, 536870915, 65535, 1, 3, 0, 2, 536870915, 65535, 2, 3, 0, 3, 3, 65535, 3, 3, 0, 65532, 3, 1, 65532, 536870915, 2, 65532, 1073741827, 65533, 65532, 3, 65534, 65532, 3, 65535, 65532, 536870915, 0, 65533, 536870915, 1, 65533, 536870915, 2, 65533, 3, 65533, 65533, 3, 65534, 65533, 3, 65535, 65533, 3, 0, 65534, 536870915, 1, 65534, 536870915, 2, 65534, 3, 65533, 65534, 536870915, 65534, 65534, 536870915, 65535, 65534, 3, 0, 65535, 1073741827, 1, 65535, 3, 2, 65535, 3, 65533, 65535, 3, 65534, 65535, 3, 65535, 65535, 3 )
+"cells": PoolIntArray( 0, 0, 3, 1, 0, 3, 2, 0, 3, 65533, 0, 3, 65534, 0, 536870915, 65535, 0, 536870915, 0, 1, 536870915, 1, 1, 3, 2, 1, 536870915, 65533, 1, 3, 65534, 1, 3, 65535, 1, 1073741827, 0, 2, 536870915, 65535, 2, 536870915, 0, 3, 536870915, 65535, 3, 536870915, 0, 65532, 3, 1, 65532, 3, 2, 65532, 3, 65533, 65532, 3, 65534, 65532, 1073741827, 65535, 65532, 3, 0, 65533, 3, 1, 65533, 3, 2, 65533, 3, 65533, 65533, 3, 65534, 65533, 1610612739, 65535, 65533, 536870915, 0, 65534, 3, 1, 65534, 3, 2, 65534, 3, 65533, 65534, 3, 65534, 65534, 536870915, 65535, 65534, 3, 0, 65535, 3, 1, 65535, 3, 2, 65535, 3, 65533, 65535, 3, 65534, 65535, 3, 65535, 65535, 3 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 
-[node name="portdoor" parent="." instance=ExtResource( 5 )]
+[node name="portdoor" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
 
-[node name="Frogger" parent="." instance=ExtResource( 6 )]
+[node name="Frogger" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, -3.90651 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.545449, -0.550563, 0.631954, -0.079619, 0.716546, 0.692981, -0.834353, -0.428301, 0.347004, 10, 12, 3 )
-
 
 [editable path="Player"]

@@ -3,8 +3,7 @@ extends "PlayerGameMover.gd"
 onready var pauseMenu = get_node("PauseMenu/MenuBox") if has_node("PauseMenu/MenuBox") else null
 onready var hurtSound = get_node("Sounds/HurtSound")
 
-onready var sunLight = get_node("Lights/The Sun")
-onready var ambientLight = get_node("CameraY/CameraX/Ambient")
+onready var sunLight = get_node("../commonWorldEnvironment/The Sun")
 
 onready var glitchFilter = get_node("GlitchFilter/TextureRect") if has_node("GlitchFilter/TextureRect") else null
 
@@ -111,8 +110,6 @@ func faceDown():
 
 func lightsOff():
     sunLight.visible = false
-    ambientLight.visible = false
 
 func lightsOn():
     sunLight.visible = true
-    ambientLight.visible = true

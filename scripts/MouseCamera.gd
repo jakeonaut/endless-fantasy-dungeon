@@ -32,6 +32,7 @@ var is_lerping = false
 var source_lerp_index = 0
 var target_lerp_index = 1
 var lerp_targets = [0, 0]
+var debug_print = false
 
 # TODO(jaketrower): There are a lot of "same but for X" code repetition here
 # TODO(jaketrower): can we somehow consolidate them into common methods?
@@ -65,6 +66,9 @@ func _input(ev):
             startClickPos = ev.position
 
 func _process(delta):
+    if is_rotating and debug_print: 
+        print("current_rotation: " + str(current_rotation) + ", " + str(rotation_degrees.y))
+
     if target_rotation > current_rotation:
         current_rotation += curr_step.y*delta
         rotate_y(curr_step.y * delta)
@@ -95,8 +99,9 @@ func _process(delta):
         # if curr_step.y > 3.5:
         curr_step.y = 4
             
-        
-    # NOW DO MOUSE???
+    self.processMouseInput(delta)
+
+func processMouseInput(delta):
     if mouseDiffX < -highest_mouse_rotation_step:
         mouseDiffX = -highest_mouse_rotation_step
     elif mouseDiffX > highest_mouse_rotation_step:
@@ -114,6 +119,7 @@ func _process(delta):
 
 func focusForward(facing):
     # STILL DON'T REALLY KNOW WHAT I'M DOING HERE
+    debug_print = true
     print(facing.normalized())
     var target_degrees = fposmod(rad2deg(Vector3(0, 0, -1).normalized().angle_to(facing.normalized())), 360)
     print("!! niotice me naoto")
@@ -293,8 +299,12 @@ func rotate_right_90deg():
     # i.e. 10 -> 10 -> 14 -> 0 -> 1 -> 90
     # i.e. 90 -> 90 -> 94 -> 1 -> 2 -> 180
     # i.e. -90 -> 270 -> 274 -> 3 -> 4 -> 360
+    if debug_print: print("rotation_degrees: " + str(rotation_degrees.y))
     var rot_deg = fposmod(rotation_degrees.y, 360)
+    if debug_print: print("normalized: " + str(rot_deg))
+    if debug_print: print("is rotating?: " + str(is_rotating))
     self.rotateTo(((int(rot_deg + 16)/90) + 1) * 90)
+    if debug_print: print("rotate to: " + str(((int(rot_deg + 16)/90) + 1) * 90))
 
 func rotate_left_90deg():
     # i.e. if angle is currently at 180, move down to 176
@@ -338,9 +348,11 @@ func gateKeepDownCondition_(rx):
     return (rad2deg(rx) < 360 and rad2deg(rx) >= 270) or (rad2deg(rx) > 0 and rad2deg(rx) <= 90)
     
 func tryNormalizeCurrent():
+    if is_rotating and debug_print: print("current_rotation: " + str(current_rotation))
     if is_rotating and abs(target_rotation - current_rotation) < 1:
         self.normalizeTarget()
         current_rotation = target_rotation
+        debug_print = false
     is_rotating = false
     
 func normalizeTarget():
@@ -348,12 +360,14 @@ func normalizeTarget():
         target_rotation += deg2rad(360)
     while target_rotation >= deg2rad(360):
         target_rotation -= deg2rad(360)
-        
+    
     rotation_degrees.y = real_rotation_target
+    if debug_print: print("set rotation_degrees.y to: " + str(rotation_degrees.y))
         
     var rotation = rad2deg(target_rotation)
     rotation = int(round(rotation/rstep))*rstep
     target_rotation = deg2rad(rotation)
+    if debug_print: print("set target_rotation to: " + str(target_rotation))
 
 func tryNormalizeCurrentX():
     if is_rotating_x and abs(target_rotation_x - current_rotation_x) < 1:

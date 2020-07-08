@@ -13,10 +13,7 @@ var isRespawning = false
 var cameraRotation = 0
 
 var pauseMoveInput = false # don't allow player physics or camera input??
-var pauseGame = false
-
-var greyTheme = preload("res://tiles.tres")
-var blueTheme = preload("res://tiles_blue.tres")
+var pauseGame = false   
 
 func _ready():
     # somehow this gets rid of errors LOL

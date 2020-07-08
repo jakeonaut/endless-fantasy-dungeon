@@ -47,6 +47,7 @@ shape = SubResource( 3 )
 [node name="NPC TextBox" parent="." instance=ExtResource( 4 )]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.260242, 0 )
 material_override = SubResource( 4 )
 pixel_size = 0.04
 shaded = true
@@ -56,5 +57,6 @@ vframes = 2
 hframes = 2
 script = ExtResource( 6 )
 should_randomize_frame_delay = true
+
 
 [editable path="NPC TextBox"]

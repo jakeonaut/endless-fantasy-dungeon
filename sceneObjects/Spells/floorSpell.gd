@@ -12,4 +12,3 @@ func activate():
     visible = false
 
     player.glitch_form = player.GlitchForm.FLOOR
-    # levelTiles.theme = global.blueTheme

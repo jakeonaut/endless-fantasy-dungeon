@@ -8,7 +8,7 @@ var player = null
 
 # TODO(jaketrower): doing stuff like this... is dangerous 
 # see: https://www.reddit.com/r/godot/comments/ait6y8/preloading_in_godot_31_vs_30/
-const npc_resource = preload("res://sceneObjects/NPC.tscn")
+const pet_resource = preload("res://sceneObjects/pet.tscn")
 export var num_coins = 1
 
 var is_held = false
@@ -92,7 +92,7 @@ func landed():
         self.spawnNPC()
 
 func spawnNPC():
-    var npc = npc_resource.instance()
+    var npc = pet_resource.instance()
     # TODO(jaketrower): This node container is an ASSUMPTION!!!
     levelRoot.add_child(npc)
     npc.translation = translation

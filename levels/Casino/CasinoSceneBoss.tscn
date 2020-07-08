@@ -1,35 +1,32 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
-[ext_resource path="res://sceneObjects/UI/CoinUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/DELETEME/japan-casino-696x522.jpg" type="Texture" id=3]
-[ext_resource path="res://levels/Casino/casinotiles.tres" type="MeshLibrary" id=4]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/Casino/coin.tscn" type="PackedScene" id=7]
-[ext_resource path="res://levels/Casino/RollerGirl.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/npcs/catportrait2.png" type="Texture" id=10]
-[ext_resource path="res://levels/Casino/1GDialogSound.gd" type="Script" id=11]
-[ext_resource path="res://assets/npcs/catgirl.png" type="Texture" id=12]
-[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/npcs/catportrait.png" type="Texture" id=14]
-[ext_resource path="res://assets/npcs/tadpoleportrait.png" type="Texture" id=15]
-[ext_resource path="res://levels/Casino/Speedboost.tscn" type="PackedScene" id=16]
-[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=17]
-[ext_resource path="res://levels/Casino/Vase.tscn" type="PackedScene" id=18]
-[ext_resource path="res://levels/Casino/CatMachine.tscn" type="PackedScene" id=19]
-
-[sub_resource type="Environment" id=1]
-background_mode = 4
+[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sceneObjects/UI/CoinUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/DELETEME/japan-casino-696x522.jpg" type="Texture" id=4]
+[ext_resource path="res://levels/Casino/casinotiles.tres" type="MeshLibrary" id=5]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Casino/coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/Casino/RollerGirl.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/npcs/catportrait2.png" type="Texture" id=11]
+[ext_resource path="res://levels/Casino/1GDialogSound.gd" type="Script" id=12]
+[ext_resource path="res://assets/npcs/catgirl.png" type="Texture" id=13]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/npcs/catportrait.png" type="Texture" id=15]
+[ext_resource path="res://assets/npcs/tadpoleportrait.png" type="Texture" id=16]
+[ext_resource path="res://levels/Casino/Speedboost.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://levels/Casino/Vase.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/Casino/CatMachine.tscn" type="PackedScene" id=20]
 
 [node name="level" type="Node"]
 script = ExtResource( 1 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+[node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
 
-[node name="CoinUI" parent="." instance=ExtResource( 2 )]
+[node name="CoinUI" parent="." instance=ExtResource( 3 )]
 
 [node name="BackgroundControl" type="Control" parent="."]
 editor/display_folded = true
@@ -37,24 +34,24 @@ editor/display_folded = true
 [node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
 margin_right = 1020.0
 margin_bottom = 763.0
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 2
 
 [node name="Level Tiles" type="GridMap" parent="."]
-mesh_library = ExtResource( 4 )
+mesh_library = ExtResource( 5 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 65551, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 131069, 1, 0, 131070, 1, 0, 0, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 65535, 2, 0, 0, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 65535, 3, 0, 0, 65531, 0, 1, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 65536, 65531, 0, 65537, 65531, 0, 65538, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65537, 65532, 0, 65538, 65532, 0, 131069, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 9, 65533, 0, 10, 65533, 0, 11, 65533, 0, 12, 65533, 0, 13, 65533, 0, 14, 65533, 0, 15, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65546, 65533, 0, 65548, 65533, 0, 65550, 65533, 0, 131070, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 9, 65534, 0, 10, 65534, 0, 11, 65534, 0, 12, 65534, 0, 13, 65534, 0, 14, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 131068, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 9, 65535, 0, 10, 65535, 0, 11, 65535, 0, 12, 65535, 0, 13, 65535, 0, 14, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131071, 65535, 0, 196607, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65532, 0, 0, 65533, 0, 536870912, 65534, 0, 0, 65535, 0, 0, 65551, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 131069, 1, 0, 131070, 1, 0, 0, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 12, 2, 536870912, 13, 2, 0, 14, 2, 1073741824, 65535, 2, 0, 0, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, -1610612736, 15, 3, 0, 65535, 3, 0, 0, 65531, 0, 1, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 65536, 65531, 0, 65537, 65531, 0, 65538, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 65537, 65532, 0, 65538, 65532, 0, 131069, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 9, 65533, 0, 10, 65533, 0, 11, 65533, 0, 12, 65533, 0, 13, 65533, 0, 14, 65533, 0, 15, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 65546, 65533, 0, 65548, 65533, 0, 65550, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 9, 65534, 0, 10, 65534, 0, 11, 65534, 0, 12, 65534, 0, 13, 65534, 0, 14, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 131068, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 9, 65535, 0, 10, 65535, 0, 11, 65535, 0, 12, 65535, 0, 13, 65535, 0, 14, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131071, 65535, 0, 196607, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 1, 0 )
 }
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
 
-[node name="portalCasinoBoss" parent="." instance=ExtResource( 6 )]
+[node name="portalCasinoBoss" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
 midLevelDir = "Casino"
 connectedScene = "CasinoScene2"
@@ -62,18 +59,17 @@ connectedScene = "CasinoScene2"
 [node name="coins" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="coin" parent="coins" instance=ExtResource( 7 )]
+[node name="coin" parent="coins" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, -1 )
 
-[node name="RollerNPC" parent="." instance=ExtResource( 8 )]
+[node name="RollerNPC" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 1.20847 )
 
-[node name="NPC" parent="." instance=ExtResource( 9 )]
-editor/display_folded = true
+[node name="NPC" parent="." instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17, 5.2514, -6.7837 )
 
 [node name="Portrait" parent="NPC/NPC TextBox/TextBox" index="0"]
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Text" parent="NPC/NPC TextBox/TextBox" index="1"]
 bbcode_text = "hey! how are you?
@@ -86,23 +82,27 @@ woops sorry yeah
 i charge 1G to talk"
 
 [node name="DialogSound" parent="NPC/NPC TextBox/TextBox" index="2"]
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 
 [node name="Sprite3D" parent="NPC" index="4"]
 pixel_size = 0.08
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 vframes = 4
 hframes = 4
 frame = 2
 
-[node name="NPC2" parent="." instance=ExtResource( 9 )]
+[node name="NPC2" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.873907, 5.2514, -8.79153 )
+
+[node name="NPC TextBox" parent="NPC2" index="3"]
+editor/display_folded = true
 
 [node name="TextBox" parent="NPC2/NPC TextBox" index="0"]
 nextTextBoxPath = NodePath("../../TextBox2/TextBox")
 
 [node name="Portrait" parent="NPC2/NPC TextBox/TextBox" index="0"]
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Text" parent="NPC2/NPC TextBox/TextBox" index="1"]
 bbcode_text = "do you ever get so mad 
@@ -116,18 +116,19 @@ thinking that"
 
 [node name="Sprite3D" parent="NPC2" index="4"]
 pixel_size = 0.08
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 vframes = 4
 hframes = 4
 frame = 4
 
-[node name="TextBox2" parent="NPC2" instance=ExtResource( 13 )]
+[node name="TextBox2" parent="NPC2" instance=ExtResource( 14 )]
+editor/display_folded = true
 
 [node name="TextBox" parent="NPC2/TextBox2" index="0"]
 nextTextBoxPath = NodePath("../../TextBox3/TextBox")
 
 [node name="Portrait" parent="NPC2/TextBox2/TextBox" index="0"]
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
 [node name="Text" parent="NPC2/TextBox2/TextBox" index="1"]
 margin_right = 847.0
@@ -140,57 +141,60 @@ what a company can use
 for their own profit????????
 "
 
-[node name="TextBox3" parent="NPC2" instance=ExtResource( 13 )]
+[node name="TextBox3" parent="NPC2" instance=ExtResource( 14 )]
+editor/display_folded = true
 
 [node name="Portrait" parent="NPC2/TextBox3/TextBox" index="0"]
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="Text" parent="NPC2/TextBox3/TextBox" index="1"]
 bbcode_text = ".. yeah... me neither.."
 text = ".. yeah... me neither.."
 
 [node name="Speedboosts" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="Speedboost" parent="Speedboosts" instance=ExtResource( 16 )]
+[node name="Speedboost" parent="Speedboosts" instance=ExtResource( 17 )]
 editor/display_folded = true
+transform = Transform( -4.35451e-008, -1, -6.70552e-008, 0.34202, -7.79046e-008, 0.939693, -0.939693, 1.79847e-008, 0.34202, 3, 3.20625, -5 )
 
-[node name="Speedboost2" parent="Speedboosts" instance=ExtResource( 16 )]
+[node name="Speedboost4" parent="Speedboosts" instance=ExtResource( 17 )]
+editor/display_folded = true
+transform = Transform( -0.939693, 6.16961e-008, 0.34202, 0.34202, -7.79046e-008, 0.939693, 8.46204e-008, 1, 5.2105e-008, -5, 3.20625, -5 )
+
+[node name="Speedboost2" parent="Speedboosts" instance=ExtResource( 17 )]
 transform = Transform( 1.25696e-007, 1, 3.71549e-008, 0.34202, -7.79046e-008, 0.939693, 0.939693, -1.05407e-007, -0.34202, -5, 3.20625, 1 )
 
-[node name="Speedboost3" parent="Speedboosts" instance=ExtResource( 16 )]
+[node name="Speedboost3" parent="Speedboosts" instance=ExtResource( 17 )]
 transform = Transform( -2.07847e-007, -1, -7.25456e-009, 0.34202, -7.79046e-008, 0.939693, -0.939693, 1.9283e-007, 0.34202, 28, 3.20625, 1 )
 
 [node name="GlitchEnemies" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="GlitchEnemy" parent="GlitchEnemies" instance=ExtResource( 17 )]
+[node name="GlitchEnemy" parent="GlitchEnemies" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, 1 )
 
-[node name="GlitchEnemy2" parent="GlitchEnemies" instance=ExtResource( 17 )]
+[node name="GlitchEnemy2" parent="GlitchEnemies" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3, 1 )
 
-[node name="GlitchEnemy3" parent="GlitchEnemies" instance=ExtResource( 17 )]
+[node name="GlitchEnemy3" parent="GlitchEnemies" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 3, 1 )
 
 [node name="Vases&Machines" type="Node" parent="."]
-editor/display_folded = true
 
-[node name="Vase" parent="Vases&Machines" instance=ExtResource( 18 )]
+[node name="Vase" parent="Vases&Machines" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.9083, 5.2514, 1.20847 )
 
-[node name="Vase2" parent="Vases&Machines" instance=ExtResource( 18 )]
+[node name="Vase2" parent="Vases&Machines" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.9083, 3.2514, 6.72815 )
 
-[node name="CatMachine" parent="Vases&Machines" instance=ExtResource( 19 )]
+[node name="CatMachine" parent="Vases&Machines" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 5, -5 )
 
-[node name="CatMachine2" parent="Vases&Machines" instance=ExtResource( 19 )]
+[node name="CatMachine2" parent="Vases&Machines" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -5 )
 
-[node name="CatMachine3" parent="Vases&Machines" instance=ExtResource( 19 )]
+[node name="CatMachine3" parent="Vases&Machines" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 5, -5 )
-
 
 [editable path="Player"]
 

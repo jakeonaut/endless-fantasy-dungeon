@@ -1,22 +1,19 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
-[ext_resource path="res://assets/DELETEME/japan-casino-696x522.jpg" type="Texture" id=2]
-[ext_resource path="res://tiles.tres" type="MeshLibrary" id=3]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/cat0000.png" type="Texture" id=7]
-[ext_resource path="res://sceneObjects/Spells/FloorSpell.tscn" type="PackedScene" id=8]
-
-[sub_resource type="Environment" id=1]
-background_mode = 4
+[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/DELETEME/japan-casino-696x522.jpg" type="Texture" id=3]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/cat0000.png" type="Texture" id=8]
+[ext_resource path="res://sceneObjects/Spells/FloorSpell.tscn" type="PackedScene" id=9]
 
 [node name="level" type="Node"]
 script = ExtResource( 1 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+[node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundControl" type="Control" parent="."]
 
@@ -25,36 +22,36 @@ margin_left = 5.0
 margin_top = 1.0
 margin_right = 1144.0
 margin_bottom = 806.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 2
 
 [node name="Level Tiles" type="GridMap" parent="."]
-mesh_library = ExtResource( 3 )
+mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 4, 1, 0, 1073741828, 2, 0, 4, 65533, 0, 4, 65534, 0, 4, 65535, 0, 4, 65537, 0, 4, 131070, 0, 4, 131073, 0, 3, 196606, 0, 3, 0, 1, 4, 1, 1, 4, 2, 1, 4, 65533, 1, 4, 65534, 1, 4, 65535, 1, 4, 0, 2, 4, 65535, 2, 4, 0, 3, 536870916, 65535, 3, 4, 131072, 65525, 4, 196607, 65525, 4, 131072, 65526, 4, 196607, 65526, 4, 131072, 65527, 4, 131073, 65527, 4, 196606, 65527, 4, 196607, 65527, 4, 65536, 65528, 4, 65537, 65528, 4, 131070, 65528, 4, 131071, 65528, 4, 131072, 65528, 4, 131073, 65528, 1073741828, 196606, 65528, 4, 196607, 65528, 4, 65536, 65529, 4, 65537, 65529, 4, 131070, 65529, 4, 131071, 65529, 4, 65536, 65530, 4, 65537, 65530, 4, 131070, 65530, 4, 131071, 65530, 536870916, 0, 65531, 4, 1, 65531, 4, 65534, 65531, 4, 65535, 65531, 4, 0, 65532, 4, 1, 65532, 4, 2, 65532, 1073741828, 65533, 65532, -1610612732, 65534, 65532, 1073741828, 65535, 65532, 4, 0, 65533, 536870916, 1, 65533, 4, 2, 65533, 4, 65533, 65533, 4, 65534, 65533, -1610612732, 65535, 65533, 4, 65537, 65533, 4, 131070, 65533, 4, 131073, 65533, 3, 196606, 65533, 3, 0, 65534, 4, 1, 65534, 4, 2, 65534, 4, 65533, 65534, 4, 65534, 65534, -1610612732, 65535, 65534, 4, 0, 65535, 4, 1, 65535, 4, 2, 65535, 4, 65533, 65535, 4, 65534, 65535, 4, 65535, 65535, 4 )
+"cells": PoolIntArray( 0, 0, 4, 1, 0, 4, 2, 0, 4, 65533, 0, 4, 65534, 0, 4, 65535, 0, 1610612740, 65537, 0, 4, 131070, 0, 4, 131073, 0, 3, 196606, 0, 3, 0, 1, 4, 1, 1, 4, 2, 1, 4, 65533, 1, 4, 65534, 1, 4, 65535, 1, 4, 0, 2, 4, 65535, 2, 4, 0, 3, 4, 65535, 3, 4, 131072, 65525, 4, 196607, 65525, 4, 131072, 65526, 4, 196607, 65526, 4, 131072, 65527, 4, 131073, 65527, 4, 196606, 65527, 4, 196607, 65527, 4, 65536, 65528, 4, 65537, 65528, 4, 131070, 65528, 4, 131071, 65528, 4, 131072, 65528, 4, 131073, 65528, 4, 196606, 65528, 4, 196607, 65528, 4, 65536, 65529, 4, 65537, 65529, 4, 131070, 65529, 4, 131071, 65529, 4, 65536, 65530, 536870916, 65537, 65530, 4, 131070, 65530, 4, 131071, 65530, 4, 0, 65531, 4, 1, 65531, 4, 65534, 65531, 4, 65535, 65531, 4, 0, 65532, 4, 1, 65532, 4, 2, 65532, 4, 65533, 65532, 4, 65534, 65532, 4, 65535, 65532, 4, 0, 65533, 4, 1, 65533, 4, 2, 65533, 4, 65533, 65533, 4, 65534, 65533, 4, 65535, 65533, 4, 65537, 65533, 4, 131070, 65533, 4, 131073, 65533, 3, 196606, 65533, 3, 0, 65534, 4, 1, 65534, 4, 2, 65534, 4, 65533, 65534, 4, 65534, 65534, 4, 65535, 65534, 4, 0, 65535, 4, 1, 65535, 4, 2, 65535, 4, 65533, 65535, 4, 65534, 65535, 4, 65535, 65535, 4 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="portalTownCasino" parent="." instance=ExtResource( 5 )]
+[node name="portalTownCasino" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
 connectedScene = "levels/DebugTown.tscn"
 
-[node name="NPC" parent="." instance=ExtResource( 6 )]
+[node name="NPC" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13894, 8.2514, -4.79153 )
 
 [node name="Sprite3D" parent="NPC" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0443029, 0.304546, -0.0722809 )
 pixel_size = 0.08
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
-[node name="FloorSpell" parent="." instance=ExtResource( 8 )]
+[node name="FloorSpell" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48445, 7.2514, -4.79153 )
-
 
 [editable path="NPC"]

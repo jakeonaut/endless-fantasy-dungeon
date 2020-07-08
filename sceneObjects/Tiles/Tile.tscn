@@ -7,21 +7,34 @@
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
+distance_fade_mode = 2
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 10.0
 
 [sub_resource type="CubeMesh" id=2]
 
 [sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0, 0.858824, 1, 1 )
+albedo_color = Color( 1, 0, 0.258824, 1 )
 albedo_texture = ExtResource( 2 )
+distance_fade_mode = 2
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 10.0
 
 [sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 flags_unshaded = true
+params_depth_draw_mode = 3
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 2, 2, 2 )
+distance_fade_mode = 2
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 10.0
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 4 )
+distance_fade_mode = 2
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 10.0
 
 [sub_resource type="BoxShape" id=6]
 
@@ -55,4 +68,3 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 6 )
-

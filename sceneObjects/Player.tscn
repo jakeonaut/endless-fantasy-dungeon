@@ -134,12 +134,14 @@ transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
+editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 2 )
 
 [node name="SmallInteractionArea" type="Area" parent="."]
+editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
@@ -156,27 +158,15 @@ vframes = 8
 hframes = 8
 script = ExtResource( 5 )
 
-[node name="Lights" type="Spatial" parent="."]
-editor/display_folded = true
-
-[node name="The Sun" type="DirectionalLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, -4.37113e-008, 1, 0, -0.999999, -4.37114e-008, 0, 10, 4.76837e-007 )
-shadow_enabled = true
-shadow_color = Color( 0.552941, 0.552941, 0.552941, 1 )
-directional_shadow_split_1 = 1.0
-directional_shadow_split_2 = 0.5
-directional_shadow_split_3 = 1.0
-
 [node name="CameraY" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]
-transform = Transform( 1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX"]
-transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 16 )
+transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 14 )
 current = true
 fov = 65.0
 size = 20.0
@@ -195,10 +185,6 @@ fov = 65.0
 size = 20.0
 near = 0.1
 
-[node name="Ambient" type="DirectionalLight" parent="CameraY/CameraX"]
-light_energy = 0.1
-shadow_bias = 0.15
-
 [node name="ToyboxCamera" type="Camera" parent="CameraY"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15 )
 fov = 65.0
@@ -206,6 +192,7 @@ size = 20.0
 near = 0.1
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 7 )
@@ -251,6 +238,7 @@ visible = false
 [node name="Sword" parent="Items" instance=ExtResource( 17 )]
 
 [node name="PauseMenu" parent="." instance=ExtResource( 18 )]
+editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
 visible = false
@@ -275,6 +263,7 @@ material/0 = null
 script = ExtResource( 20 )
 
 [node name="GlitchFilter" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 64
 
 [node name="TextureRect" type="TextureRect" parent="GlitchFilter"]

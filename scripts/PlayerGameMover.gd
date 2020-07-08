@@ -16,12 +16,16 @@ var glitch_form = GlitchForm.NORMAL
 var feather_fall_timer = 0
 var feather_fall_time_limit = 30
 
+enum Equipment {
+    NONE,
+    SKATES,
+}
+var equipment = Equipment.NONE
+func equipSkates(): equipment = Equipment.SKATES
+
 # Physics variables
 var recover_walk_speed = 4
 var swimming_walk_speed = 6
-var is_swamp_hopping = false
-var swamp_hop_counter = 0
-var swamp_hop_count_limit = 3
 var lunge_speed = 16
 var is_lunging = 0
 var jump_force = 20
@@ -74,15 +78,6 @@ func _physics_process(delta):
     if global.pauseGame: return
 
     is_touching_water = smallInteractionArea.is_touching_water
-    if not was_touching_water and is_touching_water and swamp_hop_counter < swamp_hop_count_limit \
-       and smallInteractionArea.water_y < global_transform.origin.y + 0.5:
-        is_swamp_hopping = true
-        take_fall_damage = true
-        swamp_hop_counter += 1
-        if swamp_hop_counter == swamp_hop_count_limit:
-            self.startRotateSprite(1)
-        if bumpSound:
-            bumpSound.play()
 
     .processPhysics(delta) #super
     if is_recovering:
@@ -99,7 +94,7 @@ func _physics_process(delta):
 func applyGravity(delta):
     if is_floating:
         g = Vector3(0, grav/2, 0)
-        on_ground = false
+        # on_ground = false
     elif smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
         g = Vector3(0, -grav/2, 0)
     else:
@@ -137,19 +132,38 @@ func isWalkingIntoWall():
             and linear_velocity.z < 2 and linear_velocity.z > -2 \
             and self.is_pressing_horizontal_input
 
+func isSkateWallJumpInput():
+    # self.is_pressing_horizontal_input = (Input.is_action_pressed("ui_left") or 
+    #                                      Input.is_action_pressed("ui_right") or 
+    #                                      Input.is_action_pressed("ui_up") or 
+    #                                      Input.is_action_pressed("ui_down"))
+    # # Forward as "seen" by the camera (OpenGL convention)
+    # var view_forward = -getCamera().get_transform().basis.z
+    # var view_right = -getCamera().get_transform().basis.x
+    # # Forward as "seen" by the player
+    # var forward = Vector3(view_forward.x, 0.0, view_forward.z).normalized()
+    # var right = view_right
+    
+
+    # REAL SOLUTION:
+    # need to check if horizontal input is perpindicular the wall
+    # by using the forward / right vectors against the linear velocity.x/z that is closest to zero
+    # and using the forward / right vectors against the "horizontal" input
+    return self.equipment == Equipment.SKATES and self.isWalkingIntoWall() and not on_ground
+
 func processJumpInputs(delta):
     has_just_lunged = false
     # jump
-    if Input.is_action_just_pressed("ui_jump") and not is_swamp_hopping and not global.pauseMoveInput: 
+    if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
         # Jump from the water
         if smallInteractionArea.is_touching_water:
-            on_ground = false
             is_recovering = false
-            vv = (2*jump_force) / 3
+            vv = (2*jump_force) / 4
+
             jumpSound.play()
+            on_ground = false
             has_just_jumped_timer = -has_just_jumped_time_limit
-            is_lunging = 0
-            swamp_hop_counter = swamp_hop_count_limit
+            is_lunging = -1
             feather_fall_timer = 0
         # Jump from the ground
         elif is_lunging == 0:
@@ -175,10 +189,12 @@ func processJumpInputs(delta):
             has_just_jumped_timer = 0
             feather_fall_timer = 0
         # Double jump
-        elif is_lunging == -1:
+        elif is_lunging == -1 or self.isSkateWallJumpInput():
             vv = jump_force / 1.5
             jumpSound.play()
             is_lunging = -2
+            if self.isSkateWallJumpInput():
+                is_lunging = -1
             has_just_jumped_timer = 0
             feather_fall_timer = 0
     elif take_fall_damage and self.glitch_form != GlitchForm.FLOOR:
@@ -186,25 +202,24 @@ func processJumpInputs(delta):
         take_fall_damage = false
         on_ground = false
 
-    if not is_swamp_hopping:
-        if is_touching_water:
-            if Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
-                float_timer += (delta*22)
-                if float_timer >= big_float_time_limit:
-                    is_floating = true
-            elif not Input.is_action_pressed("ui_jump"):
-                is_floating = false
-                float_timer = 0
-        else: 
+    if is_touching_water:
+        if Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
+            float_timer += (delta*22)
+            if float_timer >= big_float_time_limit:
+                is_floating = true
+        elif not Input.is_action_pressed("ui_jump"):
             is_floating = false
             float_timer = 0
-            if Input.is_action_pressed("ui_jump") and was_touching_water and not global.pauseMoveInput:
-                on_ground = false
-                is_recovering = false
-                vv = jump_force
-                jumpSound.play()
-                has_just_jumped_timer = -has_just_jumped_time_limit
-                is_lunging = 0
+    else: 
+        is_floating = false
+        float_timer = 0
+        if Input.is_action_pressed("ui_jump") and was_touching_water and not global.pauseMoveInput:
+            is_recovering = false
+            vv = (4*jump_force) / 5
+
+            on_ground = false
+            jumpSound.play()
+            has_just_jumped_timer = -has_just_jumped_time_limit
 
 const PROJECTION_ORTHOGONAL = 1
 func processHorizontalInputs(delta):
@@ -240,18 +255,30 @@ func processHorizontalInputs(delta):
     if self.glitch_form == GlitchForm.FEATHER:
         forward = forward / 4
         right = right / 4
+
+    if self.equipment == Equipment.SKATES and not self.isSkateWallJumpInput():
+        forward = forward / 10
+        right = right / 10
+
+    if self.isSkateWallJumpInput():
+        forward = forward * 2
+        right = right * 2
     
     var horizontal_input = false
-    if on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
+    # I'm on the ground or just fell off a platform...
+    var kind_of_on_ground = on_ground or (
+        was_just_on_ground_timer <= was_just_on_ground_time_limit and vv < 0)
+    if kind_of_on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
        smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER or \
        self.glitch_form == GlitchForm.LADDER:
         has_just_jumped_timer += (delta*22)
         
-        if on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
+        if kind_of_on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
            Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")) or \
-           self.glitch_form == GlitchForm.FEATHER or self.glitch_form == GlitchForm.LADDER:
+           self.glitch_form == GlitchForm.FEATHER or self.glitch_form == GlitchForm.LADDER or self.equipment == Equipment.SKATES:
+           
             horizontal_input = true
-            if self.glitch_form != GlitchForm.FEATHER:
+            if self.glitch_form != GlitchForm.FEATHER and self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput():
                 dir = Vector3(0.0, 0.0, 0.0)
 
             if Input.is_action_pressed("ui_up"):
@@ -286,8 +313,10 @@ func processHorizontalInputs(delta):
                     mySprite.faceRight()
                 # getCamera().rotate_left(5)
 
-    if self.glitch_form == GlitchForm.FEATHER:
-        if dir.length() > 1:
+    if self.glitch_form == GlitchForm.FEATHER or self.equipment == Equipment.SKATES:
+        if self.glitch_form == GlitchForm.FEATHER and dir.length() > 1:
+            dir = dir.normalized()
+        if self.equipment == Equipment.SKATES and dir.length() > 2:
             dir = dir.normalized()
         if on_ground and not self.is_pressing_horizontal_input:
             dir = dir * 0.9
@@ -318,8 +347,6 @@ func updateFacing(dir):
 func landed():
     is_lunging = 0
     .landed() #super
-    swamp_hop_counter = 0
-    is_swamp_hopping = false
 
 # @override
 func noFloorBelow():
@@ -330,7 +357,5 @@ func noFloorBelow():
         if should_recover:
             is_recovering = true
             should_recover = false
-        if is_touching_water:
-            is_floating = true
     elif self.glitch_form != GlitchForm.FLOOR:
         on_ground = false
