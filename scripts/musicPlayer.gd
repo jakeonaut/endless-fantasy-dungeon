@@ -1,8 +1,8 @@
 extends Node
 
 onready var titleThemePlayer = get_node("TitleThemePlayer")
-onready var dungeonThemePlayer = get_node("DebugThemePlayer")
-onready var debugThemePlayer = get_node("DungeonThemePlayer")
+onready var dungeonThemePlayer = get_node("DungeonThemePlayer")
+onready var debugThemePlayer = get_node("DebugThemePlayer")
 onready var casinoThemePlayer = get_node("CasinoThemePlayer")
 onready var toxicThemePlayer = get_node("ToxicThemePlayer")
 onready var suburbThemePlayer = get_node("SuburbThemePlayer")

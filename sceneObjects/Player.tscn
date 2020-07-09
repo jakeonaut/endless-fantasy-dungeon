@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=2]
@@ -17,10 +17,11 @@
 [ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=15]
 [ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=16]
 [ext_resource path="res://sceneObjects/Spells/Sword.tscn" type="PackedScene" id=17]
-[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=19]
-[ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=20]
-[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=21]
+[ext_resource path="res://assets/collection_sheet.png" type="Texture" id=18]
+[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=20]
+[ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=21]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=22]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -91,15 +92,23 @@ shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = SubResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=7]
+flags_unshaded = true
+albedo_texture = ExtResource( 18 )
+
+[sub_resource type="PrismMesh" id=8]
+material = SubResource( 7 )
+size = Vector3( 2, 2, 0.5 )
+
+[sub_resource type="SpatialMaterial" id=9]
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
-albedo_texture = ExtResource( 19 )
+albedo_texture = ExtResource( 20 )
 
-[sub_resource type="CubeMesh" id=8]
+[sub_resource type="CubeMesh" id=10]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=11]
 code = "shader_type canvas_item;
 
 uniform float brightness = 1.0;
@@ -118,8 +127,8 @@ void fragment() {
     COLOR.rgb = c;
 }"
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
 shader_param/brightness = 1.0
 shader_param/contrast = 25.0
 shader_param/saturation = 50.0
@@ -159,6 +168,7 @@ hframes = 8
 script = ExtResource( 5 )
 
 [node name="CameraY" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628, 0, 0, 0 )
 script = ExtResource( 6 )
 
@@ -236,8 +246,14 @@ volume_db = -20.0
 visible = false
 
 [node name="Sword" parent="Items" instance=ExtResource( 17 )]
+visible = false
 
-[node name="PauseMenu" parent="." instance=ExtResource( 18 )]
+[node name="MeshInstance" type="MeshInstance" parent="Items/Sword"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, -2 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="PauseMenu" parent="." instance=ExtResource( 19 )]
 editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
@@ -257,10 +273,10 @@ margin_bottom = 47.3208
 [node name="CameraFlash" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 visible = false
-material_override = SubResource( 7 )
-mesh = SubResource( 8 )
+material_override = SubResource( 9 )
+mesh = SubResource( 10 )
 material/0 = null
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="GlitchFilter" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -268,10 +284,11 @@ layer = 64
 
 [node name="TextureRect" type="TextureRect" parent="GlitchFilter"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 12 )
 margin_right = 567.0
 margin_bottom = 554.0
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 expand = true
+
 
 [editable path="PauseMenu"]

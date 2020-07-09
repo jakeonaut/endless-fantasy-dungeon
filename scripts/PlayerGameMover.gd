@@ -28,11 +28,12 @@ var recover_walk_speed = 4
 var swimming_walk_speed = 6
 var lunge_speed = 16
 var is_lunging = 0
+var should_magic_jump = false
 var jump_force = 20
 var weaker_jump_force = 19
 var has_just_lunged = false
 var has_just_jumped_timer = 0
-var has_just_jumped_time_limit = 3
+var has_just_jumped_time_limit = 200# 3
 var should_recover = false
 var is_recovering = false
 var recover_timer = 0
@@ -127,6 +128,9 @@ func processInputs(delta):
         vv = jump_force / 3
     was_pressing_horizontal_input = is_pressing_horizontal_input
 
+func magicJump():
+    should_magic_jump = true
+
 func isWalkingIntoWall():
     return linear_velocity.x < 2 and linear_velocity.x > -2 \
             and linear_velocity.z < 2 and linear_velocity.z > -2 \
@@ -154,7 +158,7 @@ func isSkateWallJumpInput():
 func processJumpInputs(delta):
     has_just_lunged = false
     # jump
-    if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput: 
+    if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
         # Jump from the water
         if smallInteractionArea.is_touching_water:
             is_recovering = false
@@ -166,7 +170,7 @@ func processJumpInputs(delta):
             is_lunging = -1
             feather_fall_timer = 0
         # Jump from the ground
-        elif is_lunging == 0:
+        elif is_lunging == 0 or should_magic_jump:
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
@@ -197,6 +201,7 @@ func processJumpInputs(delta):
                 is_lunging = -1
             has_just_jumped_timer = 0
             feather_fall_timer = 0
+        should_magic_jump = false
     elif take_fall_damage and self.glitch_form != GlitchForm.FLOOR:
         vv = (2*jump_force)/3
         take_fall_damage = false
@@ -268,50 +273,48 @@ func processHorizontalInputs(delta):
     # I'm on the ground or just fell off a platform...
     var kind_of_on_ground = on_ground or (
         was_just_on_ground_timer <= was_just_on_ground_time_limit and vv < 0)
-    if kind_of_on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
-       smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER or \
-       self.glitch_form == GlitchForm.LADDER:
-        has_just_jumped_timer += (delta*22)
+    has_just_jumped_timer += (delta*22)
         
-        if kind_of_on_ground or (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
-           Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")) or \
-           self.glitch_form == GlitchForm.FEATHER or self.glitch_form == GlitchForm.LADDER or self.equipment == Equipment.SKATES:
-           
-            horizontal_input = true
-            if self.glitch_form != GlitchForm.FEATHER and self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput():
-                dir = Vector3(0.0, 0.0, 0.0)
+    if kind_of_on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
+        (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
+        Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")) or \
+        self.glitch_form == GlitchForm.FEATHER or self.glitch_form == GlitchForm.LADDER or self.equipment == Equipment.SKATES:
+        
+        horizontal_input = true
+        if self.glitch_form != GlitchForm.FEATHER and self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput():
+            dir = Vector3(0.0, 0.0, 0.0)
 
-            if Input.is_action_pressed("ui_up"):
-                if not global.pauseMoveInput: 
-                    dir += forward
-                # only change sprite facing if i'm idle of if I just pressed this
-                if not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
-                    (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
-                    mySprite.faceUp()
-            elif Input.is_action_pressed("ui_down"):
-                if not global.pauseMoveInput: 
-                    dir -= forward
-                # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
-                if not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
-                    (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
-                    mySprite.faceDown()
-                    
-            if Input.is_action_pressed("ui_left"):
-                if not global.pauseMoveInput: 
-                    dir += right
-                # only change sprite facing if i'm idle of if I just pressed this
-                if not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
-                   (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
-                    mySprite.faceLeft()
-                # getCamera().rotate_right(5)
-            elif Input.is_action_pressed("ui_right"):
-                if not global.pauseMoveInput: 
-                    dir -= right
-                # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
-                if not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
-                   (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
-                    mySprite.faceRight()
-                # getCamera().rotate_left(5)
+        if Input.is_action_pressed("ui_up"):
+            if not global.pauseMoveInput: 
+                dir += forward
+            # only change sprite facing if i'm idle of if I just pressed this
+            if not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
+                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
+                mySprite.faceUp()
+        elif Input.is_action_pressed("ui_down"):
+            if not global.pauseMoveInput: 
+                dir -= forward
+            # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
+            if not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
+                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
+                mySprite.faceDown()
+                
+        if Input.is_action_pressed("ui_left"):
+            if not global.pauseMoveInput: 
+                dir += right
+            # only change sprite facing if i'm idle of if I just pressed this
+            if not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
+                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
+                mySprite.faceLeft()
+            # getCamera().rotate_right(5)
+        elif Input.is_action_pressed("ui_right"):
+            if not global.pauseMoveInput: 
+                dir -= right
+            # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
+            if not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
+                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
+                mySprite.faceRight()
+            # getCamera().rotate_left(5)
 
     if self.glitch_form == GlitchForm.FEATHER or self.equipment == Equipment.SKATES:
         if self.glitch_form == GlitchForm.FEATHER and dir.length() > 1:

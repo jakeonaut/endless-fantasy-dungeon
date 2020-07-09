@@ -2,6 +2,7 @@ extends "res://scripts/GameMover.gd"
 
 onready var barkSound = get_node("Sounds/BarkSound")
 onready var sprite = get_node("Sprite3D")
+onready var player = get_tree().get_root().get_node("level/Player")
 
 var jump_force = 10
 var shouldJump = false
@@ -22,7 +23,9 @@ func processInputs(delta):
     if shouldJump:
         vv = jump_force
         on_ground = false
-        shouldJump = false    
+        shouldJump = false
+
+        player.magicJump()
     
 func isActive():
     return visible

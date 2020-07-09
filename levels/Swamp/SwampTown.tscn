@@ -1,0 +1,317 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
+[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/color0000.png" type="Texture" id=3]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/playerportrait.png" type="Texture" id=7]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=9]
+[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=10]
+[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=11]
+[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=12]
+[ext_resource path="res://sceneObjects/NPCSeed.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/npcs/glasses.png" type="Texture" id=14]
+[ext_resource path="res://assets/sounds/dreadmystery_firered.wav" type="AudioStream" id=15]
+[ext_resource path="res://scripts/yellowGlasses_3dtea_event.gd" type="Script" id=16]
+[ext_resource path="res://assets/npcs/eyebrowsport.png" type="Texture" id=17]
+[ext_resource path="res://assets/npcs/eyebrows.png" type="Texture" id=18]
+[ext_resource path="res://levels/Swamp/AbortSound_eyebrowsQuest.gd" type="Script" id=19]
+[ext_resource path="res://assets/playerblue0000.png" type="Texture" id=20]
+[ext_resource path="res://sceneObjects/pet.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sceneObjects/chicken.tscn" type="PackedScene" id=22]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=23]
+[ext_resource path="res://sceneObjects/Plant.tscn" type="PackedScene" id=24]
+[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=25]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 4, 2, 2 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 5, 1, 5 )
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1, 1, 2 )
+
+[node name="level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
+
+[node name="BackgroundControl" type="Control" parent="."]
+editor/display_folded = true
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Level Tiles" type="GridMap" parent="."]
+mesh_library = ExtResource( 4 )
+cell_octant_size = 4
+data = {
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 1441793, 2, 0, 1, 3, 0, 1441793, 4, 0, 0, 5, 0, 0, 65533, 0, 1, 65534, 0, 1, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 1, 3, 1, 0, 65533, 1, 1, 65534, 1, 536870912, 65535, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, -262134, 65518, 1, -262133, 65518, 1, -262132, 65518, 1, -262131, 65518, 1, -262130, 65518, 1, 65534, 65519, 1, 65535, 65519, 1, -262135, 65519, 1, -262134, 65519, 536870913, -262133, 65519, 1, -262132, 65519, 3, -262131, 65519, 1, -262130, 65519, 1, -262129, 65519, 1, -262128, 65519, 1, 65534, 65520, 1441793, 65535, 65520, 1, -262138, 65520, 1, -262137, 65520, 1, -262136, 65520, 1, -262135, 65520, 1, -262134, 65520, 3, -262133, 65520, 1, -262132, 65520, 1, -262131, 65520, 1, -262130, 65520, 1, -262129, 65520, 1, -262128, 65520, 1, 0, 65521, 1441793, 1, 65521, 1441793, 65533, 65521, 1441793, 65534, 65521, 1441793, 65535, 65521, 1441793, -262139, 65521, 1, -262138, 65521, 1, -262137, 65521, 1, -262136, 65521, 1, -262135, 65521, 1, -262134, 65521, 1, -262133, 65521, 1, -262132, 65521, 1, -262131, 65521, 1, -262130, 65521, 1, 0, 65522, 1, 1, 65522, 1, 65530, 65522, 1441793, 65533, 65522, 1441793, 65534, 65522, 1441793, 65535, 65522, 1441793, -262135, 65522, 1, -262134, 65522, 1, -262133, 65522, 3, -262132, 65522, 1, -262131, 65522, 1, -196603, 65522, 1, -196602, 65522, 1, -196601, 65522, 1, -196600, 65522, 1, 0, 65523, 1441793, 1, 65523, 1, 2, 65523, 1441793, 65529, 65523, 1441793, 65530, 65523, 1441793, 65531, 65523, 1441793, 65532, 65523, 1441793, 65533, 65523, 1441793, 65535, 65523, 1441793, 65536, 65523, 0, 131072, 65523, 2, -262135, 65523, 1, -262134, 65523, 1, -196600, 65523, 1, -131067, 65523, 1, -131066, 65523, 1, -131065, 65523, 1, -65533, 65523, 1, -65532, 65523, 1, 0, 65524, 1, 1, 65524, 1441793, 2, 65524, 1441793, 65529, 65524, 1441793, 65531, 65524, 1441793, 65532, 65524, 3, 65533, 65524, 1441793, 65534, 65524, 1441793, 65535, 65524, 1, -262135, 65524, 1, -262134, 65524, 1, -196600, 65524, 1, -131067, 65524, 1, -131066, 65524, 1, -131065, 65524, 1, -65533, 65524, 1, -65532, 65524, 1, 0, 65525, 1, 1, 65525, 1441793, 2, 65525, 1441793, 65529, 65525, 1441793, 65530, 65525, 3, 65531, 65525, 3, 65532, 65525, 1441793, 65533, 65525, 1441793, 65534, 65525, 1441793, 65535, 65525, 1441793, 131069, 65525, 2, 196605, 65525, 0, -262136, 65525, 2, -262135, 65525, 2, -196601, 65525, 1, -196600, 65525, 1, -131067, 65525, 1, -131066, 65525, 1, -65533, 65525, 1, -65532, 65525, 1, 0, 65526, 1441793, 1, 65526, 1441793, 2, 65526, 1, 3, 65526, 1441793, 65530, 65526, 1441793, 65531, 65526, 3, 65532, 65526, 1441793, 65533, 65526, 1441793, 65534, 65526, 1441793, 65535, 65526, 1441793, 0, 65527, 1441793, 1, 65527, 1, 2, 65527, 1441793, 3, 65527, 1441793, 4, 65527, 1441793, 65530, 65527, 1441793, 65531, 65527, 1441793, 65532, 65527, 1441793, 65533, 65527, 1441793, 65534, 65527, 1441793, 65535, 65527, 1441793, 65537, 65527, 0, 65538, 65527, 12, 65539, 65527, 12, 65540, 65527, 0, 131073, 65527, 2, 131076, 65527, 0, 196609, 65527, 16, 196611, 65527, 0, 196612, 65527, 0, 262145, 65527, 2, 0, 65528, 1441793, 1, 65528, 1, 2, 65528, 1441793, 3, 65528, 1441793, 4, 65528, 1441793, 65530, 65528, 1441793, 65531, 65528, 1441793, 65532, 65528, 1441793, 65533, 65528, 1441793, 65534, 65528, 1441793, 65535, 65528, 1441793, 65536, 65528, 12, 65537, 65528, 12, 65538, 65528, 12, 65539, 65528, 12, 65540, 65528, 0, 131074, 65528, 12, 131075, 65528, 12, 131076, 65528, 0, 196612, 65528, 12, 0, 65529, 1, 1, 65529, 1441793, 2, 65529, 1441793, 3, 65529, 1441793, 4, 65529, 1441793, 65530, 65529, 1441793, 65531, 65529, 1441793, 65532, 65529, 1441793, 65533, 65529, 1441793, 65534, 65529, 1441793, 65535, 65529, 1441793, 65536, 65529, 12, 65537, 65529, 12, 65538, 65529, 12, 65539, 65529, 12, 65540, 65529, 0, 131070, 65529, 0, 131074, 65529, 12, 131075, 65529, 12, 131076, 65529, 16, 196612, 65529, 0, 0, 65530, 1, 1, 65530, 1, 2, 65530, 1441793, 3, 65530, 1441793, 4, 65530, 1441793, 5, 65530, 1441793, 65530, 65530, 1441793, 65531, 65530, 1441793, 65532, 65530, 1441793, 65533, 65530, 1441793, 65534, 65530, 1441793, 65535, 65530, 1, 65536, 65530, 12, 65537, 65530, 12, 65538, 65530, 12, 65539, 65530, 12, 65540, 65530, 0, 131074, 65530, 12, 131075, 65530, 12, 131076, 65530, 0, 196612, 65530, 2, 0, 65531, 1, 1, 65531, 1, 2, 65531, 1441793, 3, 65531, 1441793, 5, 65531, 1441793, 65531, 65531, 1441793, 65532, 65531, 1441793, 65533, 65531, 1441793, 65534, 65531, 1441793, 65535, 65531, 1441793, 65536, 65531, 12, 65537, 65531, 12, 65538, 65531, 12, 65539, 65531, 12, 65540, 65531, 0, 131074, 65531, 12, 131075, 65531, 12, 131076, 65531, 0, 196612, 65531, 0, 0, 65532, 1, 1, 65532, 1, 2, 65532, 1, 3, 65532, 1441793, 4, 65532, 1441793, 5, 65532, 1441793, 65533, 65532, 1441793, 65534, 65532, 1441793, 65535, 65532, 1, 65536, 65532, 12, 65537, 65532, 12, 65538, 65532, 12, 65539, 65532, 12, 65540, 65532, 12, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 3, 65533, 1441793, 4, 65533, 1441793, 5, 65533, 0, 65533, 65533, 1441793, 65534, 65533, 1441793, 65535, 65533, 1, 65536, 65533, 0, 65537, 65533, 0, 65538, 65533, 0, 65539, 65533, 0, 131071, 65533, 2, 131073, 65533, 0, 131074, 65533, 16, 131075, 65533, 0, 196610, 65533, 2, 196611, 65533, 0, 262147, 65533, 0, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 3, 65534, 1441793, 4, 65534, 1441793, 5, 65534, 0, 65532, 65534, 1441793, 65533, 65534, 1441793, 65534, 65534, 1, 65535, 65534, 1, 65537, 65534, 2, 65538, 65534, 0, 131075, 65534, 2, 0, 65535, 1, 1, 65535, 1441793, 2, 65535, 1, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65532, 65535, 1441793, 65533, 65535, 1441793, 65534, 65535, 0, 65535, 65535, 1, 983041, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -4, 0 )
+}
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
+
+[node name="TextContainer" parent="Player" instance=ExtResource( 6 )]
+editor/display_folded = true
+nextTextBoxPath = NodePath("../../yellowToot/Text2/TextBox")
+bbText = "..........."
+portrait = ExtResource( 7 )
+
+[node name="yellowToot" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 0.20847 )
+
+[node name="NPC TextBox" parent="yellowToot" index="3"]
+editor/display_folded = true
+
+[node name="TextBox" parent="yellowToot/NPC TextBox" index="0"]
+nextTextBoxPath = NodePath("../../../Player/TextContainer/TextBox")
+
+[node name="Portrait" parent="yellowToot/NPC TextBox/TextBox" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Text" parent="yellowToot/NPC TextBox/TextBox" index="1"]
+bbcode_text = "hey!! you finally made it!
+"
+text = "hey!! you finally made it!
+"
+
+[node name="Sprite3D" parent="yellowToot" index="4"]
+texture = ExtResource( 10 )
+
+[node name="Text2" parent="yellowToot" instance=ExtResource( 6 )]
+editor/display_folded = true
+
+[node name="TextBox" parent="yellowToot/Text2" index="0"]
+nextTextBoxPath = NodePath("../../Text3/TextBox")
+
+[node name="Portrait" parent="yellowToot/Text2/TextBox" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Text" parent="yellowToot/Text2/TextBox" index="1"]
+bbcode_text = "..........huh??
+you say you saw a giant
+woman who disappeared?"
+text = "..........huh??
+you say you saw a giant
+woman who disappeared?"
+
+[node name="Text3" parent="yellowToot" instance=ExtResource( 6 )]
+editor/display_folded = true
+
+[node name="TextBox" parent="yellowToot/Text3" index="0"]
+nextTextBoxPath = NodePath("../../Text4/TextBox")
+
+[node name="Portrait" parent="yellowToot/Text3/TextBox" index="0"]
+texture = ExtResource( 11 )
+
+[node name="Text" parent="yellowToot/Text3/TextBox" index="1"]
+bbcode_text = "hm.... we haven't seen
+a goddess in a long time"
+text = "hm.... we haven't seen
+a goddess in a long time"
+
+[node name="Text4" parent="yellowToot" instance=ExtResource( 6 )]
+editor/display_folded = true
+
+[node name="Portrait" parent="yellowToot/Text4/TextBox" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Text" parent="yellowToot/Text4/TextBox" index="1"]
+bbcode_text = "I wonder why she'd show herself to you!!!
+you haven't learned the first thing yet!!"
+text = "I wonder why she'd show herself to you!!!
+you haven't learned the first thing yet!!"
+
+[node name="AbortSound" parent="yellowToot/Text4/TextBox" index="3"]
+script = ExtResource( 12 )
+
+[node name="NPCSeed" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76837, 6.89359, -2.79153 )
+
+[node name="yellowGlasses" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91275, 5.2514, -13.0109 )
+grav = 0
+
+[node name="Portrait" parent="yellowGlasses/NPC TextBox/TextBox" index="0"]
+texture = ExtResource( 14 )
+
+[node name="Text" parent="yellowGlasses/NPC TextBox/TextBox" index="1"]
+bbcode_text = "hello newcomer, can I
+interest you in some
+3 dimensional tea?"
+text = "hello newcomer, can I
+interest you in some
+3 dimensional tea?"
+
+[node name="AbortSound" parent="yellowGlasses/NPC TextBox/TextBox" index="3"]
+stream = ExtResource( 15 )
+script = ExtResource( 16 )
+
+[node name="Sprite3D" parent="yellowGlasses" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0325651, 0 )
+
+[node name="NPC" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91543, 11.0826, -16.9802 )
+bbText = "hey!!!!
+help me out will ya?
+I have a QUEST for you."
+portrait = ExtResource( 17 )
+
+[node name="InteractionArea" parent="NPC" index="1"]
+editor/display_folded = false
+
+[node name="NPC TextBox" parent="NPC" index="3"]
+nextTextBoxPath = NodePath("../TextContainer")
+
+[node name="Sprite3D" parent="NPC" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150422, 0 )
+pixel_size = 0.08
+texture = ExtResource( 18 )
+
+[node name="TextContainer" parent="NPC" instance=ExtResource( 6 )]
+bbText = "
+
+> Yes       No"
+portrait = ExtResource( 7 )
+
+[node name="AbortSound" parent="NPC/TextContainer/TextBox" index="3"]
+script = ExtResource( 19 )
+
+[node name="NPC2" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90978, 10.9891, -4.79153 )
+visible = false
+
+[node name="Sprite3D" parent="NPC2" index="4"]
+pixel_size = 0.08
+texture = ExtResource( 20 )
+
+[node name="CSGMesh" type="CSGMesh" parent="NPC2"]
+transform = Transform( 0.707107, 0, 0.707107, 0.5, 0.707107, -0.5, -0.5, 0.707107, 0.5, 0.0128126, 1.51393, -0.122602 )
+mesh = SubResource( 1 )
+
+[node name="pets" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="pet" parent="pets" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51555, 3.2514, -16.7915 )
+
+[node name="chickey" parent="pets" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.51555, 3.2514, -14.7915 )
+
+[node name="chickey3" parent="pets" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51555, 3.2514, -10.7915 )
+
+[node name="chickey4" parent="pets" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.51555, 3.2514, -11.7915 )
+
+[node name="chickey2" parent="pets" instance=ExtResource( 22 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51555, 3.2514, -12.7915 )
+
+[node name="Sprite3D" parent="pets/chickey2" index="2"]
+flip_h = true
+
+[node name="portals" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="portalTownDungeon" parent="portals" instance=ExtResource( 23 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 7.87169 )
+midLevelDir = "Intro"
+connectedScene = "IntroSceneGoddess.tscn"
+
+[node name="portalTownCasino" parent="portals" instance=ExtResource( 23 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 1.06581e-014, 0, 1, 0, -1.06581e-014, 0, 1, -2, 3.4124, -33.0479 )
+midLevelDir = "Casino"
+connectedScene = "CasinoScene2.tscn"
+
+[node name="portalTownGarden" parent="portals" instance=ExtResource( 23 )]
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 33.2717, -4.5876, -32.0479 )
+connectedScene = "NpcGarden.tscn"
+
+[node name="plants" type="Node" parent="."]
+
+[node name="Plant" parent="plants" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4, -21 )
+
+[node name="Plant2" parent="plants" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -4, -34 )
+
+[node name="Plant3" parent="plants" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -4, -29 )
+
+[node name="Plant4" parent="plants" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -4, -31 )
+
+[node name="Water" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Area" type="Area" parent="Water" groups=[
+"water",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Water/Area"]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 6, 1, 2 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Water/Area"]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 5, 0, 3 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Water/Area"]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 9, 4, -1 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Water/Area"]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 6, 0, -3 )
+shape = SubResource( 5 )
+
+[node name="SavePoint" parent="." instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -21 )
+
+
+[editable path="Player"]
+
+[editable path="yellowToot"]
+
+[editable path="yellowToot/NPC TextBox"]
+
+[editable path="yellowToot/Text2"]
+
+[editable path="yellowToot/Text3"]
+
+[editable path="yellowToot/Text4"]
+
+[editable path="yellowGlasses"]
+
+[editable path="yellowGlasses/NPC TextBox"]
+
+[editable path="NPC"]
+
+[editable path="NPC/TextContainer"]
+
+[editable path="NPC2"]
+
+[editable path="pets/chickey2"]

@@ -34,11 +34,11 @@ shape = SubResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 3 )
-pixel_size = 0.08
+pixel_size = 0.1
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 3 )
-vframes = 2
+vframes = 3
 hframes = 3
 script = ExtResource( 4 )
 
