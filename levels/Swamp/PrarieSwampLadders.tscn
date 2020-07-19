@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/realmini.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/grass.png" type="Texture" id=3]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sceneObjects/Ladder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sceneObjects/BigLadder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sceneObjects/Plant.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sceneObjects/NPCSeed.tscn" type="PackedScene" id=10]
 
 [node name="level" type="Node"]
 script = ExtResource( 1 )
@@ -15,29 +17,35 @@ script = ExtResource( 1 )
 [node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundControl" type="Control" parent="."]
-editor/display_folded = true
 
 [node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
 margin_right = 1020.0
 margin_bottom = 763.0
 texture = ExtResource( 3 )
-stretch_mode = 2
+stretch_mode = 1
 
 [node name="Level Tiles" type="GridMap" parent="."]
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 2, 65533, 0, 0, 65534, 0, 536870912, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 2, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 65531, 2, 1, 65531, 2, 2, 65531, 2, 3, 65531, 2, 65533, 65531, 2, 65534, 65531, 2, 65535, 65531, 2, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 2, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 262144, 65532, 536870914, 262145, 65532, 2, 262146, 65532, 2, 327679, 65532, 2, 0, 65533, 0, 1, 65533, 536870912, 2, 65533, 0, 3, 65533, 2, 65533, 65533, 536870912, 65534, 65533, 0, 65535, 65533, 0, 262144, 65533, 2, 262145, 65533, 2, 262146, 65533, 2, 327679, 65533, 536870914, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 2, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 262144, 65534, 2, 262145, 65534, 2, 262146, 65534, 536870914, 327679, 65534, 2, 524288, 65534, 2, 524289, 65534, 536870914, 0, 65535, 0, 1, 65535, 0, 2, 65535, 536870912, 3, 65535, 2, 65533, 65535, 0, 65534, 65535, 536870912, 65535, 65535, 0, 262144, 65535, 2, 262145, 65535, 2, 262146, 65535, 2, 327679, 65535, 2, 524288, 65535, 2, 524289, 65535, 2 )
+"cells": PoolIntArray( 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 524288, 0, 1, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 589823, 0, 1, 0, 1, 1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 65533, 1, 1, 65534, 1, 1, 65535, 1, 1, 0, 2, 1, 65535, 2, 1, 0, 3, 1, 65535, 3, 1, 0, 65531, 1, 1, 65531, 1, 2, 65531, 1, 3, 65531, 1, 65533, 65531, 1, 65534, 65531, 1, 65535, 65531, 1, 0, 65532, 1, 1, 65532, 1, 2, 65532, 1, 3, 65532, 1, 65533, 65532, 1, 65534, 65532, 3, 65535, 65532, 1, 262144, 65532, 2, 262145, 65532, 2, 262146, 65532, 3, 327679, 65532, 3, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 3, 65533, 1, 65533, 65533, 1, 65534, 65533, 1, 65535, 65533, 1, 262144, 65533, 3, 262145, 65533, 2, 262146, 65533, 2, 327679, 65533, 2, 0, 65534, 1, 1, 65534, 1, 2, 65534, 1, 3, 65534, 1, 65533, 65534, 1, 65534, 65534, 1, 65535, 65534, 3, 262144, 65534, 3, 262145, 65534, 3, 262146, 65534, 3, 327679, 65534, 2, 524288, 65534, 1, 524289, 65534, 1, 589823, 65534, 1, 0, 65535, 1, 1, 65535, 1, 2, 65535, 1, 3, 65535, 1, 65533, 65535, 1, 65534, 65535, 1, 65535, 65535, 1, 262144, 65535, 2, 262145, 65535, 3, 262146, 65535, 2, 327679, 65535, 2, 524288, 65535, 1, 524289, 65535, 3, 524290, 65535, 1, 524291, 65535, 1, 589823, 65535, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 4, 0 )
+"_editor_floor_": Vector3( 0, 8, 0 )
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="portdoor" parent="." instance=ExtResource( 6 )]
+[node name="portalTownGarden" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+midLevelDir = "Swamp"
+connectedScene = "SwampTown.tscn"
+
+[node name="portalLadderSpaces" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, 7, 19.4124, -0.0479202 )
+midLevelDir = "Swamp"
+connectedScene = "PrarieSwampSpaces.tscn"
 
 [node name="Ladders" type="Node" parent="."]
 editor/display_folded = true
@@ -57,5 +65,32 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -2.51
 [node name="BigLadder" parent="Ladders" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 4.2514, 0.20847 )
 
+[node name="BigLadder3" parent="Ladders" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 2.48445, 12.2514, -4.79153 )
+
+[node name="BigLadder4" parent="Ladders" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 2.48445, 16.2514, -4.79153 )
+
 [node name="BigLadder2" parent="Ladders" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 8.2514, 0.20847 )
+
+[node name="plants" type="Node" parent="."]
+
+[node name="Plant" parent="plants" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, 3 )
+
+[node name="Plant5" parent="plants" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 20, 1 )
+
+[node name="Plant2" parent="plants" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, 3 )
+
+[node name="Plant3" parent="plants" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, -9 )
+
+[node name="Plant4" parent="plants" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, -9 )
+
+[node name="NPCSeed" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51555, 3.2514, -0.79153 )
+

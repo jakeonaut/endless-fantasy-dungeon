@@ -8,7 +8,7 @@
 size = Vector3( 1.9, 1.9, 1.9 )
 
 [sub_resource type="AnimatedTexture" id=2]
-flags = 3
+flags = 19
 frames = 2
 fps = 1.0
 frame_0/texture = ExtResource( 2 )
@@ -16,9 +16,11 @@ frame_1/texture = ExtResource( 3 )
 frame_1/delay_sec = 0.0
 
 [sub_resource type="SpatialMaterial" id=3]
-flags_transparent = true
 flags_unshaded = true
+params_specular_mode = 4
+params_cull_mode = 1
 params_depth_draw_mode = 3
+params_billboard_mode = 1
 albedo_texture = SubResource( 2 )
 uv2_scale = Vector3( 0.5, 0.5, 0.5 )
 
@@ -39,7 +41,6 @@ material/0 = SubResource( 3 )
 [node name="InteractionArea" type="Area" parent="." groups=[
 "enemies",
 ]]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
@@ -47,4 +48,3 @@ shape = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 5 )
-

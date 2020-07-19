@@ -6,7 +6,8 @@ func _ready():
     pass
 
 func activateScript():
-    player.glitch_form = player.GlitchForm.FEATHER
+    # OVERRIDE ME
+    pass
 
 func isActive():
     # OVERRIDE ME... if you dare

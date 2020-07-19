@@ -1,5 +1,7 @@
 extends Area
 
+onready var parent = get_parent()
+
 var is_touching_a_ladder = false
 var is_touching_enemy = false
 var is_touching_speed_boost = false
@@ -12,11 +14,11 @@ func _ready():
     set_process(true)
 
 func _process(delta):
-    var areas = get_overlapping_areas()
     is_touching_a_ladder = false
     is_touching_enemy = false
     is_touching_speed_boost = false
     is_touching_water = false
+    var areas = get_overlapping_areas()
     for area in areas:
         if area.is_in_group("ladders"):
             is_touching_a_ladder = true

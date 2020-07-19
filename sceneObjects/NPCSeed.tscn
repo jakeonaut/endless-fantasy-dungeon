@@ -66,4 +66,3 @@ volume_db = -20.0
 [node name="ShatterSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
 volume_db = -20.0
-

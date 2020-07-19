@@ -7,6 +7,8 @@ onready var sunLight = get_node("../commonWorldEnvironment/The Sun")
 
 onready var glitchFilter = get_node("GlitchFilter/TextureRect") if has_node("GlitchFilter/TextureRect") else null
 
+onready var broom = get_node("CameraY/broom")
+
 var sprite_reset_timer = 0
 var sprite_reset_limit = 3
 var cameraRotationCounter = 0
@@ -53,6 +55,32 @@ func _process(delta):
         else:
             if pauseMenu: pauseMenu.hide()
             global.pauseGame = false
+
+    if broom_state > 0:
+        self.faceDown()
+        broom_timer += (delta*22)
+        if broom_timer >= broom_time_limit:
+            broom_timer = 0
+            var broom_mesh = broom.get_node("broom")
+            if broom_state == 1:
+                broom_mesh.rotation_degrees.z = 10
+                broom_state = 2
+            elif broom_state == 2:
+                broom_mesh.translation.x = 5
+                broom_state = 3
+            elif broom_state == 3:
+                broom_mesh.rotation_degrees.z = -10
+                broom_state = 4
+            elif broom_state == 4:
+                broom_mesh.translation.x = 0
+                broom_state = 0
+                broom.visible = false
+
+    if Input.is_action_just_pressed("ui_action") and can_broom:
+        broom.visible = true
+        broom_state = 1
+        broom_timer = 0
+        can_broom = false
 
     tryRotateCamera(delta)
 

@@ -15,6 +15,7 @@ var is_held = false
 var was_just_thrown = false
 var thrown_down = false
 var was_planted = false
+# so it doesn't hatch/crash on initial load
 var has_initially_landed = false
 
 var pickupCounter = 0

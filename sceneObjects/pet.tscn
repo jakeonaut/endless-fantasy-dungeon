@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/pet.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 
 [sub_resource type="SphereShape" id=2]
 radius = 2.0
+
+[sub_resource type="SphereShape" id=4]
+radius = 1.4
 
 [sub_resource type="SpatialMaterial" id=3]
 flags_transparent = true
@@ -26,11 +29,17 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
-input_ray_pickable = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 2 )
+
+[node name="SmallInteractionArea" type="Area" parent="." groups=[
+"dog",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
+shape = SubResource( 4 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 3 )
@@ -53,4 +62,3 @@ stream = ExtResource( 6 )
 volume_db = -20.0
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=2]
@@ -6,22 +6,21 @@
 [ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/PlayerSprite.gd" type="Script" id=5]
 [ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=6]
-[ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/DELETEME/LA_Link_Fall.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sounds/hurt.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=15]
-[ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=16]
-[ext_resource path="res://sceneObjects/Spells/Sword.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/collection_sheet.png" type="Texture" id=18]
-[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=19]
-[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=20]
-[ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=21]
-[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=22]
+[ext_resource path="res://assets/mesh/broom.dae" type="PackedScene" id=7]
+[ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/DELETEME/LA_Link_Fall.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/hurt.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=16]
+[ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=19]
+[ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=20]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=21]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -30,85 +29,22 @@ radius = 2.0
 
 [sub_resource type="BoxShape" id=3]
 
-[sub_resource type="Shader" id=4]
-code = "shader_type spatial;
-render_mode blend_mix,depth_draw_alpha_prepass,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
-uniform vec4 albedo : hint_color;
-uniform sampler2D texture_albedo : hint_albedo;
-uniform float specular;
-uniform float metallic;
-uniform float roughness : hint_range(0,1);
-uniform float point_size : hint_range(0,128);
-uniform sampler2D texture_metallic : hint_white;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_white;
-uniform vec4 roughness_texture_channel;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat4(CAMERA_MATRIX[0],CAMERA_MATRIX[1],CAMERA_MATRIX[2],WORLD_MATRIX[3]);
-}
-
-
-
-
-void fragment() {
-	vec2 base_uv = UV;
-	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
-	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-	SPECULAR = specular;
-	ALPHA = albedo.a * albedo_tex.a;
-    if (albedo_tex.r == 1.0 && albedo_tex.g == 0.0 && albedo_tex.b == 1.0) {
-        ALPHA = 0.0;
-    }
-}
-"
-
-[sub_resource type="ViewportTexture" id=5]
-viewport_path = NodePath("SpriteViewport")
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 4 )
-shader_param/albedo = Color( 1, 1, 1, 1 )
-shader_param/specular = 0.5
-shader_param/metallic = 0.0
-shader_param/roughness = 1.0
-shader_param/point_size = 1.0
-shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
-shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
-shader_param/uv1_scale = Vector3( 1, 1, 1 )
-shader_param/uv1_offset = Vector3( 0, 0, 0 )
-shader_param/uv2_scale = Vector3( 1, 1, 1 )
-shader_param/uv2_offset = Vector3( 0, 0, 0 )
-shader_param/texture_albedo = SubResource( 5 )
-
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
 flags_unshaded = true
-albedo_texture = ExtResource( 18 )
+params_cull_mode = 2
+params_billboard_mode = 1
 
-[sub_resource type="PrismMesh" id=8]
-material = SubResource( 7 )
-size = Vector3( 2, 2, 0.5 )
-
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
-albedo_texture = ExtResource( 20 )
+albedo_texture = ExtResource( 19 )
 
-[sub_resource type="CubeMesh" id=10]
+[sub_resource type="CubeMesh" id=6]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="Shader" id=11]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 uniform float brightness = 1.0;
@@ -127,8 +63,8 @@ void fragment() {
     COLOR.rgb = c;
 }"
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
 shader_param/brightness = 1.0
 shader_param/contrast = 25.0
 shader_param/saturation = 50.0
@@ -158,7 +94,7 @@ shape = SubResource( 3 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135961, 0 )
-material_override = SubResource( 6 )
+material_override = SubResource( 4 )
 pixel_size = 0.08
 shaded = true
 alpha_cut = 2
@@ -168,11 +104,11 @@ hframes = 8
 script = ExtResource( 5 )
 
 [node name="CameraY" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628, 0, 0, 0 )
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX"]
@@ -201,59 +137,64 @@ fov = 65.0
 size = 20.0
 near = 0.1
 
+[node name="broom" parent="CameraY" instance=ExtResource( 7 )]
+transform = Transform( 0.499315, 0, -0.026168, 0, 0.6, 0, 0.026168, 0, 0.499315, -1.29121, -1.11677, 0.0572929 )
+visible = false
+
+[node name="broom" parent="CameraY/broom" index="0"]
+transform = Transform( 0.978195, 0.175314, 4.44089e-016, -0.172482, 0.994253, 0, -4.44089e-016, 0, 1, 0, 2.313, 0 )
+
+[node name="Camera" parent="CameraY/broom" index="1"]
+visible = false
+
+[node name="Light" parent="CameraY/broom" index="2"]
+visible = false
+
 [node name="Sounds" type="Node" parent="."]
 editor/display_folded = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -25.0
 
 [node name="JumpOverallsSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 8 )
-volume_db = -30.0
-
-[node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
 volume_db = -30.0
 
-[node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 10 )
 volume_db = -30.0
 
-[node name="FallSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
+volume_db = -30.0
+
+[node name="FallSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 12 )
 volume_db = -25.0
 
 [node name="WormSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 12 )
-volume_db = -30.0
-
-[node name="WormClimbSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 13 )
 volume_db = -30.0
 
-[node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="WormClimbSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 14 )
+volume_db = -30.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 15 )
 volume_db = -20.0
 
 [node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 volume_db = -20.0
 
 [node name="Items" type="Spatial" parent="."]
 
-[node name="BugNet" parent="Items" instance=ExtResource( 16 )]
+[node name="BugNet" parent="Items" instance=ExtResource( 17 )]
 visible = false
 
-[node name="Sword" parent="Items" instance=ExtResource( 17 )]
-visible = false
-
-[node name="MeshInstance" type="MeshInstance" parent="Items/Sword"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, -2 )
-mesh = SubResource( 8 )
-material/0 = null
-
-[node name="PauseMenu" parent="." instance=ExtResource( 19 )]
+[node name="PauseMenu" parent="." instance=ExtResource( 18 )]
 editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
@@ -273,10 +214,10 @@ margin_bottom = 47.3208
 [node name="CameraFlash" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 visible = false
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
+material_override = SubResource( 5 )
+mesh = SubResource( 6 )
 material/0 = null
-script = ExtResource( 21 )
+script = ExtResource( 20 )
 
 [node name="GlitchFilter" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -284,11 +225,12 @@ layer = 64
 
 [node name="TextureRect" type="TextureRect" parent="GlitchFilter"]
 visible = false
-material = SubResource( 12 )
+material = SubResource( 8 )
 margin_right = 567.0
 margin_bottom = 554.0
-texture = ExtResource( 22 )
+texture = ExtResource( 21 )
 expand = true
 
+[editable path="CameraY/broom"]
 
 [editable path="PauseMenu"]

@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/realmini.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/grass.png" type="Texture" id=3]
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/Plant.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sceneObjects/BigLadder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sceneObjects/Enemies/GlitchEnemyWalker.tscn" type="PackedScene" id=10]
 
 [node name="level" type="Node"]
 script = ExtResource( 1 )
@@ -13,26 +17,68 @@ script = ExtResource( 1 )
 [node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundControl" type="Control" parent="."]
-editor/display_folded = true
 
 [node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
 margin_right = 1020.0
 margin_bottom = 763.0
 texture = ExtResource( 3 )
-stretch_mode = 2
+expand = true
+stretch_mode = 1
 
 [node name="Level Tiles" type="GridMap" parent="."]
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 3, 1, 0, 536870912, 2, 0, 536870912, 65533, 0, 0, 65534, 0, 536870915, 65535, 0, 3, 0, 1, 536870912, 1, 1, 536870912, 2, 1, 536870912, 65533, 1, 536870915, 65534, 1, 536870912, 65535, 1, 536870915, 0, 2, 0, 65535, 2, 536870912, 0, 3, 536870912, 65535, 3, 0, 0, 65525, 536870912, 1, 65525, 536870912, 2, 65525, 0, 5, 65525, 536870912, 6, 65525, 536870912, 7, 65525, 0, 8, 65525, 536870912, 9, 65525, 536870914, 65533, 65525, 0, 65534, 65525, 536870912, 65535, 65525, 0, 0, 65526, 536870914, 1, 65526, 536870914, 2, 65526, 0, 5, 65526, 536870912, 6, 65526, 536870912, 7, 65526, 536870912, 8, 65526, 536870912, 9, 65526, 536870912, 65533, 65526, 536870912, 65534, 65526, 536870912, 65535, 65526, 536870912, 0, 65527, 536870912, 1, 65527, 536870915, 2, 65527, 536870912, 5, 65527, 536870912, 6, 65527, 536870914, 7, 65527, 536870912, 8, 65527, 3, 9, 65527, 536870912, 10, 65527, 536870912, 11, 65527, 536870912, 65533, 65527, 536870912, 65534, 65527, 536870915, 65535, 65527, 536870912, 0, 65528, 536870915, 1, 65528, 536870912, 2, 65528, 536870912, 5, 65528, 536870912, 6, 65528, 536870912, 7, 65528, 536870915, 8, 65528, 536870912, 9, 65528, 536870912, 10, 65528, 0, 11, 65528, 536870912, 65533, 65528, 536870912, 65534, 65528, 536870912, 65535, 65528, 536870914, 0, 65529, 0, 1, 65529, 536870915, 2, 65529, 536870912, 5, 65529, 536870912, 6, 65529, 536870912, 7, 65529, 0, 8, 65529, 536870912, 9, 65529, 536870912, 65533, 65529, 0, 65534, 65529, 536870912, 65535, 65529, 536870915, 0, 65530, 536870912, 1, 65530, 536870912, 2, 65530, 536870914, 5, 65530, 0, 6, 65530, 536870912, 7, 65530, 536870912, 8, 65530, 536870912, 9, 65530, 536870915, 65533, 65530, 536870912, 65534, 65530, 536870912, 65535, 65530, 536870912, 0, 65533, 536870915, 1, 65533, 536870915, 2, 65533, 536870914, 65533, 65533, 0, 65534, 65533, -1610612736, 65535, 65533, 536870912, 0, 65534, 3, 1, 65534, 1610612736, 2, 65534, 536870915, 65533, 65534, 536870912, 65534, 65534, 3, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 3, 2, 65535, 0, 65533, 65535, 2, 65534, 65535, 0, 65535, 65535, 3 )
+"cells": PoolIntArray( 0, 0, 3, 1, 0, 1, 2, 0, 0, 65533, 0, 1, 65534, 0, 3, 65535, 0, 3, 0, 1, 1, 1, 1, 1, 2, 1, 0, 65533, 1, 3, 65534, 1, 0, 65535, 1, 3, 0, 2, 1, 65535, 2, 1, 0, 3, 0, 65535, 3, 1, 0, 65525, 1, 1, 65525, 1, 2, 65525, 1, 5, 65525, 1, 6, 65525, 1, 7, 65525, 1, 8, 65525, 1, 9, 65525, 2, 65533, 65525, 1, 65534, 65525, 1, 65535, 65525, 1, 0, 65526, 2, 1, 65526, 2, 2, 65526, 1, 5, 65526, 1, 6, 65526, 1, 7, 65526, 1, 8, 65526, 1, 9, 65526, 1, 65533, 65526, 1, 65534, 65526, 1, 65535, 65526, 1, 327684, 65526, 1, 327685, 65526, 1, 327686, 65526, 1, 327687, 65526, 1, 327688, 65526, 1, 0, 65527, 1, 1, 65527, 3, 2, 65527, 1, 5, 65527, 1, 6, 65527, 2, 7, 65527, 1, 8, 65527, 3, 9, 65527, 1, 10, 65527, 1, 11, 65527, 0, 65533, 65527, 1, 65534, 65527, 3, 65535, 65527, 1, 327684, 65527, 1, 327685, 65527, 1, 327686, 65527, 1, 327687, 65527, 1, 327688, 65527, 1, 0, 65528, 3, 1, 65528, 1, 2, 65528, 1, 5, 65528, 1, 6, 65528, 1, 7, 65528, 3, 8, 65528, 1, 9, 65528, 1, 10, 65528, 0, 11, 65528, 1, 65533, 65528, 1, 65534, 65528, 1, 65535, 65528, 2, 327684, 65528, 1, 327685, 65528, 1, 327686, 65528, 1, 327687, 65528, 1, 327688, 65528, 1, 0, 65529, 1, 1, 65529, 3, 2, 65529, 536870913, 5, 65529, 1, 6, 65529, 1, 7, 65529, 1, 8, 65529, 1, 9, 65529, 1, 65533, 65529, 1, 65534, 65529, 1, 65535, 65529, 3, 327684, 65529, 1, 327685, 65529, 1, 327686, 65529, 1, 327687, 65529, 1, 327688, 65529, 1, 0, 65530, 1, 1, 65530, 1, 2, 65530, 2, 5, 65530, 1, 6, 65530, 1, 7, 65530, 1, 8, 65530, 1, 9, 65530, 3, 65533, 65530, 1, 65534, 65530, 1, 65535, 65530, 1, 327684, 65530, 1, 327685, 65530, 1073741825, 327686, 65530, 1, 327687, 65530, 1, 327688, 65530, 1, 0, 65533, 3, 1, 65533, 3, 2, 65533, 2, 65533, 65533, 0, 65534, 65533, 1, 65535, 65533, 1, 0, 65534, 3, 1, 65534, 1, 2, 65534, 3, 65533, 65534, 1, 65534, 65534, 3, 65535, 65534, 1610612737, 0, 65535, 1, 1, 65535, 3, 2, 65535, 0, 65533, 65535, 2, 65534, 65535, 1, 65535, 65535, 3 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 5, 0 )
 }
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="portdoor" parent="." instance=ExtResource( 6 )]
+[node name="portalLadderSpaces" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+midLevelDir = "Swamp"
+connectedScene = "PrarieSwampLadders.tscn"
+
+[node name="plants" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Plant" parent="plants" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 0 )
+
+[node name="Plant2" parent="plants" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, -4 )
+
+[node name="Plant3" parent="plants" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -19 )
+
+[node name="Plant4" parent="plants" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -13 )
+
+[node name="Plant5" parent="plants" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -17 )
+
+[node name="ladders" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="BigLadder3" parent="ladders" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 18.4845, 11.2514, -13.7915 )
+
+[node name="BigLadder" parent="ladders" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 18.4845, 4.2514, -13.7915 )
+
+[node name="BigLadder2" parent="ladders" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 18.4845, 8.2514, -13.7915 )
+
+[node name="GlitchEnemy" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="GlitchEnemyWalker" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -13 )
+
+[node name="GlitchEnemyWalker2" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -18 )
+

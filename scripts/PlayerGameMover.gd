@@ -15,6 +15,10 @@ enum GlitchForm {
 var glitch_form = GlitchForm.NORMAL
 var feather_fall_timer = 0
 var feather_fall_time_limit = 30
+var is_holding_chicken = false
+
+func isFeatherLike():
+    return glitch_form == GlitchForm.FEATHER or is_holding_chicken
 
 enum Equipment {
     NONE,
@@ -44,6 +48,11 @@ var is_pressing_horizontal_input = false
 var was_pressing_horizontal_input = false
 var facing = Vector3(0, 0, -1) #default to facing forward
 var transitioning = false
+
+var broom_timer = 0
+var broom_time_limit = 3
+var broom_state = 0
+var can_broom = true
 
 func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
@@ -96,7 +105,7 @@ func applyGravity(delta):
     if is_floating:
         g = Vector3(0, grav/2, 0)
         # on_ground = false
-    elif smallInteractionArea.is_touching_water or self.glitch_form == GlitchForm.FEATHER:
+    elif smallInteractionArea.is_touching_water or self.isFeatherLike() or broom_state > 0:
         g = Vector3(0, -grav/2, 0)
     else:
         g = Vector3(0, -grav, 0)
@@ -108,7 +117,8 @@ func applyGravity(delta):
 func applyTerminalVelocity(delta):
     feather_fall_timer += (delta*22)
     if smallInteractionArea.is_touching_water or (
-       self.glitch_form == GlitchForm.FEATHER and feather_fall_timer < feather_fall_time_limit):
+       self.glitch_form == GlitchForm.FEATHER and self.feather_fall_timer < self.feather_fall_time_limit) or \
+       self.is_holding_chicken or self.broom_state > 0:
         terminal_vel = water_terminal_vel
     else:
         terminal_vel = true_terminal_vel
@@ -157,6 +167,7 @@ func isSkateWallJumpInput():
 
 func processJumpInputs(delta):
     has_just_lunged = false
+
     # jump
     if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
         # Jump from the water
@@ -257,7 +268,7 @@ func processHorizontalInputs(delta):
                 forward = Vector3(1, 0, 0)
                 right = Vector3(0, 0, -1)
 
-    if self.glitch_form == GlitchForm.FEATHER:
+    if self.glitch_form == GlitchForm.FEATHER or (self.is_holding_chicken and not on_ground):
         forward = forward / 4
         right = right / 4
 
@@ -278,46 +289,47 @@ func processHorizontalInputs(delta):
     if kind_of_on_ground or has_just_jumped_timer < has_just_jumped_time_limit or \
         (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or \
         Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")) or \
-        self.glitch_form == GlitchForm.FEATHER or self.glitch_form == GlitchForm.LADDER or self.equipment == Equipment.SKATES:
+        self.isFeatherLike() or self.glitch_form == GlitchForm.LADDER or self.equipment == Equipment.SKATES:
         
         horizontal_input = true
-        if self.glitch_form != GlitchForm.FEATHER and self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput():
+        if self.glitch_form != GlitchForm.FEATHER and (not self.is_holding_chicken or on_ground) and \
+           self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput():
             dir = Vector3(0.0, 0.0, 0.0)
 
         if Input.is_action_pressed("ui_up"):
             if not global.pauseMoveInput: 
                 dir += forward
             # only change sprite facing if i'm idle of if I just pressed this
-            if not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
-                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
+            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
+                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))):
                 mySprite.faceUp()
         elif Input.is_action_pressed("ui_down"):
             if not global.pauseMoveInput: 
                 dir -= forward
             # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
-            if not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
-                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right")):
+            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
+                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))):
                 mySprite.faceDown()
                 
         if Input.is_action_pressed("ui_left"):
             if not global.pauseMoveInput: 
                 dir += right
             # only change sprite facing if i'm idle of if I just pressed this
-            if not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
-                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
+            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
+                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))):
                 mySprite.faceLeft()
             # getCamera().rotate_right(5)
         elif Input.is_action_pressed("ui_right"):
             if not global.pauseMoveInput: 
                 dir -= right
             # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
-            if not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
-                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down")):
+            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
+                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))):
                 mySprite.faceRight()
             # getCamera().rotate_left(5)
 
-    if self.glitch_form == GlitchForm.FEATHER or self.equipment == Equipment.SKATES:
-        if self.glitch_form == GlitchForm.FEATHER and dir.length() > 1:
+    if self.isFeatherLike() or self.equipment == Equipment.SKATES:
+        if self.isFeatherLike() and dir.length() > 1:
             dir = dir.normalized()
         if self.equipment == Equipment.SKATES and dir.length() > 2:
             dir = dir.normalized()
@@ -328,7 +340,7 @@ func processHorizontalInputs(delta):
 
     updateFacing(dir)
     var curr_walk_speed = walk_speed
-    if smallInteractionArea.is_touching_water or (not on_ground and self.glitch_form == GlitchForm.FEATHER):
+    if smallInteractionArea.is_touching_water or (not on_ground and self.isFeatherLike()):
         curr_walk_speed = swimming_walk_speed
     elif is_recovering or should_recover or (not on_ground and self.glitch_form == GlitchForm.LADDER):
         curr_walk_speed = recover_walk_speed
@@ -338,6 +350,8 @@ func processHorizontalInputs(delta):
         hv = dir * curr_walk_speed
     if has_just_lunged:
         hv = dir * lunge_speed
+    if broom_state > 0:
+        hv = dir * curr_walk_speed * 0.5
 
 func updateFacing(dir):
     if dir.x != 0 or dir.y != 0 or dir.z != 0:
@@ -354,6 +368,7 @@ func landed():
 # @override
 func noFloorBelow():
     if is_on_floor():
+        can_broom = true
         fallCounter = 0
         feather_fall_timer = 0
         on_ground = true
