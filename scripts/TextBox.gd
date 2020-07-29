@@ -4,6 +4,8 @@ onready var text = get_node("Text")
 onready var dialogSound = get_node("DialogSound")
 onready var abortSound = get_node("AbortSound")
 export(NodePath) var nextTextBoxPath = NodePath("")
+onready var player = get_tree().get_root().get_node("level").get_node("Player")
+
 var type = "textBox"
 
 func _ready():
@@ -31,6 +33,9 @@ func interact():
             get_node("Event").activate()
         global.pauseGame = true
         global.pauseMoveInput = true
+        player.on_ground = true
+        player.vv = 0
+        player.is_lunging = 0
     else:
         self.hide()
         global.pauseGame = false

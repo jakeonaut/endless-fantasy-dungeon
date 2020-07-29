@@ -2,6 +2,7 @@ extends "TwinPlayerGameMover.gd"
 
 var just_spawned_timer = 0
 var spawn_time_limit = 10
+var broom_state = 0
 
 # var is_stone = false # defined in TwinPlayerGameMover.gd
 

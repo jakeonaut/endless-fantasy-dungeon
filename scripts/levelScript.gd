@@ -12,7 +12,6 @@ func _ready_impl():
     set_process(true)
 
     global.activeInteractor = null
-    global.activeThrowableObject = null
     global.pauseMoveInput = false
     global.pauseGame = false
 
@@ -51,6 +50,17 @@ func _ready_impl():
         # player.getCamera().rotateTo(global.cameraRotation + found_door.rotation_degrees.y + 180, true)
     # elif global.cameraRotation:
         # player.getCamera().rotateTo(global.cameraRotation, true)
+
+    global.activeThrowableObject = null
+    if global.activeThrowableObjectPath != null:
+        # resource is loaded at compile time
+        var carriedThrowableObject = load(global.activeThrowableObjectPath).instance() 
+        add_child(carriedThrowableObject)
+        carriedThrowableObject.activate()
+        carriedThrowableObject.spawn_origin = carriedThrowableObject.global_transform.origin
+    else:
+        pass
+    global.activeThrowableObjectPath = null
 
     # update music
     musicPlayer.conductFromScenePath(self.get_filename())

@@ -23,6 +23,7 @@ var just_landed = false
 var fallCounter = 0
 var fallCountMax = 3
 var take_fall_damage = false
+var spawn_origin
 
 var linear_velocity = Vector3()
 var lv = linear_velocity
@@ -60,12 +61,21 @@ func _ready():
     set_process(true)
     set_physics_process(true)
     float_timer = float_time_limit
+    spawn_origin = self.global_transform.origin
 
 func _process(delta):
     pass
 
 func _physics_process(delta):
-    pass
+    if not on_ground and translation.y < -12:
+        respawn()
+
+func respawn():
+    self.hv = Vector3(0, 0, 0)
+    self.linear_velocity = Vector3(0, 0, 0)
+
+    self.global_transform.origin = spawn_origin
+    self.global_transform.origin.y += 2
 
 func processPhysics(delta):
     lv = linear_velocity

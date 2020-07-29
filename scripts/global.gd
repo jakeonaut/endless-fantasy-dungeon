@@ -7,6 +7,7 @@ var numHearts = 3
 
 var activeInteractor = null
 var activeThrowableObject = null
+var activeThrowableObjectPath = null
 var activeSavePoint = null
 
 var isRespawning = false
@@ -22,6 +23,7 @@ func _ready():
     if numHearts: pass
     if activeInteractor: pass
     if activeThrowableObject: pass
+    if activeThrowableObjectPath: pass
     if activeSavePoint: pass
     if isRespawning: pass
     if cameraRotation: pass

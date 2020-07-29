@@ -16,6 +16,7 @@ var glitch_form = GlitchForm.NORMAL
 var feather_fall_timer = 0
 var feather_fall_time_limit = 30
 var is_holding_chicken = false
+var chicken_jumps = 0
 
 func isFeatherLike():
     return glitch_form == GlitchForm.FEATHER or is_holding_chicken
@@ -61,8 +62,12 @@ func getTrueCamera(): return camera.get_node("CameraX/Camera")
 func _ready():
     set_physics_process(true)
 
+# @override
+func respawn():
+    pass
+
 # param transition name only used as a crappy enum
-func respawn(transition_name):
+func playerRespawn(transition_name):
     global.isRespawning = true
     global.cameraRotation = getCamera().rotation_degrees.y
     # global transition scene, see res://scripts/transition.gd
@@ -98,15 +103,18 @@ func _physics_process(delta):
 
     if not on_ground and translation.y < -6 and not transitioning:
         fallSound.play()
-        self.respawn("long_fade")
+        self.playerRespawn("long_fade")
 
 # @override
 func applyGravity(delta):
     if is_floating:
         g = Vector3(0, grav/2, 0)
         # on_ground = false
-    elif smallInteractionArea.is_touching_water or self.isFeatherLike() or broom_state > 0:
+    elif smallInteractionArea.is_touching_water or self.isFeatherLike():
         g = Vector3(0, -grav/2, 0)
+    elif broom_state > 0:
+        g = Vector3(0, 0, 0)
+        vv = 0
     else:
         g = Vector3(0, -grav, 0)
 
@@ -118,7 +126,7 @@ func applyTerminalVelocity(delta):
     feather_fall_timer += (delta*22)
     if smallInteractionArea.is_touching_water or (
        self.glitch_form == GlitchForm.FEATHER and self.feather_fall_timer < self.feather_fall_time_limit) or \
-       self.is_holding_chicken or self.broom_state > 0:
+       self.is_holding_chicken:
         terminal_vel = water_terminal_vel
     else:
         terminal_vel = true_terminal_vel
@@ -171,15 +179,16 @@ func processJumpInputs(delta):
     # jump
     if (Input.is_action_just_pressed("ui_jump") or should_magic_jump) and not global.pauseMoveInput: 
         # Jump from the water
-        if smallInteractionArea.is_touching_water:
+        if smallInteractionArea.is_touching_water or self.is_holding_chicken and self.chicken_jumps < 1:
             is_recovering = false
-            vv = (2*jump_force) / 4
+            vv = jump_force / 2
 
             jumpSound.play()
             on_ground = false
             has_just_jumped_timer = -has_just_jumped_time_limit
             is_lunging = -1
             feather_fall_timer = 0
+            chicken_jumps += 1
         # Jump from the ground
         elif is_lunging == 0 or should_magic_jump:
             is_recovering = false
@@ -231,7 +240,7 @@ func processJumpInputs(delta):
         float_timer = 0
         if Input.is_action_pressed("ui_jump") and was_touching_water and not global.pauseMoveInput:
             is_recovering = false
-            vv = (4*jump_force) / 5
+            vv = (3*jump_force) / 5
 
             on_ground = false
             jumpSound.play()
@@ -338,7 +347,6 @@ func processHorizontalInputs(delta):
             if dir.length() < 0.1:
                 dir = Vector3(0, 0, 0)
 
-    updateFacing(dir)
     var curr_walk_speed = walk_speed
     if smallInteractionArea.is_touching_water or (not on_ground and self.isFeatherLike()):
         curr_walk_speed = swimming_walk_speed
@@ -350,8 +358,12 @@ func processHorizontalInputs(delta):
         hv = dir * curr_walk_speed
     if has_just_lunged:
         hv = dir * lunge_speed
+
     if broom_state > 0:
-        hv = dir * curr_walk_speed * 0.5
+        hv = Vector3(0, 0, 0)
+        is_walking = false
+    else:
+        updateFacing(dir)
 
 func updateFacing(dir):
     if dir.x != 0 or dir.y != 0 or dir.z != 0:
@@ -368,10 +380,10 @@ func landed():
 # @override
 func noFloorBelow():
     if is_on_floor():
-        can_broom = true
         fallCounter = 0
         feather_fall_timer = 0
         on_ground = true
+        self.chicken_jumps = 0
         if should_recover:
             is_recovering = true
             should_recover = false

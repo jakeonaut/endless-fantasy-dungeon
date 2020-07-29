@@ -3,13 +3,9 @@ extends "res://scripts/NPC.gd"
 onready var player = get_tree().get_root().get_node("level/Player")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
 
-var spawn_origin
-
 var pushTimer = 0
 var pushTimeLimit = 5
 
-func _ready():
-    spawn_origin = self.global_transform.origin
 
 # @override
 func _physics_process(delta):
@@ -20,20 +16,14 @@ func _physics_process(delta):
     self.speed_boost_angle = smallInteractionArea.speed_boost_angle
     self.speed_boost_origin = smallInteractionArea.speed_boost_origin
 
-    if not on_ground and translation.y < -12:
-        respawn()
-
+# @override
 func respawn():
+    .respawn()
     self.mySprite.faceDown()
     self.is_skating = false
     self.is_rotating = false
     self.rotateTimer = 0
     self.skateStartTimer = 0
-    self.hv = Vector3(0, 0, 0)
-    self.linear_velocity = Vector3(0, 0, 0)
-
-    self.global_transform.origin = spawn_origin
-    self.global_transform.origin.y += 2
 
 # @override
 func passiveActivate(delta):

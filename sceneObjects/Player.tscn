@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/PlayerSprite.gd" type="Script" id=5]
 [ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=6]
-[ext_resource path="res://assets/mesh/broom.dae" type="PackedScene" id=7]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
 [ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=10]
@@ -16,11 +16,12 @@
 [ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=14]
 [ext_resource path="res://assets/sounds/hurt.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=16]
-[ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=17]
-[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=18]
-[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=19]
-[ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=20]
-[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=21]
+[ext_resource path="res://assets/sounds/broom.wav" type="AudioStream" id=17]
+[ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=18]
+[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=20]
+[ext_resource path="res://sceneObjects/PlayerCameraFlash.gd" type="Script" id=21]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=22]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -38,13 +39,21 @@ params_billboard_mode = 1
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 flags_unshaded = true
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 19 )
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="CubeMesh" id=6]
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+params_depth_draw_mode = 3
+albedo_texture = ExtResource( 20 )
+
+[sub_resource type="CubeMesh" id=7]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 uniform float brightness = 1.0;
@@ -63,8 +72,8 @@ void fragment() {
     COLOR.rgb = c;
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
 shader_param/brightness = 1.0
 shader_param/contrast = 25.0
 shader_param/saturation = 50.0
@@ -79,14 +88,12 @@ transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
-editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 2 )
 
 [node name="SmallInteractionArea" type="Area" parent="."]
-editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
@@ -137,18 +144,19 @@ fov = 65.0
 size = 20.0
 near = 0.1
 
-[node name="broom" parent="CameraY" instance=ExtResource( 7 )]
-transform = Transform( 0.499315, 0, -0.026168, 0, 0.6, 0, 0.026168, 0, 0.499315, -1.29121, -1.11677, 0.0572929 )
+[node name="broom" type="Spatial" parent="CameraY"]
+transform = Transform( 0.499314, 0, -0.026168, 0, 0.6, 0, 0.026168, 0, 0.499314, 0, 0, 0 )
 visible = false
 
-[node name="broom" parent="CameraY/broom" index="0"]
-transform = Transform( 0.978195, 0.175314, 4.44089e-016, -0.172482, 0.994253, 0, -4.44089e-016, 0, 1, 0, 2.313, 0 )
-
-[node name="Camera" parent="CameraY/broom" index="1"]
-visible = false
-
-[node name="Light" parent="CameraY/broom" index="2"]
-visible = false
+[node name="Sprite3D" type="Sprite3D" parent="CameraY/broom"]
+transform = Transform( 1, 0, 7.10543e-015, 0, 1, 0, -7.10543e-015, 0, 1, 0.5, 0.5, 2 )
+material_override = SubResource( 5 )
+pixel_size = 0.16
+texture = ExtResource( 4 )
+vframes = 8
+hframes = 8
+frame = 9
+script = ExtResource( 7 )
 
 [node name="Sounds" type="Node" parent="."]
 editor/display_folded = true
@@ -189,12 +197,16 @@ volume_db = -20.0
 stream = ExtResource( 16 )
 volume_db = -20.0
 
+[node name="BroomSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 17 )
+volume_db = -30.0
+
 [node name="Items" type="Spatial" parent="."]
 
-[node name="BugNet" parent="Items" instance=ExtResource( 17 )]
+[node name="BugNet" parent="Items" instance=ExtResource( 18 )]
 visible = false
 
-[node name="PauseMenu" parent="." instance=ExtResource( 18 )]
+[node name="PauseMenu" parent="." instance=ExtResource( 19 )]
 editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
@@ -214,10 +226,10 @@ margin_bottom = 47.3208
 [node name="CameraFlash" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 visible = false
-material_override = SubResource( 5 )
-mesh = SubResource( 6 )
+material_override = SubResource( 6 )
+mesh = SubResource( 7 )
 material/0 = null
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="GlitchFilter" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -225,12 +237,11 @@ layer = 64
 
 [node name="TextureRect" type="TextureRect" parent="GlitchFilter"]
 visible = false
-material = SubResource( 8 )
+material = SubResource( 9 )
 margin_right = 567.0
 margin_bottom = 554.0
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 expand = true
 
-[editable path="CameraY/broom"]
 
 [editable path="PauseMenu"]

@@ -57,7 +57,7 @@ script = ExtResource( 5 )
 
 [node name="Sounds" type="Node" parent="."]
 
-[node name="BarkSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="PickupSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 6 )
 volume_db = -10.0
 

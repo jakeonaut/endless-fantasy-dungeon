@@ -35,7 +35,7 @@ func _ready():
     set_physics_process(true)
 
 # param transition name only used as a crappy enum
-func respawn(transition_name):
+func playerRespawn(transition_name):
     transitioning = true
     if transition_name == "long_fade":
         pass
@@ -72,7 +72,7 @@ func _physics_process(delta):
     # TODO(jaketrower): Add this to other GameMover
     if not on_ground and translation.y < -6 and not transitioning:
         fallSound.play()
-        self.respawn("long_fade")
+        self.playerRespawn("long_fade")
 
 # @override
 func applyGravity(delta):

@@ -22,3 +22,5 @@ func blink_fade_to(scn_path):
 func change_scene():
     if self.path != "":
         get_tree().change_scene(self.path)
+        if global.activeThrowableObject:
+            global.activeThrowableObjectPath = global.activeThrowableObject.filename
