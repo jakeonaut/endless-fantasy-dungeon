@@ -51,7 +51,7 @@ var facing = Vector3(0, 0, -1) #default to facing forward
 var transitioning = false
 
 var broom_timer = 0
-var broom_time_limit = 3
+var broom_time_limit = 2
 var broom_state = 0
 var can_broom = true
 
@@ -101,7 +101,7 @@ func _physics_process(delta):
             recover_timer = 0
             is_recovering = false
 
-    if not on_ground and translation.y < -6 and not transitioning:
+    if not on_ground and translation.y < -16 and not transitioning:
         fallSound.play()
         self.playerRespawn("long_fade")
 
@@ -387,5 +387,5 @@ func noFloorBelow():
         if should_recover:
             is_recovering = true
             should_recover = false
-    elif self.glitch_form != GlitchForm.FLOOR:
+    elif self.glitch_form != GlitchForm.FLOOR and broom_state <= 0:
         on_ground = false

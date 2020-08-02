@@ -22,7 +22,7 @@ func _process(delta):
     for area in areas:
         if area.is_in_group("ladders"):
             is_touching_a_ladder = true
-        if area.is_in_group("enemies"):
+        if area.is_in_group("enemies") and area.has_method("isActive") and area.isActive():
             is_touching_enemy = true
         if area.is_in_group("speedboosts"):
             is_touching_speed_boost = true

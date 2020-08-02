@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/water_normal_2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/npcs/glasses.png" type="Texture" id=9]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -176,3 +177,9 @@ bbText = "keep moving forward..
 
 i'll see you at the top"
 portrait = ExtResource( 9 )
+
+[node name="GlitchEnemy" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7341, 4, 4 )
+
+[node name="GlitchEnemy2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7341, 6, 4 )

@@ -40,5 +40,5 @@ func spawnCoin():
     newCoin.passiveActivate(0)
     coinSpawnTimer = 0
     num_coins_spawned += 1 
-    if num_coins_spawned >= num_coins:
-        queue_free()
+    # if num_coins_spawned >= num_coins:
+    #     queue_free()

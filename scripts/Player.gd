@@ -58,12 +58,12 @@ func _process(delta):
             global.pauseGame = false
 
     if broom_state != 0:
-        if broom_state >= 1 and broom_state <= 2:
-            mySprite.faceRight()
-        elif broom_state > 2 and broom_state <= 4:
-            mySprite.faceLeft()
-        else:
-            mySprite.faceDown()
+        # if broom_state >= 1 and broom_state <= 2:
+        #     mySprite.faceRight()
+        # elif broom_state > 2 and broom_state <= 4:
+        #     mySprite.faceLeft()
+        # else:
+        #     mySprite.faceDown()
 
         broom_timer += (delta*22)
         if broom_timer >= broom_time_limit:
@@ -93,16 +93,6 @@ func _process(delta):
                 broom_state += 1
                 if broom_state == 0:
                     can_broom = true
-
-    if Input.is_action_just_pressed("ui_action") and can_broom:        
-        broom.visible = true
-        broom_state = 1
-        broom_timer = 0
-        can_broom = false
-        var broom_sprite = broom.get_node("Sprite3D")
-        broom_sprite.updateStartFrame(1, 1)
-        broom_sprite.max_frames = 1
-        broomSound.play()
 
 
     tryRotateCamera(delta)
@@ -155,6 +145,31 @@ func tryDieToEnemy():
         hurtSound.play()
         global.pauseGame = true
         self.playerRespawn("blink_fade")
+
+func tryBroom():
+    if can_broom:        
+        var broom_sprite = broom.get_node("Sprite3D")
+        if mySprite.isFacingDown():
+            broom.rotation_degrees.y = 0
+            broom_sprite.flip_h = false
+        elif mySprite.isFacingRight():
+            broom.rotation_degrees.y = 90
+            broom_sprite.flip_h = false
+        elif mySprite.isFacingUp():
+            broom.rotation_degrees.y = 180
+            broom_sprite.flip_h = true
+        elif mySprite.isFacingLeft():
+            broom.rotation_degrees.y = 270
+            broom_sprite.flip_h = true
+
+        broom.visible = true
+        broom_state = 1
+        broom_timer = 0
+        can_broom = false
+        broom_sprite.updateStartFrame(1, 1)
+        broom_sprite.max_frames = 1
+        broomSound.play()
+        on_ground = false
 
 func faceDown():
     mySprite.faceDown()

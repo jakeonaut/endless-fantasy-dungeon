@@ -111,7 +111,7 @@ func activate():
         is_held = false
         was_just_thrown = true
         was_planted = true
-        if Input.is_action_pressed("ui_jump") and not player.is_pressing_horizontal_input:
-            thrown_down = true
+        # if Input.is_action_pressed("ui_jump") and not player.is_pressing_horizontal_input:
+        #     thrown_down = true
 
         global.activeThrowableObject = null

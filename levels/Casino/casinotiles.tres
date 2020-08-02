@@ -61,4 +61,3 @@ item/1/name = "MeshInstance2"
 item/1/mesh = SubResource( 7 )
 item/1/shapes = [ SubResource( 10 ), Transform( 1, 0, 0, 0, 30, 0, 0, 0, 1, 0, 0, 0 ) ]
 item/1/preview = SubResource( 9 )
-

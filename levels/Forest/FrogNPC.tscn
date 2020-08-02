@@ -24,7 +24,7 @@ params_depth_draw_mode = 3
 params_billboard_mode = 1
 
 [sub_resource type="AnimatedTexture" id=5]
-flags = 3
+flags = 19
 frames = 2
 fps = 6.0
 frame_0/texture = ExtResource( 8 )
@@ -93,5 +93,6 @@ editor/display_folded = true
 [node name="Targets" type="Node" parent="."]
 
 [node name="Target1" type="Spatial" parent="Targets"]
+
 
 [editable path="GlitchEnemy"]
