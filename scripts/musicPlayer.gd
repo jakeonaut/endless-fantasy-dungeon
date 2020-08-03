@@ -22,7 +22,9 @@ func stopAll():
     goddessThemePlayer.stop()
 
 func conductFromScenePath(path):
-    if path.find("Intro") > 0:
+    if path.find("Goddess") > 0 or path.find("Psychic") > 0:
+        self.playGoddess()
+    elif path.find("Intro") > 0:
         self.playDungeon()
     elif path.find("Debug") > 0:
         self.playDebug()

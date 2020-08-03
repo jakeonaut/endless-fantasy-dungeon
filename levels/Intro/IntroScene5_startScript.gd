@@ -16,9 +16,3 @@ func _ready_impl():
         collisionShape.disabled = true
         var portalTownDungeon = get_node("portalTownDungeon")
         portalTownDungeon.isLocked = false
-
-    musicPlayer.stopAll()
-    musicPlayer.playGoddess()
-
-func _process(delta):
-    musicPlayer.playGoddess()

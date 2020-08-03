@@ -135,6 +135,9 @@ func applyTerminalVelocity(delta):
         vv = -terminal_vel
         fallCounter += (delta*22)
 
+    if self.glitch_form == GlitchForm.FLOOR and on_ground:
+        vv = 0
+
 # @override
 func processInputs(delta):
     processJumpInputs(delta)

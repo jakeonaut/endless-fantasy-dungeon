@@ -33,7 +33,7 @@ func interact():
             get_node("Event").activate()
         global.pauseGame = true
         global.pauseMoveInput = true
-        player.on_ground = true
+        if player.glitch_form != player.GlitchForm.FLOOR: player.on_ground = true
         player.vv = 0
         player.is_lunging = 0
     else:
