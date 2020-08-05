@@ -10,7 +10,8 @@
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/player0000.png" type="Texture" id=10]
-[ext_resource path="res://levels/PsychicScene2DialogSound.gd" type="Script" id=11]
+[ext_resource path="res://levels/Swamp/PsychicScene2DialogSound.gd" type="Script" id=11]
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1

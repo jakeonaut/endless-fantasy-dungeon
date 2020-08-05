@@ -46,21 +46,21 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="BoxShape" id=6]
-extents = Vector3( 2, 1.5, 2 )
+extents = Vector3( 2.5, 1.5, 2.5 )
 
-[sub_resource type="CubeMesh" id=11]
+[sub_resource type="CubeMesh" id=7]
 size = Vector3( 4, 3, 4 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=8]
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
 albedo_texture = ExtResource( 21 )
 
-[sub_resource type="CubeMesh" id=8]
+[sub_resource type="CubeMesh" id=9]
 size = Vector3( 1, 1, 1 )
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=10]
 code = "shader_type canvas_item;
 
 uniform float brightness = 1.0;
@@ -79,8 +79,8 @@ void fragment() {
     COLOR.rgb = c;
 }"
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
 shader_param/brightness = 1.0
 shader_param/contrast = 25.0
 shader_param/saturation = 50.0
@@ -100,7 +100,9 @@ script = ExtResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 2 )
 
-[node name="SmallInteractionArea" type="Area" parent="."]
+[node name="SmallInteractionArea" type="Area" parent="." groups=[
+"player",
+]]
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SmallInteractionArea"]
@@ -123,7 +125,6 @@ transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628,
 script = ExtResource( 6 )
 
 [node name="CameraX" type="Spatial" parent="CameraY"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX"]
@@ -153,6 +154,7 @@ size = 20.0
 near = 0.1
 
 [node name="broom" type="Spatial" parent="CameraY"]
+editor/display_folded = true
 transform = Transform( 0.499999, 0, 0, 0, 0.6, 0, 0, 0, 0.499999, 0, 0, 0 )
 visible = false
 
@@ -170,16 +172,17 @@ script = ExtResource( 7 )
 script = ExtResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraY/broom/Sprite3D/PassiveInteractionArea"]
-transform = Transform( 1, 0, 3.72529e-009, 0, 1, 0, -3.72529e-009, 0, 1, 1.91355, -1.07408, 1.23675 )
+transform = Transform( 1, 0, 1.86265e-008, 0, 1, 0, -1.86265e-008, 0, 1, 2.20641, -1.07408, 1.5471 )
 shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraY/broom/Sprite3D/PassiveInteractionArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914, -1.074, 1.237 )
 visible = false
-mesh = SubResource( 11 )
+mesh = SubResource( 7 )
 material/0 = null
 
 [node name="Sounds" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
@@ -222,6 +225,7 @@ stream = ExtResource( 18 )
 volume_db = -30.0
 
 [node name="Items" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="BugNet" parent="Items" instance=ExtResource( 19 )]
 visible = false
@@ -246,8 +250,8 @@ margin_bottom = 47.3208
 [node name="CameraFlash" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 visible = false
-material_override = SubResource( 7 )
-mesh = SubResource( 8 )
+material_override = SubResource( 8 )
+mesh = SubResource( 9 )
 material/0 = null
 script = ExtResource( 22 )
 
@@ -257,10 +261,11 @@ layer = 64
 
 [node name="TextureRect" type="TextureRect" parent="GlitchFilter"]
 visible = false
-material = SubResource( 10 )
+material = SubResource( 11 )
 margin_right = 567.0
 margin_bottom = 554.0
 texture = ExtResource( 23 )
 expand = true
+
 
 [editable path="PauseMenu"]

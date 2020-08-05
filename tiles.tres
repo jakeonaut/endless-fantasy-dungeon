@@ -486,3 +486,4 @@ item/17/name = "GrassTile"
 item/17/mesh = SubResource( 38 )
 item/17/shapes = [ SubResource( 5 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]
 item/17/preview = SubResource( 40 )
+

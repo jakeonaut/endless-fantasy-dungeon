@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/pokeball0000.png-d9779b1ce245055dd7ed0531fff7a42b.s3tc.stex"
-path.etc2="res://.import/pokeball0000.png-d9779b1ce245055dd7ed0531fff7a42b.etc2.stex"
+path.s3tc="res://.import/critters0000.png-9905580cacc943678c5b51f7010893ba.s3tc.stex"
+path.etc2="res://.import/critters0000.png-9905580cacc943678c5b51f7010893ba.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/pokeball0000.png"
-dest_files=[ "res://.import/pokeball0000.png-d9779b1ce245055dd7ed0531fff7a42b.s3tc.stex", "res://.import/pokeball0000.png-d9779b1ce245055dd7ed0531fff7a42b.etc2.stex" ]
+source_file="res://assets/critters0000.png"
+dest_files=[ "res://.import/critters0000.png-9905580cacc943678c5b51f7010893ba.s3tc.stex", "res://.import/critters0000.png-9905580cacc943678c5b51f7010893ba.etc2.stex" ]
 
 [params]
 

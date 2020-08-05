@@ -31,15 +31,6 @@ func _process(delta):
         random_facing = Vector3(randi()%3-1, 0, randi()%3-1)
         facing_timer = 0
 
-func _physics_process(delta):
-    #._physics_process(delta) # NOTE: This super method is called automatically
-    # https://github.com/godotengine/godot/issues/6500
-
-    if global.pauseGame: return
-
-    if not on_ground and translation.y < -12:
-        respawn()
-
 # @override
 func respawn():
     .respawn()
@@ -66,10 +57,11 @@ func processInputs(delta):
             var my_origin = global_transform.origin
             var dog_origin = passiveInteractionArea.dog_origin
             var scared_facing = (my_origin - dog_origin).normalized()
+            scared_facing.y = 0
             random_facing = scared_facing
             facing_timer = 0
             dir += scared_facing
-            curr_walk_speed = walk_speed * 2
+            curr_walk_speed = walk_speed * 4
         # TODO(jaketrower): try to keep other chickeys within interaction area
         # clump together a little, but not on top of each other..
         # should have a "leader" chicken

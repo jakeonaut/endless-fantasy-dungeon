@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/chickey.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://scripts/chickeyPassiveInteractionArea.gd" type="Script" id=3]
-[ext_resource path="res://assets/pets.png" type="Texture" id=4]
+[ext_resource path="res://assets/critters0000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=5]
 [ext_resource path="res://assets/sounds/Link - Bomb Deploy.wav" type="AudioStream" id=6]
 [ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=7]
@@ -74,9 +74,9 @@ pixel_size = 0.06
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 4 )
-vframes = 3
-hframes = 3
-frame = 6
+vframes = 4
+hframes = 4
+frame = 2
 script = ExtResource( 5 )
 
 [node name="Sounds" type="Node" parent="."]
@@ -95,5 +95,6 @@ volume_db = -30.0
 
 [node name="MeshInstance" parent="GlitchEnemy" index="0"]
 material/0 = SubResource( 6 )
+
 
 [editable path="GlitchEnemy"]

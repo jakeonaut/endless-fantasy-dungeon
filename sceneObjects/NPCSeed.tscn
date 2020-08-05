@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/NPCSeed.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
-[ext_resource path="res://assets/pets.png" type="Texture" id=3]
+[ext_resource path="res://assets/pokeball0000.png" type="Texture" id=3]
 [ext_resource path="res://scripts/Sprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/Link - Bomb Deploy.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/Yoshi - Egg Throw.wav" type="AudioStream" id=6]
@@ -36,13 +36,12 @@ shape = SubResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 3 )
-pixel_size = 0.08
+pixel_size = 0.12
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 3 )
-vframes = 3
-hframes = 3
-frame = 3
+vframes = 2
+hframes = 2
 script = ExtResource( 4 )
 should_randomize_frame_delay = true
 
@@ -66,3 +65,4 @@ volume_db = -20.0
 [node name="ShatterSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
 volume_db = -20.0
+
