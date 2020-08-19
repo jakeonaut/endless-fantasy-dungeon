@@ -2,6 +2,7 @@ extends "GameMover.gd"
 
 onready var camera = get_node("CameraY") # the "camera"
 onready var jumpSound = get_node("Sounds/JumpSound")
+onready var wetJumpSound = get_node("Sounds/WetJumpSound")
 onready var fallSound = get_node("Sounds/FallSound")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
 
@@ -53,7 +54,7 @@ var transitioning = false
 var broom_timer = 0
 var broom_time_limit = 2
 var broom_state = 0
-var can_broom = true
+var can_broom = global.can_broom
 
 func getCamera(): return camera
 func getCameraX(): return camera.get_node("CameraX")
@@ -108,9 +109,12 @@ func _physics_process(delta):
 # @override
 func applyGravity(delta):
     if is_floating:
+        # somehow, a positive (upwards) gravity causes a jump (normally pushing up) to invert (push down) 
         g = Vector3(0, grav/2, 0)
         # on_ground = false
-    elif smallInteractionArea.is_touching_water or self.isFeatherLike():
+    elif smallInteractionArea.is_touching_water:
+        g = Vector3(0, -grav/3, 0)
+    elif self.isFeatherLike():
         g = Vector3(0, -grav/2, 0)
     elif broom_state > 0:
         g = Vector3(0, 0, 0)
@@ -184,9 +188,15 @@ func processJumpInputs(delta):
         # Jump from the water
         if smallInteractionArea.is_touching_water or self.is_holding_chicken and self.chicken_jumps < 1:
             is_recovering = false
-            vv = jump_force / 2
+            if is_floating:
+                vv = -jump_force / 2
+            else:
+                vv = jump_force / 2
 
-            jumpSound.play()
+            if smallInteractionArea.is_touching_water:
+                wetJumpSound.play()
+            else: 
+                jumpSound.play()
             on_ground = false
             has_just_jumped_timer = -has_just_jumped_time_limit
             is_lunging = -1
@@ -231,13 +241,22 @@ func processJumpInputs(delta):
         on_ground = false
 
     if is_touching_water:
-        if Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
+        if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
+            float_timer = 0
+            is_floating = false
+        elif Input.is_action_pressed("ui_jump") and not global.pauseMoveInput:
             float_timer += (delta*22)
             if float_timer >= big_float_time_limit:
                 is_floating = true
+                float_timer = 0
         elif not Input.is_action_pressed("ui_jump"):
-            is_floating = false
-            float_timer = 0
+            float_timer += (delta*22)
+            if on_ground:
+                is_floating = true
+                float_timer = 0
+            elif float_timer >= big_float_time_limit:
+                is_floating = false
+                float_timer = 0
     else: 
         is_floating = false
         float_timer = 0

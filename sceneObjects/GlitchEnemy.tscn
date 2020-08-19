@@ -9,8 +9,8 @@
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 1.9, 1.9, 1.9 )
 
-[sub_resource type="AnimatedTexture" id=5]
-flags = 19
+[sub_resource type="AnimatedTexture" id=2]
+flags = 3
 frames = 2
 fps = 1.0
 frame_0/texture = ExtResource( 2 )
@@ -23,13 +23,13 @@ params_specular_mode = 4
 params_cull_mode = 2
 params_depth_draw_mode = 3
 params_billboard_mode = 1
-albedo_texture = SubResource( 5 )
+albedo_texture = SubResource( 2 )
 uv2_scale = Vector3( 0.5, 0.5, 0.5 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.5, 0.8, 0.5 )
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=5]
 
 [node name="GlitchEnemy" type="KinematicBody"]
 collision_layer = 4
@@ -51,7 +51,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.47517e-009, 0.171012 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Sounds" type="Node" parent="."]
 

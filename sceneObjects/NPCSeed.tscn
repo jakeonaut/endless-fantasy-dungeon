@@ -44,6 +44,7 @@ vframes = 2
 hframes = 2
 script = ExtResource( 4 )
 should_randomize_frame_delay = true
+max_frames = 1
 
 [node name="Sounds" type="Node" parent="."]
 

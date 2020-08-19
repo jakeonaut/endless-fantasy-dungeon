@@ -26,6 +26,7 @@ params_billboard_mode = 1
 
 [node name="RollerNPC" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -33,7 +34,6 @@ transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="InteractionArea" type="Area" parent="."]
-input_ray_pickable = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
@@ -80,6 +80,5 @@ volume_db = -25.0
 [node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
 volume_db = -20.0
-
 
 [editable path="NPC TextBox"]

@@ -16,6 +16,8 @@ var cameraRotation = 0
 var pauseMoveInput = false # don't allow player physics or camera input??
 var pauseGame = false   
 
+var can_broom = false
+
 func _ready():
     # somehow this gets rid of errors LOL
     if hasLoadedGame: pass
@@ -29,6 +31,7 @@ func _ready():
     if cameraRotation: pass
     if pauseMoveInput: pass
     if pauseGame: pass
+    if can_broom: pass
 
 
 var save_game_file = "user://savegame.save"

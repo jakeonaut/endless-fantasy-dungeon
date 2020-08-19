@@ -32,6 +32,13 @@ func landed():
         set_collision_mask_bit(1, false)
         self.spawnCoin()
 
+        # kill glitch enemies
+        var my_area = get_node("InteractionArea")
+        var areas = my_area.get_overlapping_areas()
+        for area in areas:
+            if area.is_in_group("enemies") and area.has_method("GetHitByBroom"):
+                area.GetHitByBroom()
+
 func spawnCoin():
     var newCoin = coin_resource.instance()
     # TODO(jaketrower): This node container is an ASSUMPTION!!!

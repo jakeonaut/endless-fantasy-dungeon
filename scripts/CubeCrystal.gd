@@ -18,6 +18,7 @@ var disappearing2 = false
 var disappearing3 = false
 var disappearTimer = 0
 var disappearTimeLimit = 12
+var disappearBigTimeLimit = 44
 
 func _ready():
     set_process(true)
@@ -26,12 +27,13 @@ func _ready():
 func _physics_process(delta):
     if disappearing or disappearing2:
         player.faceDown()
-        player.translate(Vector3(0, 30.5*delta, 0))
+        player.translate(Vector3(0, 2*delta, 0))
         player.dir = Vector3(0.0, 0.0, 0.0)
+        player.can_broom = false
 
-    if disappearing or disappearing2 or disappearing3:
+    if disappearing or disappearing2 or disappearing3 or global.activeInteractor == textBox:
         # rotate camera slowly
-        player.getCamera().rotateTo(player.getCamera().real_rotation_target+(delta*74), true)
+        player.getCamera().rotateTo(player.getCamera().real_rotation_target+(delta*64), true)
 
 func _process(delta):
     if is_visible():
@@ -49,7 +51,7 @@ func _process(delta):
             disappearTimer += (delta*22)
             cubeContainer.rotate_y(disappearTimer*delta)
             cubeContainer.rotate_x((disappearTimer/2)*delta)
-            if player.on_ground:
+            if disappearTimer >= disappearBigTimeLimit:
                 disappearing2 = false
                 disappearing3 = true
                 disappearTimer = 0
@@ -65,6 +67,7 @@ func _process(delta):
                 disappearing3 = false
                 hide()
                 global.pauseMoveInput = false
+                global.pauseGame = false
                 cubeSound3.play()
                 global.activeInteractor = textBox
                 textBox.interact()
@@ -85,5 +88,6 @@ func passiveActivate(delta):
 
     disappearing = true
 
+    global.pauseGame = true
     global.pauseMoveInput = true
     player.global_transform.origin = self.global_transform.origin

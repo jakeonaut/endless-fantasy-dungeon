@@ -5,6 +5,8 @@ onready var player = get_tree().get_root().get_node("level/Player")
 onready var sprite = get_node("Sprite3D")
 onready var passiveInteractionArea = get_node("PassiveInteractionArea")
 
+export var stationary = false
+
 var jump_force = 10
 var shouldJump = false
 var random_facing = Vector3(0, 0, -1) #default to facing forward
@@ -15,10 +17,11 @@ func _ready():
     set_process_input(true)
     set_physics_process(true)
 
-    walk_speed = 6
-
 func _process(delta):
     if global.pauseGame: return
+
+    walk_speed = 7
+    if stationary: walk_speed = 0
 
     facing_timer += (delta*22)
     if facing_timer > facing_time_limit:

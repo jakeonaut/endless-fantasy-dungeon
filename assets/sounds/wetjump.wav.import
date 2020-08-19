@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wetjump.wav-4241bc4dd7daae0d726c90061d3ae361.sample"
+
+[deps]
+
+source_file="res://assets/sounds/wetjump.wav"
+dest_files=[ "res://.import/wetjump.wav-4241bc4dd7daae0d726c90061d3ae361.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
