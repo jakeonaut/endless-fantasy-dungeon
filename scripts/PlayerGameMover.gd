@@ -12,6 +12,7 @@ enum GlitchForm {
     FLOOR,
     FEATHER,
     LADDER,
+    JUMP,
 }
 var glitch_form = GlitchForm.NORMAL
 var feather_fall_timer = 0
@@ -203,7 +204,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             chicken_jumps += 1
         # Jump from the ground
-        elif is_lunging == 0 or should_magic_jump:
+        elif is_lunging == 0 or should_magic_jump or (glitch_form == GlitchForm.JUMP && fallCounter >= fallCountMin):
             is_recovering = false
             var curr_jump_force = jump_force
             # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
@@ -226,7 +227,7 @@ func processJumpInputs(delta):
             has_just_jumped_timer = 0
             feather_fall_timer = 0
         # Double jump
-        elif is_lunging == -1 or self.isSkateWallJumpInput():
+        elif (is_lunging == -1 or self.isSkateWallJumpInput()) and not glitch_form == GlitchForm.JUMP:
             vv = jump_force / 1.5
             jumpSound.play()
             is_lunging = -2

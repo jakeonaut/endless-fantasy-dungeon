@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/water_normal_2.png" type="Texture" id=2]
@@ -7,10 +7,11 @@
 [ext_resource path="res://sceneObjects/Spells/FloorSpell.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/Spells/FeatherSpell.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sceneObjects/Spells/LadderSpell.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/npcs/glasses.png" type="Texture" id=9]
-[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sceneObjects/Spells/JumpSpell.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/npcs/glasses.png" type="Texture" id=10]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -148,7 +149,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
 
 [node name="Spells" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="FloorSpell" parent="Spells" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 8, -4 )
@@ -159,27 +159,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2 )
 [node name="LadderSpell" parent="Spells" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 4 )
 
-[node name="NPC" parent="." instance=ExtResource( 8 )]
+[node name="JumpSpell" parent="Spells" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48445, 12.2514, -3.79153 )
+
+[node name="NPC" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51555, 12.2514, -3.79153 )
 bbText = "glad you could make it
 :)"
-portrait = ExtResource( 9 )
+portrait = ExtResource( 10 )
 
-[node name="NPC2" parent="." instance=ExtResource( 8 )]
+[node name="NPC2" parent="." instance=ExtResource( 9 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.484, 2, 2.208 )
 nextTextBoxPath = NodePath("NextTextContainer")
 bbText = "hello weary traveler"
-portrait = ExtResource( 9 )
+portrait = ExtResource( 10 )
 
-[node name="NextTextContainer" parent="NPC2" instance=ExtResource( 10 )]
+[node name="NextTextContainer" parent="NPC2" instance=ExtResource( 11 )]
 bbText = "keep moving forward..
 
 i'll see you at the top"
-portrait = ExtResource( 9 )
+portrait = ExtResource( 10 )
 
-[node name="GlitchEnemy" parent="." instance=ExtResource( 11 )]
+[node name="GlitchEnemy" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7341, 4, 4 )
 
-[node name="GlitchEnemy2" parent="." instance=ExtResource( 11 )]
+[node name="GlitchEnemy2" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7341, 6, 4 )

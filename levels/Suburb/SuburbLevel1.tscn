@@ -51,7 +51,7 @@ __meta__ = {
 
 [node name="portalTownSuburb" parent="." instance=ExtResource( 8 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
-connectedScene = "DebugTown"
+connectedScene = "DebugTown_old"
 
 [node name="portal2Suburb2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1.31134e-007, 0, -1, 0, 1, 0, 1, 0, 1.31134e-007, 12, 7.4124, -7.04792 )

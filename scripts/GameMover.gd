@@ -21,6 +21,7 @@ var was_just_on_ground_timer = 0
 var was_just_on_ground_time_limit = 5
 var just_landed = false
 var fallCounter = 0
+var fallCountMin = 0.5
 var fallCountMax = 3
 var take_fall_damage = false
 var spawn_origin

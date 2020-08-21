@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/player0000.png" type="Texture" id=10]
 [ext_resource path="res://levels/Swamp/PsychicScene2DialogSound.gd" type="Script" id=11]
+[ext_resource path="res://sceneObjects/pet.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -38,7 +39,7 @@ expand = true
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 536870912, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 0, 2, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, 0, 1, 0, 1, 1, 536870912, 2, 1, 1073741824, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, 1, 65531, 0, 2, 65531, 0, 1, 65532, 0, 2, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -47,7 +48,7 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.075, 3, 6.459 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.075, 3, -5.541 )
 
 [node name="TextBox" parent="Player" instance=ExtResource( 6 )]
 
@@ -66,10 +67,11 @@ text = ". . . . . . . . . . . . .
 
 [node name="portal_psychic" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03998, 3.4124, -8.77596 )
-midLevelDir = "Intro"
-connectedScene = "IntroSceneGoddess"
+midLevelDir = "Swamp"
+connectedScene = "Swamp1"
 
 [node name="NPC" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56232, 5.0295, 0.88089 )
 
 [node name="NPC TextBox" parent="NPC" index="3"]
@@ -106,6 +108,11 @@ text = "identify with our Essence, our true self."
 [node name="DialogSound" parent="NPC/TextContainer/TextBox" index="2"]
 script = ExtResource( 11 )
 
+[node name="pet" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51555, 3.2514, 4.20847 )
+
+[node name="pet2" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48445, 5.2514, 7.20847 )
 
 [editable path="Player"]
 
