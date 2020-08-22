@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sceneObjects/Item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/Swamp/BroomItemScript.gd" type="Script" id=8]
+[ext_resource path="res://assets/broomportrait.png" type="Texture" id=9]
+[ext_resource path="res://levels/Swamp/BroomAbortSound.gd" type="Script" id=10]
+[ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=11]
 
 [node name="level" type="Node"]
 script = ExtResource( 1 )
@@ -24,7 +29,7 @@ stretch_mode = 2
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 4, 1, 0, 15, 2, 0, 4, 65533, 0, 536870927, 65534, 0, 4, 65535, 0, 15, 0, 1, 536870927, 1, 1, 4, 2, 1, 15, 65533, 1, 4, 65534, 1, 15, 65535, 1, 4, 0, 2, 4, 65535, 2, 15, 0, 3, 15, 65535, 3, 536870916, 0, 65532, 4, 1, 65532, 15, 2, 65532, 4, 65533, 65532, 15, 65534, 65532, 4, 65535, 65532, 15, 0, 65533, 15, 1, 65533, 4, 2, 65533, 536870927, 65533, 65533, 4, 65534, 65533, 536870927, 65535, 65533, 4, 0, 65534, 4, 1, 65534, 15, 2, 65534, 536870916, 65533, 65534, 15, 65534, 65534, 4, 65535, 65534, 15, 0, 65535, 15, 1, 65535, 4, 2, 65535, 15, 65533, 65535, 4, 65534, 65535, 15, 65535, 65535, 4 )
+"cells": PoolIntArray( 0, 0, 4, 1, 0, 15, 2, 0, 4, 65533, 0, 15, 65534, 0, 4, 65535, 0, 15, 0, 1, 15, 1, 1, 4, 2, 1, 15, 65533, 1, 4, 65534, 1, 15, 65535, 1, 4, 0, 2, 4, 65535, 2, 15, 0, 3, 15, 65535, 3, 4, 0, 65532, 4, 1, 65532, 15, 2, 65532, 4, 65533, 65532, 15, 65534, 65532, 4, 65535, 65532, 15, 0, 65533, 15, 1, 65533, 4, 2, 65533, 15, 65533, 65533, 4, 65534, 65533, 15, 65535, 65533, 4, 0, 65534, 4, 1, 65534, 15, 2, 65534, 4, 65533, 65534, 15, 65534, 65534, 4, 65535, 65534, 15, 0, 65535, 15, 1, 65535, 4, 2, 65535, 15, 65533, 65535, 4, 65534, 65535, 15, 65535, 65535, 4 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -35,3 +40,27 @@ __meta__ = {
 
 [node name="portdoor" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 6.95208 )
+
+[node name="Item" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48445, 3.2514, -5.79153 )
+script = ExtResource( 8 )
+
+[node name="Object TextBox" parent="Item" index="2"]
+bbText = "u got it"
+portrait = ExtResource( 9 )
+
+[node name="AbortSound" parent="Item/Object TextBox/TextBox" index="3"]
+script = ExtResource( 10 )
+
+[node name="Sprite3D" parent="Item" index="3"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.542688, 0.822127, -0.318238 )
+pixel_size = 0.12
+texture = ExtResource( 11 )
+vframes = 8
+hframes = 8
+
+
+[editable path="Item"]
+
+[editable path="Item/Object TextBox"]

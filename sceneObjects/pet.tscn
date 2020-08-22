@@ -16,7 +16,7 @@ radius = 2.0
 radius = 1.4
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 4, 1, 4 )
+extents = Vector3( 4, 1.5, 4 )
 
 [sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
@@ -48,6 +48,7 @@ shape = SubResource( 3 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PassiveInteractionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 shape = SubResource( 4 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -71,3 +72,4 @@ volume_db = -20.0
 volume_db = -20.0
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
+

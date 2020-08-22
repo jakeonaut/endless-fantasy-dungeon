@@ -57,6 +57,12 @@ func _process(delta):
             if pauseMenu: pauseMenu.hide()
             global.pauseGame = false
 
+    # if Input.is_action_just_pressed("ui_action") and on_ground and not global.pauseMoveInput and not global.pauseGame:
+    #     is_rolling = true
+    #     rolling_timer = 0
+    #     is_rotating = true
+
+
     if broom_state != 0:
         # if broom_state >= 1 and broom_state <= 2:
         #     mySprite.faceRight()

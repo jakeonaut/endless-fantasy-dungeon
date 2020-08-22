@@ -2,6 +2,7 @@ extends "res://scripts/GameMover.gd"
 
 onready var player = get_tree().get_root().get_node("level/Player")
 onready var textBox = get_node("NPC TextBox").get_node("TextBox")
+onready var glitch = get_node("GlitchEnemy")
 var target = null
 var target_idx = 0
 onready var targetContainer = get_node("Targets")
@@ -21,7 +22,7 @@ func _ready():
     target = get_node("./Targets/Target1")
 
 func isActive():
-    return visible
+    return not glitch.visible
 
 func activate():
     if global.activeInteractor == null:

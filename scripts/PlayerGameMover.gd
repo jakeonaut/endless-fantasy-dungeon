@@ -2,6 +2,7 @@ extends "GameMover.gd"
 
 onready var camera = get_node("CameraY") # the "camera"
 onready var jumpSound = get_node("Sounds/JumpSound")
+onready var doubleJumpSound = get_node("Sounds/DoubleJumpSound")
 onready var wetJumpSound = get_node("Sounds/WetJumpSound")
 onready var fallSound = get_node("Sounds/FallSound")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
@@ -41,6 +42,9 @@ var weaker_jump_force = 19
 var has_just_lunged = false
 var has_just_jumped_timer = 0
 var has_just_jumped_time_limit = 200# 3
+var is_rolling = false
+var rolling_timer = 0
+var rolling_time_limit = 5
 var should_recover = false
 var is_recovering = false
 var recover_timer = 0
@@ -96,6 +100,11 @@ func _physics_process(delta):
 
     is_touching_water = smallInteractionArea.is_touching_water
 
+    if is_rolling:
+        rolling_timer += (delta*22)
+        if rolling_timer >= rolling_time_limit:
+            is_rolling = false
+            rolling_timer = 0
     .processPhysics(delta) #super
     if is_recovering:
         recover_timer += (delta*22)
@@ -229,12 +238,13 @@ func processJumpInputs(delta):
         # Double jump
         elif (is_lunging == -1 or self.isSkateWallJumpInput()) and not glitch_form == GlitchForm.JUMP:
             vv = jump_force / 1.5
-            jumpSound.play()
+            doubleJumpSound.play()
             is_lunging = -2
             if self.isSkateWallJumpInput():
                 is_lunging = -1
             has_just_jumped_timer = 0
             feather_fall_timer = 0
+            startRotateSprite(1)
         should_magic_jump = false
     elif take_fall_damage and self.glitch_form != GlitchForm.FLOOR:
         vv = (2*jump_force)/3
@@ -333,14 +343,14 @@ func processHorizontalInputs(delta):
                 dir += forward
             # only change sprite facing if i'm idle of if I just pressed this
             if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
-                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))):
+                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
                 mySprite.faceUp()
         elif Input.is_action_pressed("ui_down"):
             if not global.pauseMoveInput: 
                 dir -= forward
             # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
             if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
-                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))):
+                (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
                 mySprite.faceDown()
                 
         if Input.is_action_pressed("ui_left"):
@@ -348,7 +358,7 @@ func processHorizontalInputs(delta):
                 dir += right
             # only change sprite facing if i'm idle of if I just pressed this
             if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
-                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))):
+                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
                 mySprite.faceLeft()
             # getCamera().rotate_right(5)
         elif Input.is_action_pressed("ui_right"):
@@ -356,7 +366,7 @@ func processHorizontalInputs(delta):
                 dir -= right
             # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
             if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
-                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))):
+                (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
                 mySprite.faceRight()
             # getCamera().rotate_left(5)
 
@@ -375,6 +385,11 @@ func processHorizontalInputs(delta):
         curr_walk_speed = swimming_walk_speed
     elif is_recovering or should_recover or (not on_ground and self.glitch_form == GlitchForm.LADDER):
         curr_walk_speed = recover_walk_speed
+
+    if is_rolling:
+        curr_walk_speed = curr_walk_speed * 3
+        if dir.x == 0 and dir.y == 0 and dir.z == 0:
+            dir = prev_dir
 
     # update x and z
     if is_lunging < 2 and (not smallInteractionArea.is_touching_water or horizontal_input):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
@@ -11,11 +11,12 @@
 [ext_resource path="res://assets/npcs/farmergarden.png" type="Texture" id=9]
 [ext_resource path="res://sceneObjects/PlantCluster.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sceneObjects/CubeCrystal.tscn" type="PackedScene" id=11]
-[ext_resource path="res://sceneObjects/NPCSeed.tscn" type="PackedScene" id=12]
-[ext_resource path="res://sceneObjects/chicken.tscn" type="PackedScene" id=13]
-[ext_resource path="res://sceneObjects/Spells/FloorSpell.tscn" type="PackedScene" id=14]
-[ext_resource path="res://sceneObjects/Spells/FeatherSpell.tscn" type="PackedScene" id=15]
-[ext_resource path="res://sceneObjects/Spells/LadderSpell.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sceneObjects/Spells/FloorSpell.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sceneObjects/Spells/FeatherSpell.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sceneObjects/Spells/LadderSpell.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sceneObjects/Plant.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sceneObjects/NPCSeed.tscn" type="PackedScene" id=16]
+[ext_resource path="res://sceneObjects/chicken.tscn" type="PackedScene" id=17]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1.7, 1 )
@@ -26,6 +27,7 @@ script = ExtResource( 1 )
 [node name="commonWorldEnvironment" parent="." instance=ExtResource( 2 )]
 
 [node name="BackgroundControl" type="Control" parent="."]
+editor/display_folded = true
 
 [node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
 margin_right = 1020.0
@@ -37,7 +39,7 @@ stretch_mode = 2
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 2, 3, 0, 0, 65532, 0, 0, 65533, 0, 2, 65534, 0, 0, 65535, 0, 0, 65538, 0, 2, 131069, 0, 2, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65532, 1, 0, 65533, 1, 2, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 65526, 1, 1, 65526, 1, 65534, 65526, 1, 65535, 65526, 1, 0, 65527, 2, 1, 65527, 1, 65534, 65527, 1, 65535, 65527, 14, 0, 65528, 14, 1, 65528, 1, 65534, 65528, 1, 65535, 65528, 14, 0, 65529, 1, 1, 65529, 1, 65534, 65529, 1, 65535, 65529, 1, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 2, 65532, 65530, 2, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 2, 3, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 65538, 65531, 2, 131069, 65531, 2, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 1, 5, 65532, 1, 6, 65532, 1, 7, 65532, 1, 65528, 65532, 1, 65529, 65532, 1, 65530, 65532, 1, 65531, 65532, 1, 65532, 65532, 0, 65533, 65532, 2, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 2, 3, 65533, 0, 4, 65533, 1, 5, 65533, 3, 6, 65533, 3, 7, 65533, 1, 65528, 65533, 1, 65529, 65533, 4, 65530, 65533, 4, 65531, 65533, 1, 65532, 65533, 0, 65533, 65533, 2, 65534, 65533, 2, 65535, 65533, 0, 0, 65534, 2, 1, 65534, 2, 2, 65534, 0, 3, 65534, 0, 4, 65534, 1, 5, 65534, 3, 6, 65534, 3, 7, 65534, 1, 65528, 65534, 1, 65529, 65534, 4, 65530, 65534, 2, 65531, 65534, 1, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 2, 0, 65535, 2, 1, 65535, 2, 2, 65535, 0, 3, 65535, 2, 4, 65535, 1, 5, 65535, 1, 6, 65535, 1, 7, 65535, 1, 65528, 65535, 1, 65529, 65535, 1, 65530, 65535, 1, 65531, 65535, 1, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 2, 3, 0, 0, 65532, 0, 0, 65533, 0, 536870914, 65534, 0, 0, 65535, 0, 0, 65538, 0, 2, 131069, 0, 2, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 65532, 1, 0, 65533, 1, 2, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 65535, 2, 0, 0, 3, 0, 65535, 3, 0, 0, 65526, 1, 1, 65526, 1, 65534, 65526, 1, 65535, 65526, 1, 0, 65527, 2, 1, 65527, 1, 65534, 65527, 1, 65535, 65527, 14, 0, 65528, 14, 1, 65528, 1, 65534, 65528, 1, 65535, 65528, 14, 0, 65529, 1, 1, 65529, 1, 65534, 65529, 1, 65535, 65529, 1, 0, 65530, 0, 1, 65530, 0, 2, 65530, 0, 3, 65530, 2, 65532, 65530, 2, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 2, 3, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 65538, 65531, 2, 131069, 65531, 2, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 1, 5, 65532, 1, 6, 65532, 1, 7, 65532, 1, 65528, 65532, 1, 65529, 65532, 1, 65530, 65532, 1, 65531, 65532, 1, 65532, 65532, 0, 65533, 65532, 2, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 2, 3, 65533, 0, 4, 65533, 1, 5, 65533, 3, 6, 65533, 3, 7, 65533, 1, 65528, 65533, 1, 65529, 65533, 4, 65530, 65533, 4, 65531, 65533, 1, 65532, 65533, 0, 65533, 65533, 2, 65534, 65533, 2, 65535, 65533, 0, 0, 65534, 2, 1, 65534, 2, 2, 65534, 0, 3, 65534, 0, 4, 65534, 1, 5, 65534, 3, 6, 65534, 3, 7, 65534, 1, 65528, 65534, 1, 65529, 65534, 4, 65530, 65534, 2, 65531, 65534, 1, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 2, 0, 65535, 2, 1, 65535, 2, 2, 65535, 0, 3, 65535, 2, 4, 65535, 1, 5, 65535, 1, 6, 65535, 1, 7, 65535, 1, 65528, 65535, 1, 65529, 65535, 1, 65530, 65535, 1, 65531, 65535, 1, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -87,29 +89,59 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30662, 2.67274, -2.8323 )
 [node name="CubeCrystal" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.378029, 7, -4 )
 
-[node name="NPCSeed" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83447, 4.92166, 1.20847 )
-
-[node name="NPCSeed2" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0842, 4.92465, 1.20847 )
-
-[node name="NPCSeed3" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0842, 4.92465, -8.79153 )
-
-[node name="NPCSeed4" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9158, 4.92465, -8.79153 )
-
-[node name="chickey" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, -0.79153 )
-
-[node name="FloorSpell" parent="." instance=ExtResource( 14 )]
+[node name="FloorSpell" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48445, 3.2514, -3.79153 )
 
-[node name="FeatherSpell" parent="." instance=ExtResource( 15 )]
+[node name="FeatherSpell" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -9 )
 
-[node name="LadderSpell" parent="." instance=ExtResource( 16 )]
+[node name="LadderSpell" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -2 )
+
+[node name="plants" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Plant8" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4, -8 )
+
+[node name="Plant" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 4, -5 )
+
+[node name="Plant2" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 4, -3 )
+
+[node name="Plant3" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4, -3 )
+
+[node name="Plant4" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4, -5 )
+
+[node name="Plant5" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -17 )
+
+[node name="Plant6" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -15 )
+
+[node name="Plant7" parent="plants" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4, -15 )
+
+[node name="critters" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="NPCSeed" parent="critters" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83447, 4.92166, 1.20847 )
+
+[node name="NPCSeed2" parent="critters" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0842, 4.92465, 1.20847 )
+
+[node name="NPCSeed3" parent="critters" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0842, 4.92465, -8.79153 )
+
+[node name="NPCSeed4" parent="critters" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9158, 4.92465, -8.79153 )
+
+[node name="chickey" parent="critters" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, -0.79153 )
 
 
 [editable path="GardenerNPC"]

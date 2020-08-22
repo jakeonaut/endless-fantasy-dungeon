@@ -33,6 +33,7 @@ export var grav = 80
 var g = Vector3(0, -grav, 0)
 
 var dir = Vector3(0, 0, 0)
+var prev_dir = dir
 var up = -g.normalized() # (up is against gravity)
 var vv = up.dot(lv) # vertical velocity
 var hv = lv - up * vv # horizontal velocity
@@ -108,6 +109,7 @@ func processPhysics(delta):
 
     postProcessSkateInputs(delta)
     postProcessInputs(delta)
+    prev_dir = dir
 
     if is_rotating:
         rotateTimer += delta*22

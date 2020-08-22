@@ -26,7 +26,7 @@ func _process(delta):
 # @override
 func landed():
     .landed() # super
-    if has_initially_landed and was_planted:
+    if has_initially_landed and was_planted and visible:
         shatterSound.play()
         hide()
         set_collision_mask_bit(1, false)
