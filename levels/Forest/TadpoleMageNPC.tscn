@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://levels/Forest/TadpoleNPC.gd" type="Script" id=1]
 [ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=2]
 [ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=3]
 [ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/npcs/tadpoleportrait.png" type="Texture" id=5]
-[ext_resource path="res://assets/npcs/tadpole.png" type="Texture" id=6]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
+[ext_resource path="res://levels/Forest/TadpoleSavedAbortSound.gd" type="Script" id=6]
+[ext_resource path="res://assets/npcs/tadpole.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=8]
+[ext_resource path="res://sceneObjects/CubeCrystal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/npcs/froggirl.png" type="Texture" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -20,6 +23,22 @@ flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 25, 25, 25 )
+
+[sub_resource type="ArrayMesh" id=6]
+surfaces/0 = {
+"aabb": AABB( -0.5, -0.5, -0.5, 1, 1, 1 ),
+"array_data": PoolByteArray( 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 63 ),
+"array_index_data": PoolByteArray( 0, 0, 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 0, 0, 0, 4, 0, 5, 0, 5, 0, 6, 0, 6, 0, 7, 0, 7, 0, 4, 0, 0, 0, 4, 0, 1, 0, 5, 0, 2, 0, 6, 0, 3, 0, 7, 0 ),
+"blend_shape_data": [  ],
+"format": 97537,
+"index_count": 24,
+"primitive": 1,
+"skeleton_aabb": [  ],
+"vertex_count": 8
+}
 
 [node name="TadpoleMageNPC" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01452, 12.2514, -26.0663 )
@@ -45,19 +64,60 @@ script = ExtResource( 3 )
 shape = SubResource( 3 )
 
 [node name="NPC TextBox" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 
 [node name="Portrait" parent="NPC TextBox/TextBox" index="0"]
 texture = ExtResource( 5 )
+
+[node name="SavedTextContainer" parent="." instance=ExtResource( 4 )]
+
+[node name="Portrait" parent="SavedTextContainer/TextBox" index="0"]
+texture = ExtResource( 5 )
+
+[node name="Text" parent="SavedTextContainer/TextBox" index="1"]
+bbcode_text = "bro!!!! you saved my 
+precious children!!!!
+
+thank you so much! :D"
+text = "bro!!!! you saved my 
+precious children!!!!
+
+thank you so much! :D"
+
+[node name="AbortSound" parent="SavedTextContainer/TextBox" index="3"]
+script = ExtResource( 6 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 material_override = SubResource( 4 )
 pixel_size = 0.08
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 vframes = 4
 hframes = 4
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 should_randomize_frame_delay = true
 
+[node name="FrogDetectionArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="FrogDetectionArea"]
+shape = SubResource( 5 )
+
+[node name="CubeCrystal" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+visible = false
+
+[node name="MeshInstance" parent="CubeCrystal/CubeContainer" index="0"]
+mesh = SubResource( 6 )
+
+[node name="Sprite3D" parent="CubeCrystal" index="5"]
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 4
+
 [editable path="NPC TextBox"]
+
+[editable path="SavedTextContainer"]
+
+[editable path="CubeCrystal"]

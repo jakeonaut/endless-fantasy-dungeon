@@ -16,6 +16,7 @@ var facing_time_limit = 4
 func _ready():
     set_process_input(true)
     set_physics_process(true)
+    if stationary: walk_speed = 0
 
 func _process(delta):
     if global.pauseGame: return

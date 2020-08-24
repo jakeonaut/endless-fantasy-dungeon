@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
 [ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
@@ -7,17 +7,22 @@
 [ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sceneObjects/GlitchEnemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/npcs/genjiport.png" type="Texture" id=9]
-[ext_resource path="res://assets/npcs/genji0000.png" type="Texture" id=10]
-[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=11]
-[ext_resource path="res://sceneObjects/Plant.tscn" type="PackedScene" id=12]
-[ext_resource path="res://sceneObjects/Item.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/Swamp/BroomItemScript.gd" type="Script" id=14]
-[ext_resource path="res://assets/broomportrait.png" type="Texture" id=15]
-[ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=16]
-[ext_resource path="res://levels/Swamp/BroomAbortSound.gd" type="Script" id=17]
-[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=18]
+[ext_resource path="res://shaders/GlitchEnemy.tres" type="Material" id=8]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/npcs/genjiport.png" type="Texture" id=10]
+[ext_resource path="res://assets/npcs/genji0000.png" type="Texture" id=11]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sceneObjects/Plant.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sceneObjects/Item.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/Swamp/BroomItemScript.gd" type="Script" id=15]
+[ext_resource path="res://assets/broomportrait.png" type="Texture" id=16]
+[ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=17]
+[ext_resource path="res://levels/Swamp/BroomAbortSound.gd" type="Script" id=18]
+[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=19]
+[ext_resource path="res://sceneObjects/PlantLeafy.tscn" type="PackedScene" id=20]
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 2.5, 2.5, 2.5 )
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.5, 0.5, 1.5 )
@@ -40,7 +45,7 @@ stretch_mode = 1
 mesh_library = ExtResource( 4 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 3, 1, 0, 17, 2, 0, 17, 65533, 0, 17, 65534, 0, 17, 65535, 0, 1, 0, 1, 1, 1, 1, 3, 2, 1, 17, 65533, 1, 17, 65534, 1, 3, 65535, 1, 1, 0, 2, 1, 65535, 2, 1, 0, 3, 1, 65535, 3, 1, 0, 65527, 786433, 65535, 65527, 786433, 65537, 65527, 786434, 131070, 65527, 786434, 131073, 65527, 786434, 196606, 65527, 786434, 0, 65528, 786434, 65535, 65528, 786433, 0, 65529, 786449, 65535, 65529, 786434, 0, 65530, 786434, 65535, 65530, 786449, 65537, 65530, 786434, 131070, 65530, 786434, 131072, 65530, 1, 131073, 65530, 786434, 196606, 65530, 786434, 196607, 65530, 1, 196609, 65530, 786434, 262142, 65530, 1, 0, 65531, 786433, 65535, 65531, 786433, 0, 65532, 17, 1, 65532, 17, 2, 65532, 1, 65533, 65532, 17, 65534, 65532, 1, 65535, 65532, 17, 131069, 65532, 786444, 131070, 65532, 786444, 0, 65533, 17, 1, 65533, 1, 2, 65533, 1, 65533, 65533, 1, 65534, 65533, 17, 65535, 65533, 17, 65537, 65533, 786434, 131069, 65533, 786444, 131070, 65533, 786444, 0, 65534, 1, 1, 65534, 17, 2, 65534, 17, 65533, 65534, 17, 65534, 65534, 17, 65535, 65534, 17, 131069, 65534, 786434, 196605, 65534, 786434, 0, 65535, 17, 1, 65535, 17, 2, 65535, 1, 65533, 65535, 17, 65534, 65535, 1, 65535, 65535, 17 )
+"cells": PoolIntArray( 0, 0, 3, 1, 0, 17, 2, 0, 17, 65533, 0, 17, 65534, 0, 17, 65535, 0, 1610612737, 0, 1, 1, 1, 1, 3, 2, 1, 17, 65533, 1, 17, 65534, 1, 3, 65535, 1, 1, 0, 2, 1, 65535, 2, 1, 0, 3, 1, 65535, 3, 1, 0, 65527, 786433, 65535, 65527, 786433, 65537, 65527, 786434, 131070, 65527, 786434, 131073, 65527, 786434, 196606, 65527, 786434, 0, 65528, 786434, 65535, 65528, 786433, 0, 65529, 786449, 65535, 65529, 786434, 0, 65530, 786434, 65535, 65530, 786449, 65537, 65530, 786434, 131070, 65530, 786434, 131072, 65530, 1, 131073, 65530, 786434, 196606, 65530, 786434, 196607, 65530, 1, 196609, 65530, 786434, 262142, 65530, 1, 0, 65531, 786433, 65535, 65531, 786433, 0, 65532, 17, 1, 65532, 17, 2, 65532, 1, 65533, 65532, 17, 65534, 65532, 1, 65535, 65532, 17, 131069, 65532, 786444, 131070, 65532, 786444, 0, 65533, 17, 1, 65533, 1, 2, 65533, 1, 65533, 65533, 1, 65534, 65533, 17, 65535, 65533, 17, 65537, 65533, 786434, 131069, 65533, 786444, 131070, 65533, 786444, 0, 65534, 1, 1, 65534, 17, 2, 65534, 17, 65533, 65534, 17, 65534, 65534, 17, 65535, 65534, 17, 131069, 65534, 786434, 196605, 65534, 786434, 0, 65535, 17, 1, 65535, 1073741841, 2, 65535, 1, 65533, 65535, 17, 65534, 65535, 1, 65535, 65535, 17 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -55,59 +60,64 @@ midLevelDir = "Swamp"
 connectedScene = "SwampTown.tscn"
 
 [node name="GlitchEnemy" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20783, 3, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20783, 3, -10 )
+
+[node name="MeshInstance" parent="GlitchEnemy" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 8 )
 
 [node name="GlitchEnemy2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53614, 3, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20783, 6, -12 )
 
-[node name="NPC" parent="." instance=ExtResource( 8 )]
+[node name="NPC" parent="." instance=ExtResource( 9 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48445, 3.2514, 1.20847 )
 nextTextBoxPath = NodePath("TextContainer")
 bbText = "Hey... you see that glitch
 over there? Try grabbing that 
 broom..."
-portrait = ExtResource( 9 )
+portrait = ExtResource( 10 )
 
 [node name="Sprite3D" parent="NPC" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.260242, 0 )
 pixel_size = 0.08
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 frame = 2
 
-[node name="TextContainer" parent="NPC" instance=ExtResource( 11 )]
+[node name="TextContainer" parent="NPC" instance=ExtResource( 12 )]
 bbText = "and sweeping it away 
 with [F]...
 "
-portrait = ExtResource( 9 )
+portrait = ExtResource( 10 )
 
-[node name="Plant" parent="." instance=ExtResource( 12 )]
+[node name="Plant" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, 3 )
 
-[node name="Item" parent="." instance=ExtResource( 13 )]
+[node name="Item" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.03579, 4.74759, -4.73019 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 
 [node name="Object TextBox" parent="Item" index="2"]
 nextTextBoxPath = NodePath("../TextContainer")
 bbText = "Item Get: Broom!"
-portrait = ExtResource( 15 )
+portrait = ExtResource( 16 )
 
 [node name="Sprite3D" parent="Item" index="3"]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.584973, 0.568256, -0.512237 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 vframes = 8
 hframes = 8
 frame = 9
 
-[node name="TextContainer" parent="Item" instance=ExtResource( 11 )]
+[node name="TextContainer" parent="Item" instance=ExtResource( 12 )]
 bbText = "
 press F to sweep."
-portrait = ExtResource( 15 )
+portrait = ExtResource( 16 )
 
 [node name="AbortSound" parent="Item/TextContainer/TextBox" index="3"]
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="portalForest2Water" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4124, -18.0479 )
@@ -117,14 +127,19 @@ connectedScene = "ForestWaterScene1"
 [node name="Water" type="Area" parent="." groups=[
 "water",
 ]]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Water"]
 shape = SubResource( 1 )
 
-[node name="SavePoint" parent="." instance=ExtResource( 18 )]
+[node name="SavePoint" parent="." instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2 )
 
+[node name="Plant2" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, -3 )
+
+[editable path="GlitchEnemy"]
 
 [editable path="NPC"]
 

@@ -23,7 +23,7 @@ func getHitByBroom():
         dieSound.play()
 
 func isActive():
-    return true
+    return visible
 
 func activate():
     pass

@@ -65,7 +65,6 @@ should_randomize_frame_delay = true
 [node name="Target1" type="Spatial" parent="Targets"]
 
 [node name="GlitchEnemy" parent="." instance=ExtResource( 8 )]
-editor/display_folded = true
-
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 
 [editable path="GlitchEnemy"]
