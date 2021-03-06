@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=2]
 
 [sub_resource type="AnimatedTexture" id=1]
-flags = 3
+flags = 19
 frames = 2
 fps = 1.0
 frame_0/texture = ExtResource( 1 )

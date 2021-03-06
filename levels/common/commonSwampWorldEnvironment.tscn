@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+ambient_light_color = Color( 0.4, 0.4, 0.4, 1 )
+ambient_light_energy = 0.7
+
+[node name="commonWorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 1 )
+
+[node name="The Sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.692115, 0.447426, -0.566381, -0.287851, 0.890691, 0.351869, 0.661905, -0.0805003, 0.745252, -9, 10, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.411765, 0.262745, 0.537255, 1 )

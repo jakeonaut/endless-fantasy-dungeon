@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/mesh/thiefcat/thiefcat.dae" type="PackedScene" id=1]
+
+[node name="thiefcat" instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="Light" parent="." index="1"]
+visible = false

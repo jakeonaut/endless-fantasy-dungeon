@@ -28,6 +28,7 @@ func _ready_impl():
             global.memory["active_save_point_y"], 
             global.memory["active_save_point_z"])
         player.getCamera().rotation_degrees.y = global.cameraRotation
+        player.last_grounded_y = player.global_transform.origin.y 
     elif global.memory.has("lastDoor"):
         var door_id = global.memory["lastDoor"]
         var doors = get_tree().get_nodes_in_group("doors")

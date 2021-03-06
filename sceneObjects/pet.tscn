@@ -72,4 +72,3 @@ volume_db = -20.0
 volume_db = -20.0
 
 [node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
-

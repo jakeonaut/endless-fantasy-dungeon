@@ -32,6 +32,10 @@ musicPlayer="*res://sceneObjects/musicPlayer.tscn"
 window/size/width=640
 window/size/height=640
 
+[editor_plugins]
+
+enabled=PoolStringArray( "placer" )
+
 [input]
 
 ui_accept={

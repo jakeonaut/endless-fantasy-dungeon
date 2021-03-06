@@ -26,7 +26,7 @@ func _ready():
     parseConnectedScene()
     
     if isLocked:
-        get_node("PolyTriangle").texture = load("res://assets/npcs/tootorialgrey.png")
+        get_node("PolyTriangle").texture = load("res://assets/minecraftdoorlocked0000.png")
         get_node("PolyTriangle").step = 1
 
 func generateId():
@@ -34,7 +34,7 @@ func generateId():
 
 func unlock():
     isLocked = false
-    get_node("PolyTriangle").texture = load("res://assets/npcs/tootorial0000.png")
+    get_node("PolyTriangle").texture = load("res://assets/minecraftdoor0000.png")
     get_node("PolyTriangle").step = 2
 
 func parseConnectedScene():
@@ -90,5 +90,6 @@ func enterDoor():
 
 func land():
     player.global_transform.origin = landingPad.global_transform.origin
+    player.last_grounded_y = player.global_transform.origin.y 
     if not global.isRespawning:
         enterSound.play()

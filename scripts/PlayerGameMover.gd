@@ -112,7 +112,8 @@ func _physics_process(delta):
             recover_timer = 0
             is_recovering = false
 
-    if not on_ground and translation.y < -16 and not transitioning:
+    if not on_ground and translation.y < (last_grounded_y - falling_y_offset) and not transitioning:
+        print(str(translation.y) + ", " + str(last_grounded_y) + ", " + str(falling_y_offset))
         fallSound.play()
         self.playerRespawn("long_fade")
 

@@ -37,6 +37,7 @@ radius = 1.5
 flags_transparent = true
 flags_unshaded = true
 params_cull_mode = 2
+params_depth_draw_mode = 3
 params_billboard_mode = 1
 
 [sub_resource type="SpatialMaterial" id=5]
@@ -129,7 +130,7 @@ script = ExtResource( 6 )
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="CameraY/CameraX"]
-transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 11 )
+transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 15 )
 current = true
 fov = 65.0
 size = 20.0
@@ -275,6 +276,5 @@ margin_right = 567.0
 margin_bottom = 554.0
 texture = ExtResource( 25 )
 expand = true
-
 
 [editable path="PauseMenu"]

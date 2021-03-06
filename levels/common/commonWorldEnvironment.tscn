@@ -9,4 +9,5 @@ ambient_light_energy = 0.7
 environment = SubResource( 1 )
 
 [node name="The Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.965926, 1.13133e-008, -0.258819, 0.258819, -4.2222e-008, 0.965926, 0, -1, -4.37114e-008, -9, 14, 0 )
+transform = Transform( 0.93517, -0.0280772, -0.353085, 0.346535, 0.278781, 0.895653, 0.0732859, -0.959944, 0.270437, -9, 14, 0 )
+shadow_color = Color( 0.411765, 0.262745, 0.537255, 1 )
