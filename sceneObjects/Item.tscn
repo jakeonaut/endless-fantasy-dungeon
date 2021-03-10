@@ -69,9 +69,8 @@ pixel_size = 0.08
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 6 )
-vframes = 4
-hframes = 4
-frame = 10
-
+vframes = 8
+hframes = 8
+frame = 18
 
 [editable path="Object TextBox"]

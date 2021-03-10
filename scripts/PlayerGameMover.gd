@@ -55,6 +55,7 @@ var is_pressing_horizontal_input = false
 var was_pressing_horizontal_input = false
 var facing = Vector3(0, 0, -1) #default to facing forward
 var transitioning = false
+var is_falling = false
 
 var broom_timer = 0
 var broom_time_limit = 2
@@ -113,9 +114,9 @@ func _physics_process(delta):
             is_recovering = false
 
     if not on_ground and translation.y < (last_grounded_y - falling_y_offset) and not transitioning:
-        print(str(translation.y) + ", " + str(last_grounded_y) + ", " + str(falling_y_offset))
         fallSound.play()
         self.playerRespawn("long_fade")
+        is_falling = true
 
 # @override
 func applyGravity(delta):
@@ -226,16 +227,9 @@ func processJumpInputs(delta):
             jumpSound.play()
             on_ground = false
             is_lunging = -1
-            has_just_jumped_timer = 0
+            has_just_jumped_timer = 0 
             feather_fall_timer = 0
-        # Dash lunge
-        elif is_lunging == 1:
-            vv = jump_force / 2
-            jumpSound.play()
-            has_just_lunged = true
-            is_lunging = 2
-            has_just_jumped_timer = 0
-            feather_fall_timer = 0
+            should_magic_jump = false
         # Double jump
         elif (is_lunging == -1 or self.isSkateWallJumpInput()) and not glitch_form == GlitchForm.JUMP:
             vv = jump_force / 1.5
@@ -246,11 +240,48 @@ func processJumpInputs(delta):
             has_just_jumped_timer = 0
             feather_fall_timer = 0
             startRotateSprite(1)
-        should_magic_jump = false
+        # Jump from dash (grounded)
+        elif is_lunging == 2 and on_ground:
+            is_lunging = 0
+            if mySprite: mySprite.setLungeSprite(false)
+
+            is_recovering = false
+            var curr_jump_force = jump_force
+            # a11y hack for jessica. if walking into a wall, make it a bit easier to jump right on it
+            if self.isWalkingIntoWall():
+                curr_jump_force = weaker_jump_force
+                should_recover = true
+            vv = curr_jump_force * 1.5
+
+            jumpSound.play()
+            doubleJumpSound.play()
+            startRotateSprite(1)
+            on_ground = false
+            is_lunging = -1
+            has_just_jumped_timer = 0
+            feather_fall_timer = 0
+            should_magic_jump = false
     elif take_fall_damage and self.glitch_form != GlitchForm.FLOOR:
         vv = (2*jump_force)/3
         take_fall_damage = false
         on_ground = false
+
+    if Input.is_action_just_pressed("ui_action"):
+        # Dash lunge
+        if is_lunging < 0:
+            vv = jump_force / 2
+            jumpSound.play()
+            has_just_lunged = true
+            is_lunging = 2
+            has_just_jumped_timer = 0
+            feather_fall_timer = 0
+            if mySprite: mySprite.setLungeSprite(true)
+        if is_lunging == 2 and on_ground:
+            vv = jump_force / 2
+            is_lunging = 2
+            has_just_jumped_timer = 0
+            feather_fall_timer = 0
+            jumpSound.play()
 
     if is_touching_water:
         if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
@@ -336,21 +367,21 @@ func processHorizontalInputs(delta):
         
         horizontal_input = true
         if self.glitch_form != GlitchForm.FEATHER and (not self.is_holding_chicken or on_ground) and \
-           self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput():
+           self.equipment != Equipment.SKATES and not self.isSkateWallJumpInput() and is_lunging < 2:
             dir = Vector3(0.0, 0.0, 0.0)
 
         if Input.is_action_pressed("ui_up"):
             if not global.pauseMoveInput: 
                 dir += forward
             # only change sprite facing if i'm idle of if I just pressed this
-            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
+            if is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_up") or Input.is_action_just_released("ui_down") or \
                 (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
                 mySprite.faceUp()
         elif Input.is_action_pressed("ui_down"):
             if not global.pauseMoveInput: 
                 dir -= forward
             # only change sprite facing if i'm idle or if I just pressed down, or was holding down and released up
-            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
+            if is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_down") or Input.is_action_just_released("ui_up") or \
                 (not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"))) and not is_rotating:
                 mySprite.faceDown()
                 
@@ -358,7 +389,7 @@ func processHorizontalInputs(delta):
             if not global.pauseMoveInput: 
                 dir += right
             # only change sprite facing if i'm idle of if I just pressed this
-            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
+            if is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_left") or Input.is_action_just_released("ui_right") or \
                 (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
                 mySprite.faceLeft()
             # getCamera().rotate_right(5)
@@ -366,7 +397,7 @@ func processHorizontalInputs(delta):
             if not global.pauseMoveInput: 
                 dir -= right
             # only change sprite facing if i'm idle or if I just pressed right, or was holding right and released left
-            if broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
+            if is_lunging < 2 and broom_state == 0 and (not is_walking or Input.is_action_just_pressed("ui_right") or Input.is_action_just_released("ui_left") or \
                 (not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"))) and not is_rotating:
                 mySprite.faceRight()
             # getCamera().rotate_left(5)
@@ -395,8 +426,15 @@ func processHorizontalInputs(delta):
     # update x and z
     if is_lunging < 2 and (not smallInteractionArea.is_touching_water or horizontal_input):
         hv = dir * curr_walk_speed
-    if has_just_lunged:
-        hv = dir * lunge_speed
+    elif has_just_lunged:
+        hv = facing * lunge_speed
+    elif is_lunging >= 2 and on_ground:
+        hv -= (hv.normalized()*delta*30)
+        if abs(hv.length()) < delta*22:
+            hv = Vector3()
+            dir = Vector3(0.0, 0.0, 0.0)
+            is_lunging = 0
+            if mySprite: mySprite.setLungeSprite(false)
 
     if broom_state > 0:
         hv = Vector3(0, 0, 0)
@@ -413,7 +451,13 @@ func updateFacing(dir):
 
 # @override
 func landed():
-    is_lunging = 0
+    if is_lunging < 2: is_lunging = 0
+    if is_falling:
+        transition.interrupt()
+        is_falling = false
+        fallSound.stop()
+        transitioning = false
+        global.isRespawning = false
     .landed() #super
 
 # @override

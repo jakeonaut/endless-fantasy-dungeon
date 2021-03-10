@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=2]
@@ -6,25 +6,26 @@
 [ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=4]
 [ext_resource path="res://scripts/PlayerSprite.gd" type="Script" id=5]
 [ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=6]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=7]
-[ext_resource path="res://scripts/PlayerBroomPassiveInteractionArea.gd" type="Script" id=8]
-[ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/sounds/doublejump.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/sounds/wetjump.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/DELETEME/LA_Link_Fall.wav" type="AudioStream" id=15]
-[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=16]
-[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/sounds/hurt.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/sounds/broom.wav" type="AudioStream" id=20]
-[ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=21]
-[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=22]
-[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=23]
-[ext_resource path="res://scripts/PlayerCameraFlash.gd" type="Script" id=24]
-[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=25]
+[ext_resource path="res://assets/item_sheet0000.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=8]
+[ext_resource path="res://scripts/PlayerBroomPassiveInteractionArea.gd" type="Script" id=9]
+[ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/doublejump.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/wetjump.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/DELETEME/LA_Link_Fall.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/sounds/hurt.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sounds/broom.wav" type="AudioStream" id=21]
+[ext_resource path="res://sceneObjects/BugNet.tscn" type="PackedScene" id=22]
+[ext_resource path="res://sceneObjects/PauseMenu.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=24]
+[ext_resource path="res://scripts/PlayerCameraFlash.gd" type="Script" id=25]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=26]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -58,7 +59,7 @@ size = Vector3( 4, 3, 4 )
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
-albedo_texture = ExtResource( 23 )
+albedo_texture = ExtResource( 24 )
 
 [sub_resource type="CubeMesh" id=9]
 size = Vector3( 1, 1, 1 )
@@ -156,7 +157,6 @@ size = 20.0
 near = 0.1
 
 [node name="broom" type="Spatial" parent="CameraY"]
-editor/display_folded = true
 transform = Transform( 0.499999, 0, 0, 0, 0.6, 0, 0, 0, 0.499999, 0, 0, 0 )
 visible = false
 
@@ -164,14 +164,13 @@ visible = false
 transform = Transform( 1, 0, 7.10543e-015, 0, 1, 0, -7.10543e-015, 0, 1, 0.5, 0.5, 2 )
 material_override = SubResource( 5 )
 pixel_size = 0.16
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 vframes = 8
 hframes = 8
-frame = 9
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="PassiveInteractionArea" type="Area" parent="CameraY/broom/Sprite3D"]
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraY/broom/Sprite3D/PassiveInteractionArea"]
 transform = Transform( 1, 0, 1.86265e-008, 0, 1, 0, -1.86265e-008, 0, 1, 2.20641, -1.07408, 1.5471 )
@@ -187,60 +186,60 @@ material/0 = null
 editor/display_folded = true
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 9 )
+stream = ExtResource( 10 )
 volume_db = -25.0
 
 [node name="DoubleJumpSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 10 )
-volume_db = -20.0
-
-[node name="WetJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
 volume_db = -20.0
 
-[node name="JumpOverallsSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="WetJumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 12 )
-volume_db = -30.0
+volume_db = -20.0
 
-[node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="JumpOverallsSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 13 )
 volume_db = -30.0
 
-[node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="LandSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 14 )
 volume_db = -30.0
 
-[node name="FallSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="BumpSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 15 )
+volume_db = -30.0
+
+[node name="FallSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 16 )
 volume_db = -25.0
 
 [node name="WormSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 16 )
-volume_db = -30.0
-
-[node name="WormClimbSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 17 )
 volume_db = -30.0
 
-[node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="WormClimbSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 18 )
-volume_db = -20.0
+volume_db = -30.0
 
-[node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 19 )
 volume_db = -20.0
 
-[node name="BroomSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="SkateSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 20 )
+volume_db = -20.0
+
+[node name="BroomSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 21 )
 volume_db = -30.0
 
 [node name="Items" type="Spatial" parent="."]
 editor/display_folded = true
 
-[node name="BugNet" parent="Items" instance=ExtResource( 21 )]
+[node name="BugNet" parent="Items" instance=ExtResource( 22 )]
 visible = false
 
-[node name="PauseMenu" parent="." instance=ExtResource( 22 )]
+[node name="PauseMenu" parent="." instance=ExtResource( 23 )]
 editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
@@ -263,7 +262,7 @@ visible = false
 material_override = SubResource( 8 )
 mesh = SubResource( 9 )
 material/0 = null
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 
 [node name="GlitchFilter" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -274,7 +273,7 @@ visible = false
 material = SubResource( 11 )
 margin_right = 567.0
 margin_bottom = 554.0
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 expand = true
 
 [editable path="PauseMenu"]

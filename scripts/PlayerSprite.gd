@@ -21,17 +21,17 @@ func preProcess():
         frame_delay = 0.4
 
 func setNormalClothes():
-    updateStartFrame(0, 0)
+    updateBaseFrame(0, 0)
 func setMothCostume():
-    updateStartFrame(0, 6)
+    updateBaseFrame(0, 6)
 func setBugCatcherCostume():
-    updateStartFrame(0, 2)
+    updateBaseFrame(0, 2)
 func setClericCostume():
-    updateStartFrame(4, 0)
+    updateBaseFrame(4, 0)
 func setLuckyCatCostume():
-    updateStartFrame(0, 4)
+    updateBaseFrame(0, 4)
 func setNightgown():
-    updateStartFrame(4, 2)
+    updateBaseFrame(4, 2)
 
 # @override
 func animate(delta):
@@ -61,7 +61,8 @@ func faceLeft():
 # @override
 func isFacingLeft():
     var right_frame = base_frame + 2
-    return start_frame == right_frame and self.flip_h
+    var right_lunge_frame = base_frame + (self.hframes) + 3
+    return (start_frame == right_frame or start_frame == right_lunge_frame) and self.flip_h
 
 # @override
 func faceRight():
@@ -73,4 +74,42 @@ func faceRight():
 # @override
 func isFacingRight():
     var right_frame = base_frame + 2
-    return start_frame == right_frame and not self.flip_h
+    var right_lunge_frame = base_frame + (self.hframes) + 3
+    return (start_frame == right_frame or start_frame == right_lunge_frame) and not self.flip_h
+
+# @override
+func isFacingUp():
+    var up_lunge_frame = base_frame + (self.hframes) + 2
+    return .isFacingUp() or start_frame == up_lunge_frame
+
+# @override
+func isFacingDown():
+    var down_lunge_frame = base_frame + (self.hframes) + 1
+    return .isFacingDown() or start_frame == down_lunge_frame
+
+func setLungeSprite(val):
+    # TODO(jaketrower): This should be set by facing, not sprite position
+    # so as to fix double jump spin error
+    if val:
+        if isFacingDown():
+            start_frame = base_frame + (self.hframes) + 1
+        elif isFacingUp():
+            start_frame = base_frame + (self.hframes) + 2
+        elif isFacingRight():
+            start_frame = base_frame + (self.hframes) + 3
+            self.flip_h = false
+        elif isFacingLeft():
+            start_frame = base_frame + (self.hframes) + 3
+            self.flip_h = true
+        set_frame(start_frame)
+        max_frames = 1
+    else:
+        if isFacingDown():
+            faceDown()
+        if isFacingUp():
+            faceUp()
+        if isFacingRight():
+            faceRight()
+        if isFacingLeft():
+            faceLeft()
+        max_frames = 2

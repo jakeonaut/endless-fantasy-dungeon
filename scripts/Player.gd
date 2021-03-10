@@ -78,17 +78,17 @@ func _process(delta):
             var broom_sprite = broom.get_node("Sprite3D")
             if broom_state == 1:
                 #broom_mesh.rotation_degrees.z = 10
-                broom_sprite.updateStartFrame(2, 1)
+                broom_sprite.updateBaseFrame(2, 1)
                 broom_state = 2
             elif broom_state == 2:
                 #broom_mesh.translation.x = 5
                 broom_sprite.translation.x = -3
-                broom_sprite.updateStartFrame(1, 1)
+                broom_sprite.updateBaseFrame(1, 1)
                 broom_state = 3
                 broomSound.play()
             elif broom_state == 3:
                 #broom_mesh.rotation_degrees.z = -10
-                broom_sprite.updateStartFrame(2, 1)
+                broom_sprite.updateBaseFrame(2, 1)
                 broom_state = 4
             elif broom_state == 4:
                 #broom_mesh.translation.x = 0
@@ -172,10 +172,10 @@ func tryBroom():
         broom_state = 1
         broom_timer = 0
         can_broom = false
-        broom_sprite.updateStartFrame(1, 1)
+        broom_sprite.updateBaseFrame(1, 1)
         broom_sprite.max_frames = 1
         broomSound.play()
-        on_ground = false
+        pass # on_ground = false
 
 func faceDown():
     mySprite.faceDown()
