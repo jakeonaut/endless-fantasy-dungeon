@@ -1,6 +1,7 @@
 extends "Sprite.gd"
 
 onready var parent = get_parent()
+var is_lunge_sprite = false
 
 func _ready():
     set_process(true)
@@ -47,7 +48,9 @@ func animate(delta):
                 set_frame(start_frame)
         elif self.isFacingDown() or self.isFacingUp():
             set_frame(start_frame)
-            self.flip_h = not self.flip_h
+            # TODO(jaketrower): Need a better way to say if 
+            if not is_lunge_sprite or not parent.on_ground:
+                self.flip_h = not self.flip_h
         else:
             set_frame(start_frame)
         
@@ -113,3 +116,4 @@ func setLungeSprite(val):
         if isFacingLeft():
             faceLeft()
         max_frames = 2
+    is_lunge_sprite = val

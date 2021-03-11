@@ -6,6 +6,7 @@ onready var doubleJumpSound = get_node("Sounds/DoubleJumpSound")
 onready var wetJumpSound = get_node("Sounds/WetJumpSound")
 onready var fallSound = get_node("Sounds/FallSound")
 onready var smallInteractionArea = get_node("SmallInteractionArea")
+onready var collisionShape = get_node("CollisionShape")
 
 # GlitchForm variables
 enum GlitchForm {
@@ -158,6 +159,10 @@ func applyTerminalVelocity(delta):
 func processInputs(delta):
     processJumpInputs(delta)
     processHorizontalInputs(delta)
+    if Input.is_action_pressed("ui_ctrl") and on_ground:
+        if mySprite: mySprite.setLungeSprite(true)
+    elif not Input.is_action_pressed("ui_ctrl") and is_lunging < 2:
+        if mySprite: mySprite.setLungeSprite(false)
 
     if self.isWalkingIntoWall() and (smallInteractionArea.is_touching_a_ladder or \
        (glitch_form == GlitchForm.LADDER and was_pressing_horizontal_input)):
@@ -231,7 +236,7 @@ func processJumpInputs(delta):
             feather_fall_timer = 0
             should_magic_jump = false
         # Double jump
-        elif (is_lunging == -1 or self.isSkateWallJumpInput()) and not glitch_form == GlitchForm.JUMP:
+        elif (is_lunging == -1 or self.isSkateWallJumpInput()) and not glitch_form == GlitchForm.JUMP and not Input.is_action_pressed("ui_ctrl_jump"):
             vv = jump_force / 1.5
             doubleJumpSound.play()
             is_lunging = -2
@@ -266,7 +271,7 @@ func processJumpInputs(delta):
         take_fall_damage = false
         on_ground = false
 
-    if Input.is_action_just_pressed("ui_action"):
+    if Input.is_action_just_pressed("ui_ctrl_jump"):
         # Dash lunge
         if is_lunging < 0:
             vv = jump_force / 2
@@ -417,6 +422,8 @@ func processHorizontalInputs(delta):
         curr_walk_speed = swimming_walk_speed
     elif is_recovering or should_recover or (not on_ground and self.glitch_form == GlitchForm.LADDER):
         curr_walk_speed = recover_walk_speed
+    elif Input.is_action_pressed("ui_ctrl"):
+        curr_walk_speed = swimming_walk_speed
 
     if is_rolling:
         curr_walk_speed = curr_walk_speed * 3

@@ -53,7 +53,16 @@ func _process(delta):
                     nearest_area = area
 
     # give priority to active area if user pressing interact action
-    if Input.is_action_just_pressed("ui_interact"):
+    if Input.is_action_just_pressed("ui_ctrl_interact"):
+        if nearest_area:
+            nearest_area.InteractActivate()
+        # Give secondary priority to held objects action.
+        elif global.activeThrowableObject:
+            global.activeThrowableObject.activate_crouch()
+        # if no nearby active area, and no held object, use primary player action
+        else:
+            get_node("..").tryBroom()
+    elif Input.is_action_just_pressed("ui_interact"):
         if nearest_area:
             nearest_area.InteractActivate()
         # Give secondary priority to held objects action.

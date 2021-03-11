@@ -11,6 +11,7 @@ var was_just_thrown = false
 var has_initially_landed = false
 var thrown_down = false
 var was_planted = false
+var was_rolled = false
 
 var pickupCounter = 0
 var pickupCounterMax = 3
@@ -65,10 +66,21 @@ func processInputs(delta):
         if thrown_down:
             hv = player.facing.normalized() * 0
             vv = -jump_force*2
-            player.vv = jump_force*4
+            player.should_magic_jump = true
+        if was_rolled:
+            vv = 0
     elif on_ground: 
-        hv = Vector3()
+        if was_rolled:
+            rollStep(delta)
+        else:
+            hv = Vector3()
     thrown_down = false
+
+func rollStep(delta):
+    hv -= (hv.normalized()*delta*15)
+    if abs(hv.length()) < delta*22:
+        hv = Vector3()
+        was_rolled = false
 
 # @override
 func respawn():
@@ -82,7 +94,8 @@ func respawn():
 # @override
 func landed():
     .landed() #super
-    set_collision_mask_bit(1, true)
+    if not was_rolled:
+        set_collision_mask_bit(1, true)
     if not has_initially_landed:
         has_initially_landed = true
 
@@ -95,23 +108,41 @@ func isActive():
 func activate():
     # Should be able to talk while holding an object.
     if not is_held and global.activeThrowableObject == null:
-        is_floating = false
-        # Pick up
-        pickupSound.play()
-        is_held = true
-        global.activeThrowableObject = self
-        pickupCounter = 0
-        self.repositionSelf()
+        pickup()
     elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
-        spawn_origin = self.global_transform.origin
-        is_floating = false
-        float_timer = float_time_limit
-        # Throw!
-        throwSound.play()
-        is_held = false
-        was_just_thrown = true
-        was_planted = true
-        # if Input.is_action_pressed("ui_jump") and not player.is_pressing_horizontal_input:
-        #     thrown_down = true
+        throw()
 
-        global.activeThrowableObject = null
+func pickup():
+    is_floating = false
+    was_rolled = false
+    # Pick up
+    pickupSound.play()
+    is_held = true
+    global.activeThrowableObject = self
+    pickupCounter = 0
+    self.repositionSelf()
+
+func throw():
+    spawn_origin = self.global_transform.origin
+    is_floating = false
+    float_timer = float_time_limit
+    # Throw! Roll
+    throwSound.play()
+    is_held = false
+    was_just_thrown = true
+    was_planted = true
+    # if Input.is_action_pressed("ui_jump") and not player.is_pressing_horizontal_input:
+    #     thrown_down = true
+
+    global.activeThrowableObject = null
+    
+func activate_crouch():
+    if not is_held and global.activeThrowableObject == null:
+        pickup()
+    elif pickupCounter >= pickupCounterMax and (global.activeThrowableObject == self or is_held):
+        throw()
+        if player.on_ground:
+            was_rolled = true
+            self.translation = player.translation            
+        else:
+            thrown_down = true

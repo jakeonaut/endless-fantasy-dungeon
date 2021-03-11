@@ -24,6 +24,7 @@ params_billboard_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48445, 3.2514, 6.20847 )
 collision_layer = 0
 script = ExtResource( 1 )
+grav = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
