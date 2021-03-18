@@ -1,35 +1,37 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
-[ext_resource path="res://levels/Intro/IntroSceneScript.gd" type="Script" id=1]
-[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=3]
-[ext_resource path="res://tiles.tres" type="MeshLibrary" id=4]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=6]
-[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scripts/TextContainer.gd" type="Script" id=8]
-[ext_resource path="res://scripts/TextBox.gd" type="Script" id=9]
-[ext_resource path="res://assets/playerportrait.png" type="Texture" id=10]
-[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=12]
-[ext_resource path="res://scripts/AbortSound.gd" type="Script" id=13]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scripts/NPC.gd" type="Script" id=15]
-[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=16]
-[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=17]
-[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=18]
-[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=19]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=20]
-[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=21]
-[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=22]
-[ext_resource path="res://sceneObjects/pet.tscn" type="PackedScene" id=23]
-[ext_resource path="res://scripts/pet.gd" type="Script" id=24]
-[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=25]
-[ext_resource path="res://scripts/SavePoint.gd" type="Script" id=26]
-[ext_resource path="res://sceneObjects/InteractionAreaEvent.tscn" type="PackedScene" id=27]
-[ext_resource path="res://levels/IntroTowerSceneErrandDialogEvent.gd" type="Script" id=28]
-[ext_resource path="res://sceneObjects/fruit.tscn" type="PackedScene" id=29]
-[ext_resource path="res://scripts/fruit.gd" type="Script" id=30]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=1]
+[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=2]
+[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://levels/Intro/IntroSceneScript.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=6]
+[ext_resource path="res://scripts/TextContainer.gd" type="Script" id=7]
+[ext_resource path="res://scripts/TextBox.gd" type="Script" id=8]
+[ext_resource path="res://scripts/AbortSound.gd" type="Script" id=9]
+[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=11]
+[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=12]
+[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=13]
+[ext_resource path="res://assets/playerportrait.png" type="Texture" id=14]
+[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=15]
+[ext_resource path="res://scripts/NPC.gd" type="Script" id=16]
+[ext_resource path="res://scripts/PlantLeafy.gd" type="Script" id=17]
+[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=18]
+[ext_resource path="res://scripts/pet.gd" type="Script" id=19]
+[ext_resource path="res://scripts/SavePoint.gd" type="Script" id=20]
+[ext_resource path="res://levels/IntroTowerSceneErrandDialogEvent.gd" type="Script" id=21]
+[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=22]
+[ext_resource path="res://scripts/fruit.gd" type="Script" id=23]
+[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=24]
+[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=25]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=26]
+[ext_resource path="res://sceneObjects/pet.tscn" type="PackedScene" id=27]
+[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=28]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=29]
+[ext_resource path="res://sceneObjects/InteractionAreaEvent.tscn" type="PackedScene" id=30]
+[ext_resource path="res://sceneObjects/PlantLeafy.tscn" type="PackedScene" id=31]
+[ext_resource path="res://sceneObjects/fruit.tscn" type="PackedScene" id=32]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -49,7 +51,7 @@ size = 27
 extra_spacing_top = 16
 extra_spacing_char = 2
 extra_spacing_space = 2
-font_data = ExtResource( 11 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="BoxShape" id=5]
 
@@ -68,46 +70,39 @@ params_billboard_mode = 1
 [sub_resource type="BoxShape" id=9]
 
 [node name="level" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 
-[node name="commonWorldEnvironment" type="WorldEnvironment" parent="." instance=ExtResource( 2 )]
+[node name="commonWorldEnvironment" type="WorldEnvironment" parent="." instance=ExtResource( 25 )]
 environment = SubResource( 1 )
 
 [node name="BackgroundControl" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
 margin_right = 1020.0
 margin_bottom = 770.0
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 expand = true
 
 [node name="Level Tiles" type="GridMap" parent="."]
-mesh_library = ExtResource( 4 )
+mesh_library = ExtResource( 1 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, -458752, 0, 0, -458747, 0, 0, -393216, 0, 0, -393211, 0, 0, -327680, 0, 0, -327675, 0, 0, -262144, 0, 0, -262139, 0, 0, -196608, 0, 0, -196603, 0, 0, -196602, 0, 0, -131072, 0, 0, -131067, 0, 0, -65536, 0, 0, -65535, 0, 0, -65531, 0, 0, 0, 1, 0, 1, 1, 536870912, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, -524283, 1, 0, -524282, 1, 0, -524281, 1, 0, -524280, 1, 0, -524279, 1, 0, -524278, 1, 0, -524277, 1, 0, -458752, 1, 0, -458747, 1, 0, -458746, 1, 0, -458745, 1, 0, -458744, 1, 0, -458743, 1, 0, -393216, 1, 0, -393211, 1, 0, -393210, 1, 2, -393209, 1, 0, -393208, 1, 0, -327680, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -262144, 1, 0, -262139, 1, 0, -262138, 1, 0, -196608, 1, 0, -196603, 1, 0, -131072, 1, 0, -131067, 1, 2, -65536, 1, 0, -65535, 1, 0, -65531, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, -524283, 2, 0, -524282, 2, 536870912, -524281, 2, 536870913, -524280, 2, 0, -524279, 2, 0, -524278, 2, 0, -524277, 2, 0, -458752, 2, 0, -458747, 2, 0, -458744, 2, 536870912, -393216, 2, 1610612736, -393211, 2, 0, -393209, 2, 0, -327680, 2, 0, -327679, 2, 2, -327675, 2, 0, -327674, 2, 2, -262144, 2, 536870912, -262139, 2, 536870912, -196608, 2, 0, -196603, 2, 536870914, -131072, 2, 0, -131067, 2, 0, -65536, 2, 0, -65535, 2, 536870912, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 2, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 536870912, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 1610612738, -524283, 3, 0, -524282, 3, 0, -524281, 3, 0, -524280, 3, 0, -524279, 3, 0, -524278, 3, 2, -524277, 3, 0, -458752, 3, 2, -458751, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 3, 0, -458747, 3, 0, -458745, 3, 2, -393216, 3, 0, -393215, 3, 0, -393214, 3, 536870912, -393213, 3, 2, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -327680, 3, 0, -327679, 3, 2, -327678, 3, 0, -327677, 3, 0, -327676, 3, 2, -327675, 3, 536870912, -262144, 3, 2, -262143, 3, 0, -262142, 3, 0, -262141, 3, 0, -262140, 3, 0, -262139, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 2, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 2, -65536, 3, 0, -65535, 3, 2, -65534, 3, 2, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, -524283, 4, 0, -524281, 4, 0, -524280, 4, 0, -524279, 4, 0, -524278, 4, 0, -524277, 4, 0, -458746, 4, 0, -524283, 5, 0, -524282, 5, 0, -524281, 5, 0, -524280, 5, 0, -524279, 5, 0, -524278, 5, 0, -524277, 5, 2, -524283, 6, 0, -524282, 6, 0, -524281, 6, 1, -524280, 6, 0, -524279, 6, 0, -524278, 6, 0, -524277, 6, 0, -524283, 7, 0, -524282, 7, 1, -524281, 7, 0, -524280, 7, 1, -524279, 7, 1, -524278, 7, 1, -524277, 7, 0, -524281, 8, 1, -524280, 8, 1, -524279, 8, 1, -524278, 8, 1, -524277, 8, 1, -524281, 9, 1, -524280, 9, 1, -524279, 9, 1, -524278, 9, 1, -524277, 9, 1, -524281, 10, 1, -524280, 10, 1, -524279, 10, 1, -524278, 10, 1, -524277, 10, 1, -524281, 11, 1, -524280, 11, 1, -524279, 11, 1, -524278, 11, 1, -524277, 11, 1, -524281, 12, 1, -524280, 12, 1, -524279, 12, 1, -524278, 12, 1, -524277, 12, 1, 0, 65533, 0, 1, 65533, 536870912, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 536870914, -458752, 65534, 0, -458751, 65534, 0, -458750, 65534, 0, -458749, 65534, 0, -458748, 65534, 0, -458747, 65534, 0, -393216, 65534, 0, -393215, 65534, 0, -393214, 65534, 0, -393213, 65534, 0, -393212, 65534, 0, -393211, 65534, 0, -327680, 65534, 0, -327679, 65534, 0, -327678, 65534, 0, -327677, 65534, 536870912, -327676, 65534, 0, -327675, 65534, 0, -262144, 65534, 0, -262143, 65534, 0, -262142, 65534, 0, -262141, 65534, 0, -262140, 65534, 0, -262139, 65534, 0, -196608, 65534, 0, -196607, 65534, 0, -196606, 65534, 0, -196605, 65534, 0, -196604, 65534, 1610612736, -196603, 65534, 0, -131072, 65534, 0, -131071, 65534, 536870912, -131070, 65534, 0, -131069, 65534, 0, -131068, 65534, 536870912, -131067, 65534, 0, -65536, 65534, 0, -65535, 65534, 0, -65534, 65534, 0, -65533, 65534, 0, -65532, 65534, 0, -65531, 65534, 0, -65530, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 536870912, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, -458752, 65535, 2, -458747, 65535, 0, -393216, 65535, 0, -393211, 65535, 0, -327680, 65535, 0, -327675, 65535, 0, -262144, 65535, 0, -262139, 65535, 0, -196608, 65535, 0, -196603, 65535, 0, -131072, 65535, 0, -131067, 65535, 0, -131066, 65535, 0, -65536, 65535, 0, -65535, 65535, 536870912, -65531, 65535, 536870912 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, -458752, 0, 0, -458747, 0, 0, -393216, 0, 0, -393211, 0, 0, -327680, 0, 0, -327675, 0, 0, -262144, 0, 0, -262139, 0, 0, -196608, 0, 0, -196603, 0, 0, -196602, 0, 0, -131072, 0, 0, -131067, 0, 0, -65536, 0, 0, -65535, 0, 0, -65531, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, -524283, 1, 0, -524282, 1, 0, -524281, 1, 0, -524280, 1, 0, -524279, 1, 0, -524278, 1, 0, -524277, 1, 0, -458752, 1, 0, -458747, 1, 0, -458746, 1, 0, -458745, 1, 0, -458744, 1, 0, -458743, 1, 0, -393216, 1, 0, -393211, 1, 0, -393210, 1, 2, -393209, 1, 0, -393208, 1, 0, -327680, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -262144, 1, 0, -262139, 1, 0, -262138, 1, 0, -196608, 1, 0, -196603, 1, 0, -131072, 1, 0, -131067, 1, 2, -65536, 1, 0, -65535, 1, 0, -65531, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, -524283, 2, 0, -524282, 2, 0, -524281, 2, 1, -524280, 2, 0, -524279, 2, 0, -524278, 2, 0, -524277, 2, 0, -458752, 2, 0, -458747, 2, 0, -458744, 2, 0, -393216, 2, 0, -393211, 2, 0, -393209, 2, 0, -327680, 2, 0, -327679, 2, 2, -327675, 2, 0, -327674, 2, 2, -262144, 2, 0, -262139, 2, 0, -196608, 2, 0, -196603, 2, 2, -131072, 2, 0, -131067, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 2, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, -524283, 3, 0, -524282, 3, 0, -524281, 3, 0, -524280, 3, 0, -524279, 3, 0, -524278, 3, 2, -524277, 3, 0, -458752, 3, 2, -458751, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 3, 0, -458747, 3, 0, -458745, 3, 2, -393216, 3, 0, -393215, 3, 0, -393214, 3, 0, -393213, 3, 2, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -327680, 3, 0, -327679, 3, 2, -327678, 3, 0, -327677, 3, 0, -327676, 3, 2, -327675, 3, 0, -262144, 3, 2, -262143, 3, 0, -262142, 3, 0, -262141, 3, 0, -262140, 3, 0, -262139, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 2, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 2, -65536, 3, 0, -65535, 3, 2, -65534, 3, 2, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, -524283, 4, 0, -524281, 4, 0, -524280, 4, 0, -524279, 4, 0, -524278, 4, 0, -524277, 4, 0, -458746, 4, 0, -524283, 5, 0, -524282, 5, 0, -524281, 5, 0, -524280, 5, 0, -524279, 5, 0, -524278, 5, 0, -524277, 5, 2, -524283, 6, 0, -524282, 6, 0, -524281, 6, 1, -524280, 6, 0, -524279, 6, 0, -524278, 6, 0, -524277, 6, 0, -524283, 7, 0, -524282, 7, 1, -524281, 7, 0, -524280, 7, 1, -524279, 7, 1, -524278, 7, 1, -524277, 7, 0, -524281, 8, 1, -524280, 8, 1, -524279, 8, 1, -524278, 8, 1, -524277, 8, 1, -524281, 9, 1, -524280, 9, 1, -524279, 9, 1, -524278, 9, 1, -524277, 9, 1, -524281, 10, 1, -524280, 10, 1, -524279, 10, 1, -524278, 10, 1, -524277, 10, 1, -524281, 11, 1, -524280, 11, 1, -524279, 11, 1, -524278, 11, 1, -524277, 11, 1, -524281, 12, 1, -524280, 12, 1, -524279, 12, 1, -524278, 12, 1, -524277, 12, 1, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 2, -458752, 65534, 0, -458751, 65534, 0, -458750, 65534, 0, -458749, 65534, 0, -458748, 65534, 0, -458747, 65534, 0, -393216, 65534, 0, -393215, 65534, 0, -393214, 65534, 0, -393213, 65534, 0, -393212, 65534, 0, -393211, 65534, 0, -327680, 65534, 0, -327679, 65534, 0, -327678, 65534, 0, -327677, 65534, 0, -327676, 65534, 0, -327675, 65534, 0, -262144, 65534, 0, -262143, 65534, 0, -262142, 65534, 0, -262141, 65534, 0, -262140, 65534, 0, -262139, 65534, 0, -196608, 65534, 0, -196607, 65534, 0, -196606, 65534, 0, -196605, 65534, 0, -196604, 65534, 0, -196603, 65534, 0, -131072, 65534, 0, -131071, 65534, 0, -131070, 65534, 0, -131069, 65534, 0, -131068, 65534, 0, -131067, 65534, 0, -65536, 65534, 0, -65535, 65534, 0, -65534, 65534, 0, -65533, 65534, 0, -65532, 65534, 0, -65531, 65534, 0, -65530, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, -458752, 65535, 2, -458747, 65535, 0, -393216, 65535, 0, -393211, 65535, 0, -327680, 65535, 0, -327675, 65535, 0, -262144, 65535, 0, -262139, 65535, 0, -196608, 65535, 0, -196603, 65535, 0, -131072, 65535, 0, -131067, 65535, 0, -131066, 65535, 0, -65536, 65535, 0, -65535, 65535, 0, -65531, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, -8, 0 )
 }
 
-[node name="Player" type="KinematicBody" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5174, -12.999, 19.278 )
+[node name="Player" type="KinematicBody" parent="." instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19472, 3.001, -1.36255 )
 collision_layer = 2
-script = ExtResource( 6 )
-grav = 80
+script = ExtResource( 5 )
 
-[node name="PlayerTextBox" type="CanvasLayer" parent="." instance=ExtResource( 7 )]
-editor/display_folded = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("")
-bbText = ""
-portrait = null
+[node name="PlayerTextBox" type="CanvasLayer" parent="." instance=ExtResource( 28 )]
+script = ExtResource( 7 )
 
 [node name="TextBox" type="TextureRect" parent="PlayerTextBox" index="0"]
 visible = false
@@ -115,7 +110,7 @@ margin_right = 578.0
 margin_bottom = 207.0
 texture = SubResource( 3 )
 expand = true
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 nextTextBoxPath = NodePath("../../yellow/TextBox4/TextBox")
 
 [node name="Portrait" type="TextureRect" parent="PlayerTextBox/TextBox" index="0"]
@@ -123,7 +118,7 @@ margin_left = 31.0
 margin_top = 25.0
 margin_right = 181.0
 margin_bottom = 175.0
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="PlayerTextBox/TextBox" index="1"]
@@ -145,48 +140,40 @@ text = ". . . . . . . . . . . . .
 . . .            ... press F"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="PlayerTextBox/TextBox" index="2"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -10.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="PlayerTextBox/TextBox" index="3"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -20.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
-[node name="yellow" type="KinematicBody" parent="." instance=ExtResource( 14 )]
-editor/display_folded = true
+[node name="yellow" type="KinematicBody" parent="." instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
 collision_layer = 2
 collision_mask = 3
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 grav = 0
-nextTextBoxPath = NodePath("")
-bbText = ""
-portrait = null
 
 [node name="CollisionShape" type="CollisionShape" parent="yellow" index="0"]
 transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="InteractionArea" type="Area" parent="yellow" index="1"]
-script = ExtResource( 16 )
+script = ExtResource( 18 )
 
 [node name="CollisionShape" type="CollisionShape" parent="yellow/InteractionArea" index="0"]
 shape = SubResource( 6 )
 
 [node name="SmallInteractionArea" type="Area" parent="yellow" index="2"]
-script = ExtResource( 17 )
+script = ExtResource( 22 )
 
 [node name="CollisionShape" type="CollisionShape" parent="yellow/SmallInteractionArea" index="0"]
 shape = SubResource( 7 )
 
 [node name="NPC TextBox" type="CanvasLayer" parent="yellow" index="3"]
-editor/display_folded = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("")
-bbText = ""
-portrait = null
+script = ExtResource( 7 )
 
 [node name="TextBox" type="TextureRect" parent="yellow/NPC TextBox" index="0"]
 visible = false
@@ -194,7 +181,7 @@ margin_right = 578.0
 margin_bottom = 207.0
 texture = SubResource( 3 )
 expand = true
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 nextTextBoxPath = NodePath("../../TextBox2/TextBox")
 
 [node name="Portrait" type="TextureRect" parent="yellow/NPC TextBox/TextBox" index="0"]
@@ -202,7 +189,7 @@ margin_left = 31.0
 margin_top = 25.0
 margin_right = 181.0
 margin_bottom = 175.0
-texture = ExtResource( 18 )
+texture = ExtResource( 11 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="yellow/NPC TextBox/TextBox" index="1"]
@@ -224,14 +211,14 @@ errand for me
 !                ... press F"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="yellow/NPC TextBox/TextBox" index="2"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -10.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="yellow/NPC TextBox/TextBox" index="3"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -20.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="Sprite3D" type="Sprite3D" parent="yellow" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.260242, 0 )
@@ -239,21 +226,15 @@ material_override = SubResource( 8 )
 pixel_size = 0.04
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 19 )
-vframes = 2
+texture = ExtResource( 12 )
 hframes = 2
-frame = 1
-script = ExtResource( 20 )
-frame_delay = 0.149088
+vframes = 2
+script = ExtResource( 6 )
+frame_delay = 0.133022
 should_randomize_frame_delay = true
-max_frames = 2
 
-[node name="TextBox2" type="CanvasLayer" parent="yellow" instance=ExtResource( 7 )]
-editor/display_folded = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("")
-bbText = ""
-portrait = null
+[node name="TextBox2" type="CanvasLayer" parent="yellow" instance=ExtResource( 28 )]
+script = ExtResource( 7 )
 
 [node name="TextBox" type="TextureRect" parent="yellow/TextBox2" index="0"]
 visible = false
@@ -261,7 +242,7 @@ margin_right = 578.0
 margin_bottom = 207.0
 texture = SubResource( 3 )
 expand = true
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 nextTextBoxPath = NodePath("../../../PlayerTextBox/TextBox")
 
 [node name="Portrait" type="TextureRect" parent="yellow/TextBox2/TextBox" index="0"]
@@ -269,7 +250,7 @@ margin_left = 31.0
 margin_top = 25.0
 margin_right = 181.0
 margin_bottom = 175.0
-texture = ExtResource( 21 )
+texture = ExtResource( 13 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="yellow/TextBox2/TextBox" index="1"]
@@ -291,21 +272,17 @@ text = ". . . . . . . . . . . . .
 !                ... press F"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="yellow/TextBox2/TextBox" index="2"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -10.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="yellow/TextBox2/TextBox" index="3"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -20.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
-[node name="TextBox4" type="CanvasLayer" parent="yellow" instance=ExtResource( 7 )]
-editor/display_folded = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("")
-bbText = ""
-portrait = null
+[node name="TextBox4" type="CanvasLayer" parent="yellow" instance=ExtResource( 28 )]
+script = ExtResource( 7 )
 
 [node name="TextBox" type="TextureRect" parent="yellow/TextBox4" index="0"]
 visible = false
@@ -313,15 +290,14 @@ margin_right = 578.0
 margin_bottom = 207.0
 texture = SubResource( 3 )
 expand = true
-script = ExtResource( 9 )
-nextTextBoxPath = NodePath("")
+script = ExtResource( 8 )
 
 [node name="Portrait" type="TextureRect" parent="yellow/TextBox4/TextBox" index="0"]
 margin_left = 31.0
 margin_top = 25.0
 margin_right = 181.0
 margin_bottom = 175.0
-texture = ExtResource( 18 )
+texture = ExtResource( 11 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="yellow/TextBox4/TextBox" index="1"]
@@ -343,23 +319,20 @@ press \"WASD\" to cast it!
 !                ... press F"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="yellow/TextBox4/TextBox" index="2"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -10.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="yellow/TextBox4/TextBox" index="3"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -20.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="Event" type="Node" parent="yellow/TextBox4/TextBox" index="4"]
-script = ExtResource( 22 )
+script = ExtResource( 15 )
 
-[node name="TextBox5" type="CanvasLayer" parent="yellow" instance=ExtResource( 7 )]
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("")
-bbText = ""
-portrait = null
+[node name="TextBox5" type="CanvasLayer" parent="yellow" instance=ExtResource( 28 )]
+script = ExtResource( 7 )
 
 [node name="TextBox" type="TextureRect" parent="yellow/TextBox5" index="0"]
 visible = false
@@ -367,15 +340,14 @@ margin_right = 578.0
 margin_bottom = 207.0
 texture = SubResource( 3 )
 expand = true
-script = ExtResource( 9 )
-nextTextBoxPath = NodePath("")
+script = ExtResource( 8 )
 
 [node name="Portrait" type="TextureRect" parent="yellow/TextBox5/TextBox" index="0"]
 margin_left = 31.0
 margin_top = 25.0
 margin_right = 181.0
 margin_bottom = 175.0
-texture = ExtResource( 18 )
+texture = ExtResource( 11 )
 expand = true
 
 [node name="Text" type="RichTextLabel" parent="yellow/TextBox5/TextBox" index="1"]
@@ -397,66 +369,76 @@ the shop & buy me an
 green onion?    ... press F"
 
 [node name="DialogSound" type="AudioStreamPlayer" parent="yellow/TextBox5/TextBox" index="2"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -10.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="AbortSound" type="AudioStreamPlayer" parent="yellow/TextBox5/TextBox" index="3"]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -20.0
-script = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="Event" type="Node" parent="yellow/TextBox5/TextBox" index="4"]
-script = ExtResource( 22 )
+script = ExtResource( 15 )
 
-[node name="pet" type="KinematicBody" parent="." instance=ExtResource( 23 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1993, -12.999, 16.7438 )
-script = ExtResource( 24 )
-grav = 80
-stationary = false
+[node name="pet" type="KinematicBody" parent="." instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.501, -12.9912, 9.001 )
+script = ExtResource( 19 )
 
-[node name="SavePoint" type="Spatial" parent="." instance=ExtResource( 25 )]
-transform = Transform( 0.961975, 0, 0.273092, 0, 1, 0, -0.273092, 0, 0.961975, 18, -13.3945, 9 )
-script = ExtResource( 26 )
+[node name="SavePoint" type="Spatial" parent="." instance=ExtResource( 24 )]
+transform = Transform( -0.99841, 0, -0.0559404, 0, 1, 0, 0.0559404, 0, -0.99841, 18, -13.3945, 9 )
+script = ExtResource( 20 )
 
-[node name="InteractionAreaEvent" type="Spatial" parent="." instance=ExtResource( 27 )]
-script = ExtResource( 28 )
+[node name="InteractionAreaEvent" type="Spatial" parent="." instance=ExtResource( 30 )]
+script = ExtResource( 21 )
 
 [node name="Area" type="Area" parent="InteractionAreaEvent" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 2 )
-script = ExtResource( 17 )
+script = ExtResource( 22 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionAreaEvent/Area" index="0"]
 shape = SubResource( 9 )
 
-[node name="fruit" type="KinematicBody" parent="." instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6807, -24.9323, 20.1601 )
+[node name="fruit" type="KinematicBody" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19472, 4.46767, -1.36255 )
 collision_layer = 0
-script = ExtResource( 30 )
-grav = 80
+script = ExtResource( 23 )
 
-[node name="fruit2" type="KinematicBody" parent="." instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9497, -21.4212, 21.8214 )
+[node name="fruit2" type="KinematicBody" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9175, -13.2805, 10.7726 )
 collision_layer = 0
-script = ExtResource( 30 )
-grav = 80
+collision_mask = 3
+script = ExtResource( 23 )
 
-[node name="fruit3" type="KinematicBody" parent="." instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.44, -17.7323, 27.4206 )
+[node name="fruit3" type="KinematicBody" parent="." instance=ExtResource( 32 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6455, -13.284, 14.9526 )
 collision_layer = 0
-script = ExtResource( 30 )
-grav = 80
+script = ExtResource( 23 )
+
+[node name="Plant" type="Spatial" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7074, -14, 5.74491 )
+script = ExtResource( 17 )
+
+[node name="Plant2" type="Spatial" parent="." instance=ExtResource( 31 )]
+transform = Transform( 0.805639, 0, -0.592407, 0, 1, 0, 0.592407, 0, 0.805639, 11.796, -14, 14.7729 )
+script = ExtResource( 17 )
+
+[node name="Plant3" type="Spatial" parent="." instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7336, -13.9995, 21.6911 )
+script = ExtResource( 17 )
+
+[node name="Plant4" type="Spatial" parent="." instance=ExtResource( 31 )]
+transform = Transform( 0.664252, 0, 0.747508, 0, 1, 0, -0.747508, 0, 0.664252, 20.5691, -13.9924, 18.2486 )
+script = ExtResource( 17 )
+
+[node name="Plant5" type="Spatial" parent="." instance=ExtResource( 31 )]
+transform = Transform( -0.999136, 0, 0.0415805, 0, 1, 0, -0.0415805, 0, -0.999136, 23.0442, -14, 22.4231 )
+script = ExtResource( 17 )
 
 [editable path="PlayerTextBox"]
-
 [editable path="yellow"]
-
 [editable path="yellow/NPC TextBox"]
-
 [editable path="yellow/TextBox2"]
-
 [editable path="yellow/TextBox4"]
-
 [editable path="yellow/TextBox5"]
-
 [editable path="InteractionAreaEvent"]

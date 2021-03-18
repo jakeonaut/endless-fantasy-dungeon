@@ -54,7 +54,7 @@ var recover_time_limit = 3
 var is_walking = false
 var is_pressing_horizontal_input = false
 var was_pressing_horizontal_input = false
-var facing = Vector3(0, 0, -1) #default to facing forward
+var facing = Vector3(0, 0, 1) #default to facing "down" toward the player behind the screen
 var transitioning = false
 var is_falling = false
 

@@ -6,6 +6,7 @@ onready var close_camera = get_node("CameraX/CloseCamera")
 onready var mid_camera = get_node("CameraX/MidCamera")
 onready var toybox_camera = get_node("ToyboxCamera")
 onready var player = get_node("..")
+onready var player_sprite = get_node("../Sprite3D")
 
 var mouseDown = false
 var startClickPos = Vector2(0, 0)
@@ -72,11 +73,13 @@ func _process(delta):
     if target_rotation > current_rotation:
         current_rotation += curr_step.y*delta
         rotate_y(curr_step.y * delta)
+        player_sprite.fixSpriteFacing()
         if current_rotation > target_rotation:
             self.tryNormalizeCurrent()
     elif target_rotation < current_rotation:
         current_rotation -= curr_step.y*delta
         rotate_y(-curr_step.y * delta)
+        player_sprite.fixSpriteFacing()
         if current_rotation < target_rotation:
             self.tryNormalizeCurrent()
     else:

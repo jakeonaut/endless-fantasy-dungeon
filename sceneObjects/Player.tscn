@@ -122,6 +122,7 @@ texture = ExtResource( 4 )
 vframes = 8
 hframes = 8
 script = ExtResource( 5 )
+should_randomize_frame_delay = null
 
 [node name="CameraY" type="Spatial" parent="."]
 transform = Transform( 0.998628, 0, 0.0523359, 0, 1, 0, -0.0523359, 0, 0.998628, 0, 0, 0 )

@@ -8,6 +8,9 @@ var start_frame = 0
 var base_frame = start_frame
 export var max_frames = 2
 
+var facing = Vector2(0, 1)
+var is_rotating = false
+
 func _ready():
     set_process(true)
     start_frame = get_frame()
@@ -46,33 +49,51 @@ func faceLeft():
     if start_frame != left_frame:
         start_frame = left_frame
         set_frame(start_frame)
+    facing = Vector2(-1, 0)
 func isFacingLeft(): # TODO(jaketrower): How can this interact with lunging and other varied animations ?
-    var left_frame = base_frame + (self.hframes) + 2
-    return start_frame == left_frame
+    # var left_frame = base_frame + (self.hframes) + 2
+    # return start_frame == left_frame
+    return facing.x == -1 and facing.y == 0
 
 func faceRight():
     var right_frame = base_frame + 2
     if start_frame != right_frame:
         start_frame = right_frame
         set_frame(start_frame)
+    facing = Vector2(1, 0)
 func isFacingRight(): # TODO(jaketrower): How can this interact with lunging and other varied animations ?
-    var right_frame = base_frame + 2
-    return start_frame == right_frame
+    # var right_frame = base_frame + 2
+    # return start_frame == right_frame
+    return facing.x == 1 and facing.y == 0
 
 func faceUp():
     var up_frame = base_frame + (self.hframes)
     if start_frame != up_frame:
         start_frame = up_frame
         set_frame(start_frame)
+    facing = Vector2(0, -1)
+
+    
 func isFacingUp(): # TODO(jaketrower): How can this interact with lunging and other varied animations ?
-    var up_frame = base_frame + (self.hframes)
-    return start_frame == up_frame
+    # var up_frame = base_frame + (self.hframes)
+    # return start_frame == up_frame
+    return facing.x == 0 and facing.y == -1
 
 func faceDown():
     var down_frame = base_frame
     if start_frame != down_frame:
         start_frame = down_frame
         set_frame(start_frame)
+    facing = Vector2(0, 1)
 func isFacingDown(): # TODO(jaketrower): How can this interact with lunging and other varied animations ?
-    var down_frame = base_frame
-    return start_frame == down_frame
+    # var down_frame = base_frame
+    # return start_frame == down_frame
+    return facing.x == 0 and facing.y == 1
+
+func fixSpriteFacing():
+    if not is_rotating:
+        # by default, just face down. Player will have more sophisticated based on facing var and camera
+        faceDown()
+
+func setRotating(val):
+    is_rotating = val

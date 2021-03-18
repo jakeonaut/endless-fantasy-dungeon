@@ -116,6 +116,7 @@ func processPhysics(delta):
     prev_dir = dir
 
     if is_rotating:
+        mySprite.setRotating(true)
         rotateTimer += delta*22
         if rotateTimer >= rotateTimeLimit:
             rotateTimer = 0
@@ -128,6 +129,8 @@ func processPhysics(delta):
                     num_rotations += 1
                     if num_rotations >= max_rotations:
                         is_rotating = false
+                        mySprite.setRotating(false)
+                        mySprite.fixSpriteFacing()
 
     noFloorBelow()
     
