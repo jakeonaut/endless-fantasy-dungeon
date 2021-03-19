@@ -97,3 +97,7 @@ func fixSpriteFacing():
 
 func setRotating(val):
     is_rotating = val
+
+func setFlipRotating(val):
+    # is_flip_rotating = val
+    pass

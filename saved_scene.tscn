@@ -1,444 +1,659 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=74 format=2]
 
-[ext_resource path="res://tiles.tres" type="MeshLibrary" id=1]
-[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=2]
-[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://levels/Intro/IntroSceneScript.gd" type="Script" id=4]
-[ext_resource path="res://scripts/Player.gd" type="Script" id=5]
-[ext_resource path="res://scripts/Sprite.gd" type="Script" id=6]
-[ext_resource path="res://scripts/TextContainer.gd" type="Script" id=7]
-[ext_resource path="res://scripts/TextBox.gd" type="Script" id=8]
-[ext_resource path="res://scripts/AbortSound.gd" type="Script" id=9]
-[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=11]
-[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=12]
-[ext_resource path="res://assets/npcs/tutorial2.png" type="Texture" id=13]
-[ext_resource path="res://assets/playerportrait.png" type="Texture" id=14]
-[ext_resource path="res://scripts/SetAsTextbox.gd" type="Script" id=15]
-[ext_resource path="res://scripts/NPC.gd" type="Script" id=16]
-[ext_resource path="res://scripts/PlantLeafy.gd" type="Script" id=17]
-[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=18]
-[ext_resource path="res://scripts/pet.gd" type="Script" id=19]
-[ext_resource path="res://scripts/SavePoint.gd" type="Script" id=20]
-[ext_resource path="res://levels/IntroTowerSceneErrandDialogEvent.gd" type="Script" id=21]
-[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=22]
-[ext_resource path="res://scripts/fruit.gd" type="Script" id=23]
-[ext_resource path="res://sceneObjects/SavePoint.tscn" type="PackedScene" id=24]
-[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=25]
-[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=26]
-[ext_resource path="res://sceneObjects/pet.tscn" type="PackedScene" id=27]
-[ext_resource path="res://sceneObjects/TextBox.tscn" type="PackedScene" id=28]
-[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=29]
-[ext_resource path="res://sceneObjects/InteractionAreaEvent.tscn" type="PackedScene" id=30]
-[ext_resource path="res://sceneObjects/PlantLeafy.tscn" type="PackedScene" id=31]
-[ext_resource path="res://sceneObjects/fruit.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scripts/levelScript.gd" type="Script" id=1]
+[ext_resource path="res://sceneObjects/pet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/pet.gd" type="Script" id=3]
+[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=4]
+[ext_resource path="res://scripts/petPassiveInteractionArea.gd" type="Script" id=5]
+[ext_resource path="res://assets/critters0000.png" type="Texture" id=6]
+[ext_resource path="res://scripts/petSprite3D.gd" type="Script" id=7]
+[ext_resource path="res://assets/DELETEME/horn.wav" type="AudioStream" id=8]
+[ext_resource path="res://levels/common/commonWorldEnvironment.tscn" type="PackedScene" id=9]
+[ext_resource path="res://tiles.tres" type="MeshLibrary" id=10]
+[ext_resource path="res://assets/textures/bricks.png" type="Texture" id=11]
+[ext_resource path="res://sceneObjects/portdoor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/portdoor.gd" type="Script" id=13]
+[ext_resource path="res://sceneObjects/Player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=15]
+[ext_resource path="res://scripts/PlayerInteractionArea.gd" type="Script" id=16]
+[ext_resource path="res://scripts/PlayerSmallInteractionArea.gd" type="Script" id=17]
+[ext_resource path="res://assets/player_sheet0000.png" type="Texture" id=18]
+[ext_resource path="res://scripts/PlayerSprite.gd" type="Script" id=19]
+[ext_resource path="res://scripts/MouseCamera.gd" type="Script" id=20]
+[ext_resource path="res://assets/item_sheet0000.png" type="Texture" id=21]
+[ext_resource path="res://scripts/Sprite.gd" type="Script" id=22]
+[ext_resource path="res://scripts/PlayerBroomPassiveInteractionArea.gd" type="Script" id=23]
+[ext_resource path="res://assets/sounds/jump.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/sounds/doublejump.wav" type="AudioStream" id=25]
+[ext_resource path="res://assets/sounds/wetjump.wav" type="AudioStream" id=26]
+[ext_resource path="res://assets/sounds/jump_overalls.wav" type="AudioStream" id=27]
+[ext_resource path="res://assets/sounds/land.wav" type="AudioStream" id=28]
+[ext_resource path="res://assets/sounds/bump.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/DELETEME/LA_Link_Fall.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=31]
+[ext_resource path="res://assets/sounds/wormClimb.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/sounds/hurt.wav" type="AudioStream" id=33]
+[ext_resource path="res://assets/sounds/gurgle_firered.wav" type="AudioStream" id=34]
+[ext_resource path="res://assets/sounds/broom.wav" type="AudioStream" id=35]
+[ext_resource path="res://scripts/BugNet.gd" type="Script" id=36]
+[ext_resource path="res://assets/enemy_sheet2.png" type="Texture" id=37]
+[ext_resource path="res://scripts/PlayerCameraFlash.gd" type="Script" id=38]
+[ext_resource path="res://assets/water_normal_2.png" type="Texture" id=39]
+[ext_resource path="res://sceneObjects/NPC.tscn" type="PackedScene" id=40]
+[ext_resource path="res://scripts/NPC.gd" type="Script" id=41]
+[ext_resource path="res://scripts/_InteractionArea_Passive.gd" type="Script" id=42]
+[ext_resource path="res://scripts/TextContainer.gd" type="Script" id=43]
+[ext_resource path="res://scripts/TextBox.gd" type="Script" id=44]
+[ext_resource path="res://assets/npcs/tutorial1.png" type="Texture" id=45]
+[ext_resource path="res://assets/Quirk.ttf" type="DynamicFontData" id=46]
+[ext_resource path="res://assets/sounds/pop.wav" type="AudioStream" id=47]
+[ext_resource path="res://scripts/AbortSound.gd" type="Script" id=48]
+[ext_resource path="res://assets/npcs/tootorial0000.png" type="Texture" id=49]
 
-[sub_resource type="Environment" id=1]
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="SphereShape" id=2]
+radius = 2.0
+
+[sub_resource type="SphereShape" id=3]
+radius = 1.4
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 4, 1.5, 4 )
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+flags_unshaded = true
+params_depth_draw_mode = 3
+params_billboard_mode = 1
+
+[sub_resource type="Environment" id=6]
 background_mode = 4
 ambient_light_color = Color( 0.4, 0.4, 0.4, 1 )
 ambient_light_energy = 0.7
 
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.988166 )
-colors = PoolColorArray( 0, 0.929688, 1, 1, 0.921875, 0, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
-width = 500
-
-[sub_resource type="DynamicFont" id=4]
-size = 27
-extra_spacing_top = 16
-extra_spacing_char = 2
-extra_spacing_space = 2
-font_data = ExtResource( 3 )
-
-[sub_resource type="BoxShape" id=5]
-
-[sub_resource type="SphereShape" id=6]
-radius = 1.5
-
 [sub_resource type="BoxShape" id=7]
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SphereShape" id=8]
+radius = 1.5
+
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
 flags_transparent = true
 flags_unshaded = true
 params_cull_mode = 2
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+flags_unshaded = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 2.5, 1.5, 2.5 )
+
+[sub_resource type="CubeMesh" id=13]
+size = Vector3( 4, 3, 4 )
+
+[sub_resource type="SpatialMaterial" id=14]
+flags_transparent = true
+flags_unshaded = true
+params_depth_draw_mode = 3
+albedo_texture = ExtResource( 37 )
+
+[sub_resource type="CubeMesh" id=15]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="Shader" id=16]
+code = "shader_type canvas_item;
+
+uniform float brightness = 1.0;
+uniform float contrast = 25.0;
+uniform float saturation = 50.0;
+
+void fragment() {
+    vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+
+    c.rgb = mix(vec3(0.0), c.rgb, brightness);
+    c.rgb = mix(vec3(0.5), c.rgb, contrast);
+    c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
+    
+    // c.rgb = vec3(1.0, 0.0, 0.0);
+
+    COLOR.rgb = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 16 )
+shader_param/brightness = 1.0
+shader_param/contrast = 25.0
+shader_param/saturation = 50.0
+
+[sub_resource type="BoxShape" id=18]
+
+[sub_resource type="SphereShape" id=19]
+radius = 1.5
+
+[sub_resource type="BoxShape" id=20]
+
+[sub_resource type="Gradient" id=21]
+offsets = PoolRealArray( 0, 0.988166 )
+colors = PoolColorArray( 0, 0.929688, 1, 1, 0.921875, 0, 1, 1 )
+
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
+width = 500
+
+[sub_resource type="DynamicFont" id=23]
+size = 27
+extra_spacing_top = 16
+extra_spacing_char = 2
+extra_spacing_space = 2
+font_data = ExtResource( 46 )
+
+[sub_resource type="SpatialMaterial" id=24]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 2
+params_depth_draw_mode = 3
+params_billboard_mode = 1
 
 [node name="level" type="Node"]
+script = ExtResource( 1 )
+
+[node name="pet" type="KinematicBody" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0247, 5.002, -15.0728 )
+script = ExtResource( 3 )
+grav = 80
+stationary = false
+
+[node name="CollisionShape" type="CollisionShape" parent="pet" index="0"]
+shape = SubResource( 1 )
+
+[node name="InteractionArea" type="Area" parent="pet" index="1"]
 script = ExtResource( 4 )
 
-[node name="commonWorldEnvironment" type="WorldEnvironment" parent="." instance=ExtResource( 25 )]
-environment = SubResource( 1 )
+[node name="CollisionShape" type="CollisionShape" parent="pet/InteractionArea" index="0"]
+shape = SubResource( 2 )
 
-[node name="BackgroundControl" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="SmallInteractionArea" type="Area" parent="pet" index="2" groups=[
+"dog",
+]]
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
-margin_right = 1020.0
-margin_bottom = 770.0
-texture = ExtResource( 2 )
-expand = true
+[node name="CollisionShape" type="CollisionShape" parent="pet/SmallInteractionArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="PassiveInteractionArea" type="Area" parent="pet" index="3"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="pet/PassiveInteractionArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="pet" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148796, 0 )
+material_override = SubResource( 5 )
+pixel_size = 0.06
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 6 )
+vframes = 4
+hframes = 4
+frame = 4
+script = ExtResource( 7 )
+frame_delay = 0.4
+should_randomize_frame_delay = false
+max_frames = 2
+
+[node name="BarkSound" type="AudioStreamPlayer" parent="pet/Sounds" index="0"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="LandSound" type="AudioStreamPlayer" parent="pet/Sounds" index="1"]
+volume_db = -20.0
+
+[node name="pet2" type="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4984, 5.001, -17.0738 )
+script = ExtResource( 3 )
+grav = 80
+stationary = false
+
+[node name="pet5" type="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.998, 3.001, -14.999 )
+script = ExtResource( 3 )
+grav = 80
+stationary = false
+
+[node name="CollisionShape" type="CollisionShape" parent="pet5" index="0"]
+shape = SubResource( 1 )
+
+[node name="InteractionArea" type="Area" parent="pet5" index="1"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="pet5/InteractionArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="SmallInteractionArea" type="Area" parent="pet5" index="2" groups=[
+"dog",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="pet5/SmallInteractionArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="PassiveInteractionArea" type="Area" parent="pet5" index="3"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="pet5/PassiveInteractionArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="pet5" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148796, 0 )
+material_override = SubResource( 5 )
+pixel_size = 0.06
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 6 )
+vframes = 4
+hframes = 4
+frame = 4
+script = ExtResource( 7 )
+frame_delay = 0.4
+should_randomize_frame_delay = false
+max_frames = 2
+
+[node name="Sounds" type="Node" parent="pet5" index="5"]
+editor/display_folded = true
+
+[node name="BarkSound" type="AudioStreamPlayer" parent="pet5/Sounds" index="0"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="LandSound" type="AudioStreamPlayer" parent="pet5/Sounds" index="1"]
+volume_db = -20.0
+
+[node name="pet3" type="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7229, 5.002, -11.4739 )
+script = ExtResource( 3 )
+grav = 80
+stationary = false
+
+[node name="pet4" type="KinematicBody" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.999, 3.001, -12.998 )
+script = ExtResource( 3 )
+grav = 80
+stationary = false
+
+[node name="CollisionShape" type="CollisionShape" parent="pet4" index="0"]
+shape = SubResource( 1 )
+
+[node name="InteractionArea" type="Area" parent="pet4" index="1"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="pet4/InteractionArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="SmallInteractionArea" type="Area" parent="pet4" index="2" groups=[
+"dog",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="pet4/SmallInteractionArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="PassiveInteractionArea" type="Area" parent="pet4" index="3"]
+script = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="pet4/PassiveInteractionArea" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="pet4" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.148796, 0 )
+material_override = SubResource( 5 )
+pixel_size = 0.06
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 6 )
+vframes = 4
+hframes = 4
+frame = 1
+script = ExtResource( 7 )
+frame_delay = 0.4
+should_randomize_frame_delay = false
+max_frames = 2
+
+[node name="BarkSound" type="AudioStreamPlayer" parent="pet4/Sounds" index="0"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="LandSound" type="AudioStreamPlayer" parent="pet4/Sounds" index="1"]
+volume_db = -20.0
+
+[node name="commonWorldEnvironment" type="WorldEnvironment" parent="." instance=ExtResource( 9 )]
+environment = SubResource( 6 )
 
 [node name="Level Tiles" type="GridMap" parent="."]
-mesh_library = ExtResource( 1 )
+mesh_library = ExtResource( 10 )
 cell_octant_size = 4
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65534, 0, 0, 65535, 0, 0, 65537, 0, 0, -458752, 0, 0, -458747, 0, 0, -393216, 0, 0, -393211, 0, 0, -327680, 0, 0, -327675, 0, 0, -262144, 0, 0, -262139, 0, 0, -196608, 0, 0, -196603, 0, 0, -196602, 0, 0, -131072, 0, 0, -131067, 0, 0, -65536, 0, 0, -65535, 0, 0, -65531, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65534, 1, 0, 65535, 1, 0, -524283, 1, 0, -524282, 1, 0, -524281, 1, 0, -524280, 1, 0, -524279, 1, 0, -524278, 1, 0, -524277, 1, 0, -458752, 1, 0, -458747, 1, 0, -458746, 1, 0, -458745, 1, 0, -458744, 1, 0, -458743, 1, 0, -393216, 1, 0, -393211, 1, 0, -393210, 1, 2, -393209, 1, 0, -393208, 1, 0, -327680, 1, 0, -327675, 1, 0, -327674, 1, 0, -327673, 1, 0, -262144, 1, 0, -262139, 1, 0, -262138, 1, 0, -196608, 1, 0, -196603, 1, 0, -131072, 1, 0, -131067, 1, 2, -65536, 1, 0, -65535, 1, 0, -65531, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 65534, 2, 0, 65535, 2, 0, -524283, 2, 0, -524282, 2, 0, -524281, 2, 1, -524280, 2, 0, -524279, 2, 0, -524278, 2, 0, -524277, 2, 0, -458752, 2, 0, -458747, 2, 0, -458744, 2, 0, -393216, 2, 0, -393211, 2, 0, -393209, 2, 0, -327680, 2, 0, -327679, 2, 2, -327675, 2, 0, -327674, 2, 2, -262144, 2, 0, -262139, 2, 0, -196608, 2, 0, -196603, 2, 2, -131072, 2, 0, -131067, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 2, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65534, 3, 0, 65535, 3, 0, 65540, 3, 0, 131071, 3, 0, 196607, 3, 0, 262143, 3, 2, -524283, 3, 0, -524282, 3, 0, -524281, 3, 0, -524280, 3, 0, -524279, 3, 0, -524278, 3, 2, -524277, 3, 0, -458752, 3, 2, -458751, 3, 0, -458750, 3, 0, -458749, 3, 0, -458748, 3, 0, -458747, 3, 0, -458745, 3, 2, -393216, 3, 0, -393215, 3, 0, -393214, 3, 0, -393213, 3, 2, -393212, 3, 0, -393211, 3, 0, -393210, 3, 0, -327680, 3, 0, -327679, 3, 2, -327678, 3, 0, -327677, 3, 0, -327676, 3, 2, -327675, 3, 0, -262144, 3, 2, -262143, 3, 0, -262142, 3, 0, -262141, 3, 0, -262140, 3, 0, -262139, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 2, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 2, -65536, 3, 0, -65535, 3, 2, -65534, 3, 2, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 65534, 4, 0, 65535, 4, 0, -524283, 4, 0, -524281, 4, 0, -524280, 4, 0, -524279, 4, 0, -524278, 4, 0, -524277, 4, 0, -458746, 4, 0, -524283, 5, 0, -524282, 5, 0, -524281, 5, 0, -524280, 5, 0, -524279, 5, 0, -524278, 5, 0, -524277, 5, 2, -524283, 6, 0, -524282, 6, 0, -524281, 6, 1, -524280, 6, 0, -524279, 6, 0, -524278, 6, 0, -524277, 6, 0, -524283, 7, 0, -524282, 7, 1, -524281, 7, 0, -524280, 7, 1, -524279, 7, 1, -524278, 7, 1, -524277, 7, 0, -524281, 8, 1, -524280, 8, 1, -524279, 8, 1, -524278, 8, 1, -524277, 8, 1, -524281, 9, 1, -524280, 9, 1, -524279, 9, 1, -524278, 9, 1, -524277, 9, 1, -524281, 10, 1, -524280, 10, 1, -524279, 10, 1, -524278, 10, 1, -524277, 10, 1, -524281, 11, 1, -524280, 11, 1, -524279, 11, 1, -524278, 11, 1, -524277, 11, 1, -524281, 12, 1, -524280, 12, 1, -524279, 12, 1, -524278, 12, 1, -524277, 12, 1, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 5, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65540, 65534, 0, 131076, 65534, 2, -458752, 65534, 0, -458751, 65534, 0, -458750, 65534, 0, -458749, 65534, 0, -458748, 65534, 0, -458747, 65534, 0, -393216, 65534, 0, -393215, 65534, 0, -393214, 65534, 0, -393213, 65534, 0, -393212, 65534, 0, -393211, 65534, 0, -327680, 65534, 0, -327679, 65534, 0, -327678, 65534, 0, -327677, 65534, 0, -327676, 65534, 0, -327675, 65534, 0, -262144, 65534, 0, -262143, 65534, 0, -262142, 65534, 0, -262141, 65534, 0, -262140, 65534, 0, -262139, 65534, 0, -196608, 65534, 0, -196607, 65534, 0, -196606, 65534, 0, -196605, 65534, 0, -196604, 65534, 0, -196603, 65534, 0, -131072, 65534, 0, -131071, 65534, 0, -131070, 65534, 0, -131069, 65534, 0, -131068, 65534, 0, -131067, 65534, 0, -65536, 65534, 0, -65535, 65534, 0, -65534, 65534, 0, -65533, 65534, 0, -65532, 65534, 0, -65531, 65534, 0, -65530, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, -458752, 65535, 2, -458747, 65535, 0, -393216, 65535, 0, -393211, 65535, 0, -327680, 65535, 0, -327675, 65535, 0, -262144, 65535, 0, -262139, 65535, 0, -196608, 65535, 0, -196603, 65535, 0, -131072, 65535, 0, -131067, 65535, 0, -131066, 65535, 0, -65536, 65535, 0, -65535, 65535, 0, -65531, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, -1610612736, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, -1610612736, 2, 1, -1610612736, 3, 1, 0, 4, 1, 0, 5, 1, -1610612736, 6, 1, -1610612736, 65532, 1, 536870912, 65533, 1, 0, 65534, 1, 536870912, 65535, 1, 0, 65537, 1, 1, 65538, 1, 0, 131069, 1, 0, 131073, 1, 1, 131074, 1, -1610612734, 0, 2, 0, 1, 2, 0, 2, 2, 536870912, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 65532, 2, 536870912, 65533, 2, -1610612736, 65534, 2, 536870912, 65535, 2, -1610612736, 0, 3, 0, 1, 3, 0, 65532, 3, -1610612736, 65533, 3, 0, 65534, 3, -1610612736, 65535, 3, 0, 0, 4, -1610612736, 1, 4, -1610612736, 65534, 4, 0, 65535, 4, 0, 0, 5, 0, 1, 5, 0, 65534, 5, 0, 0, 6, 0, 1, 6, 0, 65534, 6, 0, 65535, 6, 0, 6, 65526, -1610612735, 7, 65526, -1610612735, 8, 65526, 1, 9, 65526, 536870913, 10, 65526, -1610612735, 11, 65526, 536870913, 12, 65526, 1, 65544, 65526, 536870913, 65545, 65526, 1, 65546, 65526, 1, 65547, 65526, 1, 6, 65527, -1610612735, 7, 65527, -1610612735, 8, 65527, 1, 9, 65527, 1, 10, 65527, 1, 11, 65527, -1610612735, 12, 65527, 1, 13, 65527, 536870913, 65542, 65527, 1, 65543, 65527, 1, 65544, 65527, -1610612735, 65545, 65527, -1610612735, 65546, 65527, 1, 65547, 65527, -1610612735, 65548, 65527, 1, 6, 65528, 1, 7, 65528, 1, 8, 65528, 1, 9, 65528, 1, 10, 65528, -1610612735, 11, 65528, 1, 12, 65528, 1, 13, 65528, 536870913, 65541, 65528, -1610612735, 65542, 65528, 1, 65543, 65528, 536870913, 65547, 65528, 1, 65548, 65528, -1610612735, 1, 65529, 0, 2, 65529, 536870912, 4, 65529, -1610612736, 6, 65529, 1, 7, 65529, 1, 8, 65529, 1, 9, 65529, 1, 10, 65529, 536870913, 11, 65529, 1, 12, 65529, 1, 13, 65529, 1, 65541, 65529, 1, 65547, 65529, 1, 65548, 65529, -1610612735, 262141, 65529, -1610612736, 262142, 65529, -1610612736, 0, 65530, -1610612736, 1, 65530, 0, 2, 65530, 0, 3, 65530, -1610612736, 4, 65530, 0, 5, 65530, 0, 6, 65530, -1610612734, 7, 65530, 1, 8, 65530, 1, 9, 65530, -1610612735, 10, 65530, 1, 11, 65530, -1610612735, 12, 65530, -1610612735, 13, 65530, 1, 65533, 65530, 0, 65534, 65530, 0, 65535, 65530, 0, 65547, 65530, 1, 65548, 65530, -1610612735, 262141, 65530, 0, 262142, 65530, -1610612736, 0, 65531, 0, 1, 65531, -1610612736, 2, 65531, -1610612736, 3, 65531, 536870912, 4, 65531, 536870912, 5, 65531, 536870914, 6, 65531, 2, 7, 65531, -1610612735, 8, 65531, 1, 9, 65531, -1610612735, 10, 65531, 1, 11, 65531, -1610612735, 12, 65531, -1610612735, 13, 65531, 1, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 65547, 65531, 1, 65548, 65531, 1, 131071, 65531, 0, 262140, 65531, 0, 262141, 65531, 0, 262142, 65531, -1610612736, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 536870912, 5, 65532, 2, 6, 65532, 0, 7, 65532, 1, 8, 65532, 1, 9, 65532, 1, 10, 65532, 1, 11, 65532, 1, 12, 65532, 1, 13, 65532, 1, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 536870912, 65546, 65532, 1, 65547, 65532, -1610612735, 262140, 65532, 0, 262141, 65532, 0, 262142, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 536870912, 5, 65533, 0, 6, 65533, 2, 7, 65533, 0, 8, 65533, 1, 9, 65533, 1, 10, 65533, 1, 11, 65533, 1, 12, 65533, 1, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 262140, 65533, 0, 262141, 65533, 0, 262142, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, -1610612736, 4, 65534, 0, 5, 65534, 0, 6, 65534, 0, 7, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 65536, 65534, 0, 65538, 65534, 0, 131072, 65534, 16, 131074, 65534, 2, 196608, 65534, 2, 262140, 65534, 0, 262141, 65534, 2, 262142, 65534, 2, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 0, 7, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 131074, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -8, 0 )
+"_editor_floor_": Vector3( 0, 2, 0 )
 }
 
-[node name="Player" type="KinematicBody" parent="." instance=ExtResource( 26 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19472, 3.001, -1.36255 )
-collision_layer = 2
-script = ExtResource( 5 )
+[node name="BackgroundControl" type="Control" parent="."]
+editor/display_folded = true
 
-[node name="PlayerTextBox" type="CanvasLayer" parent="." instance=ExtResource( 28 )]
-script = ExtResource( 7 )
-
-[node name="TextBox" type="TextureRect" parent="PlayerTextBox" index="0"]
-visible = false
-margin_right = 578.0
-margin_bottom = 207.0
-texture = SubResource( 3 )
-expand = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("../../yellow/TextBox4/TextBox")
-
-[node name="Portrait" type="TextureRect" parent="PlayerTextBox/TextBox" index="0"]
-margin_left = 31.0
-margin_top = 25.0
-margin_right = 181.0
-margin_bottom = 175.0
-texture = ExtResource( 14 )
-expand = true
-
-[node name="Text" type="RichTextLabel" parent="PlayerTextBox/TextBox" index="1"]
-margin_left = 199.0
-margin_top = 14.0
-margin_right = 608.0
-margin_bottom = 205.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 4 )
-bbcode_enabled = true
-bbcode_text = ". . . . . . . . . . . . .
-. . . . . .
-. . . .
-. . .            ... press F"
-text = ". . . . . . . . . . . . .
-. . . . . .
-. . . .
-. . .            ... press F"
-
-[node name="DialogSound" type="AudioStreamPlayer" parent="PlayerTextBox/TextBox" index="2"]
-stream = ExtResource( 10 )
-volume_db = -10.0
-script = ExtResource( 9 )
-
-[node name="AbortSound" type="AudioStreamPlayer" parent="PlayerTextBox/TextBox" index="3"]
-stream = ExtResource( 10 )
-volume_db = -20.0
-script = ExtResource( 9 )
-
-[node name="yellow" type="KinematicBody" parent="." instance=ExtResource( 29 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13114, 3.2514, 5.386 )
-collision_layer = 2
-collision_mask = 3
-script = ExtResource( 16 )
-grav = 0
-
-[node name="CollisionShape" type="CollisionShape" parent="yellow" index="0"]
-transform = Transform( 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0 )
-shape = SubResource( 5 )
-
-[node name="InteractionArea" type="Area" parent="yellow" index="1"]
-script = ExtResource( 18 )
-
-[node name="CollisionShape" type="CollisionShape" parent="yellow/InteractionArea" index="0"]
-shape = SubResource( 6 )
-
-[node name="SmallInteractionArea" type="Area" parent="yellow" index="2"]
-script = ExtResource( 22 )
-
-[node name="CollisionShape" type="CollisionShape" parent="yellow/SmallInteractionArea" index="0"]
-shape = SubResource( 7 )
-
-[node name="NPC TextBox" type="CanvasLayer" parent="yellow" index="3"]
-script = ExtResource( 7 )
-
-[node name="TextBox" type="TextureRect" parent="yellow/NPC TextBox" index="0"]
-visible = false
-margin_right = 578.0
-margin_bottom = 207.0
-texture = SubResource( 3 )
-expand = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("../../TextBox2/TextBox")
-
-[node name="Portrait" type="TextureRect" parent="yellow/NPC TextBox/TextBox" index="0"]
-margin_left = 31.0
-margin_top = 25.0
-margin_right = 181.0
-margin_bottom = 175.0
+[node name="TextureRect" type="TextureRect" parent="BackgroundControl"]
+margin_right = 1020.0
+margin_bottom = 763.0
 texture = ExtResource( 11 )
 expand = true
 
-[node name="Text" type="RichTextLabel" parent="yellow/NPC TextBox/TextBox" index="1"]
+[node name="portal2" type="Sprite3D" parent="." instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 0, 3.4124, 15.5849 )
+script = ExtResource( 13 )
+midLevelDir = "Intro"
+connectedScene = "levels/Intro/IntroScene2.tscn"
+isLocked = false
+
+[node name="portal3" type="Sprite3D" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, -2.88102e-008, 0, 1, 0, 2.88102e-008, 0, 1, -7, 9.3297, -11.8962 )
+script = ExtResource( 13 )
+midLevelDir = "Intro"
+connectedScene = "levels/Intro/IntroScene4.tscn"
+isLocked = false
+
+[node name="Player" type="KinematicBody" parent="." instance=ExtResource( 14 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.499, 3.001, -14.499 )
+collision_layer = 2
+script = ExtResource( 15 )
+grav = 80
+
+[node name="CollisionShape" type="CollisionShape" parent="Player" index="0"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="InteractionArea" type="Area" parent="Player" index="1"]
+script = ExtResource( 16 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/InteractionArea" index="0"]
+shape = SubResource( 8 )
+
+[node name="SmallInteractionArea" type="Area" parent="Player" index="2" groups=[
+"player",
+]]
+script = ExtResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/SmallInteractionArea" index="0"]
+shape = SubResource( 9 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Player" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135961, 0 )
+material_override = SubResource( 10 )
+pixel_size = 0.08
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 18 )
+vframes = 8
+hframes = 8
+script = ExtResource( 19 )
+frame_delay = 0.4
+should_randomize_frame_delay = false
+max_frames = 1
+
+[node name="CameraY" type="Spatial" parent="Player" index="4"]
+transform = Transform( 0.597052, 0, -0.8022, 0, 1, 0, 0.8022, 0, 0.597052, 0, 0, 0 )
+script = ExtResource( 20 )
+
+[node name="CameraX" type="Spatial" parent="Player/CameraY" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.924809, 0.380434, 0, -0.380434, 0.924809, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="Player/CameraY/CameraX" index="0"]
+transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 15 )
+current = true
+fov = 65.0
+size = 20.0
+near = 0.1
+far = 200.0
+
+[node name="CloseCamera" type="Camera" parent="Player/CameraY/CameraX" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, -8.34465e-007, 0, -2.98023e-008, 1, 0, 0, 10 )
+fov = 65.0
+size = 20.0
+near = 0.1
+
+[node name="MidCamera" type="Camera" parent="Player/CameraY/CameraX" index="2"]
+transform = Transform( 0.999998, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 15 )
+fov = 65.0
+size = 20.0
+near = 0.1
+
+[node name="ToyboxCamera" type="Camera" parent="Player/CameraY" index="1"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15 )
+fov = 65.0
+size = 20.0
+near = 0.1
+
+[node name="broom" type="Spatial" parent="Player/CameraY" index="2"]
+transform = Transform( 0.499999, 0, 0, 0, 0.6, 0, 0, 0, 0.499999, 0, 0, 0 )
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Player/CameraY/broom" index="0"]
+transform = Transform( 1, 0, 7.10543e-015, 0, 1, 0, -7.10543e-015, 0, 1, 0.5, 0.5, 2 )
+material_override = SubResource( 11 )
+pixel_size = 0.16
+texture = ExtResource( 21 )
+vframes = 8
+hframes = 8
+script = ExtResource( 22 )
+frame_delay = 0.4
+should_randomize_frame_delay = false
+max_frames = 2
+
+[node name="PassiveInteractionArea" type="Area" parent="Player/CameraY/broom/Sprite3D" index="0"]
+script = ExtResource( 23 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/CameraY/broom/Sprite3D/PassiveInteractionArea" index="0"]
+transform = Transform( 1, 0, 1.86265e-008, 0, 1, 0, -1.86265e-008, 0, 1, 2.20641, -1.07408, 1.5471 )
+shape = SubResource( 12 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Player/CameraY/broom/Sprite3D/PassiveInteractionArea" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914, -1.074, 1.237 )
+visible = false
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="Sounds" type="Node" parent="Player" index="5"]
+editor/display_folded = true
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Player/Sounds" index="0"]
+stream = ExtResource( 24 )
+volume_db = -25.0
+
+[node name="DoubleJumpSound" type="AudioStreamPlayer" parent="Player/Sounds" index="1"]
+stream = ExtResource( 25 )
+volume_db = -20.0
+
+[node name="WetJumpSound" type="AudioStreamPlayer" parent="Player/Sounds" index="2"]
+stream = ExtResource( 26 )
+volume_db = -20.0
+
+[node name="JumpOverallsSound" type="AudioStreamPlayer" parent="Player/Sounds" index="3"]
+stream = ExtResource( 27 )
+volume_db = -30.0
+
+[node name="LandSound" type="AudioStreamPlayer" parent="Player/Sounds" index="4"]
+stream = ExtResource( 28 )
+volume_db = -30.0
+
+[node name="BumpSound" type="AudioStreamPlayer" parent="Player/Sounds" index="5"]
+stream = ExtResource( 29 )
+volume_db = -30.0
+
+[node name="FallSound" type="AudioStreamPlayer" parent="Player/Sounds" index="6"]
+stream = ExtResource( 30 )
+volume_db = -25.0
+
+[node name="WormSound" type="AudioStreamPlayer" parent="Player/Sounds" index="7"]
+stream = ExtResource( 31 )
+volume_db = -30.0
+
+[node name="WormClimbSound" type="AudioStreamPlayer" parent="Player/Sounds" index="8"]
+stream = ExtResource( 32 )
+volume_db = -30.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="Player/Sounds" index="9"]
+stream = ExtResource( 33 )
+volume_db = -20.0
+
+[node name="SkateSound" type="AudioStreamPlayer" parent="Player/Sounds" index="10"]
+stream = ExtResource( 34 )
+volume_db = -20.0
+
+[node name="BroomSound" type="AudioStreamPlayer" parent="Player/Sounds" index="11"]
+stream = ExtResource( 35 )
+volume_db = -30.0
+
+[node name="Items" type="Spatial" parent="Player" index="6"]
+editor/display_folded = true
+
+[node name="BugNet" type="KinematicBody" parent="Player/Items" index="0"]
+visible = false
+script = ExtResource( 36 )
+
+[node name="PauseMenu" type="CanvasLayer" parent="Player" index="7"]
+editor/display_folded = true
+
+[node name="CameraFlash" type="MeshInstance" parent="Player" index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+visible = false
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+script = ExtResource( 38 )
+
+[node name="GlitchFilter" type="CanvasLayer" parent="Player" index="9"]
+editor/display_folded = true
+layer = 64
+
+[node name="TextureRect" type="TextureRect" parent="Player/GlitchFilter" index="0"]
+visible = false
+material = SubResource( 17 )
+margin_right = 567.0
+margin_bottom = 554.0
+texture = ExtResource( 39 )
+expand = true
+
+[node name="NPC" type="KinematicBody" parent="." instance=ExtResource( 40 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48923, 3.001, -7.87913 )
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 41 )
+grav = 80
+nextTextBoxPath = NodePath("")
+bbText = ""
+portrait = null
+
+[node name="CollisionShape" type="CollisionShape" parent="NPC" index="0"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 18 )
+
+[node name="InteractionArea" type="Area" parent="NPC" index="1"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="NPC/InteractionArea" index="0"]
+shape = SubResource( 19 )
+
+[node name="SmallInteractionArea" type="Area" parent="NPC" index="2"]
+script = ExtResource( 42 )
+
+[node name="CollisionShape" type="CollisionShape" parent="NPC/SmallInteractionArea" index="0"]
+shape = SubResource( 20 )
+
+[node name="NPC TextBox" type="CanvasLayer" parent="NPC" index="3"]
+editor/display_folded = true
+script = ExtResource( 43 )
+nextTextBoxPath = NodePath("")
+bbText = ""
+portrait = null
+
+[node name="TextBox" type="TextureRect" parent="NPC/NPC TextBox" index="0"]
+visible = false
+margin_right = 578.0
+margin_bottom = 207.0
+texture = SubResource( 22 )
+expand = true
+script = ExtResource( 44 )
+nextTextBoxPath = NodePath("")
+
+[node name="Portrait" type="TextureRect" parent="NPC/NPC TextBox/TextBox" index="0"]
+margin_left = 31.0
+margin_top = 25.0
+margin_right = 181.0
+margin_bottom = 175.0
+texture = ExtResource( 45 )
+expand = true
+
+[node name="Text" type="RichTextLabel" parent="NPC/NPC TextBox/TextBox" index="1"]
 margin_left = 199.0
 margin_top = 14.0
 margin_right = 608.0
 margin_bottom = 205.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 4 )
+custom_fonts/normal_font = SubResource( 23 )
 bbcode_enabled = true
-bbcode_text = "hey wake up!
-i want you to run an
-errand for me	
-!                ... press F"
-text = "hey wake up!
-i want you to run an
-errand for me	
-!                ... press F"
+bbcode_text = "the tip here.. is
+to use your head!!
+.. or was it my head?"
+text = "the tip here.. is
+to use your head!!
+.. or was it my head?"
 
-[node name="DialogSound" type="AudioStreamPlayer" parent="yellow/NPC TextBox/TextBox" index="2"]
-stream = ExtResource( 10 )
+[node name="DialogSound" type="AudioStreamPlayer" parent="NPC/NPC TextBox/TextBox" index="2"]
+stream = ExtResource( 47 )
 volume_db = -10.0
-script = ExtResource( 9 )
+script = ExtResource( 48 )
 
-[node name="AbortSound" type="AudioStreamPlayer" parent="yellow/NPC TextBox/TextBox" index="3"]
-stream = ExtResource( 10 )
+[node name="AbortSound" type="AudioStreamPlayer" parent="NPC/NPC TextBox/TextBox" index="3"]
+stream = ExtResource( 47 )
 volume_db = -20.0
-script = ExtResource( 9 )
+script = ExtResource( 48 )
 
-[node name="Sprite3D" type="Sprite3D" parent="yellow" index="4"]
+[node name="Sprite3D" type="Sprite3D" parent="NPC" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.260242, 0 )
-material_override = SubResource( 8 )
+material_override = SubResource( 24 )
 pixel_size = 0.04
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 12 )
-hframes = 2
+texture = ExtResource( 49 )
 vframes = 2
-script = ExtResource( 6 )
-frame_delay = 0.133022
-should_randomize_frame_delay = true
-
-[node name="TextBox2" type="CanvasLayer" parent="yellow" instance=ExtResource( 28 )]
-script = ExtResource( 7 )
-
-[node name="TextBox" type="TextureRect" parent="yellow/TextBox2" index="0"]
-visible = false
-margin_right = 578.0
-margin_bottom = 207.0
-texture = SubResource( 3 )
-expand = true
-script = ExtResource( 8 )
-nextTextBoxPath = NodePath("../../../PlayerTextBox/TextBox")
-
-[node name="Portrait" type="TextureRect" parent="yellow/TextBox2/TextBox" index="0"]
-margin_left = 31.0
-margin_top = 25.0
-margin_right = 181.0
-margin_bottom = 175.0
-texture = ExtResource( 13 )
-expand = true
-
-[node name="Text" type="RichTextLabel" parent="yellow/TextBox2/TextBox" index="1"]
-margin_left = 199.0
-margin_top = 14.0
-margin_right = 608.0
-margin_bottom = 205.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 4 )
-bbcode_enabled = true
-bbcode_text = ". . . . . . . . . . . . .
-. . . . . .
-. . . .
-!                ... press F"
-text = ". . . . . . . . . . . . .
-. . . . . .
-. . . .
-!                ... press F"
-
-[node name="DialogSound" type="AudioStreamPlayer" parent="yellow/TextBox2/TextBox" index="2"]
-stream = ExtResource( 10 )
-volume_db = -10.0
-script = ExtResource( 9 )
-
-[node name="AbortSound" type="AudioStreamPlayer" parent="yellow/TextBox2/TextBox" index="3"]
-stream = ExtResource( 10 )
-volume_db = -20.0
-script = ExtResource( 9 )
-
-[node name="TextBox4" type="CanvasLayer" parent="yellow" instance=ExtResource( 28 )]
-script = ExtResource( 7 )
-
-[node name="TextBox" type="TextureRect" parent="yellow/TextBox4" index="0"]
-visible = false
-margin_right = 578.0
-margin_bottom = 207.0
-texture = SubResource( 3 )
-expand = true
-script = ExtResource( 8 )
-
-[node name="Portrait" type="TextureRect" parent="yellow/TextBox4/TextBox" index="0"]
-margin_left = 31.0
-margin_top = 25.0
-margin_right = 181.0
-margin_bottom = 175.0
-texture = ExtResource( 11 )
-expand = true
-
-[node name="Text" type="RichTextLabel" parent="yellow/TextBox4/TextBox" index="1"]
-margin_left = 199.0
-margin_top = 14.0
-margin_right = 608.0
-margin_bottom = 205.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 4 )
-bbcode_enabled = true
-bbcode_text = "don't tell me you forgot
-the \"WALK\" spell!!!! just
-press \"WASD\" to cast it!
-!                ... press F"
-text = "don't tell me you forgot
-the \"WALK\" spell!!!! just
-press \"WASD\" to cast it!
-!                ... press F"
-
-[node name="DialogSound" type="AudioStreamPlayer" parent="yellow/TextBox4/TextBox" index="2"]
-stream = ExtResource( 10 )
-volume_db = -10.0
-script = ExtResource( 9 )
-
-[node name="AbortSound" type="AudioStreamPlayer" parent="yellow/TextBox4/TextBox" index="3"]
-stream = ExtResource( 10 )
-volume_db = -20.0
-script = ExtResource( 9 )
-
-[node name="Event" type="Node" parent="yellow/TextBox4/TextBox" index="4"]
-script = ExtResource( 15 )
-
-[node name="TextBox5" type="CanvasLayer" parent="yellow" instance=ExtResource( 28 )]
-script = ExtResource( 7 )
-
-[node name="TextBox" type="TextureRect" parent="yellow/TextBox5" index="0"]
-visible = false
-margin_right = 578.0
-margin_bottom = 207.0
-texture = SubResource( 3 )
-expand = true
-script = ExtResource( 8 )
-
-[node name="Portrait" type="TextureRect" parent="yellow/TextBox5/TextBox" index="0"]
-margin_left = 31.0
-margin_top = 25.0
-margin_right = 181.0
-margin_bottom = 175.0
-texture = ExtResource( 11 )
-expand = true
-
-[node name="Text" type="RichTextLabel" parent="yellow/TextBox5/TextBox" index="1"]
-margin_left = 199.0
-margin_top = 14.0
-margin_right = 608.0
-margin_bottom = 205.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 4 )
-bbcode_enabled = true
-bbcode_text = "hey! I didnt tell u
-the errand... can u go 2
-the shop & buy me an 
-green onion?    ... press F"
-text = "hey! I didnt tell u
-the errand... can u go 2
-the shop & buy me an 
-green onion?    ... press F"
-
-[node name="DialogSound" type="AudioStreamPlayer" parent="yellow/TextBox5/TextBox" index="2"]
-stream = ExtResource( 10 )
-volume_db = -10.0
-script = ExtResource( 9 )
-
-[node name="AbortSound" type="AudioStreamPlayer" parent="yellow/TextBox5/TextBox" index="3"]
-stream = ExtResource( 10 )
-volume_db = -20.0
-script = ExtResource( 9 )
-
-[node name="Event" type="Node" parent="yellow/TextBox5/TextBox" index="4"]
-script = ExtResource( 15 )
-
-[node name="pet" type="KinematicBody" parent="." instance=ExtResource( 27 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.501, -12.9912, 9.001 )
-script = ExtResource( 19 )
-
-[node name="SavePoint" type="Spatial" parent="." instance=ExtResource( 24 )]
-transform = Transform( -0.99841, 0, -0.0559404, 0, 1, 0, 0.0559404, 0, -0.99841, 18, -13.3945, 9 )
-script = ExtResource( 20 )
-
-[node name="InteractionAreaEvent" type="Spatial" parent="." instance=ExtResource( 30 )]
-script = ExtResource( 21 )
-
-[node name="Area" type="Area" parent="InteractionAreaEvent" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 2 )
+hframes = 2
+frame = 1
 script = ExtResource( 22 )
+frame_delay = 0.781953
+should_randomize_frame_delay = true
+max_frames = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="InteractionAreaEvent/Area" index="0"]
-shape = SubResource( 9 )
+[editable path="pet"]
 
-[node name="fruit" type="KinematicBody" parent="." instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19472, 4.46767, -1.36255 )
-collision_layer = 0
-script = ExtResource( 23 )
+[editable path="pet5"]
 
-[node name="fruit2" type="KinematicBody" parent="." instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9175, -13.2805, 10.7726 )
-collision_layer = 0
-collision_mask = 3
-script = ExtResource( 23 )
+[editable path="pet4"]
 
-[node name="fruit3" type="KinematicBody" parent="." instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6455, -13.284, 14.9526 )
-collision_layer = 0
-script = ExtResource( 23 )
+[editable path="Player"]
 
-[node name="Plant" type="Spatial" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7074, -14, 5.74491 )
-script = ExtResource( 17 )
+[editable path="NPC"]
 
-[node name="Plant2" type="Spatial" parent="." instance=ExtResource( 31 )]
-transform = Transform( 0.805639, 0, -0.592407, 0, 1, 0, 0.592407, 0, 0.805639, 11.796, -14, 14.7729 )
-script = ExtResource( 17 )
-
-[node name="Plant3" type="Spatial" parent="." instance=ExtResource( 31 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7336, -13.9995, 21.6911 )
-script = ExtResource( 17 )
-
-[node name="Plant4" type="Spatial" parent="." instance=ExtResource( 31 )]
-transform = Transform( 0.664252, 0, 0.747508, 0, 1, 0, -0.747508, 0, 0.664252, 20.5691, -13.9924, 18.2486 )
-script = ExtResource( 17 )
-
-[node name="Plant5" type="Spatial" parent="." instance=ExtResource( 31 )]
-transform = Transform( -0.999136, 0, 0.0415805, 0, 1, 0, -0.0415805, 0, -0.999136, 23.0442, -14, 22.4231 )
-script = ExtResource( 17 )
-
-[editable path="PlayerTextBox"]
-[editable path="yellow"]
-[editable path="yellow/NPC TextBox"]
-[editable path="yellow/TextBox2"]
-[editable path="yellow/TextBox4"]
-[editable path="yellow/TextBox5"]
-[editable path="InteractionAreaEvent"]
+[editable path="NPC/NPC TextBox"]

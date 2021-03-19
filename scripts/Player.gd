@@ -78,17 +78,17 @@ func _process(delta):
             var broom_sprite = broom.get_node("Sprite3D")
             if broom_state == 1:
                 #broom_mesh.rotation_degrees.z = 10
-                broom_sprite.updateBaseFrame(2, 1)
+                broom_sprite.updateBaseFrame(1, 0)
                 broom_state = 2
             elif broom_state == 2:
                 #broom_mesh.translation.x = 5
                 broom_sprite.translation.x = -3
-                broom_sprite.updateBaseFrame(1, 1)
+                broom_sprite.updateBaseFrame(0, 0)
                 broom_state = 3
                 broomSound.play()
             elif broom_state == 3:
                 #broom_mesh.rotation_degrees.z = -10
-                broom_sprite.updateBaseFrame(2, 1)
+                broom_sprite.updateBaseFrame(1, 0)
                 broom_state = 4
             elif broom_state == 4:
                 #broom_mesh.translation.x = 0
@@ -155,16 +155,16 @@ func tryDieToEnemy():
 func tryBroom():
     if can_broom:        
         var broom_sprite = broom.get_node("Sprite3D")
-        if mySprite.isFacingDown():
+        if mySprite.isPlayerFacingDown():
             broom.rotation_degrees.y = 0
             broom_sprite.flip_h = false
-        elif mySprite.isFacingRight():
+        elif mySprite.isPlayerFacingRight():
             broom.rotation_degrees.y = 90
             broom_sprite.flip_h = false
-        elif mySprite.isFacingUp():
+        elif mySprite.isPlayerFacingUp():
             broom.rotation_degrees.y = 180
             broom_sprite.flip_h = true
-        elif mySprite.isFacingLeft():
+        elif mySprite.isPlayerFacingLeft():
             broom.rotation_degrees.y = 270
             broom_sprite.flip_h = true
 

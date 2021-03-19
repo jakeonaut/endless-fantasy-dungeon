@@ -235,13 +235,11 @@ stream = ExtResource( 21 )
 volume_db = -30.0
 
 [node name="Items" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="BugNet" parent="Items" instance=ExtResource( 22 )]
 visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource( 23 )]
-editor/display_folded = true
 
 [node name="MenuBox" parent="PauseMenu" index="0"]
 visible = false
@@ -266,7 +264,6 @@ material/0 = null
 script = ExtResource( 25 )
 
 [node name="GlitchFilter" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = 64
 
 [node name="TextureRect" type="TextureRect" parent="GlitchFilter"]

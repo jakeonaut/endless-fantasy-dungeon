@@ -46,6 +46,11 @@ var has_just_jumped_time_limit = 200# 3
 var is_rolling = false
 var rolling_timer = 0
 var rolling_time_limit = 5
+var is_flip_rotating = false
+var flipRotateTimer = 0
+var flipRotateTimeLimit = 1
+var num_flip_rotations = 0
+var max_flip_rotations = 1
 var should_recover = false
 var is_recovering = false
 var recover_timer = 0
@@ -108,6 +113,22 @@ func _physics_process(delta):
             is_rolling = false
             rolling_timer = 0
     .processPhysics(delta) #super
+    if is_flip_rotating:
+        mySprite.setFlipRotating(true)
+        flipRotateTimer += delta*22
+        if flipRotateTimer >= flipRotateTimeLimit:
+            flipRotateTimer = 0
+            if mySprite:
+                if mySprite.isFacingDown(): mySprite.faceLeft()
+                elif mySprite.isFacingLeft(): mySprite.faceUp()
+                elif mySprite.isFacingUp(): mySprite.faceRight()
+                elif mySprite.isFacingRight(): 
+                    mySprite.faceDown()
+                    num_flip_rotations += 1
+                    if num_flip_rotations >= max_flip_rotations:
+                        is_flip_rotating = false
+                        mySprite.setFlipRotating(false)
+                        mySprite.fixSpriteFacing()
     if is_recovering:
         recover_timer += (delta*22)
         if recover_timer >= recover_time_limit:
@@ -271,7 +292,7 @@ func processJumpInputs(delta):
         take_fall_damage = false
         on_ground = false
 
-    if Input.is_action_just_pressed("ui_ctrl_jump"):
+    if Input.is_action_just_pressed("ui_ctrl_jump") and not global.pauseMoveInput:
         # Dash lunge
         if is_lunging < 0:
             vv = jump_force / 2
@@ -287,6 +308,9 @@ func processJumpInputs(delta):
             has_just_jumped_timer = 0
             feather_fall_timer = 0
             jumpSound.play()
+    if Input.is_action_just_pressed("ui_ctrl") and not on_ground and not global.pauseMoveInput:
+        startFlipRotateSprite(1)
+        vv = 0
 
     if is_touching_water:
         if Input.is_action_just_pressed("ui_jump") and not global.pauseMoveInput:
@@ -455,6 +479,12 @@ func updateFacing(dir):
         is_walking = true
     else:
         is_walking = false
+
+func startFlipRotateSprite(max2):
+    num_flip_rotations = 0
+    max_flip_rotations = max2
+    is_flip_rotating = true
+    flipRotateTimer = 0
 
 # @override
 func landed():

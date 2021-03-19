@@ -1,25 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://levels/Casino/CatMachine.gd" type="Script" id=1]
-[ext_resource path="res://assets/cat0000.png" type="Texture" id=2]
-[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=3]
-[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=4]
+[ext_resource path="res://sceneObjects/Sprite3D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/cat0000.png" type="Texture" id=3]
+[ext_resource path="res://scripts/_InteractionArea_Active.gd" type="Script" id=4]
+[ext_resource path="res://assets/sounds/worm.wav" type="AudioStream" id=5]
 
-[sub_resource type="SpatialMaterial" id=5]
-flags_unshaded = true
-params_cull_mode = 2
-params_depth_draw_mode = 3
-albedo_texture = ExtResource( 2 )
-uv1_scale = Vector3( 1, 0.6, 1 )
-
-[sub_resource type="CapsuleMesh" id=4]
-
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
-params_cull_mode = 2
 params_depth_draw_mode = 3
-albedo_texture = ExtResource( 2 )
-uv1_scale = Vector3( 1, 0.6, 1 )
+params_billboard_mode = 1
+albedo_color = Color( 0.529412, 0.529412, 0.529412, 1 )
 
 [sub_resource type="SphereShape" id=3]
 radius = 2.0
@@ -27,21 +18,28 @@ radius = 2.0
 [node name="CatMachine" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-008, -1, -4.37114e-008, 0, -4.37114e-008, 1, -1, 4.37114e-008, 1.91069e-015, 0, 0.170145, 0 )
-material_override = SubResource( 5 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="MeshInstance" parent="." instance=ExtResource( 2 )]
 
-[node name="InactiveMeshInstance" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-008, -1, -4.37114e-008, 0, -4.37114e-008, 1, -1, 4.37114e-008, 1.91069e-015, 0, 0.170145, 0 )
+[node name="Sprite3D" parent="MeshInstance" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406888, 0 )
+pixel_size = 0.08
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 2
+max_frames = 2
+
+[node name="InactiveMeshInstance" parent="." instance=ExtResource( 2 )]
 visible = false
-material_override = SubResource( 6 )
-mesh = SubResource( 4 )
-material/0 = null
+
+[node name="Sprite3D" parent="InactiveMeshInstance" index="0"]
+material_override = SubResource( 4 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 2
+max_frames = 2
 
 [node name="InteractionArea" type="Area" parent="."]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="InteractionArea"]
 shape = SubResource( 3 )
@@ -49,5 +47,9 @@ shape = SubResource( 3 )
 [node name="Sounds" type="Node" parent="."]
 
 [node name="SpitSound" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -40.0
+
+[editable path="MeshInstance"]
+
+[editable path="InactiveMeshInstance"]

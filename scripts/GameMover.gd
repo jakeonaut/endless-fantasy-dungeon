@@ -237,7 +237,7 @@ func postProcessSkateInputs(delta):
     and linear_velocity.z < walk_speed/2 and linear_velocity.z > -walk_speed/2:
         is_rotating = false
         is_skating = false
-        if mySprite: mySprite.faceDown()
+        if mySprite: mySprite.fixSpriteFacing()
         rotateTimer = 0
         skateStartTimer = 0
         if skateActuallyStarted:
