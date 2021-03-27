@@ -49,7 +49,8 @@ func processInputs(delta):
         on_ground = false
         shouldJump = false
 
-        # player.magicJump()
+        if player.is_holding_chicken:
+            player.magicJump()
 
 
     dir = Vector3(0.0, 0.0, 0.0)

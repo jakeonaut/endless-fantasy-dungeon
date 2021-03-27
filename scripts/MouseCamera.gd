@@ -26,6 +26,7 @@ var highest_mouse_rotation_step = 20
 var current_rotation = 0
 var current_rotation_x = 0
 var is_rotating = false
+var is_rotating_slow = false
 var is_rotating_x = false
 var last_obstructing_objects = []
 var lerp_timer = 0
@@ -70,29 +71,33 @@ func _process(delta):
     if is_rotating and debug_print: 
         print("current_rotation: " + str(current_rotation) + ", " + str(rotation_degrees.y))
 
+    var curr_step_y = curr_step.y
+    if is_rotating_slow:
+        curr_step_y = curr_step_y / 2
     if target_rotation > current_rotation:
-        current_rotation += curr_step.y*delta
-        rotate_y(curr_step.y * delta)
+        current_rotation += curr_step_y*delta
+        rotate_y(curr_step_y * delta)
         player_sprite.fixSpriteFacing()
         if current_rotation > target_rotation:
             self.tryNormalizeCurrent()
     elif target_rotation < current_rotation:
-        current_rotation -= curr_step.y*delta
-        rotate_y(-curr_step.y * delta)
+        current_rotation -= curr_step_y*delta
+        rotate_y(-curr_step_y * delta)
         player_sprite.fixSpriteFacing()
         if current_rotation < target_rotation:
             self.tryNormalizeCurrent()
     else:
         self.tryNormalizeCurrent()
 
+    var curr_step_x = curr_step.x
     if target_rotation_x > current_rotation_x:
-        current_rotation_x += curr_step.x*delta
-        camera_x.rotate_x(curr_step.x * delta)
+        current_rotation_x += curr_step_x*delta
+        camera_x.rotate_x(curr_step_x * delta)
         if current_rotation_x > target_rotation_x:
             self.tryNormalizeCurrentX()
     elif target_rotation_x < current_rotation_x:
-        current_rotation_x -= curr_step.x*delta
-        camera_x.rotate_x(-curr_step.x * delta)
+        current_rotation_x -= curr_step_x*delta
+        camera_x.rotate_x(-curr_step_x * delta)
         if current_rotation_x < target_rotation_x:
             self.tryNormalizeCurrentX()
     else:
@@ -230,10 +235,11 @@ func _physics_process(delta):
     last_obstructing_objects = exclude
 
     
-func rotateTo(target_degrees, immediate=false):
+func rotateTo(target_degrees, immediate=false, is_slow=false):
     real_rotation_target = target_degrees
     target_rotation = deg2rad(target_degrees)
     is_rotating = true
+    is_rotating_slow = is_slow
 
     if immediate:
         rotation_degrees.y = real_rotation_target
@@ -241,10 +247,11 @@ func rotateTo(target_degrees, immediate=false):
         self.normalizeTarget()
         current_rotation = target_rotation
 
-func rotateXTo(target_degrees, immediate=false):
+func rotateXTo(target_degrees, immediate=false, is_slow=false):
     real_rotation_target_x = target_degrees
     target_rotation_x = deg2rad(target_degrees)
     is_rotating_x = true
+    is_rotating_slow = is_slow
 
     if immediate:
         camera_x.rotation_degrees.x = real_rotation_target_x
@@ -357,6 +364,7 @@ func tryNormalizeCurrent():
         current_rotation = target_rotation
         debug_print = false
     is_rotating = false
+    is_rotating_slow = false
     
 func normalizeTarget():
     while target_rotation < 0:

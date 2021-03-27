@@ -228,6 +228,8 @@ func processJumpInputs(delta):
             is_recovering = false
             if is_floating:
                 vv = -jump_force / 2
+            elif is_holding_chicken:
+                vv = (2*jump_force) / 3
             else:
                 vv = jump_force / 2
 

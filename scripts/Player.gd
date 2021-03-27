@@ -120,19 +120,19 @@ func _physics_process(delta):
     pass
 
 func tryRotateCamera(delta):
-    if not Input.is_action_pressed("ui_ctrl"):
-        if Input.is_action_pressed("ui_rotate_left"):
-            cameraRotationCounter += delta
-            getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
-        elif Input.is_action_pressed("ui_rotate_right"):
-            cameraRotationCounter += delta
-            getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
-        else: cameraRotationCounter = 0
-    elif Input.is_action_pressed("ui_ctrl"):
-        if Input.is_action_just_pressed("ui_rotate_left"):
-            getCamera().rotate_left_90deg()
-        elif Input.is_action_just_pressed("ui_rotate_right"):
-            getCamera().rotate_right_90deg()
+    # if not Input.is_action_pressed("ui_ctrl"):
+    if Input.is_action_pressed("ui_rotate_left"):
+        cameraRotationCounter += delta
+        getCamera().rotate_left((delta*66)+(cameraRotationCounter*36))
+    elif Input.is_action_pressed("ui_rotate_right"):
+        cameraRotationCounter += delta
+        getCamera().rotate_right((delta*66)+(cameraRotationCounter*36))
+    else: cameraRotationCounter = 0
+    # elif Input.is_action_pressed("ui_ctrl"):
+    #     if Input.is_action_just_pressed("ui_rotate_left"):
+    #         getCamera().rotate_left_90deg()
+    #     elif Input.is_action_just_pressed("ui_rotate_right"):
+    #         getCamera().rotate_right_90deg()
         
     if cameraRotationCounter > 1: cameraRotationCounter = 1
     

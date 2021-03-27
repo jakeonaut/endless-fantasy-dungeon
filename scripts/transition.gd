@@ -25,6 +25,7 @@ func blink_fade_to(scn_path):
 func interrupt():
     was_i_interrupted = true
     get_node("AnimationPlayer").stop()
+    get_node("AnimationPlayer").seek(0, true)
 
 # PRIVATE FUNCTION. CALLED AT THE MIDDLE OF THE TRANSITION ANIMATION
 func change_scene():
